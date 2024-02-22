@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04180AC52B869BBE007CA253 /* APIHandler.swift */; };
+		04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04180ACD2B86A565007CA253 /* CustomButton.swift */; };
 		04A2A70C2B85190D00991FCC /* dummyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A70B2B85190D00991FCC /* dummyCoreData.swift */; };
 		04A2A70F2B85196C00991FCC /* dummyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A70E2B85196C00991FCC /* dummyModule.swift */; };
 		04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5740A2B84D669007BFC98 /* AppDelegate.swift */; };
@@ -28,8 +29,6 @@
 		04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */; };
 		04B04F632B85248A004C16D6 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */; };
 		04B04F642B85248A004C16D6 /* MontserratLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F602B85248A004C16D6 /* MontserratLight.ttf */; };
-		04B04F692B8530F3004C16D6 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B04F682B8530F3004C16D6 /* NetworkManagerTests.swift */; };
-		04B04F6B2B85321F004C16D6 /* NetworkReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B04F6A2B85321F004C16D6 /* NetworkReachabilityTests.swift */; };
 		4E7EFC779A263136C40B3548 /* Pods_ShopifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0FA4B994C7C0EA923F6CF3 /* Pods_ShopifyTests.framework */; };
 		754B9BF1A72B10895F3FFDE1 /* Pods_Shopify_ShopifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550154E7C3054FB1DFD428 /* Pods_Shopify_ShopifyUITests.framework */; };
 		DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5F6EA694ECBFA2B240E273 /* Pods_Shopify.framework */; };
@@ -54,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		04180AC52B869BBE007CA253 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		04180ACD2B86A565007CA253 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		04A2A70B2B85190D00991FCC /* dummyCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyCoreData.swift; sourceTree = "<group>"; };
 		04A2A70E2B85196C00991FCC /* dummyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyModule.swift; sourceTree = "<group>"; };
 		04A574072B84D669007BFC98 /* Shopify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,8 +78,6 @@
 		04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
 		04B04F602B85248A004C16D6 /* MontserratLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratLight.ttf; sourceTree = "<group>"; };
-		04B04F682B8530F3004C16D6 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
-		04B04F6A2B85321F004C16D6 /* NetworkReachabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityTests.swift; sourceTree = "<group>"; };
 		17550154E7C3054FB1DFD428 /* Pods_Shopify_ShopifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ShopifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA4EEF87A19F18450ECD80F /* Pods-Shopify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify.debug.xcconfig"; path = "Target Support Files/Pods-Shopify/Pods-Shopify.debug.xcconfig"; sourceTree = "<group>"; };
 		4325952B90A5AD074F89678C /* Pods-ShopifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopifyTests.release.xcconfig"; path = "Target Support Files/Pods-ShopifyTests/Pods-ShopifyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +123,22 @@
 				04180AC52B869BBE007CA253 /* APIHandler.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		04180ACB2B86A533007CA253 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				04180ACC2B86A540007CA253 /* CustomButton */,
+			);
+			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		04180ACC2B86A540007CA253 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				04180ACD2B86A565007CA253 /* CustomButton.swift */,
+			);
+			path = CustomButton;
 			sourceTree = "<group>";
 		};
 		04A2A70D2B85195A00991FCC /* Modules */ = {
@@ -181,8 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				04A574242B84D66D007BFC98 /* ShopifyTests.swift */,
-				04B04F682B8530F3004C16D6 /* NetworkManagerTests.swift */,
-				04B04F6A2B85321F004C16D6 /* NetworkReachabilityTests.swift */,
 			);
 			path = ShopifyTests;
 			sourceTree = "<group>";
@@ -199,6 +211,7 @@
 		04A5743D2B84D680007BFC98 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04180ACB2B86A533007CA253 /* CustomComponents */,
 				04A574102B84D669007BFC98 /* Main.storyboard */,
 				04A574182B84D66C007BFC98 /* LaunchScreen.storyboard */,
 			);
@@ -532,6 +545,7 @@
 				04A574492B84D6FE007BFC98 /* NetworkReachability.swift in Sources */,
 				04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */,
 				04A2A70F2B85196C00991FCC /* dummyModule.swift in Sources */,
+				04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */,
 				04A574152B84D669007BFC98 /* Shopify.xcdatamodeld in Sources */,
 				04A2A70C2B85190D00991FCC /* dummyCoreData.swift in Sources */,
 				04A5740D2B84D669007BFC98 /* SceneDelegate.swift in Sources */,
@@ -542,8 +556,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04B04F6B2B85321F004C16D6 /* NetworkReachabilityTests.swift in Sources */,
-				04B04F692B8530F3004C16D6 /* NetworkManagerTests.swift in Sources */,
 				04A574252B84D66D007BFC98 /* ShopifyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
