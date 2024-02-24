@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04180AC52B869BBE007CA253 /* APIHandler.swift */; };
 		04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04180ACD2B86A565007CA253 /* CustomButton.swift */; };
-		043E549C2B8797F300F8CDA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549B2B8797F300F8CDA7 /* Alert.swift */; };
 		043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549D2B879B1A00F8CDA7 /* Products.swift */; };
 		043E54A02B87F5BA00F8CDA7 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */; };
 		043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E54A12B87FB0600F8CDA7 /* Orders.swift */; };
@@ -62,7 +61,6 @@
 /* Begin PBXFileReference section */
 		04180AC52B869BBE007CA253 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		04180ACD2B86A565007CA253 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		043E549B2B8797F300F8CDA7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		043E549D2B879B1A00F8CDA7 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		043E54A12B87FB0600F8CDA7 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			children = (
 				04180AC42B869BAA007CA253 /* API */,
 				04B04F5C2B85241D004C16D6 /* fonts */,
-				043E549B2B8797F300F8CDA7 /* Alert.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -569,7 +566,6 @@
 				043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */,
 				04A5740F2B84D669007BFC98 /* ViewController.swift in Sources */,
 				04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */,
-				043E549C2B8797F300F8CDA7 /* Alert.swift in Sources */,
 				04A574492B84D6FE007BFC98 /* NetworkReachability.swift in Sources */,
 				DE14CF5C2B8918D600FC1C8D /* Address.swift in Sources */,
 				04F133B82B8946ED00F49963 /* Categories.swift in Sources */,
