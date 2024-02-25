@@ -19,14 +19,24 @@ protocol HomeScreenViewModelProtocol {
 
 class HomeScreenViewModel : HomeScreenViewModelProtocol{
     
-    var ads : PriceRules?
-    var brands : SmartCollections?
+    var ads : PriceRules? {
+        didSet{
+            bindResult()
+        }
+    }
+    var brands : SmartCollections?{
+        didSet{
+            bindResult()
+        }
+    }
+    var bindResult : (()->()) = {}
     weak var delegate : HomeScreenViewModelDelegate?
     var network : NetworkManagerProtocol
     
     init(network: NetworkManagerProtocol) {
         self.network = network
     }
+    
     func fetchAds() {
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.priceRule.rawValue + APIHandler.APICompletions.json.rawValue
         
@@ -34,6 +44,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             guard let ads = result else{
                 return
             }
+            self?.ads = ads
             self?.delegate?.didLoadAds(ads: ads)
         }
     }
@@ -45,6 +56,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             guard let brands = result else{
                 return
             }
+            self?.brands = brands
             self?.delegate?.didLoadBrands(brands: brands)
         }
     }

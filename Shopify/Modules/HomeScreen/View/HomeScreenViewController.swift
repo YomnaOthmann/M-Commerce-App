@@ -24,6 +24,9 @@ class HomeScreenViewController: UIViewController {
     private var discounts : DiscountCodes?
     private var smartCollections : SmartCollections?
     private let alert = ConnectionAlert()
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,16 +34,22 @@ class HomeScreenViewController: UIViewController {
         setUpBrandsCollectionView()
         
         setUpIndicators()
-        homeSearchBar.setTextFieldColor(.searchbar)
-        
+        setUpSearchBar()
         viewModel.delegate = self
         
     }
     override func viewWillAppear(_ animated: Bool) {
- 
-            viewModel.fetchAds()
-            viewModel.fetchBrands()
-       
+        
+        viewModel.fetchAds()
+        viewModel.fetchBrands()
+        
+    }
+    
+    fileprivate func setUpSearchBar() {
+        homeSearchBar.tintColor = .white
+        homeSearchBar.barTintColor = .white
+        homeSearchBar.searchBarStyle = .minimal
+        homeSearchBar.sizeToFit()
     }
     
     func setUpAdsCollectionView(){
@@ -50,7 +59,7 @@ class HomeScreenViewController: UIViewController {
         
         let adsLayout = UICollectionViewFlowLayout()
         adsLayout.scrollDirection = .horizontal
-        adsLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        adsLayout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         
         adsCollectionView.setCollectionViewLayout(adsLayout, animated: true)
         
@@ -64,10 +73,10 @@ class HomeScreenViewController: UIViewController {
         brandsCollectionView.dataSource = self
         
         let brandsLayout = UICollectionViewFlowLayout()
-        brandsLayout.scrollDirection = .horizontal
-        brandsLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        brandsLayout.scrollDirection = .vertical
+        brandsLayout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         
-        adsCollectionView.setCollectionViewLayout(brandsLayout, animated: true)
+        brandsCollectionView.setCollectionViewLayout(brandsLayout, animated: true)
         brandsCollectionView.isHidden = true
         brandsCollectionView.register(BrandCollectionViewCell.nib(), forCellWithReuseIdentifier: BrandCollectionViewCell.id)
     }
@@ -84,8 +93,23 @@ class HomeScreenViewController: UIViewController {
         brandsIndicator.startAnimating()
     }
     
-   
+    
+}
 
+extension HomeScreenViewController : UISearchBarDelegate{
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        true
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        // TODO: - to be edited
+        let searchvc = self.storyboard?.instantiateViewController(identifier: "search") as! SearchViewController
+        searchvc.modalPresentationStyle = .fullScreen
+        present(searchvc, animated: true)
+        
+    }
 }
 extension HomeScreenViewController : HomeScreenViewModelDelegate{
     func didLoadAds(ads: PriceRules) {
@@ -137,40 +161,28 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.id, for: indexPath) as? BrandCollectionViewCell else{
                 return BrandCollectionViewCell()
             }
-            cell.brandName.text = smartCollections?.smartCollections[indexPath.row].title
+            // cell.brandName.text = smartCollections?.smartCollections[indexPath.row].title
             cell.brandImage.kf.setImage(with: URL(string: smartCollections?.smartCollections[indexPath.row].image.src ?? ""))
             return cell
         }
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        switch collectionView{
-        case adsCollectionView:
-            guard let header = adsCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DiscountHeaderReusableView.id, for: indexPath) as? DiscountHeaderReusableView else{
-                return UICollectionReusableView()
-            }
-            header.headerLabel.text = "Discounts"
-            print("discount header")
-            return header
-
-        default:
-            guard let header = brandsCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BrandHeadeReusableView.id, for: indexPath) as? BrandHeadeReusableView else{
-                return UICollectionReusableView()
-            }
-            header.brandLabel.text = "Brands"
-            return header
+        if collectionView == adsCollectionView{
+            return CGSize(width: (adsCollectionView.frame.width) - 50 , height: 200)
+        }
+        else {
+            return CGSize(width: brandsCollectionView.frame.width * 0.44 , height: brandsCollectionView.frame.height * 0.5)
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == brandsCollectionView{
+             // TODO: Add navigatoin code
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == adsCollectionView{
-            return CGSize(width: (UIScreen.main.bounds.width) - 50 , height: 200)
-        }
-        else if collectionView == brandsCollectionView{
-            return CGSize(width: 150, height: 200)
-        }
-        return CGSize(width: (UIScreen.main.bounds.width) / 2 , height: 200)
-    }
 }
