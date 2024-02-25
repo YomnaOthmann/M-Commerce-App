@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MontserratMedium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="MontserratSemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCell" id="gTV-IL-0wX" customClass="ProductCollectionViewCell" customModule="Shopify" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="265" height="280"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="265" height="280"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D7b-8s-oWk">
+                        <rect key="frame" x="0.0" y="0.0" width="265" height="195.33333333333334"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaM-51-h3S">
+                        <rect key="frame" x="16" y="238" width="233" height="22"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I00-de-RwX">
+                        <rect key="frame" x="16" y="205.33333333333334" width="233" height="24.666666666666657"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="I00-de-RwX" firstAttribute="top" secondItem="D7b-8s-oWk" secondAttribute="bottom" constant="10" id="2xv-WR-fK0"/>
+                <constraint firstItem="D7b-8s-oWk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3M0-nn-JZ1"/>
+                <constraint firstItem="I00-de-RwX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="CK2-c6-lPb"/>
+                <constraint firstAttribute="trailing" secondItem="kaM-51-h3S" secondAttribute="trailing" constant="16" id="H44-sK-vfQ"/>
+                <constraint firstItem="kaM-51-h3S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="MCJ-nV-IIh"/>
+                <constraint firstItem="kaM-51-h3S" firstAttribute="top" secondItem="I00-de-RwX" secondAttribute="bottom" constant="8" id="ZcT-M1-TC7"/>
+                <constraint firstAttribute="trailing" secondItem="I00-de-RwX" secondAttribute="trailing" constant="16" id="a7C-UK-AxG"/>
+                <constraint firstAttribute="bottom" secondItem="kaM-51-h3S" secondAttribute="bottom" constant="20" id="eaD-XH-uNn"/>
+                <constraint firstItem="D7b-8s-oWk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qZb-qY-urV"/>
+                <constraint firstAttribute="trailing" secondItem="D7b-8s-oWk" secondAttribute="trailing" id="zyb-9g-Xoa"/>
+            </constraints>
+            <size key="customSize" width="265" height="280"/>
+            <connections>
+                <outlet property="productImage" destination="D7b-8s-oWk" id="oFZ-fT-JVc"/>
+                <outlet property="productPrice" destination="kaM-51-h3S" id="ZT9-8t-s5S"/>
+                <outlet property="productTitle" destination="I00-de-RwX" id="ldg-vb-VgS"/>
+            </connections>
+            <point key="canvasLocation" x="293.89312977099235" y="69.718309859154928"/>
+        </collectionViewCell>
+    </objects>
+</document>
