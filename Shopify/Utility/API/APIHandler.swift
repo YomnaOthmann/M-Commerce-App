@@ -18,7 +18,6 @@ class APIHandler{
         case discountCode = "/discount_codes"
         case count = "/count"
         case collections = "/custom_collections"
-        case smartCollection = "/smart_collections"
         case customers = "/customers"
         case address = "/addresses"
     }
