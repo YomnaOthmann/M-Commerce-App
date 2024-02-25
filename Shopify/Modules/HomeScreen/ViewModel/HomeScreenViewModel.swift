@@ -32,7 +32,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
     var bindResult : (()->()) = {}
     weak var delegate : HomeScreenViewModelDelegate?
     var network : NetworkManagerProtocol
-    
+    let reachability = NetworkReachability.networkReachability
     init(network: NetworkManagerProtocol) {
         self.network = network
     }
@@ -59,5 +59,9 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             self?.brands = brands
             self?.delegate?.didLoadBrands(brands: brands)
         }
+    }
+    
+    func checkReachability()->Bool{
+        return reachability.networkStatus
     }
 }

@@ -7,9 +7,11 @@
 
 import UIKit
 import Kingfisher
+import Lottie
 
 class HomeScreenViewController: UIViewController {
     
+    @IBOutlet weak var brandHeaderLabel: UILabel!
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var adsIndicator: UIActivityIndicatorView!
     
@@ -25,11 +27,11 @@ class HomeScreenViewController: UIViewController {
     private var smartCollections : SmartCollections?
     private let alert = ConnectionAlert()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "ShopLink"
+        navigationItem.titleView?.tintColor = .customBlue
+        brandHeaderLabel.isHidden = true
         setUpAdsCollectionView()
         setUpBrandsCollectionView()
         
@@ -39,9 +41,15 @@ class HomeScreenViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        if viewModel.checkReachability(){
+            brandHeaderLabel.isHidden = false
+            viewModel.fetchAds()
+            viewModel.fetchBrands()
+        }else{
+            brandHeaderLabel.isHidden = true
+            ConnectionAlert().showAlert(view: self)
+        }
         
-        viewModel.fetchAds()
-        viewModel.fetchBrands()
         
     }
     
@@ -83,13 +91,15 @@ class HomeScreenViewController: UIViewController {
     
     func setUpIndicators(){
         adsIndicator.style = .medium
-        adsIndicator.color = .customGray
+        adsIndicator.color = .gray
         adsIndicator.hidesWhenStopped = true
+        adsIndicator.center = adsCollectionView.center
         adsIndicator.startAnimating()
         
         brandsIndicator.style = .medium
-        brandsIndicator.color = .customGray
+        brandsIndicator.color = .gray
         brandsIndicator.hidesWhenStopped = true
+        brandsIndicator.center = brandsCollectionView.center
         brandsIndicator.startAnimating()
     }
     
@@ -105,32 +115,31 @@ extension HomeScreenViewController : UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
         // TODO: - to be edited
-        let searchvc = self.storyboard?.instantiateViewController(identifier: "search") as! SearchViewController
-        searchvc.modalPresentationStyle = .fullScreen
-        present(searchvc, animated: true)
+        
         
     }
 }
 extension HomeScreenViewController : HomeScreenViewModelDelegate{
+    
     func didLoadAds(ads: PriceRules) {
         priceRules = ads
         adsIndicator.stopAnimating()
         adsCollectionView.reloadData()
         adsCollectionView.isHidden = false
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.5) {
             self.adsCollectionView.alpha = 1
         }
     }
-    
     func didLoadBrands(brands: SmartCollections) {
         smartCollections = brands
         brandsIndicator.stopAnimating()
         brandsCollectionView.reloadData()
         brandsCollectionView.isHidden = false
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.5) {
             self.brandsCollectionView.alpha = 1
         }
     }
+    
 }
 
 extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -182,7 +191,46 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsCollectionView{
              // TODO: Add navigatoin code
+            let brandVC = self.storyboard?.instantiateViewController(identifier: "brand") as! BrandScreenViewController
+            brandVC.brand = smartCollections?.smartCollections[indexPath.row].title
+            self.navigationController?.pushViewController(brandVC, animated: true)
+        }
+        if collectionView == adsCollectionView{
+            UIPasteboard.general.string = priceRules?.priceRules?[indexPath.row].title ?? ""
+            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You Got the discount code")
+            showAnimation()
         }
     }
+    
+    func showAnimation(){
+        let animationView : LottieAnimationView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+        
+        animationView.center = self.view.center
+        
+        self.view.addSubview(animationView)
+        guard let path = Bundle.main.path(forResource: "congrats", ofType: "json")else{
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        LottieAnimation.loadedFrom(url: url) { animation in
+            
+            animationView.animation = animation
+            animationView.contentMode = .scaleAspectFit
+            
+            animationView.loopMode = .playOnce
+            
+            animationView.animationSpeed = 1.0
+            
+            animationView.play()
+           
+            
+        }
+ 
+        DispatchQueue.main.asyncAfter(deadline: .now()+1.5){
+            animationView.stop()
+            animationView.removeFromSuperview()
+        }
+    }
+    
     
 }
