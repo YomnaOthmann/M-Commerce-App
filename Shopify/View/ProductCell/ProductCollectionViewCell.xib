@@ -34,7 +34,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I00-de-RwX">
-                        <rect key="frame" x="16" y="205.33333333333334" width="233" height="24.666666666666657"/>
+                        <rect key="frame" x="16" y="205.33333333333334" width="241" height="24.666666666666657"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -48,8 +48,8 @@
                 <constraint firstItem="I00-de-RwX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="CK2-c6-lPb"/>
                 <constraint firstAttribute="trailing" secondItem="kaM-51-h3S" secondAttribute="trailing" constant="16" id="H44-sK-vfQ"/>
                 <constraint firstItem="kaM-51-h3S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="MCJ-nV-IIh"/>
+                <constraint firstAttribute="trailing" secondItem="I00-de-RwX" secondAttribute="trailing" constant="8" id="Ovn-Hy-exf"/>
                 <constraint firstItem="kaM-51-h3S" firstAttribute="top" secondItem="I00-de-RwX" secondAttribute="bottom" constant="8" id="ZcT-M1-TC7"/>
-                <constraint firstAttribute="trailing" secondItem="I00-de-RwX" secondAttribute="trailing" constant="16" id="a7C-UK-AxG"/>
                 <constraint firstAttribute="bottom" secondItem="kaM-51-h3S" secondAttribute="bottom" constant="20" id="eaD-XH-uNn"/>
                 <constraint firstItem="D7b-8s-oWk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qZb-qY-urV"/>
                 <constraint firstAttribute="trailing" secondItem="D7b-8s-oWk" secondAttribute="trailing" id="zyb-9g-Xoa"/>
