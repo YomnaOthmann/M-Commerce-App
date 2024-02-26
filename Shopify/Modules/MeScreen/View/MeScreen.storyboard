@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5oA-Z4-nRe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -24,7 +24,7 @@
         <!--Me Screen View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="MeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loggedMe" id="Y6W-OH-hqX" customClass="MeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                                                     </hierarchicalColors>
                                                 </imageReference>
                                                 <connections>
-                                                    <action selector="goToWhishlist:" destination="Y6W-OH-hqX" id="h83-3x-6QB"/>
+                                                    <action selector="goToWishlist:" destination="Y6W-OH-hqX" id="h83-3x-6QB"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Item" id="xIz-Ja-21b">
@@ -79,19 +79,19 @@
                                 <rect key="frame" x="32" y="118" width="329" height="194"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEO-Rb-Oe5">
-                                        <rect key="frame" x="16" y="115.33333333333334" width="297" height="24.666666666666657"/>
+                                        <rect key="frame" x="16" y="117.00000000000001" width="297" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pec-dg-BtG">
-                                        <rect key="frame" x="16" y="148" width="297" height="22"/>
+                                        <rect key="frame" x="16" y="149.66666666666669" width="297" height="22"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-bn-4Lb">
-                                        <rect key="frame" x="124.66666666666666" y="16" width="80" height="80"/>
+                                        <rect key="frame" x="124.66666666666666" y="32" width="80" height="80"/>
                                         <color key="tintColor" name="CustomGray"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="G8u-vW-d2U"/>
@@ -103,9 +103,11 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pec-dg-BtG" secondAttribute="trailing" constant="16" id="51R-Dj-uEJ"/>
                                     <constraint firstAttribute="trailing" secondItem="OEO-Rb-Oe5" secondAttribute="trailing" constant="16" id="Cvo-R9-yP2"/>
-                                    <constraint firstAttribute="bottom" secondItem="pec-dg-BtG" secondAttribute="bottom" constant="24" id="JSX-KJ-QgY"/>
                                     <constraint firstItem="Ytk-bn-4Lb" firstAttribute="centerX" secondItem="ZNz-C8-Y3f" secondAttribute="centerX" id="M1H-Cx-Y9v"/>
-                                    <constraint firstItem="Ytk-bn-4Lb" firstAttribute="top" secondItem="ZNz-C8-Y3f" secondAttribute="top" constant="16" id="WRY-sC-8D0"/>
+                                    <constraint firstAttribute="height" constant="194" id="Np0-wN-8uv"/>
+                                    <constraint firstItem="Ytk-bn-4Lb" firstAttribute="top" secondItem="ZNz-C8-Y3f" secondAttribute="top" constant="32" id="WRY-sC-8D0"/>
+                                    <constraint firstAttribute="width" secondItem="ZNz-C8-Y3f" secondAttribute="height" multiplier="329:194" id="Xnd-du-8tO"/>
+                                    <constraint firstItem="OEO-Rb-Oe5" firstAttribute="top" secondItem="Ytk-bn-4Lb" secondAttribute="bottom" constant="5" id="hnZ-19-vhW"/>
                                     <constraint firstItem="pec-dg-BtG" firstAttribute="leading" secondItem="ZNz-C8-Y3f" secondAttribute="leading" constant="16" id="m9X-7R-XW8"/>
                                     <constraint firstItem="pec-dg-BtG" firstAttribute="top" secondItem="OEO-Rb-Oe5" secondAttribute="bottom" constant="8" id="umk-dw-0ff"/>
                                     <constraint firstItem="OEO-Rb-Oe5" firstAttribute="leading" secondItem="ZNz-C8-Y3f" secondAttribute="leading" constant="16" id="y8z-Q8-X3d"/>
@@ -160,7 +162,7 @@
         <!--Not Logged Me Screen View Controller-->
         <scene sceneID="t1o-op-QjR">
             <objects>
-                <viewController id="5oA-Z4-nRe" customClass="NotLoggedMeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notLogged" id="5oA-Z4-nRe" customClass="NotLoggedMeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hXf-zv-3Vs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

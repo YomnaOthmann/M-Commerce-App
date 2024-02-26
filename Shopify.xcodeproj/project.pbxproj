@@ -14,6 +14,7 @@
 		043E54A02B87F5BA00F8CDA7 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */; };
 		043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E54A12B87FB0600F8CDA7 /* Orders.swift */; };
 		048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */; };
+		048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */; };
 		048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */; };
 		048DC9C62B8CEC2B006623C9 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C42B8CEC2A006623C9 /* BrandCollectionViewCell.swift */; };
 		048DC9C72B8CEC2B006623C9 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */; };
@@ -108,6 +109,7 @@
 		043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		043E54A12B87FB0600F8CDA7 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
 		048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLoggedMeScreenViewController.swift; sourceTree = "<group>"; };
+		048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewModel.swift; sourceTree = "<group>"; };
 		048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
 		048DC9C42B8CEC2A006623C9 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		048DC9D42B8D14D4006623C9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				DE14CF602B8919A900FC1C8D /* DiscountCode.swift in Sources */,
 				043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */,
 				04A5740F2B84D669007BFC98 /* ViewController.swift in Sources */,
+				048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */,
 				04E385252B8BB12400DEADB3 /* ProductCollectionViewCell.swift in Sources */,
 				04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */,
 				043E549C2B8797F300F8CDA7 /* Alert.swift in Sources */,

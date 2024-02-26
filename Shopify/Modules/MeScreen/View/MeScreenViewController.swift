@@ -14,7 +14,7 @@ class MeScreenViewController: UIViewController {
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var userMail: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    var user:Customer?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -22,16 +22,22 @@ class MeScreenViewController: UIViewController {
         userView.layer.cornerRadius = 20
         userName.text = "Yomna Othman"
         userMail.text = "yomnaothmann@gmail.com"
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func goToWhishlist(_ sender: Any) {
+    @IBAction func goToWishlist(_ sender: Any) {
+        //TODO: navigate to wishlist
     }
     
     @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     @IBAction func goToCart(_ sender: Any) {
+        let cartStoryboard = UIStoryboard(name: "ShoppingBag", bundle: nil)
+        let cartVC = cartStoryboard.instantiateViewController(withIdentifier: "") as! ShoppingBagViewController
+        cartVC.modalPresentationStyle = .fullScreen
+        self.present(cartVC, animated: true)
+        
     }
 }
 extension MeScreenViewController : UITableViewDelegate, UITableViewDataSource{
@@ -59,11 +65,17 @@ extension MeScreenViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row{
         case 0:
+            let ordersStoryboard = UIStoryboard(name: "OrdersScreen", bundle: nil)
+            let ordersVC = ordersStoryboard.instantiateViewController(withIdentifier: "orders") 
+            ordersVC.modalPresentationStyle = .fullScreen
+            self.present(ordersVC, animated: true)
             //TODO: Navigate to Orders Screen
-            print("")
         default:
             // TODO: Navigate to Settings Screen
-            print("")
+            let settingsStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+            let settingsVC = settingsStoryboard.instantiateViewController(withIdentifier: "")
+            settingsVC.modalPresentationStyle = .fullScreen
+            self.present(settingsVC, animated: true)
         }
     }
     
