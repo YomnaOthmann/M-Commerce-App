@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Categories-->
+        <!--shopLink-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="CategoryScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,7 +120,7 @@
                             <constraint firstItem="SNA-N6-K5x" firstAttribute="top" secondItem="aN5-S5-5Sf" secondAttribute="bottom" id="wTu-6C-hCf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="c6P-7l-MSS">
+                    <navigationItem key="navigationItem" title="shopLink" id="c6P-7l-MSS">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="wxU-FK-IgQ">
                                 <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
