@@ -10,6 +10,18 @@ import UIKit
 class ShoppingBagCustomCell: UITableViewCell {
 
     
+    @IBOutlet weak var productImage: UIImageView!
+    
+    @IBOutlet weak var productTitle: UILabel!
+    
+    @IBOutlet weak var productSubTitle: UILabel!
+    
+    @IBOutlet weak var amountPrice: UILabel!
+    
+    @IBOutlet weak var productAmount: UILabel!
+    
+    @IBOutlet weak var deliverDate: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
