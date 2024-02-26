@@ -41,6 +41,7 @@ struct Product: Codable {
     }
     // MARK: - Product Type
     enum ProductType: String, Codable {
+        case all = "all"
         case accessories = "ACCESSORIES"
         case shoes = "SHOES"
         case tShirts = "T-SHIRTS"
