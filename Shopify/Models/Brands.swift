@@ -8,7 +8,10 @@
 import Foundation
 
 struct SmartCollections : Codable{
-    let smart_collections : [SmartCollection]
+    let smartCollections : [SmartCollection]
+    enum CodingKeys : String, CodingKey{
+        case smartCollections = "smart_collections"
+    }
 }
 
 struct SmartCollection : Codable{
