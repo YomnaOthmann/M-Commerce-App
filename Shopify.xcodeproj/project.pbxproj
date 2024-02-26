@@ -200,6 +200,8 @@
 		04A2A70D2B85195A00991FCC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DEDD832B2B8CA75800516BB4 /* Settings */,
+				DEDD833A2B8CA75800516BB4 /* ShoppingBag */,
 				04CF29692B8B531B00454075 /* TabBarController */,
 			);
 			path = Modules;
@@ -208,8 +210,6 @@
 		04A573FE2B84D669007BFC98 = {
 			isa = PBXGroup;
 			children = (
-				DEDD832B2B8CA75800516BB4 /* Settings */,
-				DEDD833A2B8CA75800516BB4 /* ShoppingBag */,
 				04A574092B84D669007BFC98 /* Shopify */,
 				04A574232B84D66D007BFC98 /* ShopifyTests */,
 				04A5742D2B84D66D007BFC98 /* ShopifyUITests */,
@@ -403,8 +403,7 @@
 			children = (
 				DEDD832C2B8CA75800516BB4 /* View */,
 			);
-			name = Settings;
-			path = Shopify/Modules/Settings;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DEDD832C2B8CA75800516BB4 /* View */ = {
@@ -463,8 +462,7 @@
 				DEDD833D2B8CA75800516BB4 /* ShoppingBagCustomCell.swift */,
 				DEDD833E2B8CA75800516BB4 /* ShoppingBagCustomButton.swift */,
 			);
-			name = ShoppingBag;
-			path = Shopify/Modules/ShoppingBag;
+			path = ShoppingBag;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
