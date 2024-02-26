@@ -20,6 +20,7 @@ class CustomButton: UIButton {
     }
     
     func setUpButton(){
+        
         layer.cornerRadius = 5
         clipsToBounds = true
         backgroundColor = .customBlue
