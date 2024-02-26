@@ -13,11 +13,14 @@
 		043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549D2B879B1A00F8CDA7 /* Products.swift */; };
 		043E54A02B87F5BA00F8CDA7 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */; };
 		043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E54A12B87FB0600F8CDA7 /* Orders.swift */; };
+		048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */; };
 		048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */; };
 		048DC9C62B8CEC2B006623C9 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C42B8CEC2A006623C9 /* BrandCollectionViewCell.swift */; };
 		048DC9C72B8CEC2B006623C9 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */; };
 		048DC9C92B8CEC62006623C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C82B8CEC61006623C9 /* Extensions.swift */; };
 		048DC9CB2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */; };
+		048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */; };
+		048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */; };
 		0493F8782B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */; };
 		04A2A70C2B85190D00991FCC /* dummyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A70B2B85190D00991FCC /* dummyCoreData.swift */; };
 		04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5740A2B84D669007BFC98 /* AppDelegate.swift */; };
@@ -104,11 +107,14 @@
 		043E549D2B879B1A00F8CDA7 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		043E54A12B87FB0600F8CDA7 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
+		048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLoggedMeScreenViewController.swift; sourceTree = "<group>"; };
 		048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
 		048DC9C42B8CEC2A006623C9 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
 		048DC9C82B8CEC61006623C9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelTests.swift; sourceTree = "<group>"; };
+		048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeScreen.storyboard; sourceTree = "<group>"; };
+		048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewController.swift; sourceTree = "<group>"; };
 		0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreenViewModelTests.swift; sourceTree = "<group>"; };
 		04A2A70B2B85190D00991FCC /* dummyCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyCoreData.swift; sourceTree = "<group>"; };
 		04A574072B84D669007BFC98 /* Shopify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,9 +253,36 @@
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
+		048DC9D22B8D14C4006623C9 /* MeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				048DC9D42B8D14D4006623C9 /* ViewModel */,
+				048DC9D32B8D14CD006623C9 /* View */,
+			);
+			path = MeScreen;
+			sourceTree = "<group>";
+		};
+		048DC9D32B8D14CD006623C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */,
+				048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */,
+				048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		048DC9D42B8D14D4006623C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		04A2A70D2B85195A00991FCC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				048DC9D22B8D14C4006623C9 /* MeScreen */,
 				04DA8D942B8C16E300295473 /* CategoryScreen */,
 				04CF29732B8BA93200454075 /* BrandScreen */,
 				04F133BB2B89639700F49963 /* HomeScreen */,
@@ -770,6 +803,7 @@
 				04E3852F2B8BC9FF00DEADB3 /* shopLink.json in Resources */,
 				04F133BF2B8963D000F49963 /* HomeScreen.storyboard in Resources */,
 				04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */,
+				048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */,
 				04E385312B8BC9FF00DEADB3 /* done.json in Resources */,
 				04DA8D982B8C187300295473 /* CategoryScreen.storyboard in Resources */,
 				04B04F642B85248A004C16D6 /* MontserratLight.ttf in Resources */,
@@ -903,6 +937,7 @@
 				04A574462B84D6D8007BFC98 /* NetworkManager.swift in Sources */,
 				04F133B62B8945B600F49963 /* Brands.swift in Sources */,
 				DEDD83482B8CA75800516BB4 /* ShoppingBagViewController.swift in Sources */,
+				048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */,
 				DEDD834B2B8CA75800516BB4 /* ShoppingBagCustomButton.swift in Sources */,
 				DE14CF602B8919A900FC1C8D /* DiscountCode.swift in Sources */,
 				043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */,
@@ -938,6 +973,7 @@
 				04A5740D2B84D669007BFC98 /* SceneDelegate.swift in Sources */,
 				DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */,
 				DEDD83432B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift in Sources */,
+				048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */,
 				048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */,
 				DEDD83442B8CA75800516BB4 /* SettingsViewController.swift in Sources */,
 				04E385282B8BB35B00DEADB3 /* BrandScreenViewModel.swift in Sources */,
