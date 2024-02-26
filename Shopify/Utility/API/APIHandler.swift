@@ -20,6 +20,7 @@ class APIHandler{
         case collections = "/custom_collections"
         case customers = "/customers"
         case address = "/addresses"
+        case smartCollection = "/smart_collections"
     }
     enum APICompletions :String{
         case json = ".json"
