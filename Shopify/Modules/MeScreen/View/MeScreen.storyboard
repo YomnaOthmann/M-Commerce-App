@@ -21,7 +21,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Me Screen View Controller-->
+        <!--Me-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="loggedMe" id="Y6W-OH-hqX" customClass="MeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,19 +33,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="shopLink" id="HCz-gd-Dua">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="xNC-Sv-QLA">
-                                            <imageReference key="image" image="chevron.left" catalog="system" renderingMode="hierarchical">
-                                                <hierarchicalColors>
-                                                    <color systemColor="labelColor"/>
-                                                    <color systemColor="secondaryLabelColor"/>
-                                                    <color systemColor="tertiaryLabelColor"/>
-                                                </hierarchicalColors>
-                                            </imageReference>
-                                            <connections>
-                                                <action selector="back:" destination="Y6W-OH-hqX" id="lPj-lj-awd"/>
-                                            </connections>
-                                        </barButtonItem>
+                                    <navigationItem title="ShopLink" id="HCz-gd-Dua">
                                         <rightBarButtonItems>
                                             <barButtonItem title="Item" id="VeE-KH-lih">
                                                 <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
@@ -139,7 +127,6 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pTt-YT-cnV" secondAttribute="trailing" constant="16" id="5jQ-iT-W3X"/>
                             <constraint firstItem="Haf-Ya-g4v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6zy-TI-t3s"/>
                             <constraint firstItem="ZNz-C8-Y3f" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="ADf-dh-buF"/>
-                            <constraint firstItem="pTt-YT-cnV" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="KYS-xA-oIt"/>
                             <constraint firstItem="ZNz-C8-Y3f" firstAttribute="top" secondItem="Haf-Ya-g4v" secondAttribute="bottom" constant="15" id="Py2-lQ-n7b"/>
                             <constraint firstItem="pTt-YT-cnV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="XtW-71-AaN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZNz-C8-Y3f" secondAttribute="trailing" constant="32" id="YkT-Bq-WQQ"/>
@@ -148,6 +135,10 @@
                             <constraint firstItem="pTt-YT-cnV" firstAttribute="top" secondItem="ZNz-C8-Y3f" secondAttribute="bottom" constant="8" symbolic="YES" id="yz7-QK-HWc"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="person" catalog="system" id="vUn-xj-kLe">
+                        <imageReference key="selectedImage" image="person.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="pTt-YT-cnV" id="sow-1t-ikA"/>
                         <outlet property="userMail" destination="pec-dg-BtG" id="N3A-W7-syn"/>
@@ -269,6 +260,8 @@
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="user" width="512" height="512"/>
         <namedColor name="CustomGray">
             <color red="0.40400001406669617" green="0.40400001406669617" blue="0.40400001406669617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Home Screen View Controller-->
+        <!--Home-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="Y6W-OH-hqX" customClass="HomeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WPC-tX-9TM">
-                                <rect key="frame" x="0.0" y="159" width="393" height="207.66666666666663"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="158.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d6b-dr-NOl">
                                     <size key="itemSize" width="128" height="128"/>
@@ -33,7 +33,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="h8Z-g3-T98">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="207.66666666666663"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="158.66666666666663"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <cells>
@@ -48,7 +48,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vBv-f7-v7C">
-                                <rect key="frame" x="0.0" y="412" width="393" height="406"/>
+                                <rect key="frame" x="0.0" y="363" width="393" height="406"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="406" id="zwl-JM-wcj"/>
@@ -75,7 +75,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlZ-I1-XXT">
-                                <rect key="frame" x="16" y="374.66666666666669" width="377" height="29.333333333333314"/>
+                                <rect key="frame" x="16" y="325.66666666666669" width="377" height="29.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29.333333333333314" id="xhO-Mj-Vvi"/>
                                 </constraints>
@@ -117,6 +117,9 @@
                             <constraint firstItem="vBv-f7-v7C" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="y2E-vs-8yK"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="JkI-3V-ADR">
+                        <imageReference key="selectedImage" image="house.fill" catalog="system" renderingMode="original" variableValue="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="cLW-3r-oed">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="4ue-Kx-Yiv">
@@ -139,6 +142,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="adsCollectionView" destination="WPC-tX-9TM" id="rJd-A0-Cxb"/>
                         <outlet property="adsIndicator" destination="h8Z-g3-T98" id="7g9-ew-xBl"/>
@@ -171,7 +175,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dhW-vv-cPC">
-                                <rect key="frame" x="0.0" y="159" width="393" height="659"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Upm-mt-meX">
                                     <size key="itemSize" width="128" height="128"/>
@@ -256,6 +260,8 @@
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

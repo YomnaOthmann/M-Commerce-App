@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--shopLink-->
+        <!--ShopLink-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="CategoryScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +50,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VSS-ma-WAN">
-                                <rect key="frame" x="0.0" y="301" width="393" height="517"/>
+                                <rect key="frame" x="0.0" y="301" width="393" height="468"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zeI-Yn-1l0">
                                     <size key="itemSize" width="128" height="128"/>
@@ -120,7 +120,10 @@
                             <constraint firstItem="SNA-N6-K5x" firstAttribute="top" secondItem="aN5-S5-5Sf" secondAttribute="bottom" id="wTu-6C-hCf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="shopLink" id="c6P-7l-MSS">
+                    <tabBarItem key="tabBarItem" title="Categories" image="circle.grid.2x2" catalog="system" id="L1l-Ln-iHx">
+                        <imageReference key="selectedImage" image="circle.grid.2x2.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="ShopLink" id="c6P-7l-MSS">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="wxU-FK-IgQ">
                                 <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
@@ -142,6 +145,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryCollectionView" destination="VSS-ma-WAN" id="n78-uL-dm3"/>
                         <outlet property="filterCollectionView" destination="SNA-N6-K5x" id="N4I-8x-uVF"/>
@@ -173,6 +177,8 @@
     </scenes>
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="circle.grid.2x2" catalog="system" width="128" height="111"/>
+        <image name="circle.grid.2x2.fill" catalog="system" width="128" height="111"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
