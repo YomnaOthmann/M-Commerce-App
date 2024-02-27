@@ -150,7 +150,7 @@
             </objects>
             <point key="canvasLocation" x="1014.5038167938931" y="-25.35211267605634"/>
         </scene>
-        <!--Not Logged Me Screen View Controller-->
+        <!--Me-->
         <scene sceneID="t1o-op-QjR">
             <objects>
                 <viewController storyboardIdentifier="notLogged" id="5oA-Z4-nRe" customClass="NotLoggedMeScreenViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,13 +159,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to continue , log in to the app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh3-La-VOD">
-                                <rect key="frame" x="0.0" y="137" width="393" height="34"/>
+                                <rect key="frame" x="0.0" y="137" width="393" height="25.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtQ-Zh-bqp">
-                                <rect key="frame" x="37" y="179" width="321" height="2"/>
+                                <rect key="frame" x="37" y="170.66666666666666" width="321" height="2"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="5fP-bX-b7K"/>
@@ -218,7 +218,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmW-b7-qcP" customClass="CustomButton" customModule="Shopify" customModuleProvider="target">
-                                <rect key="frame" x="32" y="207.33333333333334" width="329" height="43"/>
+                                <rect key="frame" x="32" y="199" width="329" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="4vV-Xt-VqZ"/>
                                 </constraints>
@@ -242,7 +242,6 @@
                             <constraint firstItem="PtQ-Zh-bqp" firstAttribute="top" secondItem="Yh3-La-VOD" secondAttribute="bottom" constant="8" id="G3v-bP-k63"/>
                             <constraint firstItem="Oke-h2-ReN" firstAttribute="top" secondItem="vM5-pH-Y1H" secondAttribute="top" id="Iil-DE-ViS"/>
                             <constraint firstItem="vM5-pH-Y1H" firstAttribute="trailing" secondItem="Yh3-La-VOD" secondAttribute="trailing" id="MrR-5m-aWr"/>
-                            <constraint firstItem="vM5-pH-Y1H" firstAttribute="bottom" secondItem="fmW-b7-qcP" secondAttribute="bottom" constant="567.66666666666674" id="ObU-QJ-igu"/>
                             <constraint firstItem="Yh3-La-VOD" firstAttribute="top" secondItem="vM5-pH-Y1H" secondAttribute="top" constant="78" id="RoH-lz-r3k"/>
                             <constraint firstItem="Oke-h2-ReN" firstAttribute="leading" secondItem="vM5-pH-Y1H" secondAttribute="leading" id="XV6-JA-9BC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PtQ-Zh-bqp" secondAttribute="trailing" constant="19" id="sef-Tr-D49"/>
@@ -250,6 +249,10 @@
                             <constraint firstItem="fmW-b7-qcP" firstAttribute="centerX" secondItem="Yh3-La-VOD" secondAttribute="centerX" id="yxw-7a-vny"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="person" catalog="system" id="29I-Ug-ByS">
+                        <imageReference key="selectedImage" image="person.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vJC-Ib-gMn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
