@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,9 +12,12 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="S7V-dB-Vmf" customClass="TabBarViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vmq-XT-lcg">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vmq-XT-lcg">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="CustomBlue"/>
+                        <color key="selectedImageTintColor" name="CustomBlue"/>
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
@@ -26,30 +30,30 @@
             </objects>
             <point key="canvasLocation" x="96.946564885496173" y="-27.464788732394368"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--HomeScreen-->
         <scene sceneID="hAX-Eu-QQD">
             <objects>
-                <viewControllerPlaceholder id="ulU-Qs-Qn6" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="HomeScreen" id="ulU-Qs-Qn6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Hem-j8-pUA"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUV-eH-Y9e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="789" y="-206"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--CategoryScreen-->
         <scene sceneID="kz3-Wg-uTN">
             <objects>
-                <viewControllerPlaceholder id="oOV-9b-tYL" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CategoryScreen" id="oOV-9b-tYL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="05p-oc-agD"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="do1-3s-Uct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="789" y="-27"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--MeScreen-->
         <scene sceneID="It8-zi-uxI">
             <objects>
-                <viewControllerPlaceholder id="r8D-o9-FUM" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MeScreen" id="r8D-o9-FUM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="mDK-8b-MCa"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwI-2h-qCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -57,4 +61,9 @@
             <point key="canvasLocation" x="789" y="151"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="CustomBlue">
+            <color red="0.2630000114440918" green="0.57300001382827759" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
