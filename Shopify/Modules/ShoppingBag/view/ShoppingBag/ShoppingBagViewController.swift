@@ -36,6 +36,18 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
         checkoutButton = ShoppingBagCustomButton(frame: frame).setTitleForButton(title: "Checkout")
         
         checkoutContainer.addSubview(checkoutButton)
+        checkoutButton.addTarget(self, action: #selector(navigateToCheckout), for: .touchUpInside)
+        
+        
+    }
+    
+    @objc func navigateToCheckout(){
+        
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+        
+        self.present(viewController, animated: true, completion: nil)
+
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

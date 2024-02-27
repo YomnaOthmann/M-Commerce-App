@@ -91,6 +91,9 @@
 		DEDD83492B8CA75800516BB4 /* ShoppingBag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD833C2B8CA75800516BB4 /* ShoppingBag.storyboard */; };
 		DEDD834A2B8CA75800516BB4 /* ShoppingBagCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD833D2B8CA75800516BB4 /* ShoppingBagCustomCell.swift */; };
 		DEDD834B2B8CA75800516BB4 /* ShoppingBagCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD833E2B8CA75800516BB4 /* ShoppingBagCustomButton.swift */; };
+		DEDD83522B8D022E00516BB4 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83512B8D022E00516BB4 /* CheckoutViewController.swift */; };
+		DEEE04C02B8DFCFD002D290C /* CheckoutCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEE04BF2B8DFCFD002D290C /* CheckoutCustomButton.swift */; };
+		DEEE04C22B8E7EC7002D290C /* LogoutCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEE04C12B8E7EC7002D290C /* LogoutCustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +217,10 @@
 		DEDD833C2B8CA75800516BB4 /* ShoppingBag.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShoppingBag.storyboard; sourceTree = "<group>"; };
 		DEDD833D2B8CA75800516BB4 /* ShoppingBagCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingBagCustomCell.swift; sourceTree = "<group>"; };
 		DEDD833E2B8CA75800516BB4 /* ShoppingBagCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingBagCustomButton.swift; sourceTree = "<group>"; };
+		DEDD83512B8D022E00516BB4 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		DEEE04BE2B8DE1C7002D290C /* Shopify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shopify.entitlements; sourceTree = "<group>"; };
+		DEEE04BF2B8DFCFD002D290C /* CheckoutCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCustomButton.swift; sourceTree = "<group>"; };
+		DEEE04C12B8E7EC7002D290C /* LogoutCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCustomButton.swift; sourceTree = "<group>"; };
 		EF47FD3F019FAD9004AC55E4 /* Pods-Shopify-ShopifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ShopifyUITests.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ShopifyUITests/Pods-Shopify-ShopifyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FEE1CCACC446A9ED3350A214 /* Pods-Shopify-ShopifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ShopifyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ShopifyUITests/Pods-Shopify-ShopifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -374,6 +381,7 @@
 		04A574092B84D669007BFC98 /* Shopify */ = {
 			isa = PBXGroup;
 			children = (
+				DEEE04BE2B8DE1C7002D290C /* Shopify.entitlements */,
 				04A2A70D2B85195A00991FCC /* Modules */,
 				04A574422B84D6AE007BFC98 /* Utility */,
 				04A574412B84D69B007BFC98 /* Caching */,
@@ -752,6 +760,7 @@
 			children = (
 				DEDD83342B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift */,
 				DEDD83352B8CA75800516BB4 /* SettingsViewController.swift */,
+				DEEE04C12B8E7EC7002D290C /* LogoutCustomButton.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -768,8 +777,34 @@
 		DEDD833A2B8CA75800516BB4 /* ShoppingBag */ = {
 			isa = PBXGroup;
 			children = (
-				DEDD833B2B8CA75800516BB4 /* ShoppingBagViewController.swift */,
+				DEDD834F2B8CE58400516BB4 /* view */,
+			);
+			path = ShoppingBag;
+			sourceTree = "<group>";
+		};
+		DEDD834C2B8CE54A00516BB4 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD83512B8D022E00516BB4 /* CheckoutViewController.swift */,
+				DEEE04BF2B8DFCFD002D290C /* CheckoutCustomButton.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		DEDD834F2B8CE58400516BB4 /* view */ = {
+			isa = PBXGroup;
+			children = (
 				DEDD833C2B8CA75800516BB4 /* ShoppingBag.storyboard */,
+				DEDD83502B8CE59300516BB4 /* ShoppingBag */,
+				DEDD834C2B8CE54A00516BB4 /* Checkout */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		DEDD83502B8CE59300516BB4 /* ShoppingBag */ = {
+			isa = PBXGroup;
+			children = (
+				DEDD833B2B8CA75800516BB4 /* ShoppingBagViewController.swift */,
 				DEDD833D2B8CA75800516BB4 /* ShoppingBagCustomCell.swift */,
 				DEDD833E2B8CA75800516BB4 /* ShoppingBagCustomButton.swift */,
 			);
@@ -1070,7 +1105,9 @@
 				049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */,
 				DEDD83472B8CA75800516BB4 /* AddressesTableViewCell.swift in Sources */,
 				04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */,
+				DEEE04C02B8DFCFD002D290C /* CheckoutCustomButton.swift in Sources */,
 				DEDD834A2B8CA75800516BB4 /* ShoppingBagCustomCell.swift in Sources */,
+				DEEE04C22B8E7EC7002D290C /* LogoutCustomButton.swift in Sources */,
 				DEDD833F2B8CA75800516BB4 /* CustomAddressItemView.swift in Sources */,
 				048DC9C92B8CEC62006623C9 /* Extensions.swift in Sources */,
 				048DC9C62B8CEC2B006623C9 /* BrandCollectionViewCell.swift in Sources */,
@@ -1082,6 +1119,7 @@
 				04F133CD2B89698700F49963 /* HomeScreenViewModel.swift in Sources */,
 				04DA8D9E2B8C202500295473 /* FilterCollectionViewCell.swift in Sources */,
 				DEDD83402B8CA75800516BB4 /* AddressCustomButton.swift in Sources */,
+				DEDD83522B8D022E00516BB4 /* CheckoutViewController.swift in Sources */,
 				DEDD83422B8CA75800516BB4 /* AddressViewController.swift in Sources */,
 				04A5740D2B84D669007BFC98 /* SceneDelegate.swift in Sources */,
 				DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */,
@@ -1275,8 +1313,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shopify/Shopify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67A3HNY94M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Shopify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1304,8 +1344,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shopify/Shopify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67A3HNY94M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Shopify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

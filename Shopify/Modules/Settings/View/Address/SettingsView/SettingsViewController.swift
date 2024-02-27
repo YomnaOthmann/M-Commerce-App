@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import PassKit
 
 class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource {
-    
-    
+   
     @IBOutlet weak var deliveryAddressSettingsTableView: UITableView!
     
-    @IBOutlet weak var paymentView: UIView!
-    @IBOutlet weak var paymentViewBackground: UIView!
+    @IBOutlet weak var logoutView: UIView!
+    
+    private let screenWidth = UIScreen.main.bounds.width
+
+    private var viewWidth:CGFloat{
+        return screenWidth * 0.6
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +27,26 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         deliveryAddressSettingsTableView.delegate=self
         deliveryAddressSettingsTableView.dataSource=self
         deliveryAddressSettingsTableView.separatorStyle = .none
-        setupPaymentView()
+        addCheckButtonToView()
+    }
+    
+    func addCheckButtonToView(){
+        
+        let frame = CGRect(x:0, y: 0, width: viewWidth , height: 50)
+        
+        let logoutButton = LogoutCustomButton(frame: frame).setTitleForButton(title: "Logout")
+        
+        logoutView.addSubview(logoutButton)
+        logoutButton.addTarget(self, action: #selector(logoutCustomer), for: .touchUpInside)
+        
         
     }
     
-    
-    @IBAction func setupPayment(_ sender: Any) {
+    @objc func logoutCustomer(){
+        print("Logout")
         
     }
-    
-    func setupPaymentView(){
         
-        paymentView.layer.cornerRadius = 8
-        paymentView.backgroundColor = .white
-        
-        paymentViewBackground.layer.shadowColor = UIColor.black.cgColor
-        paymentViewBackground.layer.shadowOpacity = 0.4
-        paymentViewBackground.layer.shadowOffset = CGSize.zero
-        paymentViewBackground.layer.shadowRadius = 3
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -59,8 +65,5 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         return cell
     }
     
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
-
-      }
+    
 }
-
