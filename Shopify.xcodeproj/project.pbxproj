@@ -13,6 +13,9 @@
 		043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549D2B879B1A00F8CDA7 /* Products.swift */; };
 		043E54A02B87F5BA00F8CDA7 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */; };
 		043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E54A12B87FB0600F8CDA7 /* Orders.swift */; };
+		044631CA2B8A309D001F9371 /* LoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044631C92B8A309D001F9371 /* LoginPage.storyboard */; };
+		044631CC2B8A4300001F9371 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044631CB2B8A4300001F9371 /* LoginViewController.swift */; };
+		044631CE2B8ABC05001F9371 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044631CD2B8ABC05001F9371 /* LoginViewModel.swift */; };
 		048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */; };
 		048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */; };
 		048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */; };
@@ -40,6 +43,8 @@
 		04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */; };
 		04B04F632B85248A004C16D6 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */; };
 		04B04F642B85248A004C16D6 /* MontserratLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F602B85248A004C16D6 /* MontserratLight.ttf */; };
+		04EB474F2B8CC3610056EA36 /* SignUpPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */; };
+		04EB47512B8CC37A0056EA36 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */; };
 		04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF296B2B8B536600454075 /* TabBar.storyboard */; };
 		04CF296E2B8B543B00454075 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF296D2B8B543B00454075 /* TabBarViewController.swift */; };
 		04CF29772B8BA9A800454075 /* BrandScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */; };
@@ -111,6 +116,9 @@
 		043E549D2B879B1A00F8CDA7 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		043E54A12B87FB0600F8CDA7 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
+		044631C92B8A309D001F9371 /* LoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPage.storyboard; sourceTree = "<group>"; };
+		044631CB2B8A4300001F9371 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		044631CD2B8ABC05001F9371 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLoggedMeScreenViewController.swift; sourceTree = "<group>"; };
 		048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewModel.swift; sourceTree = "<group>"; };
 		048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +151,8 @@
 		04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
 		04B04F602B85248A004C16D6 /* MontserratLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratLight.ttf; sourceTree = "<group>"; };
+		04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpPage.storyboard; sourceTree = "<group>"; };
+		04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		04CF296B2B8B536600454075 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		04CF296D2B8B543B00454075 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandScreenViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +271,24 @@
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
+		044631C52B8A2900001F9371 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				04EB474A2B8CC31A0056EA36 /* SignUp */,
+				04EB47492B8CBF310056EA36 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		044631C62B8A290A001F9371 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				044631CB2B8A4300001F9371 /* LoginViewController.swift */,
+				044631C92B8A309D001F9371 /* LoginPage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		048DC9D22B8D14C4006623C9 /* MeScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +308,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		044631C72B8A2911001F9371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		044631C82B8A2919001F9371 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				044631CD2B8ABC05001F9371 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		048DC9D42B8D14D4006623C9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +334,7 @@
 		04A2A70D2B85195A00991FCC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				044631C52B8A2900001F9371 /* Auth */,
 				048DC9D22B8D14C4006623C9 /* MeScreen */,
 				04DA8D942B8C16E300295473 /* CategoryScreen */,
 				04CF29732B8BA93200454075 /* BrandScreen */,
@@ -440,6 +484,35 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		04EB47492B8CBF310056EA36 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				044631C82B8A2919001F9371 /* ViewModel */,
+				044631C72B8A2911001F9371 /* Model */,
+				044631C62B8A290A001F9371 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		04EB474A2B8CC31A0056EA36 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				04EB474D2B8CC3410056EA36 /* ViewModel */,
+				04EB474C2B8CC3370056EA36 /* Model */,
+				04EB474B2B8CC32B0056EA36 /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		04EB474B2B8CC32B0056EA36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */,
+				04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04CF29692B8B531B00454075 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +528,20 @@
 				04CF296D2B8B543B00454075 /* TabBarViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		04EB474C2B8CC3370056EA36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04EB474D2B8CC3410056EA36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04CF29732B8BA93200454075 /* BrandScreen */ = {
@@ -805,6 +892,7 @@
 			files = (
 				04DA8D9F2B8C202500295473 /* FilterCollectionViewCell.xib in Resources */,
 				04B04F632B85248A004C16D6 /* MontserratSemiBold.ttf in Resources */,
+				044631CA2B8A309D001F9371 /* LoginPage.storyboard in Resources */,
 				048DC9C72B8CEC2B006623C9 /* BrandCollectionViewCell.xib in Resources */,
 				04F133CB2B89643000F49963 /* AdsCollectionViewCell.xib in Resources */,
 				04A5741A2B84D66C007BFC98 /* LaunchScreen.storyboard in Resources */,
@@ -820,6 +908,7 @@
 				04E3852F2B8BC9FF00DEADB3 /* shopLink.json in Resources */,
 				04F133BF2B8963D000F49963 /* HomeScreen.storyboard in Resources */,
 				04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */,
+				04EB474F2B8CC3610056EA36 /* SignUpPage.storyboard in Resources */,
 				048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */,
 				04E385312B8BC9FF00DEADB3 /* done.json in Resources */,
 				04DA8D982B8C187300295473 /* CategoryScreen.storyboard in Resources */,
@@ -964,6 +1053,8 @@
 				04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */,
 				043E549C2B8797F300F8CDA7 /* Alert.swift in Sources */,
 				04A574492B84D6FE007BFC98 /* NetworkReachability.swift in Sources */,
+				044631CC2B8A4300001F9371 /* LoginViewController.swift in Sources */,
+				044631CE2B8ABC05001F9371 /* LoginViewModel.swift in Sources */,
 				DEDD83462B8CA75800516BB4 /* AddressesViewController.swift in Sources */,
 				DE14CF5C2B8918D600FC1C8D /* Address.swift in Sources */,
 				04F133C12B8963E300F49963 /* HomeScreenViewController.swift in Sources */,
@@ -990,6 +1081,7 @@
 				DEDD83422B8CA75800516BB4 /* AddressViewController.swift in Sources */,
 				04A5740D2B84D669007BFC98 /* SceneDelegate.swift in Sources */,
 				DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */,
+				04EB47512B8CC37A0056EA36 /* SignUpPageViewController.swift in Sources */,
 				DEDD83432B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift in Sources */,
 				048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */,
 				048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */,
@@ -1186,6 +1278,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1214,6 +1307,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
