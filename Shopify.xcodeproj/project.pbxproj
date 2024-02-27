@@ -62,6 +62,9 @@
 		04F133C12B8963E300F49963 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F133C02B8963E300F49963 /* HomeScreenViewController.swift */; };
 		04F133CB2B89643000F49963 /* AdsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F133C92B89643000F49963 /* AdsCollectionViewCell.xib */; };
 		04F133CD2B89698700F49963 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F133CC2B89698700F49963 /* HomeScreenViewModel.swift */; };
+		04F6616A2B8D81CA00F26224 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04F661692B8D81CA00F26224 /* FirebaseAnalytics */; };
+		04F6616C2B8D81CA00F26224 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */; };
+		04F6616E2B8D81CA00F26224 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6616D2B8D81CA00F26224 /* FirebaseAuth */; };
 		4E7EFC779A263136C40B3548 /* Pods_ShopifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0FA4B994C7C0EA923F6CF3 /* Pods_ShopifyTests.framework */; };
 		754B9BF1A72B10895F3FFDE1 /* Pods_Shopify_ShopifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550154E7C3054FB1DFD428 /* Pods_Shopify_ShopifyUITests.framework */; };
 		DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5F6EA694ECBFA2B240E273 /* Pods_Shopify.framework */; };
@@ -208,7 +211,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F6616C2B8D81CA00F26224 /* FirebaseAnalyticsSwift in Frameworks */,
+				04F6616A2B8D81CA00F26224 /* FirebaseAnalytics in Frameworks */,
 				DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */,
+				04F6616E2B8D81CA00F26224 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +704,11 @@
 			dependencies = (
 			);
 			name = Shopify;
+			packageProductDependencies = (
+				04F661692B8D81CA00F26224 /* FirebaseAnalytics */,
+				04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */,
+				04F6616D2B8D81CA00F26224 /* FirebaseAuth */,
+			);
 			productName = Shopify;
 			productReference = 04A574072B84D669007BFC98 /* Shopify.app */;
 			productType = "com.apple.product-type.application";
@@ -773,6 +784,9 @@
 				Base,
 			);
 			mainGroup = 04A573FE2B84D669007BFC98;
+			packageReferences = (
+				04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 04A574082B84D669007BFC98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1331,6 +1345,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04F661692B8D81CA00F26224 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		04F6616D2B8D81CA00F26224 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		04A574132B84D669007BFC98 /* Shopify.xcdatamodeld */ = {
