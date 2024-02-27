@@ -12,6 +12,7 @@ class AddressesViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     @IBOutlet weak var addressesTableView: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addressesTableView.delegate=self
@@ -37,11 +38,18 @@ class AddressesViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
     
+    
+    @IBAction func backToPrevious(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
 
       }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
 //    {
 //        let verticalPadding: CGFloat = 8
 //

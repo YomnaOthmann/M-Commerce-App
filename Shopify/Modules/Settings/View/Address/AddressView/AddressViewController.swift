@@ -77,4 +77,10 @@ class AddressViewController: UIViewController {
         
     }
     
+    
+    @IBAction func backToPrevious(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
