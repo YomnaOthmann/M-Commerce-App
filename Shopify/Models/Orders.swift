@@ -16,7 +16,7 @@ struct Order: Codable {
     let id: Int
     let confirmed: Bool
     let createdAt: String
-    let currency: OrderCurrency
+    let currency: String
     let currentTotalDiscounts: String
     let currentTotalPrice: String
     let financialStatus: FinancialStatus
@@ -94,12 +94,6 @@ struct LineItem: Codable {
     }
 }
 
-// MARK: - Currency
-enum OrderCurrency: String, Codable {
-    case egp = "EGP"
-    case eur = "EUR"
-}
-
 // MARK: - Set
 struct PriceSet: Codable {
     let shopMoney, presentmentMoney: Money
@@ -113,7 +107,7 @@ struct PriceSet: Codable {
 // MARK: - Money
 struct Money: Codable {
     let amount: String
-    let currencyCode: OrderCurrency
+    let currencyCode: String
 
     enum CodingKeys: String, CodingKey {
         case amount
