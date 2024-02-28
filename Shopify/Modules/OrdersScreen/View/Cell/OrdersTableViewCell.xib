@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MontserratMedium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="MontserratSemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="120" id="KGk-i7-Jjw" customClass="OrdersTableViewCell" customModule="Shopify" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order#  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idI-dd-VTC">
+                        <rect key="frame" x="16" y="16" width="85" height="25"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6v-mE-alT">
+                        <rect key="frame" x="16" y="49" width="97" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cB-mF-s1X">
+                        <rect key="frame" x="16" y="77" width="83.666666666666671" height="19.666666666666671"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYD-0T-nP5">
+                        <rect key="frame" x="113" y="15" width="217" height="25"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rE-xx-UWX">
+                        <rect key="frame" x="113" y="49" width="221" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwC-Jn-m08">
+                        <rect key="frame" x="113" y="76" width="217" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdb-dy-0Kr">
+                        <rect key="frame" x="259" y="51" width="71" height="18.333333333333329"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="71" id="nJJ-hx-Cju"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" name="CustomBlue"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CYD-0T-nP5" firstAttribute="leading" secondItem="idI-dd-VTC" secondAttribute="trailing" constant="12" id="4dg-69-N3Q"/>
+                    <constraint firstItem="5rE-xx-UWX" firstAttribute="top" secondItem="CYD-0T-nP5" secondAttribute="bottom" constant="9" id="7tr-UU-hFe"/>
+                    <constraint firstItem="G6v-mE-alT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9QM-RK-1je"/>
+                    <constraint firstItem="idI-dd-VTC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Dcn-EA-5ze"/>
+                    <constraint firstItem="5rE-xx-UWX" firstAttribute="leading" secondItem="G6v-mE-alT" secondAttribute="trailing" id="GfW-3t-Xx6"/>
+                    <constraint firstAttribute="trailing" secondItem="5rE-xx-UWX" secondAttribute="trailing" constant="16" id="Kxq-Ds-4nx"/>
+                    <constraint firstItem="1cB-mF-s1X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NHJ-Bq-Fky"/>
+                    <constraint firstItem="tdb-dy-0Kr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="O2v-j4-s6y"/>
+                    <constraint firstItem="tdb-dy-0Kr" firstAttribute="trailing" secondItem="XwC-Jn-m08" secondAttribute="trailing" id="dsl-Ds-F1n"/>
+                    <constraint firstItem="idI-dd-VTC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="egh-2P-blF"/>
+                    <constraint firstItem="XwC-Jn-m08" firstAttribute="leading" secondItem="1cB-mF-s1X" secondAttribute="trailing" constant="13.33" id="fLt-Om-dBI"/>
+                    <constraint firstItem="CYD-0T-nP5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="gec-5g-0hd"/>
+                    <constraint firstItem="G6v-mE-alT" firstAttribute="top" secondItem="idI-dd-VTC" secondAttribute="bottom" constant="8" id="guC-3t-hgi"/>
+                    <constraint firstAttribute="trailing" secondItem="XwC-Jn-m08" secondAttribute="trailing" constant="20" symbolic="YES" id="had-bc-eox"/>
+                    <constraint firstItem="1cB-mF-s1X" firstAttribute="top" secondItem="G6v-mE-alT" secondAttribute="bottom" constant="8" id="jn1-Dq-ES5"/>
+                    <constraint firstItem="XwC-Jn-m08" firstAttribute="top" secondItem="5rE-xx-UWX" secondAttribute="bottom" constant="7" id="ocb-lS-g4o"/>
+                    <constraint firstAttribute="trailing" secondItem="CYD-0T-nP5" secondAttribute="trailing" constant="20" symbolic="YES" id="z9Q-BH-BaX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="orderFinancialState" destination="tdb-dy-0Kr" id="24y-SQ-6wJ"/>
+                <outlet property="orderItemsQuantity" destination="XwC-Jn-m08" id="GoG-1a-bMP"/>
+                <outlet property="orderNumber" destination="CYD-0T-nP5" id="O4m-MT-TSy"/>
+                <outlet property="orderPrice" destination="5rE-xx-UWX" id="Que-g1-El3"/>
+            </connections>
+            <point key="canvasLocation" x="149.61832061068702" y="12.67605633802817"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="CustomBlue">
+            <color red="0.2630000114440918" green="0.57300001382827759" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -39,7 +39,6 @@ class CategoryScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         startTimer()
         viewModel.fetchProducts()
-        viewModel.fetchProducts()
         viewModel.bindResult = {
             self.allProducts = self.viewModel.allProducts?.products
             self.filteredProducts = self.allProducts
@@ -177,8 +176,10 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             
         }else{
             let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.id, for: indexPath) as! ProductCollectionViewCell
-            cell.productImage.kf.setImage(with: URL(string: filteredProducts?[indexPath.row].images[0].src ?? ""))
-            cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last
+            if filteredProducts?[indexPath.row].images.count ?? -1 > 0{
+                cell.productImage.kf.setImage(with: URL(string: filteredProducts?[indexPath.row].images[0].src ?? ""))
+            }
+            cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
             cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " EGP"
             return cell
         }
