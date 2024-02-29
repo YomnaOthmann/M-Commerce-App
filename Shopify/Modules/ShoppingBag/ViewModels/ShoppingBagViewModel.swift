@@ -56,7 +56,7 @@ class ShoppingBagViewModel {
     
     func getLineItemInStockQuantity(atIndex index:Int)->String{
         
-        return String(lineItems[index].currentQuantity)
+        return "\(lineItems[index].currentQuantity ?? 0)"
     }
     
     func getLineItemDeliverBy(atIndex index:Int)->String{
@@ -67,7 +67,7 @@ class ShoppingBagViewModel {
     func increaseLineItemQuantity(atIndex index:Int){
         
         var quantity = lineItems[index].quantity
-        let currentQuantity = lineItems[index].currentQuantity
+        guard let currentQuantity = lineItems[index].currentQuantity else { return }
         
         guard quantity < currentQuantity else{return}
         
@@ -109,8 +109,8 @@ class ShoppingBagViewModel {
 extension ShoppingBagViewModel {
     
     private func getDummyData()->[LineItem]{
-        
-        let appleItem = LineItem(id: 123, adminGraphqlAPIID: "no", currentQuantity: 8, giftCard:false, name: "Apple AirPods Pro 2nd generation", price: "249.0", productExists: true, productID: 12344, quantity: 1, sku: "fffg", title: "AirPods Pro", totalDiscount: "0", variantID: 1223, variantTitle: "title", vendor: "vendor")
+        let taxLines = [TaxLine(price: "23.5", title: "Tax Fees")]
+        let appleItem = LineItem(id: 123, adminGraphqlAPIID: "no", currentQuantity: 8, giftCard:false, name: "Apple AirPods Pro 2nd generation", price: "249.0", productExists: true, productID: 12344, quantity: 1, sku: "fffg", title: "AirPods Pro", totalDiscount: "0", variantID: 1223, variantTitle: "title", vendor: "vendor",taxLines: taxLines)
         
         return [appleItem,appleItem,appleItem]
     }
