@@ -78,6 +78,8 @@
 		DE14CF5C2B8918D600FC1C8D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5B2B8918D600FC1C8D /* Address.swift */; };
 		DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5D2B89197900FC1C8D /* PriceRule.swift */; };
 		DE14CF602B8919A900FC1C8D /* DiscountCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5F2B8919A900FC1C8D /* DiscountCode.swift */; };
+		DECF4B8D2B8FA28F00155830 /* ShoppingBagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF4B8C2B8FA28F00155830 /* ShoppingBagViewModel.swift */; };
+		DECF4B8F2B9008C600155830 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF4B8E2B9008C600155830 /* CheckoutViewModel.swift */; };
 		DEDD833F2B8CA75800516BB4 /* CustomAddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD832F2B8CA75800516BB4 /* CustomAddressItemView.swift */; };
 		DEDD83402B8CA75800516BB4 /* AddressCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83302B8CA75800516BB4 /* AddressCustomButton.swift */; };
 		DEDD83412B8CA75800516BB4 /* CustomSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83312B8CA75800516BB4 /* CustomSpacerView.swift */; };
@@ -204,6 +206,8 @@
 		DEA454E82B8B7CD30017A7F3 /* AddressCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCustomButton.swift; sourceTree = "<group>"; };
 		DEA454EA2B8B81F50017A7F3 /* CustomSpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpacerView.swift; sourceTree = "<group>"; };
 		DEB0003F2B8BF1FE0018829A /* ShoppingBagCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagCustomButton.swift; sourceTree = "<group>"; };
+		DECF4B8C2B8FA28F00155830 /* ShoppingBagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagViewModel.swift; sourceTree = "<group>"; };
+		DECF4B8E2B9008C600155830 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		DEDD832F2B8CA75800516BB4 /* CustomAddressItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAddressItemView.swift; sourceTree = "<group>"; };
 		DEDD83302B8CA75800516BB4 /* AddressCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCustomButton.swift; sourceTree = "<group>"; };
 		DEDD83312B8CA75800516BB4 /* CustomSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSpacerView.swift; sourceTree = "<group>"; };
@@ -697,6 +701,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DECF4B8B2B8FA23700155830 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DECF4B8C2B8FA28F00155830 /* ShoppingBagViewModel.swift */,
+				DECF4B8E2B9008C600155830 /* CheckoutViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		DEDD832A2B8CA67B00516BB4 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +790,7 @@
 		DEDD833A2B8CA75800516BB4 /* ShoppingBag */ = {
 			isa = PBXGroup;
 			children = (
+				DECF4B8B2B8FA23700155830 /* ViewModels */,
 				DEDD834F2B8CE58400516BB4 /* view */,
 			);
 			path = ShoppingBag;
@@ -1105,6 +1119,7 @@
 				049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */,
 				DEDD83472B8CA75800516BB4 /* AddressesTableViewCell.swift in Sources */,
 				04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */,
+				DECF4B8F2B9008C600155830 /* CheckoutViewModel.swift in Sources */,
 				DEEE04C02B8DFCFD002D290C /* CheckoutCustomButton.swift in Sources */,
 				DEDD834A2B8CA75800516BB4 /* ShoppingBagCustomCell.swift in Sources */,
 				DEEE04C22B8E7EC7002D290C /* LogoutCustomButton.swift in Sources */,
@@ -1113,6 +1128,7 @@
 				048DC9C62B8CEC2B006623C9 /* BrandCollectionViewCell.swift in Sources */,
 				04CF296E2B8B543B00454075 /* TabBarViewController.swift in Sources */,
 				DE14CF5A2B89186100FC1C8D /* Customer.swift in Sources */,
+				DECF4B8D2B8FA28F00155830 /* ShoppingBagViewModel.swift in Sources */,
 				DEDD83412B8CA75800516BB4 /* CustomSpacerView.swift in Sources */,
 				04A574152B84D669007BFC98 /* Shopify.xcdatamodeld in Sources */,
 				04A2A70C2B85190D00991FCC /* dummyCoreData.swift in Sources */,

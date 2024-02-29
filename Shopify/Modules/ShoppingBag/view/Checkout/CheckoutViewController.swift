@@ -29,7 +29,9 @@ class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var continueButtonView: UIView!
     
+    var checkoutViewModel:CheckoutViewModel?
     private var selectedPaymentMethod:PaymentMethodSelector = .none
+    var couponCode:String?
     
     private var paymentRequest:PKPaymentRequest = {
        
@@ -53,7 +55,6 @@ class CheckoutViewController: UIViewController {
     private var viewWidth:CGFloat{
         return screenWidth * 0.7
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,10 @@ class CheckoutViewController: UIViewController {
         setupApplePayView()
         setupCashOnDeliveryView()
         addContinueButtonToView()
+        
+        productsTotalPrice.text = checkoutViewModel?.getlineItemsTotalPrice()
+        deliveryFee.text = checkoutViewModel?.getLineDeliveryFee()
+        orderTotalPrice.text = checkoutViewModel?.getOrderTotalPrice()
         
     }
     
@@ -75,6 +80,7 @@ class CheckoutViewController: UIViewController {
     }
     
     func setupAddressView(){
+        
         
         addressBackground.layer.cornerRadius = 8
         addressBackground.backgroundColor = .white
@@ -107,6 +113,14 @@ class CheckoutViewController: UIViewController {
         cashParentView.layer.shadowRadius = 3
     }
     
+    @IBAction func changeAddress(_ sender: Any) {
+        
+        
+        let viewController = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(identifier: "addressesVC") as! AddressesViewController
+        
+        
+        self.present(viewController, animated: true, completion: nil)
+    }
     
     @IBAction func selectApplePay(_ sender: Any) {
         
@@ -151,7 +165,38 @@ class CheckoutViewController: UIViewController {
 
     }
     
+    
+    @IBAction func addCoupon(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Coupon Code", message: "Please enter coupon code", preferredStyle: .alert)
+
+        alert.addTextField(configurationHandler: { (textField) -> Void in
+            textField.placeholder = "ex: NEWRIDER50"
+        })
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (action) -> Void in
+            let textField = (alert?.textFields![0] ?? UITextField()) as UITextField
+            
+            
+            if textField.text == nil || textField.text == "" {
+                
+                CustomAlert.showAlertView(view: self, title: "validator", message: "please enter your code , field can't be empty")
+                
+            }else{
+                self.couponCode = textField.text
+            }
+            
+            print(self.couponCode ?? "nil")
+
+            
+        }))
+        
+         self.present(alert, animated: true)
+    }
+    
 }
+
+
 
 enum PaymentMethodSelector : String {
     case none = "none"
