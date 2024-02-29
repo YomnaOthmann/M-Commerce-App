@@ -116,6 +116,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="bGd-m3-FGJ" kind="show" id="ypF-gn-DCz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -149,6 +152,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1014.5038167938931" y="-25.35211267605634"/>
+        </scene>
+        <scene sceneID="CRD-ZX-WrB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OrdersScreen" id="bGd-m3-FGJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QvY-Ip-yF2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPk-oD-x5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792" y="-25"/>
         </scene>
         <!--Me-->
         <scene sceneID="t1o-op-QjR">

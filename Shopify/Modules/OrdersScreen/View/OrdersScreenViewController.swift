@@ -77,7 +77,7 @@ class OrdersScreenViewController: UIViewController {
     }
     
     @IBAction func back(_ sender: Any) {
-        performSegue(withIdentifier: "backToOrders", sender: self)
+        
     }
 }
 
@@ -92,16 +92,21 @@ extension OrdersScreenViewController : UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: OrdersTableViewCell.id, for: indexPath) as! OrdersTableViewCell
         
         cell.orderNumber.text = "\(orders?[indexPath.row].orderNumber ?? 0)"
-        cell.orderPrice.text  =  "\(orders?[indexPath.row].totalPrice ?? "") \(orders?[indexPath.row].currency ?? "")"
+        cell.orderPrice.text  =  "\(orders?[indexPath.row].currentTotalPrice ?? "") \(orders?[indexPath.row].currency ?? "")"
         cell.orderItemsQuantity.text =  "\(orders?[indexPath.row].lineItems.count ?? 0)"
         cell.orderFinancialState.text = orders?[indexPath.row].financialStatus.rawValue
+        cell.orderDate.text = orders?[indexPath.row].createdAt?.components(separatedBy: "T").first
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 130
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "orderSummary", sender: self)
+        let orderSummaryVC = self.storyboard?.instantiateViewController(identifier: "orderDetail") as! OrderSummaryScreenViewController
+        orderSummaryVC.order = orders?[indexPath.row]
+     
+        self.navigationController?.pushViewController(orderSummaryVC, animated: true)
     }
     
 }

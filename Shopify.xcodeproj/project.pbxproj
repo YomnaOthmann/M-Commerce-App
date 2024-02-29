@@ -52,6 +52,8 @@
 		04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */; };
 		04B04F632B85248A004C16D6 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */; };
 		04B04F642B85248A004C16D6 /* MontserratLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F602B85248A004C16D6 /* MontserratLight.ttf */; };
+		04CE4E032B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CE4E012B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib */; };
+		04CE4E042B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE4E022B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift */; };
 		04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF296B2B8B536600454075 /* TabBar.storyboard */; };
 		04CF296E2B8B543B00454075 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF296D2B8B543B00454075 /* TabBarViewController.swift */; };
 		04CF29772B8BA9A800454075 /* BrandScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */; };
@@ -169,6 +171,8 @@
 		04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
 		04B04F602B85248A004C16D6 /* MontserratLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratLight.ttf; sourceTree = "<group>"; };
+		04CE4E012B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraftOrderCollectionViewCell.xib; sourceTree = "<group>"; };
+		04CE4E022B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftOrderCollectionViewCell.swift; sourceTree = "<group>"; };
 		04CF296B2B8B536600454075 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		04CF296D2B8B543B00454075 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandScreenViewController.swift; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 		04A5743D2B84D680007BFC98 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04CE4E002B90BBDD005672E3 /* OrderSummaryCell */,
 				04E385222B8BB0FE00DEADB3 /* ProductCell */,
 				04180ACB2B86A533007CA253 /* CustomComponents */,
 				04A574102B84D669007BFC98 /* Main.storyboard */,
@@ -565,6 +570,16 @@
 				04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		04CE4E002B90BBDD005672E3 /* OrderSummaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				04CE4E012B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib */,
+				04CE4E022B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift */,
+			);
+			name = OrderSummaryCell;
+			path = ../../../../Downloads/OrderSummaryCell;
 			sourceTree = "<group>";
 		};
 		04CF29692B8B531B00454075 /* TabBarController */ = {
@@ -991,6 +1006,7 @@
 				04A574122B84D669007BFC98 /* Main.storyboard in Resources */,
 				DEDD83452B8CA75800516BB4 /* Settings.storyboard in Resources */,
 				04E3852F2B8BC9FF00DEADB3 /* shopLink.json in Resources */,
+				04CE4E032B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib in Resources */,
 				04F133BF2B8963D000F49963 /* HomeScreen.storyboard in Resources */,
 				04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */,
 				04EB474F2B8CC3610056EA36 /* SignUpPage.storyboard in Resources */,
@@ -1148,6 +1164,7 @@
 				049FF9ED2B8E754B00004CAB /* OrdersTableViewCell.swift in Sources */,
 				04F133B82B8946ED00F49963 /* Categories.swift in Sources */,
 				04CF29772B8BA9A800454075 /* BrandScreenViewController.swift in Sources */,
+				04CE4E042B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift in Sources */,
 				04DA8D9A2B8C1A7100295473 /* CategoryScreenViewController.swift in Sources */,
 				04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */,
 				049FF9E82B8E683E00004CAB /* OrdersScreenViewModel.swift in Sources */,

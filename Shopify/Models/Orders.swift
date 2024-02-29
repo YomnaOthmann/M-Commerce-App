@@ -105,6 +105,9 @@ struct LineItem: Codable {
     let variantID: Int?
     let variantTitle, vendor: String?
     let taxLines : [TaxLine]
+    var properties : [OrderProperty]?
+
+
 
     init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int? = nil, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine]) {
         self.id = id
@@ -139,6 +142,7 @@ struct LineItem: Codable {
         case variantTitle = "variant_title"
         case vendor
         case taxLines = "tax_lines"
+        case properties
     }
 }
 
@@ -179,4 +183,9 @@ struct TaxLine : Codable{
         self.priceSet = priceSet
     }
     
+}
+
+struct OrderProperty : Codable{
+    var name : String
+    var value : String
 }
