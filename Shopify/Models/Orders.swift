@@ -71,7 +71,7 @@ struct LineItem: Codable {
     let name, price: String
     let productExists: Bool
     let productID: Int?
-    let quantity: Int
+    var quantity: Int
     let sku: String?
     let title, totalDiscount: String
     let variantID: Int?
