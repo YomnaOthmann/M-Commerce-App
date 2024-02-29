@@ -20,8 +20,23 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.layer.cornerRadius = 20
         productImage.clipsToBounds = true
+        setShadow()
+        
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setShadow()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setShadow()
+    }
+    func setShadow(){
+        self.layer.shadowColor = UIColor.secondaryLabel.cgColor
+        self.layer.shadowRadius = 4
+        self.layer.shadowOffset = CGSize(width: -4, height: 4)
+        self.layer.shadowOpacity = 0.3
     }
 
 }

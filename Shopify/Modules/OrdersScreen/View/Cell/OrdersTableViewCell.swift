@@ -14,6 +14,8 @@ class OrdersTableViewCell: UITableViewCell {
     @IBOutlet weak var orderItemsQuantity: UILabel!
   
     @IBOutlet weak var orderFinancialState: UILabel!
+    @IBOutlet weak var orderDate: UILabel!
+    
     static let id = "orderCell"
     
     static func nib()->UINib{
