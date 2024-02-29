@@ -76,7 +76,7 @@ struct ProductVariant : Codable{
     let title, price, sku: String
     let position: Int
     let option1: String
-    let option2: Option2
+    let option2: String
     let createdAt, updatedAt: String
     let inventoryQuantity: Int
     let adminGraphqlAPIID: String
@@ -92,18 +92,7 @@ struct ProductVariant : Codable{
         case adminGraphqlAPIID = "admin_graphql_api_id"
     }
     
-    // MARK: - Option2
-    enum Option2: String, Codable {
-        case beige = "beige"
-        case black = "black"
-        case blue = "blue"
-        case burgandy = "burgandy"
-        case gray = "gray"
-        case lightBrown = "light_brown"
-        case red = "red"
-        case white = "white"
-        case yellow = "yellow"
-    }
+
 }
 
 // MARK: - Product Option

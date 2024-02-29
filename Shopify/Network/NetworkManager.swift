@@ -10,6 +10,7 @@ import Alamofire
 
 protocol NetworkManagerProtocol{
     func fetch<T: Codable>(url: String, type: T.Type, completionHandler: @escaping (T?)->Void)
+    func post(url: String, parameters:Codable, completionHandler: @escaping(Int)->Void)
 }
 class NetworkManager : NetworkManagerProtocol{
     func fetch<T: Codable>(url: String, type: T.Type, completionHandler: @escaping (T?)->Void){
@@ -41,4 +42,36 @@ class NetworkManager : NetworkManagerProtocol{
         }
         
     }
+    func post(url: String, parameters:Codable, completionHandler: @escaping(Int)->Void){
+        let header : HTTPHeaders = [
+            "Cookie" :  ""
+        ]
+        AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default, headers: header).response{ response in
+            guard let statusCode = response.response?.statusCode else{
+                return
+            }
+            switch response.result {
+            case .success(_):
+                guard let data = response.data else{
+                    print("failed to post data")
+                    completionHandler(statusCode)
+                    return
+                }
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                    print(json)
+                }
+                catch let error{
+                    print(error.localizedDescription)
+                }
+                print("Success")
+                completionHandler(statusCode)
+            case .failure(_):
+                print("failed to post data")
+                completionHandler(0)
+            }
+        }
+    }
+    
+    
 }
