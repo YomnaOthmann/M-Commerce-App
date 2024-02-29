@@ -38,6 +38,7 @@ struct DraftOrder: Codable {
     let presentmentCurrency: String
     let adminGraphqlAPIID: String
     let customer: Customer?
+    let appliedDiscount : AppliedDiscount
 
     enum CodingKeys: String, CodingKey {
         case id, note, email
@@ -62,6 +63,7 @@ struct DraftOrder: Codable {
         case presentmentCurrency = "presentment_currency"
         case adminGraphqlAPIID = "admin_graphql_api_id"
         case customer
+        case appliedDiscount = "applied_discount"
     }
 }
 
@@ -72,5 +74,12 @@ struct ShippingLine: Codable {
     let custom: Bool
     let handle: String?
     let price: String
+}
+struct AppliedDiscount:Codable{
+    let title : String
+    let description : String
+    let value : String
+    let valueType : String
+    let amount : String
 }
 

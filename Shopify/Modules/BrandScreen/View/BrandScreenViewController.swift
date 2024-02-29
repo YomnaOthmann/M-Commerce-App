@@ -67,9 +67,11 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.id, for: indexPath) as! ProductCollectionViewCell
+        if allProducts?[indexPath.row].images.count ?? -1 > 0{
+            cell.productImage.kf.setImage(with: URL(string:allProducts?[indexPath.row].images[0].src ?? ""))
+        }
         
-        cell.productImage.kf.setImage(with: URL(string:allProducts?[indexPath.row].images[0].src ?? ""))
-        cell.productTitle.text = allProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
+        cell.productTitle.text = allProducts?[indexPath.row].title.components(separatedBy: "|  ").last?.capitalized
         cell.productPrice.text = (allProducts?[indexPath.row].variants[0].price ?? "" ) + " EGP"
         return cell
     }

@@ -32,6 +32,7 @@ struct Customer: Codable {
     let taxExempt: Bool?
     let tags, lastOrderName, currency, phone: String?
     let addresses: [Address]?
+    var taxExemptions : [Int]
     let emailMarketingConsent, smsMarketingConsent: MarketingConsent?
     let adminGraphqlAPIID: String?
     let defaultAddress: Address?
@@ -51,6 +52,7 @@ struct Customer: Codable {
         case tags
         case lastOrderName = "last_order_name"
         case currency, phone, addresses
+        case taxExemptions = "tax_exemptions"
         case emailMarketingConsent = "email_marketing_consent"
         case smsMarketingConsent = "sms_marketing_consent"
         case adminGraphqlAPIID = "admin_graphql_api_id"
