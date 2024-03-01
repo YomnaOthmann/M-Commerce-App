@@ -45,11 +45,10 @@ class CustomAddressItemView: UIView {
         
         let fieldName = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
         fieldName.textColor = .black
-        fieldName.text = "name"
         fieldName.font =  UIFont(name: "Montserrat", size: 18)
         
-        addressTextFieldTitle = fieldName
-        return fieldName
+        self.addressTextFieldTitle = fieldName
+        return self.addressTextFieldTitle ?? fieldName
     }
     
     private func getTextField() -> UITextField {
@@ -58,12 +57,11 @@ class CustomAddressItemView: UIView {
         
         textField.backgroundColor = .systemGray5
         textField.layer.cornerRadius = 10
-        textField.placeholder = "placeHolder"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 60))
         textField.leftViewMode = .always
         self.addressTextField = textField
         
-        return textField
+        return self.addressTextField ?? textField
     }
     
     func setAddressTextFieldTitle(title:String)-> CustomAddressItemView{
@@ -72,12 +70,16 @@ class CustomAddressItemView: UIView {
         return self
     }
     
-    func setAddressTextFieldPlaceHolder(palceHolder:String)-> CustomAddressItemView {
-        self.addressTextField?.placeholder = palceHolder
-        return self
+    func setAddressTextFieldValue(text:String) {
+        self.addressTextField?.text = text
     }
     
-    func getAddressTextFieldValue(title:String)-> String{
+    func setAddressTextFieldPlaceHolder(placeHolder:String) {
+        
+        self.addressTextField?.placeholder = placeHolder
+    }
+    
+    func getAddressTextFieldValue()-> String{
         return self.addressTextField?.text ?? ""
     }
 }

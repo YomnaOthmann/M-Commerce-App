@@ -8,6 +8,20 @@
 import Foundation
 
 // MARK: - Address
+
+struct AddressPostModel:Codable {
+    
+    let address:Address?
+    enum CodingKeys: String, CodingKey {
+        case address = "customer_address"
+    }
+    
+    init(address: Address?) {
+        self.address = address
+    }
+    
+}
+
 struct Address: Codable {
     
     let id, customerID: Int?

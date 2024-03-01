@@ -9,7 +9,6 @@ import UIKit
 
 class ShoppingBagCustomCell: UITableViewCell {
 
-    
     @IBOutlet weak var productImage: UIImageView!
     
     @IBOutlet weak var productTitle: UILabel!
@@ -38,19 +37,6 @@ class ShoppingBagCustomCell: UITableViewCell {
 
     }
 
-}
-
-class CustomCellButton : UIButton {
-    
-    var cellIndex:Int?
-    
-    func setIndex(index:Int){
-        self.cellIndex = index
-    }
-    
-    func getIndex()->Int{
-        return cellIndex ?? 0
-    }
 }
 
 

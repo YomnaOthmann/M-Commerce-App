@@ -1,5 +1,5 @@
 //
-//  DeliveryAddressSettingCustomCell.swift
+//  AddressSettingCustomCell.swift
 //  Shopify
 //
 //  Created by Faisal TagEldeen on 25/02/2024.
@@ -7,12 +7,14 @@
 
 import UIKit
 
-class DeliveryAddressSettingCustomCell: UITableViewCell {
+class AddressSettingCustomCell: UITableViewCell {
 
     @IBOutlet weak var customerAddress: UILabel!
     @IBOutlet weak var customerPhone: UILabel!
     @IBOutlet weak var mainBackground: UIView!
     
+    @IBOutlet weak var editAddressButton: CustomCellButton!
+    @IBOutlet weak var setDefaultButton: CustomCellButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -11,7 +11,7 @@ class AddressesViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     
     @IBOutlet weak var addressesTableView: UITableView!
-    
+    var addressViewModel = AddressViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,46 +20,82 @@ class AddressesViewController: UIViewController,UITableViewDelegate,UITableViewD
         addressesTableView.separatorStyle = .none
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        addressViewModel.dataObserver = {[weak self] in
+            self?.addressesTableView.reloadData()
+        }
+        
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return addressViewModel.getAddressesCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "deliveryAddress", for: indexPath) as! AddressesTableViewCell
         
-        cell.customerAddress.text = " iti-6 oct city,giza"
-        cell.customerPhone.text = "0998877543456"
+        addressViewModel.setCurrentAddressAtIndex(index: indexPath.row)
+        cell.customerAddress.text = addressViewModel.getAddress()
+        cell.customerPhone.text = addressViewModel.getAddressPhone()
+
+        cell.editAddressButton.cellIndex = indexPath.row
+        cell.editAddressButton.addTarget(self, action:#selector(navigateToEditAddress), for: .touchUpInside)
         
+        if(!addressViewModel.getDefaultValue()){
+            
+            cell.setDefaultButton.cellIndex = indexPath.row
+            cell.setDefaultButton.addTarget(self, action:#selector(setDefaultAddress), for: .touchUpInside)
+        }else{
+            
+            cell.setDefaultButton.configuration?.baseForegroundColor = UIColor.black
+            cell.setDefaultButton.setTitle("Default", for: .normal)
+
+        }
+
         return cell
     }
     
+    @objc func navigateToEditAddress(sender:CustomCellButton){
+        
+        addressViewModel.setCurrentAddressAtIndex(index: sender.cellIndex!)
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "addressVC") as! AddressViewController
+                
+        viewController.addressViewModel = self.addressViewModel
+        viewController.isEdit = true
+        
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc func setDefaultAddress(sender:CustomCellButton){
+        
+        
+        addressViewModel.setCurrentAddressAtIndex(index: sender.cellIndex!)
+        addressViewModel.setDefaultValue(defaultAddress: true)
+        addressViewModel.edit { message, error in
+            
+            if error != nil{
+                
+                addressesTableView.reloadData()
+                CustomAlert.showAlertView(view: self, title: "Success", message:message)
+                
+            }else{
+                
+                CustomAlert.showAlertView(view: self, title: "Failed", message:message)
+                
+            }
+        }
+    }
     
     @IBAction func backToPrevious(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
-
-      }
-    
-    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-//    {
-//        let verticalPadding: CGFloat = 8
-//
-//        let maskLayer = CALayer()
-//        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
-//        
-//        cell.layer.mask = maskLayer
-//    }
-
-    
- 
 
 }
