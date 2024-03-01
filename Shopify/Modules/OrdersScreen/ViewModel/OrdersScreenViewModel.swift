@@ -26,8 +26,8 @@ class OrdersScreenViewModel : OrdersScreenViewModelProtocol{
     }
     
     func fetchOrders() {
-//        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.orders.rawValue + APIHandler.APICompletions.json.rawValue
-        let url = "https://e68611fa195924ce2d11aa1909193f1b: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@q2-23-24-ios-sv-team1.myshopify.com/admin/api/2024-01/orders.json"
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.orders.rawValue + APIHandler.APICompletions.json.rawValue
+
         network?.fetch(url: url, type: Orders.self, completionHandler: {[weak self] result in
             guard let orders = result else{
                 return
