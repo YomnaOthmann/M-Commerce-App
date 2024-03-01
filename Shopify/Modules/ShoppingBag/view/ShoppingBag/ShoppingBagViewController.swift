@@ -52,6 +52,9 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
         
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @objc func navigateToCheckout(){
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController

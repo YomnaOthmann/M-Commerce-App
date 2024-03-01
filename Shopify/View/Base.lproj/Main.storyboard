@@ -31,11 +31,22 @@
                     </view>
                     <connections>
                         <outlet property="launchScreenImage" destination="t5O-xU-zR8" id="oOP-yG-UKw"/>
+                        <segue destination="VpI-zd-oYV" kind="show" identifier="home" id="W7K-A1-SoZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="37" y="-34"/>
+        </scene>
+        <!--TabBar-->
+        <scene sceneID="qIP-Y4-5Mv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TabBar" id="VpI-zd-oYV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kkH-9R-Ted"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2W-VO-mZX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="670" y="-34"/>
         </scene>
     </scenes>
     <resources>

@@ -29,6 +29,11 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             bindResult()
         }
     }
+    var discountCodes : DiscountCodes?{
+        didSet{
+            bindResult()
+        }
+    }
     var bindResult : (()->()) = {}
     weak var delegate : HomeScreenViewModelDelegate?
     var network : NetworkManagerProtocol
@@ -58,6 +63,16 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             }
             self?.brands = brands
             self?.delegate?.didLoadBrands(brands: brands)
+        }
+    }
+    func fetchDiscountCodes(priceRuleId:Int){
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.priceRule.rawValue + "/\(self.ads?.priceRules?[0].id ?? 0)" + APIHandler.APIEndPoints.discountCode.rawValue + APIHandler.APICompletions.json.rawValue
+        print(url)
+        network.fetch(url: url, type: DiscountCodes.self) {[weak self] result in
+            guard let discountCodes = result else{
+                return
+            }
+            self?.discountCodes = discountCodes
         }
     }
     
