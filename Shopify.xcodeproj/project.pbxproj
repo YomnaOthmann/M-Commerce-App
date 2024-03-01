@@ -26,6 +26,7 @@
 		048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */; };
 		048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */; };
 		0493F8782B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */; };
+		04956AAA2B927C1C005AE66E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */; };
 		049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FF9DA2B8E4F1500004CAB /* DraftOrder.swift */; };
 		049FF9E22B8E673400004CAB /* OrdersScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049FF9E12B8E673400004CAB /* OrdersScreen.storyboard */; };
 		049FF9E62B8E676600004CAB /* OrdersScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FF9E52B8E676600004CAB /* OrdersScreenViewController.swift */; };
@@ -145,6 +146,7 @@
 		048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeScreen.storyboard; sourceTree = "<group>"; };
 		048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewController.swift; sourceTree = "<group>"; };
 		0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreenViewModelTests.swift; sourceTree = "<group>"; };
+		04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		049FF9DA2B8E4F1500004CAB /* DraftOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrder.swift; sourceTree = "<group>"; };
 		049FF9E12B8E673400004CAB /* OrdersScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrdersScreen.storyboard; sourceTree = "<group>"; };
 		049FF9E52B8E676600004CAB /* OrdersScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersScreenViewController.swift; sourceTree = "<group>"; };
@@ -367,6 +369,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		04956AA72B927C04005AE66E /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04956AA82B927C0E005AE66E /* View */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		04956AA82B927C0E005AE66E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		049FF9DD2B8E653B00004CAB /* OrdersScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +449,7 @@
 		04A2A70D2B85195A00991FCC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				04956AA72B927C04005AE66E /* LaunchScreen */,
 				049FF9DE2B8E654700004CAB /* OrdersSummaryScreen */,
 				049FF9DD2B8E653B00004CAB /* OrdersScreen */,
 				044631C52B8A2900001F9371 /* Auth */,
@@ -1250,6 +1269,7 @@
 				04F133CD2B89698700F49963 /* HomeScreenViewModel.swift in Sources */,
 				04DA8D9E2B8C202500295473 /* FilterCollectionViewCell.swift in Sources */,
 				DEDD83402B8CA75800516BB4 /* AddressCustomButton.swift in Sources */,
+				04956AAA2B927C1C005AE66E /* LaunchScreenViewController.swift in Sources */,
 				DEDD83522B8D022E00516BB4 /* CheckoutViewController.swift in Sources */,
 				DEDD83422B8CA75800516BB4 /* AddressViewController.swift in Sources */,
 				04A5740D2B84D669007BFC98 /* SceneDelegate.swift in Sources */,
