@@ -30,7 +30,7 @@ class OrderSummaryScreenViewController: UIViewController {
         
         draftOrderCollectionView.delegate = self
         draftOrderCollectionView.dataSource = self
-        draftOrderCollectionView.register(DraftOrderCollectionViewCell.nib(), forCellWithReuseIdentifier: DraftOrderCollectionViewCell.id)
+//        draftOrderCollectionView.register(DraftOrderCollectionViewCell.nib(), forCellWithReuseIdentifier: DraftOrderCollectionViewCell.id)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -85,15 +85,18 @@ extension OrderSummaryScreenViewController : UICollectionViewDelegate, UICollect
         order?.lineItems.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = draftOrderCollectionView.dequeueReusableCell(withReuseIdentifier: DraftOrderCollectionViewCell.id, for: indexPath) as! DraftOrderCollectionViewCell
         
-        cell.cellTitle.text = order?.lineItems[indexPath.row].title
-        if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
-            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
-        }
+//        let cell = draftOrderCollectionView.dequeueReusableCell(withReuseIdentifier: DraftOrderCollectionViewCell.id, for: indexPath) as! DraftOrderCollectionViewCell
+//        
+//        cell.cellTitle.text = order?.lineItems[indexPath.row].title
+//        if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
+//            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
+//        }
+//        
+//        cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
+//        cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"
+//        return cell
         
-        cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
-        cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"
-        return cell
+        return UICollectionViewCell()
     }
 }

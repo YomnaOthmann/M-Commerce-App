@@ -22,7 +22,7 @@
         <!--Settings View Controller-->
         <scene sceneID="98x-N8-yuG">
             <objects>
-                <viewController id="SgH-zg-B5R" customClass="SettingsViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsVC" id="SgH-zg-B5R" customClass="SettingsViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FKN-xW-XLP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6j-BR-wR4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6j-BR-wR4">
                                 <rect key="frame" x="49" y="120" width="135" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="OmR-h3-hsR"/>
@@ -78,14 +78,14 @@
                                     <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Y6W-OH-hqX" kind="show" id="2tq-By-9gm"/>
+                                    <action selector="seeAllAddresses:" destination="SgH-zg-B5R" eventType="touchUpInside" id="vgq-Ro-6G6"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rLJ-Uq-6xI">
                                 <rect key="frame" x="0.0" y="155" width="393" height="258"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deliveryAddressSettings" rowHeight="121" id="mg2-KT-Gcg" customClass="DeliveryAddressSettingCustomCell" customModule="Shopify" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deliveryAddressSettings" rowHeight="121" id="mg2-KT-Gcg" customClass="AddressSettingCustomCell" customModule="Shopify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mg2-KT-Gcg" id="whf-RU-Rfz">
@@ -121,7 +121,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgr-eW-NvH">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgr-eW-NvH" customClass="CustomCellButton" customModule="Shopify" customModuleProvider="target">
                                                             <rect key="frame" x="310" y="4.9999999999999982" width="51" height="31.333333333333329"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="51" id="LeJ-lL-rSn"/>
@@ -138,7 +138,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzL-LT-jKo">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzL-LT-jKo" customClass="CustomCellButton" customModule="Shopify" customModuleProvider="target">
                                                             <rect key="frame" x="211" y="-2" width="109" height="39"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="39" id="ZwG-aJ-o46"/>
@@ -184,7 +184,9 @@
                                         <connections>
                                             <outlet property="customerAddress" destination="Pa9-fe-S9p" id="vEO-fW-w7G"/>
                                             <outlet property="customerPhone" destination="7M2-8t-QYp" id="msX-Ky-C2H"/>
+                                            <outlet property="editAddressButton" destination="Pgr-eW-NvH" id="AEo-nC-ZFp"/>
                                             <outlet property="mainBackground" destination="1H9-ie-uQa" id="gyo-kH-2Jf"/>
+                                            <outlet property="setDefaultButton" destination="tzL-LT-jKo" id="TIJ-wN-9RN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -234,7 +236,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="deliveryAddressSettingsTableView" destination="rLJ-Uq-6xI" id="M4X-RX-GnC"/>
+                        <outlet property="addressSettingsTableView" destination="rLJ-Uq-6xI" id="l8L-lT-LYO"/>
                         <outlet property="logoutView" destination="G5e-y1-cma" id="yiO-96-aX9"/>
                     </connections>
                 </viewController>
@@ -251,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wq-8o-qkV">
-                                <rect key="frame" x="312" y="0.0" width="65" height="35"/>
+                                <rect key="frame" x="312" y="59" width="65" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="YMG-xo-rpu"/>
                                     <constraint firstAttribute="width" constant="65" id="qnc-x2-kvX"/>
@@ -266,7 +268,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XQ2-n7-7mJ">
-                                <rect key="frame" x="0.0" y="44" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deliveryAddress" rowHeight="159" id="AMh-yH-5bm" customClass="AddressesTableViewCell" customModule="Shopify" customModuleProvider="target">
@@ -315,7 +317,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2k-Dn-yDN">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2k-Dn-yDN" customClass="CustomCellButton" customModule="Shopify" customModuleProvider="target">
                                                             <rect key="frame" x="310" y="4" width="51" height="34.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="34.329999999999998" id="1Ff-05-aHR"/>
@@ -326,10 +328,10 @@
                                                                 <color key="baseForegroundColor" systemColor="systemBlueColor"/>
                                                             </buttonConfiguration>
                                                             <connections>
-                                                                <segue destination="XOf-6F-sVl" kind="show" id="LRx-fb-VWR"/>
+                                                                <action selector="editAddressButton:" destination="4Dy-dr-6av" eventType="touchUpInside" id="dsE-tR-PUk"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-SX-U6O">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-SX-U6O" customClass="CustomCellButton" customModule="Shopify" customModuleProvider="target">
                                                             <rect key="frame" x="209" y="2" width="109" height="39"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="39" id="in6-80-Ugb"/>
@@ -376,13 +378,15 @@
                                         <connections>
                                             <outlet property="customerAddress" destination="IWG-pZ-XVt" id="gLm-t0-xPP"/>
                                             <outlet property="customerPhone" destination="7lX-qG-Gbh" id="R8U-Vm-xJU"/>
+                                            <outlet property="editAddressButton" destination="K2k-Dn-yDN" id="KYO-fX-2ay"/>
                                             <outlet property="mainBackground" destination="QY6-dZ-dXx" id="w8R-oD-iiC"/>
+                                            <outlet property="setDefaultButton" destination="1tA-SX-U6O" id="KWj-bU-w9D"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwm-sr-gmD">
-                                <rect key="frame" x="118" y="6" width="157" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwm-sr-gmD">
+                                <rect key="frame" x="118" y="65" width="157" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="Foo-km-Cxf"/>
                                     <constraint firstAttribute="height" constant="22" id="Sut-Pd-pCc"/>
@@ -392,7 +396,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0m6-2N-Wrf">
-                                <rect key="frame" x="0.0" y="0.0" width="47" height="36"/>
+                                <rect key="frame" x="0.0" y="59" width="47" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="735-Fp-IaX"/>
                                     <constraint firstAttribute="width" constant="47" id="b0o-qr-pjz"/>
@@ -433,13 +437,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="4Dy-dr-6av" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-124" y="-19"/>
+            <point key="canvasLocation" x="-91" y="-19"/>
         </scene>
         <!--Address View Controller-->
         <scene sceneID="YqH-Ia-rgj">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="XOf-6F-sVl" customClass="AddressViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addressVC" modalPresentationStyle="fullScreen" id="XOf-6F-sVl" customClass="AddressViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5XD-H5-K4f">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -469,8 +474,8 @@
                                     <constraint firstAttribute="trailing" secondItem="NMD-hw-GdT" secondAttribute="trailing" id="XHv-Zb-UVt"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWr-P2-tuR">
-                                <rect key="frame" x="165" y="60.000000000000007" width="88" height="22.333333333333336"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWr-P2-tuR">
+                                <rect key="frame" x="129" y="60" width="137" height="24"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -483,25 +488,23 @@
                             <constraint firstItem="rfb-ZO-Bgu" firstAttribute="top" secondItem="PWr-P2-tuR" secondAttribute="bottom" constant="30" id="A6z-pD-avr"/>
                             <constraint firstAttribute="bottom" secondItem="rfb-ZO-Bgu" secondAttribute="bottom" id="Dno-nZ-Whj"/>
                             <constraint firstItem="rfb-ZO-Bgu" firstAttribute="leading" secondItem="d55-90-igN" secondAttribute="leading" id="E6k-tx-QFz"/>
-                            <constraint firstItem="d55-90-igN" firstAttribute="trailing" secondItem="PWr-P2-tuR" secondAttribute="trailing" constant="140" id="Y9h-aK-zuK"/>
-                            <constraint firstItem="PWr-P2-tuR" firstAttribute="leading" secondItem="d55-90-igN" secondAttribute="leading" constant="165" id="jPJ-md-BMZ"/>
+                            <constraint firstItem="PWr-P2-tuR" firstAttribute="leading" secondItem="d55-90-igN" secondAttribute="leading" constant="129" id="bgr-us-uSe"/>
                             <constraint firstItem="rfb-ZO-Bgu" firstAttribute="trailing" secondItem="d55-90-igN" secondAttribute="trailing" id="qB1-aR-rjh"/>
+                            <constraint firstItem="d55-90-igN" firstAttribute="trailing" secondItem="PWr-P2-tuR" secondAttribute="trailing" constant="127" id="xf6-hh-qXS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g6C-hz-RzE"/>
                     <connections>
                         <outlet property="addressStackView" destination="NMD-hw-GdT" id="X94-nU-CoF"/>
                         <outlet property="itemsScrollView" destination="rfb-ZO-Bgu" id="2r9-Af-Bsz"/>
+                        <outlet property="screenTitle" destination="PWr-P2-tuR" id="GNC-hZ-qAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P66-uW-y6Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="-19"/>
+            <point key="canvasLocation" x="701.52671755725191" y="-19.014084507042256"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="YRb-10-kRF"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>

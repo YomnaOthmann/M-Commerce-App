@@ -52,8 +52,6 @@
 		04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */; };
 		04B04F632B85248A004C16D6 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */; };
 		04B04F642B85248A004C16D6 /* MontserratLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F602B85248A004C16D6 /* MontserratLight.ttf */; };
-		04CE4E032B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CE4E012B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib */; };
-		04CE4E042B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE4E022B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift */; };
 		04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF296B2B8B536600454075 /* TabBar.storyboard */; };
 		04CF296E2B8B543B00454075 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF296D2B8B543B00454075 /* TabBarViewController.swift */; };
 		04CF29772B8BA9A800454075 /* BrandScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */; };
@@ -88,13 +86,15 @@
 		DE14CF5C2B8918D600FC1C8D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5B2B8918D600FC1C8D /* Address.swift */; };
 		DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5D2B89197900FC1C8D /* PriceRule.swift */; };
 		DE14CF602B8919A900FC1C8D /* DiscountCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5F2B8919A900FC1C8D /* DiscountCode.swift */; };
+		DEC9F21C2B91214400392B33 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9F21B2B91214400392B33 /* AddressViewModel.swift */; };
+		DEC9F2242B92243E00392B33 /* CustomCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9F2232B92243E00392B33 /* CustomCellButton.swift */; };
 		DECF4B8D2B8FA28F00155830 /* ShoppingBagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF4B8C2B8FA28F00155830 /* ShoppingBagViewModel.swift */; };
 		DECF4B8F2B9008C600155830 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF4B8E2B9008C600155830 /* CheckoutViewModel.swift */; };
 		DEDD833F2B8CA75800516BB4 /* CustomAddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD832F2B8CA75800516BB4 /* CustomAddressItemView.swift */; };
 		DEDD83402B8CA75800516BB4 /* AddressCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83302B8CA75800516BB4 /* AddressCustomButton.swift */; };
 		DEDD83412B8CA75800516BB4 /* CustomSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83312B8CA75800516BB4 /* CustomSpacerView.swift */; };
 		DEDD83422B8CA75800516BB4 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83322B8CA75800516BB4 /* AddressViewController.swift */; };
-		DEDD83432B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83342B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift */; };
+		DEDD83432B8CA75800516BB4 /* AddressSettingCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83342B8CA75800516BB4 /* AddressSettingCustomCell.swift */; };
 		DEDD83442B8CA75800516BB4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83352B8CA75800516BB4 /* SettingsViewController.swift */; };
 		DEDD83452B8CA75800516BB4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDD83362B8CA75800516BB4 /* Settings.storyboard */; };
 		DEDD83462B8CA75800516BB4 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD83382B8CA75800516BB4 /* AddressesViewController.swift */; };
@@ -226,13 +226,15 @@
 		DEA454E82B8B7CD30017A7F3 /* AddressCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCustomButton.swift; sourceTree = "<group>"; };
 		DEA454EA2B8B81F50017A7F3 /* CustomSpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpacerView.swift; sourceTree = "<group>"; };
 		DEB0003F2B8BF1FE0018829A /* ShoppingBagCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagCustomButton.swift; sourceTree = "<group>"; };
+		DEC9F21B2B91214400392B33 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		DEC9F2232B92243E00392B33 /* CustomCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellButton.swift; sourceTree = "<group>"; };
 		DECF4B8C2B8FA28F00155830 /* ShoppingBagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagViewModel.swift; sourceTree = "<group>"; };
 		DECF4B8E2B9008C600155830 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		DEDD832F2B8CA75800516BB4 /* CustomAddressItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAddressItemView.swift; sourceTree = "<group>"; };
 		DEDD83302B8CA75800516BB4 /* AddressCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCustomButton.swift; sourceTree = "<group>"; };
 		DEDD83312B8CA75800516BB4 /* CustomSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSpacerView.swift; sourceTree = "<group>"; };
 		DEDD83322B8CA75800516BB4 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
-		DEDD83342B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryAddressSettingCustomCell.swift; sourceTree = "<group>"; };
+		DEDD83342B8CA75800516BB4 /* AddressSettingCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSettingCustomCell.swift; sourceTree = "<group>"; };
 		DEDD83352B8CA75800516BB4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DEDD83362B8CA75800516BB4 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		DEDD83382B8CA75800516BB4 /* AddressesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				04180ACD2B86A565007CA253 /* CustomButton.swift */,
+				DEC9F2232B92243E00392B33 /* CustomCellButton.swift */,
 			);
 			path = CustomButton;
 			sourceTree = "<group>";
@@ -796,6 +799,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DEC9F21A2B91210B00392B33 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DEC9F21B2B91214400392B33 /* AddressViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DECF4B8B2B8FA23700155830 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +839,7 @@
 		DEDD832B2B8CA75800516BB4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				DEC9F21A2B91210B00392B33 /* ViewModel */,
 				DEDD832C2B8CA75800516BB4 /* View */,
 			);
 			path = Settings;
@@ -866,7 +878,7 @@
 		DEDD83332B8CA75800516BB4 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				DEDD83342B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift */,
+				DEDD83342B8CA75800516BB4 /* AddressSettingCustomCell.swift */,
 				DEDD83352B8CA75800516BB4 /* SettingsViewController.swift */,
 				DEEE04C12B8E7EC7002D290C /* LogoutCustomButton.swift */,
 			);
@@ -1055,7 +1067,6 @@
 				04A574122B84D669007BFC98 /* Main.storyboard in Resources */,
 				DEDD83452B8CA75800516BB4 /* Settings.storyboard in Resources */,
 				04E3852F2B8BC9FF00DEADB3 /* shopLink.json in Resources */,
-				04CE4E032B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib in Resources */,
 				04F133BF2B8963D000F49963 /* HomeScreen.storyboard in Resources */,
 				04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */,
 				04EB474F2B8CC3610056EA36 /* SignUpPage.storyboard in Resources */,
@@ -1213,7 +1224,6 @@
 				049FF9ED2B8E754B00004CAB /* OrdersTableViewCell.swift in Sources */,
 				04F133B82B8946ED00F49963 /* Categories.swift in Sources */,
 				04CF29772B8BA9A800454075 /* BrandScreenViewController.swift in Sources */,
-				04CE4E042B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift in Sources */,
 				04DA8D9A2B8C1A7100295473 /* CategoryScreenViewController.swift in Sources */,
 				04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */,
 				049FF9E82B8E683E00004CAB /* OrdersScreenViewModel.swift in Sources */,
@@ -1227,7 +1237,9 @@
 				DEDD834A2B8CA75800516BB4 /* ShoppingBagCustomCell.swift in Sources */,
 				DEEE04C22B8E7EC7002D290C /* LogoutCustomButton.swift in Sources */,
 				DEDD833F2B8CA75800516BB4 /* CustomAddressItemView.swift in Sources */,
+				DEC9F21C2B91214400392B33 /* AddressViewModel.swift in Sources */,
 				048DC9C92B8CEC62006623C9 /* Extensions.swift in Sources */,
+				DEC9F2242B92243E00392B33 /* CustomCellButton.swift in Sources */,
 				048DC9C62B8CEC2B006623C9 /* BrandCollectionViewCell.swift in Sources */,
 				04CF296E2B8B543B00454075 /* TabBarViewController.swift in Sources */,
 				DE14CF5A2B89186100FC1C8D /* Customer.swift in Sources */,
@@ -1243,7 +1255,7 @@
 				04A5740D2B84D669007BFC98 /* SceneDelegate.swift in Sources */,
 				DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */,
 				04EB47512B8CC37A0056EA36 /* SignUpPageViewController.swift in Sources */,
-				DEDD83432B8CA75800516BB4 /* DeliveryAddressSettingCustomCell.swift in Sources */,
+				DEDD83432B8CA75800516BB4 /* AddressSettingCustomCell.swift in Sources */,
 				048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */,
 				048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */,
 				DEDD83442B8CA75800516BB4 /* SettingsViewController.swift in Sources */,

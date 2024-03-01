@@ -13,6 +13,8 @@ class AddressesTableViewCell: UITableViewCell {
     @IBOutlet weak var customerPhone: UILabel!
     @IBOutlet weak var mainBackground: UIView!
     
+    @IBOutlet weak var editAddressButton: CustomCellButton!
+    @IBOutlet weak var setDefaultButton: CustomCellButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
