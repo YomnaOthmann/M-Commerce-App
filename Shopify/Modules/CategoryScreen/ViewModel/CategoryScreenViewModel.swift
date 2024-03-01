@@ -43,57 +43,58 @@ class CategoryScreenViewModel:CategoryScreenViewModelProtocol{
                 return
             }
             self?.allProducts = products
-
+            
         })
     }
-    func filterProducts(products:[Product], filter : Product.ProductType)->[Product]{
-        
-        if filter == .all{
-            return products
+    func filterProducts(products:[Product], mainCategory : String, subCategory:Product.ProductType)->[Product]{
+        var firstFilter : [Product] = []
+        if mainCategory == "all"{
+            firstFilter = getAllItems(products: products)
+            return firstFilter
         }
         else{
+                let finalFilter = firstFilter.filter({
+                    $0.productType == subCategory
+                })
+                return finalFilter
+            }
+                                                 
+        }
+        func getMenItems(products:[Product])->[Product]{
             let products = products.filter({
-                $0.productType == filter
+                $0.tags.components(separatedBy: ", ").contains { item in
+                    item.lowercased() == "men"
+                }
+                
             })
+            print(products.count)
             return products
         }
+        func getWomenItems(products:[Product])->[Product]{
+            let products = products.filter({
+                $0.tags.components(separatedBy: ", ").contains { item in
+                    item.lowercased() == "women"
+                }
+                
+            })
+            print(products.count)
+            return products
+        }
+        func getKidsItems(products:[Product])->[Product]{
+            let products = products.filter({
+                $0.tags.components(separatedBy: ", ").contains { item in
+                    item.lowercased() == "kid"
+                }
+                
+            })
+            print(products.count)
+            return products
+        }
+        func getAllItems(products:[Product])->[Product]{
+            return products
+        }
+        
+        
+        
+        
     }
-    
-    func getMenItems(products:[Product])->[Product]{
-        let products = products.filter({
-            $0.tags.components(separatedBy: ", ").contains { item in
-                item.lowercased() == "men"
-            }
-            
-        })
-        print(products.count)
-        return products
-    }
-    func getWomenItems(products:[Product])->[Product]{
-        let products = products.filter({
-            $0.tags.components(separatedBy: ", ").contains { item in
-                item.lowercased() == "women"
-            }
-            
-        })
-        print(products.count)
-        return products
-    }
-    func getKidsItems(products:[Product])->[Product]{
-        let products = products.filter({
-            $0.tags.components(separatedBy: ", ").contains { item in
-                item.lowercased() == "kid"
-            }
-            
-        })
-        print(products.count)
-        return products
-    }
-    func getAllItems(products:[Product])->[Product]{
-        return products
-    }
-    
-    
-    
-    
-}

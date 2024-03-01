@@ -123,7 +123,9 @@ extension HomeScreenViewController : HomeScreenViewModelDelegate{
     
     func didLoadAds(ads: PriceRules) {
         priceRules = ads
-        adsIndicator.stopAnimating()
+        if priceRules?.priceRules?.count != 0{
+            adsIndicator.stopAnimating()
+        }
         adsCollectionView.reloadData()
         adsCollectionView.isHidden = false
         UIView.animate(withDuration: 0.5) {
@@ -147,6 +149,11 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView{
         case adsCollectionView:
+            if self.priceRules?.priceRules?.count == 0 {
+                             self.adsCollectionView.setEmptyMessage("No Discount Codes to show :(")
+                         } else {
+                             self.adsCollectionView.restore()
+                         }
             return priceRules?.priceRules?.count ?? 0
         default:
             return smartCollections?.smartCollections.count ?? 0

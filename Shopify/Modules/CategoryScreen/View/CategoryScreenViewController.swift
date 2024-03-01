@@ -20,6 +20,8 @@ class CategoryScreenViewController: UIViewController {
         UIImage(named: "tShirt"),
         UIImage(named: "handbags")
     ]
+    var mainCategory = "all"
+    var subCategory : Product.ProductType = .all
     let viewModel = CategoryScreenViewModel(network: NetworkManager())
     let connectionAlert = ConnectionAlert()
     var alertIsPresenting = false
@@ -112,28 +114,32 @@ class CategoryScreenViewController: UIViewController {
         guard let products = allProducts else{
             return
         }
-        filteredProducts = viewModel.getAllItems(products: products)
+        mainCategory = "all"
+        filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
         categoryCollectionView.reloadData()
     }
     @IBAction func getWomenItems(_ sender: Any) {
         guard let products = allProducts else{
             return
         }
-        filteredProducts = viewModel.getWomenItems(products: products)
+        mainCategory = "women"
+        filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
         categoryCollectionView.reloadData()
     }
     @IBAction func getMenItems(_ sender: Any) {
         guard let products = allProducts else{
             return
         }
-        filteredProducts = viewModel.getMenItems(products: products)
+        mainCategory = "men"
+        filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
         categoryCollectionView.reloadData()
     }
     @IBAction func getKidsItems(_ sender: Any) {
         guard let products = allProducts else{
             return
         }
-        filteredProducts = viewModel.getKidsItems(products: products)
+        mainCategory = "kid"
+        filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
         categoryCollectionView.reloadData()
     }
     
@@ -162,6 +168,11 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             return subCategories.count
         }
         else{
+            if self.filteredProducts?.count == 0 {
+                self.categoryCollectionView.setEmptyMessage("Nothing to show :(")
+            } else {
+                self.categoryCollectionView.restore()
+            }
             return filteredProducts?.count ?? 0
         }
     }
@@ -205,13 +216,17 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
         if collectionView == filterCollectionView{
             switch indexPath.row{
             case 0:
-                filteredProducts = viewModel.filterProducts(products: products, filter: Product.ProductType.all)
+                subCategory = Product.ProductType.all
+                filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             case 1:
-                filteredProducts = viewModel.filterProducts(products: products, filter: Product.ProductType.shoes)
+                subCategory = Product.ProductType.shoes
+                filteredProducts = viewModel.filterProducts(products: products,  mainCategory: mainCategory,subCategory: subCategory)
             case 2:
-                filteredProducts = viewModel.filterProducts(products: products, filter: Product.ProductType.tShirts)
+                subCategory = Product.ProductType.tShirts
+                filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             default:
-                filteredProducts = viewModel.filterProducts(products: products, filter: Product.ProductType.accessories)
+                subCategory = Product.ProductType.accessories
+                filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             }
             categoryCollectionView.reloadData()
             
