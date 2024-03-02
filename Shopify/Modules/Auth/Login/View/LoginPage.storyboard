@@ -69,6 +69,9 @@ Back!</string>
                                     <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" name="CustomBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="LoginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ub7-ul-jfn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztN-Ts-Os1">
                                 <rect key="frame" x="275" y="362" width="58" height="35"/>
@@ -97,9 +100,13 @@ Back!</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up">
                                     <color key="baseForegroundColor" name="CustomBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="SignUpButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6rH-Y9-Oqn"/>
+                                    <segue destination="srq-hK-c9g" kind="presentation" modalPresentationStyle="fullScreen" id="YmY-1b-aHb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create An Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFh-rG-QB6">
-                                <rect key="frame" x="140" y="697" width="113" height="15"/>
+                                <rect key="frame" x="140" y="697" width="113" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -140,11 +147,20 @@ Back!</string>
                     </view>
                     <connections>
                         <outlet property="Password" destination="fyb-EL-Hr2" id="TgG-ea-86m"/>
+                        <outlet property="emailField" destination="Llb-iQ-31A" id="mnE-xf-ZC1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.824427480916029" y="-27.464788732394368"/>
+        </scene>
+        <!--SignUpPage-->
+        <scene sceneID="lDi-Wb-JhK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUpPage" id="srq-hK-c9g" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ovv-iS-nYs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="646" y="-77"/>
         </scene>
     </scenes>
     <resources>

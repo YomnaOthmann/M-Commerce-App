@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Sign Up Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="SignUpPageViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,6 +64,9 @@ Account</string>
                                 <buttonConfiguration key="configuration" style="plain" image="eye" catalog="system">
                                     <color key="baseForegroundColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="ShowandHidePassword:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="U0Z-CQ-NiF"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔒  Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G3e-sY-QQS">
                                 <rect key="frame" x="38" y="480" width="317" height="55"/>
@@ -81,6 +83,9 @@ Account</string>
                                 <buttonConfiguration key="configuration" style="plain" image="eye" catalog="system">
                                     <color key="baseForegroundColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="confirmPassword:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6jI-gF-aFq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking on create account button, you agree to the public offer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4H-SN-gK4">
                                 <rect key="frame" x="32" y="551" width="258" height="30"/>
@@ -105,22 +110,29 @@ Account</string>
                                     <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" name="CustomBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="createAccountButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="24z-QQ-dO1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- OR Continue With-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MM-MX-iq6">
-                                <rect key="frame" x="121.33333333333334" y="683" width="122.33333333333334" height="15"/>
+                                <rect key="frame" x="121.33333333333334" y="683" width="122.33333333333334" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-mS-j0D">
-                                <rect key="frame" x="209.33333333333334" y="765" width="65.666666666666657" height="39"/>
+                                <rect key="frame" x="209.33333333333334" y="764" width="65.666666666666657" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login">
                                     <color key="baseForegroundColor" name="CustomBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="LoginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jWu-tP-19z"/>
+                                    <segue destination="W0i-SW-FPZ" kind="presentation" modalPresentationStyle="fullScreen" id="15V-Ih-dgu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have An Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-8d-3kC">
-                                <rect key="frame" x="58.666666666666671" y="778" width="150.66666666666663" height="15"/>
+                                <rect key="frame" x="58.666666666666671" y="778" width="150.66666666666663" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -170,10 +182,23 @@ Account</string>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="sAw-iL-Ch8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPassword" destination="G3e-sY-QQS" id="uqA-4d-4qv"/>
+                        <outlet property="emailField" destination="oBs-aM-D0C" id="9fb-aH-0Cc"/>
+                        <outlet property="passwordField" destination="0GL-9Q-kXf" id="nIN-lz-53M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="54.198473282442748" y="-34.507042253521128"/>
+        </scene>
+        <!--LoginPage-->
+        <scene sceneID="Tpm-pY-HGq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginPage" id="W0i-SW-FPZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qb-8d-iAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823" y="-92"/>
         </scene>
     </scenes>
     <resources>

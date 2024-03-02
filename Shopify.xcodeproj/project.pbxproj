@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04180AC52B869BBE007CA253 /* APIHandler.swift */; };
 		04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04180ACD2B86A565007CA253 /* CustomButton.swift */; };
+		04204A1A2B8E634400939EFC /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 04204A192B8E634300939EFC /* GoogleService-Info.plist */; };
+		04204A2E2B8E905600939EFC /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 04204A2D2B8E905600939EFC /* GoogleSignIn */; };
+		04204A302B8E905600939EFC /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04204A2F2B8E905600939EFC /* GoogleSignInSwift */; };
 		043E549C2B8797F300F8CDA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549B2B8797F300F8CDA7 /* Alert.swift */; };
 		043E549E2B879B1A00F8CDA7 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549D2B879B1A00F8CDA7 /* Products.swift */; };
 		043E54A02B87F5BA00F8CDA7 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */; };
@@ -25,6 +28,10 @@
 		048DC9CB2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */; };
 		048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */; };
 		048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */; };
+		0493CBE92B8E19B4004AEF74 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493CBE82B8E19B4004AEF74 /* SignUpViewModel.swift */; };
+		0493CBEB2B8E19F4004AEF74 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493CBEA2B8E19F4004AEF74 /* SignUpModel.swift */; };
+		0493CBED2B8E1A73004AEF74 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493CBEC2B8E1A73004AEF74 /* LoginModel.swift */; };
+		0493CBEF2B8E2AC9004AEF74 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493CBEE2B8E2AC9004AEF74 /* BaseUrl.swift */; };
 		0493F8782B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */; };
 		04A2A70C2B85190D00991FCC /* dummyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A70B2B85190D00991FCC /* dummyCoreData.swift */; };
 		04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5740A2B84D669007BFC98 /* AppDelegate.swift */; };
@@ -43,8 +50,6 @@
 		04B04F622B85248A004C16D6 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */; };
 		04B04F632B85248A004C16D6 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */; };
 		04B04F642B85248A004C16D6 /* MontserratLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B04F602B85248A004C16D6 /* MontserratLight.ttf */; };
-		04EB474F2B8CC3610056EA36 /* SignUpPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */; };
-		04EB47512B8CC37A0056EA36 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */; };
 		04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF296B2B8B536600454075 /* TabBar.storyboard */; };
 		04CF296E2B8B543B00454075 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF296D2B8B543B00454075 /* TabBarViewController.swift */; };
 		04CF29772B8BA9A800454075 /* BrandScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */; };
@@ -61,6 +66,8 @@
 		04E3852F2B8BC9FF00DEADB3 /* shopLink.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E3852C2B8BC9FF00DEADB3 /* shopLink.json */; };
 		04E385302B8BC9FF00DEADB3 /* congrats.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E3852D2B8BC9FF00DEADB3 /* congrats.json */; };
 		04E385312B8BC9FF00DEADB3 /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E3852E2B8BC9FF00DEADB3 /* done.json */; };
+		04EB474F2B8CC3610056EA36 /* SignUpPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */; };
+		04EB47512B8CC37A0056EA36 /* SignUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */; };
 		04F133B62B8945B600F49963 /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F133B52B8945B600F49963 /* Brands.swift */; };
 		04F133B82B8946ED00F49963 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F133B72B8946ED00F49963 /* Categories.swift */; };
 		04F133BF2B8963D000F49963 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F133BE2B8963D000F49963 /* HomeScreen.storyboard */; };
@@ -112,6 +119,7 @@
 /* Begin PBXFileReference section */
 		04180AC52B869BBE007CA253 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		04180ACD2B86A565007CA253 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		04204A192B8E634300939EFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		043E549B2B8797F300F8CDA7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		043E549D2B879B1A00F8CDA7 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		043E549F2B87F5BA00F8CDA7 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
@@ -128,6 +136,10 @@
 		048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelTests.swift; sourceTree = "<group>"; };
 		048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeScreen.storyboard; sourceTree = "<group>"; };
 		048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewController.swift; sourceTree = "<group>"; };
+		0493CBE82B8E19B4004AEF74 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		0493CBEA2B8E19F4004AEF74 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		0493CBEC2B8E1A73004AEF74 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		0493CBEE2B8E2AC9004AEF74 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
 		0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreenViewModelTests.swift; sourceTree = "<group>"; };
 		04A2A70B2B85190D00991FCC /* dummyCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyCoreData.swift; sourceTree = "<group>"; };
 		04A574072B84D669007BFC98 /* Shopify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,8 +163,6 @@
 		04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
 		04B04F602B85248A004C16D6 /* MontserratLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratLight.ttf; sourceTree = "<group>"; };
-		04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpPage.storyboard; sourceTree = "<group>"; };
-		04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		04CF296B2B8B536600454075 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		04CF296D2B8B543B00454075 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandScreenViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +179,8 @@
 		04E3852C2B8BC9FF00DEADB3 /* shopLink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shopLink.json; sourceTree = "<group>"; };
 		04E3852D2B8BC9FF00DEADB3 /* congrats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congrats.json; sourceTree = "<group>"; };
 		04E3852E2B8BC9FF00DEADB3 /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
+		04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpPage.storyboard; sourceTree = "<group>"; };
+		04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewController.swift; sourceTree = "<group>"; };
 		04F133B52B8945B600F49963 /* Brands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brands.swift; sourceTree = "<group>"; };
 		04F133B72B8946ED00F49963 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		04F133BE2B8963D000F49963 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
@@ -221,8 +233,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04204A2E2B8E905600939EFC /* GoogleSignIn in Frameworks */,
 				04F6616C2B8D81CA00F26224 /* FirebaseAnalyticsSwift in Frameworks */,
 				04F6616A2B8D81CA00F26224 /* FirebaseAnalytics in Frameworks */,
+				04204A302B8E905600939EFC /* GoogleSignInSwift in Frameworks */,
 				DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */,
 				04F6616E2B8D81CA00F26224 /* FirebaseAuth in Frameworks */,
 			);
@@ -251,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				04180AC52B869BBE007CA253 /* APIHandler.swift */,
+				0493CBEE2B8E2AC9004AEF74 /* BaseUrl.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -271,6 +286,13 @@
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
+		042745D22B8F8308003BDA9E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		044631C52B8A2900001F9371 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +309,22 @@
 				044631C92B8A309D001F9371 /* LoginPage.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		044631C72B8A2911001F9371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0493CBEC2B8E1A73004AEF74 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		044631C82B8A2919001F9371 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				044631CD2B8ABC05001F9371 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		048DC9D22B8D14C4006623C9 /* MeScreen */ = {
@@ -306,21 +344,6 @@
 				048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		044631C72B8A2911001F9371 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		044631C82B8A2919001F9371 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				044631CD2B8ABC05001F9371 /* LoginViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		048DC9D42B8D14D4006623C9 /* ViewModel */ = {
@@ -349,6 +372,7 @@
 		04A573FE2B84D669007BFC98 = {
 			isa = PBXGroup;
 			children = (
+				04204A192B8E634300939EFC /* GoogleService-Info.plist */,
 				04A574092B84D669007BFC98 /* Shopify */,
 				04A574232B84D66D007BFC98 /* ShopifyTests */,
 				04A5742D2B84D66D007BFC98 /* ShopifyUITests */,
@@ -464,6 +488,7 @@
 		04A574422B84D6AE007BFC98 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				042745D22B8F8308003BDA9E /* Extension */,
 				04E385292B8BC97000DEADB3 /* Animations */,
 				04180AC42B869BAA007CA253 /* API */,
 				04B04F5C2B85241D004C16D6 /* fonts */,
@@ -484,35 +509,6 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		04EB47492B8CBF310056EA36 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				044631C82B8A2919001F9371 /* ViewModel */,
-				044631C72B8A2911001F9371 /* Model */,
-				044631C62B8A290A001F9371 /* View */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		04EB474A2B8CC31A0056EA36 /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				04EB474D2B8CC3410056EA36 /* ViewModel */,
-				04EB474C2B8CC3370056EA36 /* Model */,
-				04EB474B2B8CC32B0056EA36 /* View */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		04EB474B2B8CC32B0056EA36 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */,
-				04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		04CF29692B8B531B00454075 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,20 +524,6 @@
 				04CF296D2B8B543B00454075 /* TabBarViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		04EB474C2B8CC3370056EA36 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		04EB474D2B8CC3410056EA36 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04CF29732B8BA93200454075 /* BrandScreen */ = {
@@ -623,6 +605,51 @@
 				04E3852A2B8BC9EB00DEADB3 /* fav.json */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		04EB47492B8CBF310056EA36 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				044631C82B8A2919001F9371 /* ViewModel */,
+				044631C72B8A2911001F9371 /* Model */,
+				044631C62B8A290A001F9371 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		04EB474A2B8CC31A0056EA36 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				04EB474D2B8CC3410056EA36 /* ViewModel */,
+				04EB474C2B8CC3370056EA36 /* Model */,
+				04EB474B2B8CC32B0056EA36 /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		04EB474B2B8CC32B0056EA36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04EB47502B8CC37A0056EA36 /* SignUpPageViewController.swift */,
+				04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04EB474C2B8CC3370056EA36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0493CBEA2B8E19F4004AEF74 /* SignUpModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04EB474D2B8CC3410056EA36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0493CBE82B8E19B4004AEF74 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04F133BB2B89639700F49963 /* HomeScreen */ = {
@@ -795,6 +822,8 @@
 				04F661692B8D81CA00F26224 /* FirebaseAnalytics */,
 				04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */,
 				04F6616D2B8D81CA00F26224 /* FirebaseAuth */,
+				04204A2D2B8E905600939EFC /* GoogleSignIn */,
+				04204A2F2B8E905600939EFC /* GoogleSignInSwift */,
 			);
 			productName = Shopify;
 			productReference = 04A574072B84D669007BFC98 /* Shopify.app */;
@@ -873,6 +902,7 @@
 			mainGroup = 04A573FE2B84D669007BFC98;
 			packageReferences = (
 				04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				04204A2C2B8E905600939EFC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 04A574082B84D669007BFC98 /* Products */;
 			projectDirPath = "";
@@ -1040,7 +1070,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04204A1A2B8E634400939EFC /* GoogleService-Info.plist in Sources */,
 				04A574462B84D6D8007BFC98 /* NetworkManager.swift in Sources */,
+				0493CBEF2B8E2AC9004AEF74 /* BaseUrl.swift in Sources */,
 				04F133B62B8945B600F49963 /* Brands.swift in Sources */,
 				DEDD83482B8CA75800516BB4 /* ShoppingBagViewController.swift in Sources */,
 				048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */,
@@ -1055,6 +1087,7 @@
 				04A574492B84D6FE007BFC98 /* NetworkReachability.swift in Sources */,
 				044631CC2B8A4300001F9371 /* LoginViewController.swift in Sources */,
 				044631CE2B8ABC05001F9371 /* LoginViewModel.swift in Sources */,
+				0493CBEB2B8E19F4004AEF74 /* SignUpModel.swift in Sources */,
 				DEDD83462B8CA75800516BB4 /* AddressesViewController.swift in Sources */,
 				DE14CF5C2B8918D600FC1C8D /* Address.swift in Sources */,
 				04F133C12B8963E300F49963 /* HomeScreenViewController.swift in Sources */,
@@ -1074,6 +1107,8 @@
 				DE14CF5A2B89186100FC1C8D /* Customer.swift in Sources */,
 				DEDD83412B8CA75800516BB4 /* CustomSpacerView.swift in Sources */,
 				04A574152B84D669007BFC98 /* Shopify.xcdatamodeld in Sources */,
+				0493CBED2B8E1A73004AEF74 /* LoginModel.swift in Sources */,
+				0493CBE92B8E19B4004AEF74 /* SignUpViewModel.swift in Sources */,
 				04A2A70C2B85190D00991FCC /* dummyCoreData.swift in Sources */,
 				04F133CD2B89698700F49963 /* HomeScreenViewModel.swift in Sources */,
 				04DA8D9E2B8C202500295473 /* FilterCollectionViewCell.swift in Sources */,
@@ -1441,6 +1476,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		04204A2C2B8E905600939EFC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1452,6 +1495,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		04204A2D2B8E905600939EFC /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04204A2C2B8E905600939EFC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		04204A2F2B8E905600939EFC /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04204A2C2B8E905600939EFC /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		04F661692B8D81CA00F26224 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
