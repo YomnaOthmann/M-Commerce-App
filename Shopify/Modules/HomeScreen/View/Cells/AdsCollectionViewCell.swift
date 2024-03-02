@@ -19,7 +19,7 @@ class AdsCollectionViewCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        contentView.layer.cornerRadius = 20
     }
 
 }

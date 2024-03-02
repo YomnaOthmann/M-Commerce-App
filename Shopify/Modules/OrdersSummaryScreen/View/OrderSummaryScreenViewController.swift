@@ -30,7 +30,7 @@ class OrderSummaryScreenViewController: UIViewController {
         
         draftOrderCollectionView.delegate = self
         draftOrderCollectionView.dataSource = self
-//        draftOrderCollectionView.register(DraftOrderCollectionViewCell.nib(), forCellWithReuseIdentifier: DraftOrderCollectionViewCell.id)
+        draftOrderCollectionView.register(OrderSummaryCollectionViewCell.nib(), forCellWithReuseIdentifier: OrderSummaryCollectionViewCell.id)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -38,15 +38,7 @@ class OrderSummaryScreenViewController: UIViewController {
         
         draftOrderCollectionView.setCollectionViewLayout(layout, animated: true)
     }
-    func setUpShadow(){
-        
-        addressView.layer.cornerRadius = 10
-        addressView.layer.shadowOffset = CGSize(width: -4, height: 4)
-        addressView.layer.shadowColor = UIColor.secondaryLabel.cgColor
-        addressView.layer.shadowRadius = 5
-        addressView.layer.shadowOpacity = 0.4
-        addressView.clipsToBounds = false
-    }
+
     func setUpOrderData(){
         orderPrice.text = (order?.subtotalPrice ?? "") +  " " + (order?.currency ?? "")
         if order?.lineItems[0].taxLines.count ?? -1 > 0{
@@ -86,17 +78,15 @@ extension OrderSummaryScreenViewController : UICollectionViewDelegate, UICollect
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        let cell = draftOrderCollectionView.dequeueReusableCell(withReuseIdentifier: DraftOrderCollectionViewCell.id, for: indexPath) as! DraftOrderCollectionViewCell
-//        
-//        cell.cellTitle.text = order?.lineItems[indexPath.row].title
-//        if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
-//            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
-//        }
-//        
-//        cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
-//        cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"
-//        return cell
+        let cell = draftOrderCollectionView.dequeueReusableCell(withReuseIdentifier: OrderSummaryCollectionViewCell.id, for: indexPath) as! OrderSummaryCollectionViewCell
         
-        return UICollectionViewCell()
+        cell.cellTitle.text = order?.lineItems[indexPath.row].title
+        if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
+            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
+        }
+        cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
+        cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"
+        return cell
+        
     }
 }

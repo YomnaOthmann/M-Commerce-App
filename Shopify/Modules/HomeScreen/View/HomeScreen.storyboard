@@ -115,7 +115,7 @@
                     <navigationItem key="navigationItem" id="cLW-3r-oed">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="4ue-Kx-Yiv">
-                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
@@ -123,7 +123,7 @@
                                     </hierarchicalColors>
                                 </imageReference>
                                 <connections>
-                                    <action selector="gotoWishlist:" destination="Y6W-OH-hqX" id="Q5q-bm-rK2"/>
+                                    <action selector="gotoSettings:" destination="Y6W-OH-hqX" id="xo8-7y-gSu"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem id="Rsy-dm-ga6">
@@ -143,6 +143,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="adsCollectionView" destination="WPC-tX-9TM" id="rJd-A0-Cxb"/>
+                        <outlet property="brandHeader" destination="RlZ-I1-XXT" id="xKY-jZ-9dN"/>
                         <outlet property="brandHeaderLabel" destination="RlZ-I1-XXT" id="bqg-Tu-6f7"/>
                         <outlet property="brandsCollectionView" destination="vBv-f7-v7C" id="ZEP-NS-8mZ"/>
                         <outlet property="homeSearchBar" destination="AYo-hb-r1a" id="o8E-UN-hRX"/>
@@ -218,13 +219,16 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="rPE-wK-mkc">
-                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
                                         <color systemColor="tertiaryLabelColor"/>
                                     </hierarchicalColors>
                                 </imageReference>
+                                <connections>
+                                    <action selector="gotoSettings:" destination="4Re-oB-Tyy" id="Y2V-t4-axW"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" id="LWb-23-g2t">
                                 <imageReference key="image" image="cart" catalog="system" renderingMode="hierarchical">
@@ -271,7 +275,7 @@
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">

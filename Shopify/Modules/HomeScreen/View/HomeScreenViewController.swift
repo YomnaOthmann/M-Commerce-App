@@ -14,6 +14,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var brandHeaderLabel: UILabel!
     @IBOutlet weak var adsCollectionView: UICollectionView!
     
+    @IBOutlet weak var brandHeader: UILabel!
     @IBOutlet weak var brandsCollectionView: UICollectionView!
 
     
@@ -86,6 +87,7 @@ class HomeScreenViewController: UIViewController {
         
         brandsCollectionView.setCollectionViewLayout(brandsLayout, animated: true)
         brandsCollectionView.isHidden = true
+        brandHeader.isHidden = true
         brandsCollectionView.register(BrandCollectionViewCell.nib(), forCellWithReuseIdentifier: BrandCollectionViewCell.id)
     }
     
@@ -110,7 +112,10 @@ class HomeScreenViewController: UIViewController {
         
     }
     
-    @IBAction func gotoWishlist(_ sender: Any) {
+    @IBAction func gotoSettings(_ sender: Any) {
+        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+        settingsVC.modalPresentationStyle = .fullScreen
+        self.present(settingsVC, animated: true)
     }
 }
 
@@ -150,6 +155,7 @@ extension HomeScreenViewController : HomeScreenViewModelDelegate{
         brandsIndicator.stopAnimating()
         brandsCollectionView.reloadData()
         brandsCollectionView.isHidden = false
+        brandHeader.isHidden = false
         UIView.animate(withDuration: 0.5) {
             self.brandsCollectionView.alpha = 1
         }

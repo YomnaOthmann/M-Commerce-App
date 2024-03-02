@@ -126,13 +126,16 @@
                     <navigationItem key="navigationItem" title="ShopLink" id="c6P-7l-MSS">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="wxU-FK-IgQ">
-                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
                                         <color systemColor="tertiaryLabelColor"/>
                                     </hierarchicalColors>
                                 </imageReference>
+                                <connections>
+                                    <action selector="gotoSettings:" destination="Y6W-OH-hqX" id="bQP-KK-zBb"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" id="jGn-0L-gwg">
                                 <imageReference key="image" image="cart" catalog="system" renderingMode="hierarchical">
@@ -142,6 +145,9 @@
                                         <color systemColor="tertiaryLabelColor"/>
                                     </hierarchicalColors>
                                 </imageReference>
+                                <connections>
+                                    <action selector="gotoCart:" destination="Y6W-OH-hqX" id="7lj-Ku-xlI"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -179,18 +185,18 @@
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="circle.grid.2x2" catalog="system" width="128" height="111"/>
         <image name="circle.grid.2x2.fill" catalog="system" width="128" height="111"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

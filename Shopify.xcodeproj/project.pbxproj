@@ -27,6 +27,8 @@
 		048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */; };
 		0493F8782B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */; };
 		04956AAA2B927C1C005AE66E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */; };
+		04956AAE2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */; };
+		04956AAF2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04956AAD2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib */; };
 		049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FF9DA2B8E4F1500004CAB /* DraftOrder.swift */; };
 		049FF9E22B8E673400004CAB /* OrdersScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049FF9E12B8E673400004CAB /* OrdersScreen.storyboard */; };
 		049FF9E62B8E676600004CAB /* OrdersScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FF9E52B8E676600004CAB /* OrdersScreenViewController.swift */; };
@@ -147,6 +149,8 @@
 		048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewController.swift; sourceTree = "<group>"; };
 		0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreenViewModelTests.swift; sourceTree = "<group>"; };
 		04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryCollectionViewCell.swift; sourceTree = "<group>"; };
+		04956AAD2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSummaryCollectionViewCell.xib; sourceTree = "<group>"; };
 		049FF9DA2B8E4F1500004CAB /* DraftOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrder.swift; sourceTree = "<group>"; };
 		049FF9E12B8E673400004CAB /* OrdersScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrdersScreen.storyboard; sourceTree = "<group>"; };
 		049FF9E52B8E676600004CAB /* OrdersScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersScreenViewController.swift; sourceTree = "<group>"; };
@@ -178,8 +182,6 @@
 		04B04F5E2B85248A004C16D6 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
 		04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
 		04B04F602B85248A004C16D6 /* MontserratLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratLight.ttf; sourceTree = "<group>"; };
-		04CE4E012B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraftOrderCollectionViewCell.xib; sourceTree = "<group>"; };
-		04CE4E022B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftOrderCollectionViewCell.swift; sourceTree = "<group>"; };
 		04CF296B2B8B536600454075 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		04CF296D2B8B543B00454075 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04CF29762B8BA9A800454075 /* BrandScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandScreenViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +387,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		04956AAB2B92A3F0005AE66E /* OrderSummary */ = {
+			isa = PBXGroup;
+			children = (
+				04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */,
+				04956AAD2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib */,
+			);
+			path = OrderSummary;
+			sourceTree = "<group>";
+		};
 		049FF9DD2B8E653B00004CAB /* OrdersScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,7 +544,7 @@
 		04A5743D2B84D680007BFC98 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				04CE4E002B90BBDD005672E3 /* OrderSummaryCell */,
+				04956AAB2B92A3F0005AE66E /* OrderSummary */,
 				04E385222B8BB0FE00DEADB3 /* ProductCell */,
 				04180ACB2B86A533007CA253 /* CustomComponents */,
 				04A574102B84D669007BFC98 /* Main.storyboard */,
@@ -604,16 +615,6 @@
 				04B04F5F2B85248A004C16D6 /* MontserratSemiBold.ttf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		04CE4E002B90BBDD005672E3 /* OrderSummaryCell */ = {
-			isa = PBXGroup;
-			children = (
-				04CE4E012B90BBDD005672E3 /* DraftOrderCollectionViewCell.xib */,
-				04CE4E022B90BBDD005672E3 /* DraftOrderCollectionViewCell.swift */,
-			);
-			name = OrderSummaryCell;
-			path = ../../../../Downloads/OrderSummaryCell;
 			sourceTree = "<group>";
 		};
 		04CF29692B8B531B00454075 /* TabBarController */ = {
@@ -1078,6 +1079,7 @@
 				04A574172B84D66C007BFC98 /* Assets.xcassets in Resources */,
 				DEDD83492B8CA75800516BB4 /* ShoppingBag.storyboard in Resources */,
 				04E3852B2B8BC9EB00DEADB3 /* fav.json in Resources */,
+				04956AAF2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib in Resources */,
 				04E385302B8BC9FF00DEADB3 /* congrats.json in Resources */,
 				04E385262B8BB12400DEADB3 /* ProductCollectionViewCell.xib in Resources */,
 				04B04F612B85248A004C16D6 /* MontserratRegular.ttf in Resources */,
@@ -1250,6 +1252,7 @@
 				043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */,
 				049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */,
 				DEDD83472B8CA75800516BB4 /* AddressesTableViewCell.swift in Sources */,
+				04956AAE2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift in Sources */,
 				04180ACE2B86A565007CA253 /* CustomButton.swift in Sources */,
 				DECF4B8F2B9008C600155830 /* CheckoutViewModel.swift in Sources */,
 				DEEE04C02B8DFCFD002D290C /* CheckoutCustomButton.swift in Sources */,

@@ -66,6 +66,12 @@ class BrandScreenViewController: UIViewController {
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func gotoSettings(_ sender: Any) {
+        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+        settingsVC.modalPresentationStyle = .fullScreen
+        self.present(settingsVC, animated: true)
+    }
 }
 extension BrandScreenViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
