@@ -67,17 +67,9 @@ class OrdersScreenViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func goToCart(_ sender: Any) {
-        performSegue(withIdentifier: "fromOrdersToCart", sender: self)
-    }
-    
-   
-    @IBAction func goToWishlist(_ sender: Any) {
-    }
-    
+
     @IBAction func back(_ sender: Any) {
-        
+        self.navigationController?.dismiss(animated: true)
     }
 }
 

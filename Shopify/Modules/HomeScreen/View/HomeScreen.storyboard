@@ -32,10 +32,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="h8Z-g3-T98">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="158.66666666666663"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="adCell" id="tQk-a8-B5v" customClass="AdsCollectionViewCell" customModule="Shopify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
@@ -59,10 +55,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="VWI-6l-r20">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="406"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="brandCell" id="d1q-3P-dE8" customClass="BrandCollectionViewCell" customModule="Shopify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
@@ -123,13 +115,16 @@
                     <navigationItem key="navigationItem" id="cLW-3r-oed">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="4ue-Kx-Yiv">
-                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
                                         <color systemColor="tertiaryLabelColor"/>
                                     </hierarchicalColors>
                                 </imageReference>
+                                <connections>
+                                    <action selector="gotoSettings:" destination="Y6W-OH-hqX" id="xo8-7y-gSu"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem id="Rsy-dm-ga6">
                                 <imageReference key="image" image="cart" catalog="system" renderingMode="hierarchical">
@@ -140,7 +135,7 @@
                                     </hierarchicalColors>
                                 </imageReference>
                                 <connections>
-                                    <segue destination="Xnz-9O-O7d" kind="show" id="rrj-o1-JRa"/>
+                                    <action selector="gotoCart:" destination="Y6W-OH-hqX" id="u61-IT-r5u"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -148,10 +143,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="adsCollectionView" destination="WPC-tX-9TM" id="rJd-A0-Cxb"/>
-                        <outlet property="adsIndicator" destination="h8Z-g3-T98" id="7g9-ew-xBl"/>
+                        <outlet property="brandHeader" destination="RlZ-I1-XXT" id="xKY-jZ-9dN"/>
                         <outlet property="brandHeaderLabel" destination="RlZ-I1-XXT" id="bqg-Tu-6f7"/>
                         <outlet property="brandsCollectionView" destination="vBv-f7-v7C" id="ZEP-NS-8mZ"/>
-                        <outlet property="brandsIndicator" destination="VWI-6l-r20" id="ooe-Ve-cq8"/>
                         <outlet property="homeSearchBar" destination="AYo-hb-r1a" id="o8E-UN-hRX"/>
                         <segue destination="4Re-oB-Tyy" kind="show" identifier="goTosearch" id="HEv-9a-YvP"/>
                     </connections>
@@ -159,16 +153,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="-34.507042253521128"/>
-        </scene>
-        <!--ShoppingBag-->
-        <scene sceneID="IXG-mI-QfJ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ShoppingBag" id="Xnz-9O-O7d" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="kMM-wS-BlN"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BCJ-uC-Q11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1751" y="-471"/>
         </scene>
         <!--Brand Screen View Controller-->
         <scene sceneID="Pga-jx-7cR">
@@ -221,15 +205,30 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pd3-rP-wYp">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="thc-AP-0Fo">
+                            <imageReference key="image" image="chevron.left" catalog="system" renderingMode="hierarchical-single">
+                                <hierarchicalColors>
+                                    <color systemColor="labelColor"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="tertiaryLabelColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
+                            <connections>
+                                <action selector="back:" destination="4Re-oB-Tyy" id="ueW-kQ-Ecr"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="rPE-wK-mkc">
-                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
                                         <color systemColor="tertiaryLabelColor"/>
                                     </hierarchicalColors>
                                 </imageReference>
+                                <connections>
+                                    <action selector="gotoSettings:" destination="4Re-oB-Tyy" id="Y2V-t4-axW"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" id="LWb-23-g2t">
                                 <imageReference key="image" image="cart" catalog="system" renderingMode="hierarchical">
@@ -239,6 +238,9 @@
                                         <color systemColor="tertiaryLabelColor"/>
                                     </hierarchicalColors>
                                 </imageReference>
+                                <connections>
+                                    <action selector="gotoCart:" destination="4Re-oB-Tyy" id="tb0-yL-VIq"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -272,20 +274,21 @@
     </scenes>
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
