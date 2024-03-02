@@ -206,7 +206,7 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == adsCollectionView{
-            return CGSize(width: (adsCollectionView.frame.width) - 30 , height: 180)
+            return CGSize(width: (adsCollectionView.frame.width) - 20 , height: 170)
         }
         else {
             return CGSize(width: brandsCollectionView.frame.width * 0.44 , height: brandsCollectionView.frame.height * 0.5)
@@ -225,6 +225,7 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
             CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You copied the discount code")
             showAnimation()
+            viewModel.savePriceRule(priceRule: self.priceRules)
         }
     }
     

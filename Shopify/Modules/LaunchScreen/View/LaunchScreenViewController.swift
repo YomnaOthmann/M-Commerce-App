@@ -43,7 +43,7 @@ class LaunchScreenViewController: UIViewController {
     }
     
     func showAnimation(){
-        let animationView : LottieAnimationView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
+        let animationView : LottieAnimationView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         
         animationView.center = self.view.center
         

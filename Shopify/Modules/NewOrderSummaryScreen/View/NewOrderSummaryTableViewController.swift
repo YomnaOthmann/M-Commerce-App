@@ -7,6 +7,7 @@
 
 import UIKit
 import PassKit
+import Lottie
 
 class NewOrderSummaryTableViewController: UITableViewController {
     @IBOutlet weak var paymentMethodButton: UIButton!
@@ -21,23 +22,21 @@ class NewOrderSummaryTableViewController: UITableViewController {
     
     @IBOutlet weak var orderItemsCollectionView: UICollectionView!
     var order : Order?
-    var paymentMethod : PaymentMethodSelector?
+    var paymentMethod : PaymentMethodSelector? = .applePay
     let viewModel = NewOrderSummaryViewModel(network: NetworkManager())
-        private var paymentRequest:PKPaymentRequest = {
-    
-           let request = PKPaymentRequest()
-           request.merchantIdentifier = "merchant.com.faisaltag.pay"
-           request.supportedNetworks = [.visa,.masterCard]
-           request.supportedCountries = ["US","EG"]
-           request.merchantCapabilities = .threeDSecure
-    
-           request.countryCode = "EG"
-           request.currencyCode = "EGP"
-    
-           request.paymentSummaryItems = [PKPaymentSummaryItem(label: "MacBook Pro M2", amount: 60000)]
-    
-           return request
-       }()
+    private var paymentRequest:PKPaymentRequest = {
+
+       let request = PKPaymentRequest()
+       request.merchantIdentifier = "merchant.com.faisaltag.pay"
+       request.supportedNetworks = [.visa,.masterCard]
+       request.supportedCountries = ["US","EG"]
+       request.merchantCapabilities = .threeDSecure
+
+       request.countryCode = "EG"
+       request.currencyCode = "EGP"
+
+       return request
+   }()
     
     
     override func viewDidLoad() {
@@ -82,11 +81,26 @@ class NewOrderSummaryTableViewController: UITableViewController {
             return
         }
         if paymentMethod == .cash{
-            viewModel.postOrder(order: order)
+            viewModel.postOrder(order: order){ statusCode in
+                guard let statusCode = statusCode else{
+                    CustomAlert.showAlertView(view: self, title: "Failure", message: "Couldn't place the order")
+                    return
+                }
+                self.showAnimation()
+
+            }
         }
         else if paymentMethod == .applePay{
+            paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "MacBook Pro M2", amount: NSDecimalNumber(string: order?.currentTotalPrice ?? "0.0"))]
             payUsingApplePay()
-            viewModel.postOrder(order: order)
+            viewModel.postOrder(order: order) { statusCode in
+                guard let statusCode = statusCode else{
+                    CustomAlert.showAlertView(view: self, title: "Failure", message: "Couldn't place the order")
+                    return
+                }
+                self.showAnimation()
+                
+            }
         }
     }
     
@@ -98,6 +112,40 @@ class NewOrderSummaryTableViewController: UITableViewController {
         present(pkController, animated: true) {
             print("completed")
         }    }
+    
+    func showAnimation(){
+        
+        let animationView : LottieAnimationView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .playOnce
+        animationView.center = self.view.center
+        
+        self.view.addSubview(animationView)
+        guard let path = Bundle.main.path(forResource: "done", ofType: "json")else{
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        LottieAnimation.loadedFrom(url: url) { animation in
+            
+            animationView.animation = animation
+            animationView.contentMode = .scaleAspectFit
+            
+            animationView.loopMode = .playOnce
+            
+            animationView.animationSpeed = 1.0
+            
+            animationView.play()
+    
+        }
+ 
+        DispatchQueue.main.asyncAfter(deadline: .now()+5){
+            animationView.stop()
+            animationView.removeFromSuperview()
+//            let homeVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
+//            self.navigationController?.pushViewController(homeVC, animated: true)
+
+        }
+    }
     
 }
 

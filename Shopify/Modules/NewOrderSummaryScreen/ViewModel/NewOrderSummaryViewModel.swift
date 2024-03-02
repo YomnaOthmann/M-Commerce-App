@@ -16,7 +16,7 @@ class NewOrderSummaryViewModel {
         self.network = network
     }
     
-    func postOrder(order:Order?){
+    func postOrder(order:Order?, completionHandler: @escaping (Int?)->()){
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.orders.rawValue + APIHandler.APICompletions.json.rawValue
         //TODO: - recieve real order from checkout
         
@@ -33,11 +33,11 @@ class NewOrderSummaryViewModel {
         network?.post(url: url, parameters: newOrder, completionHandler: { statusCode in
             switch statusCode{
             case 201:
-                // TODO: show confirmation
+                completionHandler(statusCode)
                 break
                 
             default:
-                //TODO: show warning
+                completionHandler(nil)
                 break
             }
         })
