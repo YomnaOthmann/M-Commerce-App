@@ -43,5 +43,16 @@ final class HomeScreenViewModelTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
     }
+    
+    func testFetchingDiscountCodes(){
+        let expectation = expectation(description: "test fetching discount codes")
+        homeScreenViewModel.fetchDiscountCodes(priceRuleId: 1376067420402)
+        homeScreenViewModel.bindResult = {
+            expectation.fulfill()
+            XCTAssertNotNil(self.homeScreenViewModel.discountCodes, "discountCodes equal nil")
+        }
+
+        waitForExpectations(timeout: 5)
+    }
 
 }

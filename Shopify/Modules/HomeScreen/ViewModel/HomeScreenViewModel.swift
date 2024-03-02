@@ -38,6 +38,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
     weak var delegate : HomeScreenViewModelDelegate?
     var network : NetworkManagerProtocol
     let reachability = NetworkReachability.networkReachability
+    let defaults = UserDefaults.standard
     init(network: NetworkManagerProtocol) {
         self.network = network
     }
@@ -74,6 +75,21 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             }
             self?.discountCodes = discountCodes
         }
+    }
+    
+    func savePriceRule(priceRule:PriceRules?){
+        guard let priceRule = priceRule else{
+            return
+        }
+        do{
+            let priceRuleData = try JSONEncoder().encode(priceRule)
+            defaults.set(priceRuleData, forKey: "priceRuleKey")
+
+        }
+        catch let error{
+            print(error.localizedDescription)
+        }
+        
     }
     
     func checkReachability()->Bool{
