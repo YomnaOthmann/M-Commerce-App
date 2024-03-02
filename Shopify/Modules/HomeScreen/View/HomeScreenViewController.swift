@@ -96,13 +96,13 @@ class HomeScreenViewController: UIViewController {
         adsIndicator.hidesWhenStopped = true
         adsIndicator.center = adsCollectionView.center
         adsIndicator.startAnimating()
-        adsCollectionView.addSubview(adsIndicator)
+        view.addSubview(adsIndicator)
         
         brandsIndicator.color = .gray
         brandsIndicator.hidesWhenStopped = true
         brandsIndicator.center = brandsCollectionView.center
         brandsIndicator.startAnimating()
-        brandsCollectionView.addSubview(brandsIndicator)
+        view.addSubview(brandsIndicator)
     }
     
     @IBAction func gotoCart(_ sender: Any) {

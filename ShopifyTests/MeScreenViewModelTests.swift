@@ -36,6 +36,9 @@ final class MeScreenViewModelTests: XCTestCase {
     func testCheckReachability(){
         XCTAssertTrue( meViewModel.checkReachability())
     }
+    func testIsLoggedIn(){
+        
+    }
     
     
 }

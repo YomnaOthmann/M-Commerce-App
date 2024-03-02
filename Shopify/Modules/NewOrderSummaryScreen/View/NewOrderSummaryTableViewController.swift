@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PassKit
 
 class NewOrderSummaryTableViewController: UITableViewController {
     @IBOutlet weak var paymentMethodButton: UIButton!
@@ -20,11 +21,31 @@ class NewOrderSummaryTableViewController: UITableViewController {
     
     @IBOutlet weak var orderItemsCollectionView: UICollectionView!
     var order : Order?
+    var paymentMethod : PaymentMethodSelector?
+    let viewModel = NewOrderSummaryViewModel(network: NetworkManager())
+        private var paymentRequest:PKPaymentRequest = {
+    
+           let request = PKPaymentRequest()
+           request.merchantIdentifier = "merchant.com.faisaltag.pay"
+           request.supportedNetworks = [.visa,.masterCard]
+           request.supportedCountries = ["US","EG"]
+           request.merchantCapabilities = .threeDSecure
+    
+           request.countryCode = "EG"
+           request.currencyCode = "EGP"
+    
+           request.paymentSummaryItems = [PKPaymentSummaryItem(label: "MacBook Pro M2", amount: 60000)]
+    
+           return request
+       }()
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         setUpPaymentButton()
         setUpCollectionView()
+        
     }
     fileprivate func setUpPaymentButton() {
         paymentMethodButton.clipsToBounds = true
@@ -51,25 +72,42 @@ class NewOrderSummaryTableViewController: UITableViewController {
         self.dismiss(animated: true)
     }
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         0
     }
-
+    
     @IBAction func placeOrder(_ sender: Any) {
-        
+        guard let paymentMethod = paymentMethod else{
+            return
+        }
+        if paymentMethod == .cash{
+            viewModel.postOrder(order: order)
+        }
+        else if paymentMethod == .applePay{
+            payUsingApplePay()
+            viewModel.postOrder(order: order)
+        }
     }
     
     func payUsingApplePay(){
+        guard let pkController = PKPaymentAuthorizationViewController(paymentRequest: self.paymentRequest) else{return}
         
-    }
+        pkController.delegate = self
+        
+        present(pkController, animated: true) {
+            print("completed")
+        }    }
     
 }
 
 extension NewOrderSummaryTableViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        order?.lineItems.count ?? 0
+        if order?.lineItems.count == 0{
+            orderItemsCollectionView.setEmptyMessage("No Items!!")
+        }
+        return order?.lineItems.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -85,4 +123,17 @@ extension NewOrderSummaryTableViewController : UICollectionViewDelegate, UIColle
         
     }
     
+}
+
+extension NewOrderSummaryTableViewController : PKPaymentAuthorizationViewControllerDelegate {
+
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+
+        completion(PKPaymentAuthorizationResult(status:.success, errors: nil))
+    }
 }

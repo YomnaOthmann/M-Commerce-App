@@ -75,8 +75,15 @@ class CheckoutViewController: UIViewController {
         let frame = CGRect(x:0, y: 0, width: viewWidth, height: 50)
         
         let continueButton = CheckoutCustomButton(frame: frame).setTitleForButton(title: "Continue")
+        continueButton.addTarget(self, action: #selector(navigateToOrderSummary), for: .touchUpInside)
         
         continueButtonView.addSubview(continueButton)
+    }
+    
+    @objc func navigateToOrderSummary(){
+        let orderSummaryVC = UIStoryboard(name: "PlacingOrder", bundle: nil).instantiateViewController(withIdentifier: "placeOrder")
+        
+        self.present(orderSummaryVC, animated: true)
     }
     
     func setupAddressView(){

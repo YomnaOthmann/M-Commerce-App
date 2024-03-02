@@ -16,7 +16,7 @@ class NewOrderSummaryViewModel {
         self.network = network
     }
     
-    func postOrder(order:Order){
+    func postOrder(order:Order?){
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.orders.rawValue + APIHandler.APICompletions.json.rawValue
         //TODO: - recieve real order from checkout
         
