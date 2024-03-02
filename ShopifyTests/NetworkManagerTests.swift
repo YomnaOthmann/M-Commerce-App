@@ -58,7 +58,7 @@ final class NetworkManagerTests: XCTestCase {
         network = NetworkManager()
         let expectation = expectation(description: "test fetching products to fail")
         
-        let url = "https://e68611fa195924ce2d11aa1909193f1b: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@q2-23-24-ios-sv-team1.myshopify.com/admin/api/2024-01/products.json"
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.products.rawValue + APIHandler.APICompletions.json.rawValue
 
         network?.fetch(url: url, type: SmartCollections.self, completionHandler: { result in
                 expectation.fulfill()
