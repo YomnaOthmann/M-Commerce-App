@@ -10,6 +10,7 @@ import Lottie
 
 class LaunchScreenViewController: UIViewController {
 
+    let defaults = UserDefaults.standard
     @IBOutlet weak var launchScreenImage: UIImageView!
     
     override func viewDidLoad() {
@@ -19,27 +20,15 @@ class LaunchScreenViewController: UIViewController {
         })
     }
     private func animation(){
-        UIView.animate(withDuration: 1.0, animations: {
-            let size = self.view.frame.size.width * 3
-            let diffX = size - self.view.frame.size.width
-            let diffY = self.view.frame.size.height - size
-            
-            self.launchScreenImage.frame = CGRect(x: -(diffX/2), y: diffY/2, width: size, height: size)
-
-        })
-        
-        UIView.animate(withDuration: 1.5, animations: {
             self.launchScreenImage.alpha = 0
-        },completion: { done in
-            if done {
                 self.showAnimation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
-                    self.performSegue(withIdentifier: "home", sender: self)
-
+                    if self.defaults.bool(forKey: "isLogged"){
+                        self.performSegue(withIdentifier: "home", sender: self)
+                    }else{
+                        self.performSegue(withIdentifier: "login", sender: self)
+                    }
                 })
-            }
-            
-        })
     }
     
     func showAnimation(){

@@ -10,7 +10,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="kza-bU-poK">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="S7V-dB-Vmf" customClass="TabBarViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="S7V-dB-Vmf" customClass="TabBarViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vmq-XT-lcg">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

@@ -19,6 +19,7 @@ class HomeScreenViewController: UIViewController {
 
     
     @IBOutlet weak var homeSearchBar: UISearchBar!
+    let defaults = UserDefaults.standard
     
     
     var searchWords : String = ""
@@ -115,16 +116,23 @@ class HomeScreenViewController: UIViewController {
     }
     
     @IBAction func gotoCart(_ sender: Any) {
-        let cartVC = UIStoryboard(name: "ShoppingBag", bundle: nil).instantiateViewController(withIdentifier: "cart")
-        cartVC.modalPresentationStyle = .fullScreen
-        self.present(cartVC, animated: true)
-        
+        if defaults.bool(forKey: "isLogged"){
+            let cartVC = UIStoryboard(name: "ShoppingBag", bundle: nil).instantiateViewController(withIdentifier: "cart")
+            cartVC.modalPresentationStyle = .fullScreen
+            self.present(cartVC, animated: true)
+        }else{
+            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the cart")
+        }
     }
     
     @IBAction func gotoSettings(_ sender: Any) {
-        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
-        settingsVC.modalPresentationStyle = .fullScreen
-        self.present(settingsVC, animated: true)
+        if defaults.bool(forKey: "isLogged"){
+            let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+            settingsVC.modalPresentationStyle = .fullScreen
+            self.present(settingsVC, animated: true)
+        }else{
+            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the Settings")
+        }
     }
 }
 
