@@ -57,6 +57,9 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func seeAllAddresses(_ sender: Any) {
         

@@ -19,16 +19,4 @@ class NotLoggedMeScreenViewController: UIViewController {
         
     }
     
-    @IBAction func goToCart(_ sender: Any) {
-        
-    }
-    
-    @IBAction func goToWishlist(_ sender: Any) {
-        
-    }
-    
-    @IBAction func back(_ sender: Any) {
-        
-    }
-
 }

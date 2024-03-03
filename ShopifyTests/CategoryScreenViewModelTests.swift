@@ -45,7 +45,7 @@ final class CategoryScreenViewModelTests: XCTestCase {
                 return
             }
             allProducts = products.products
-            let filtered = self.viewModel.filterProducts(products: allProducts, filter: .shoes)
+            let filtered = self.viewModel.filterProducts(products: allProducts, mainCategory: "men", subCategory: .shoes)
             var flag = true
             for item in filtered{
                 if item.productType == .shoes{

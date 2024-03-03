@@ -112,11 +112,35 @@ class CheckoutViewController: UIViewController {
         
         let frame = CGRect(x:0, y: 0, width: viewWidth, height: 50)
         let continueButton = CheckoutCustomButton(frame: frame).setTitleForButton(title: "Continue")
+
+        continueButton.addTarget(self, action: #selector(navigateToOrderSummary), for: .touchUpInside)
         continueButtonView.addSubview(continueButton)
         
     }
     
+
     func setupAddDefaultAddressButton(){
+      
+        let frame = CGRect(x:0, y: 0, width: viewWidth, height: 50)
+        let addDefaultAddressButton = CheckoutCustomButton(frame: frame).setTitleForButton(title: "Add Default Address")
+        
+        addressBackground.isHidden = true
+        addressParentView.addSubview(addDefaultAddressButton)
+
+        addDefaultAddressButton.center = CGPointMake(addressParentView.frame.size.width  / 2,
+                                                     addressParentView.frame.size.height / 2);
+
+        addDefaultAddressButton.addTarget(self, action: #selector(navigateToAddDefaultAddress), for: .touchUpInside)
+
+    }
+  
+    @objc func navigateToOrderSummary(){
+        let orderSummaryVC = UIStoryboard(name: "PlacingOrder", bundle: nil).instantiateViewController(withIdentifier: "placeOrder")
+        
+        self.present(orderSummaryVC, animated: true)
+    }
+    
+    func setupAddressView(){
         
         let frame = CGRect(x:0, y: 0, width: viewWidth, height: 50)
         let addDefaultAddressButton = CheckoutCustomButton(frame: frame).setTitleForButton(title: "Add Default Address")

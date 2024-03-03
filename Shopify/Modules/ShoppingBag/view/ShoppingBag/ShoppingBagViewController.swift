@@ -87,6 +87,9 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
         
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @objc func navigateToCheckout(){
         
         if shoppingBagViewModel?.getLineItmesCount() == 0 {

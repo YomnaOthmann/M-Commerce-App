@@ -13,15 +13,16 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var brandHeaderLabel: UILabel!
     @IBOutlet weak var adsCollectionView: UICollectionView!
-    @IBOutlet weak var adsIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var brandHeader: UILabel!
     @IBOutlet weak var brandsCollectionView: UICollectionView!
-    @IBOutlet weak var brandsIndicator: UIActivityIndicatorView!
+
     
     @IBOutlet weak var homeSearchBar: UISearchBar!
     
     private var viewModel = HomeScreenViewModel(network: NetworkManager())
-    
+    let adsIndicator = UIActivityIndicatorView(style: .medium)
+    let brandsIndicator = UIActivityIndicatorView(style: .medium)
     private var priceRules : PriceRules?
     private var discounts : DiscountCodes?
     private var smartCollections : SmartCollections?
@@ -86,24 +87,36 @@ class HomeScreenViewController: UIViewController {
         
         brandsCollectionView.setCollectionViewLayout(brandsLayout, animated: true)
         brandsCollectionView.isHidden = true
+        brandHeader.isHidden = true
         brandsCollectionView.register(BrandCollectionViewCell.nib(), forCellWithReuseIdentifier: BrandCollectionViewCell.id)
     }
     
     func setUpIndicators(){
-        adsIndicator.style = .medium
         adsIndicator.color = .gray
         adsIndicator.hidesWhenStopped = true
         adsIndicator.center = adsCollectionView.center
         adsIndicator.startAnimating()
+        view.addSubview(adsIndicator)
         
-        brandsIndicator.style = .medium
         brandsIndicator.color = .gray
         brandsIndicator.hidesWhenStopped = true
         brandsIndicator.center = brandsCollectionView.center
         brandsIndicator.startAnimating()
+        view.addSubview(brandsIndicator)
     }
     
+    @IBAction func gotoCart(_ sender: Any) {
+        let cartVC = UIStoryboard(name: "ShoppingBag", bundle: nil).instantiateViewController(withIdentifier: "cart")
+        cartVC.modalPresentationStyle = .fullScreen
+        self.present(cartVC, animated: true)
+        
+    }
     
+    @IBAction func gotoSettings(_ sender: Any) {
+        let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+        settingsVC.modalPresentationStyle = .fullScreen
+        self.present(settingsVC, animated: true)
+    }
 }
 
 extension HomeScreenViewController : UISearchBarDelegate{
@@ -123,18 +136,26 @@ extension HomeScreenViewController : HomeScreenViewModelDelegate{
     
     func didLoadAds(ads: PriceRules) {
         priceRules = ads
-        adsIndicator.stopAnimating()
-        adsCollectionView.reloadData()
-        adsCollectionView.isHidden = false
-        UIView.animate(withDuration: 0.5) {
-            self.adsCollectionView.alpha = 1
+        print("price \(priceRules?.priceRules?[0].id ?? 0)")
+        viewModel.fetchDiscountCodes(priceRuleId: priceRules?.priceRules?[0].id ?? 0)
+        viewModel.bindResult = {
+            self.adsIndicator.stopAnimating()
+            self.discounts = self.viewModel.discountCodes
+            self.adsCollectionView.isHidden = false
+            self.adsCollectionView.reloadData()
+            UIView.animate(withDuration: 0.5) {
+                self.adsCollectionView.alpha = 1
+            }
         }
+        
+
     }
     func didLoadBrands(brands: SmartCollections) {
         smartCollections = brands
         brandsIndicator.stopAnimating()
         brandsCollectionView.reloadData()
         brandsCollectionView.isHidden = false
+        brandHeader.isHidden = false
         UIView.animate(withDuration: 0.5) {
             self.brandsCollectionView.alpha = 1
         }
@@ -147,7 +168,12 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView{
         case adsCollectionView:
-            return priceRules?.priceRules?.count ?? 0
+            if self.discounts?.discountCodes?.count == 0 {
+                             self.adsCollectionView.setEmptyMessage("No Discount Codes to show :(")
+                         } else {
+                             self.adsCollectionView.restore()
+                         }
+            return discounts?.discountCodes?.count ?? 0
         default:
             return smartCollections?.smartCollections.count ?? 0
         }
@@ -162,8 +188,8 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
                 return AdsCollectionViewCell()
             }
             cell.layer.cornerRadius = 12
-            cell.adTitle.text = priceRules?.priceRules?[indexPath.row].title
-            cell.adDescription.text = "\(priceRules?.priceRules?[indexPath.row].targetSelection?.uppercased() ?? "") Items"
+            cell.clipsToBounds = true
+            cell.adTitle.isHidden = true
             return cell
             
         default:
@@ -180,7 +206,7 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == adsCollectionView{
-            return CGSize(width: (adsCollectionView.frame.width) - 50 , height: 200)
+            return CGSize(width: (adsCollectionView.frame.width) - 20 , height: 170)
         }
         else {
             return CGSize(width: brandsCollectionView.frame.width * 0.44 , height: brandsCollectionView.frame.height * 0.5)
@@ -196,9 +222,10 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             self.navigationController?.pushViewController(brandVC, animated: true)
         }
         if collectionView == adsCollectionView{
-            UIPasteboard.general.string = priceRules?.priceRules?[indexPath.row].title ?? ""
-            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You Got the discount code")
+            UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
+            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You copied the discount code")
             showAnimation()
+            viewModel.savePriceRule(priceRule: self.priceRules)
         }
     }
     
