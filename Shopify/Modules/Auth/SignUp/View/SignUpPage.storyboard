@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Sign Up Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUp" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="SignUpPageViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,16 +36,9 @@ Account</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpY-NG-y5d">
-                                <rect key="frame" x="311" y="49" width="57" height="39"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Skip">
-                                    <color key="baseForegroundColor" name="CustomBlue"/>
-                                </buttonConfiguration>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="👤   UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-aM-D0C">
                                 <rect key="frame" x="38" y="280" width="317" height="55"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="f7A-mt-1Xe"/>
                                 </constraints>
@@ -55,9 +47,9 @@ Account</string>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔒  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0GL-9Q-kXf">
                                 <rect key="frame" x="38" y="375" width="317" height="65"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwE-ve-A5n">
                                 <rect key="frame" x="281" y="390" width="58" height="35"/>
@@ -65,15 +57,18 @@ Account</string>
                                 <buttonConfiguration key="configuration" style="plain" image="eye" catalog="system">
                                     <color key="baseForegroundColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="showHide:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ycn-Ih-GOz"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔒  Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G3e-sY-QQS">
                                 <rect key="frame" x="38" y="480" width="317" height="55"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="ze2-l8-uE5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TL3-Lz-yb1">
                                 <rect key="frame" x="281" y="490" width="58" height="35"/>
@@ -81,6 +76,9 @@ Account</string>
                                 <buttonConfiguration key="configuration" style="plain" image="eye" catalog="system">
                                     <color key="baseForegroundColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="showHideConfirm:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dYV-Xo-J3w"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking on create account button, you agree to the public offer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4H-SN-gK4">
                                 <rect key="frame" x="32" y="551" width="258" height="30"/>
@@ -105,22 +103,30 @@ Account</string>
                                     <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" name="CustomBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="register:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tET-g0-sZp"/>
+                                    <segue destination="Ab0-ps-zWz" kind="show" identifier="home" id="FRN-w1-WIL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- OR Continue With-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MM-MX-iq6">
-                                <rect key="frame" x="121.33333333333334" y="683" width="122.33333333333334" height="15"/>
+                                <rect key="frame" x="121.33333333333334" y="683" width="122.33333333333334" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-mS-j0D">
-                                <rect key="frame" x="209.33333333333334" y="765" width="65.666666666666657" height="39"/>
+                                <rect key="frame" x="209.33333333333334" y="764" width="65.666666666666657" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login">
                                     <color key="baseForegroundColor" name="CustomBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="gotoLogin:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="j56-oB-UE2"/>
+                                    <segue destination="8wN-30-JWh" kind="show" identifier="login" id="j8y-YY-1xp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have An Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-8d-3kC">
-                                <rect key="frame" x="58.666666666666671" y="778" width="150.66666666666663" height="15"/>
+                                <rect key="frame" x="58.666666666666671" y="778" width="150.66666666666663" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,6 +138,19 @@ Account</string>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="google"/>
+                                <connections>
+                                    <action selector="googleRegister:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5O1-2U-J81"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpY-NG-y5d">
+                                <rect key="frame" x="320" y="91" width="57" height="39"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Skip">
+                                    <color key="baseForegroundColor" name="CustomBlue"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="skip:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dYf-LV-rj2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -146,6 +165,7 @@ Account</string>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="ASu-1b-tMG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="j8x-mS-j0D" secondAttribute="trailing" constant="118" id="BUI-q8-lAE"/>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="trailing" secondItem="0GL-9Q-kXf" secondAttribute="trailing" id="Cfb-5r-j8A"/>
+                            <constraint firstItem="SpY-NG-y5d" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="D8Q-PK-I2B"/>
                             <constraint firstItem="TL3-Lz-yb1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="281" id="DE5-Lg-uI0"/>
                             <constraint firstItem="zhX-wk-yRj" firstAttribute="centerX" secondItem="1MM-MX-iq6" secondAttribute="centerX" constant="5" id="EPI-aC-h5L"/>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="trailing" secondItem="oBs-aM-D0C" secondAttribute="trailing" id="FZy-oM-R2c"/>
@@ -158,22 +178,46 @@ Account</string>
                             <constraint firstItem="zhX-wk-yRj" firstAttribute="centerX" secondItem="iYL-2W-94S" secondAttribute="centerX" id="M9c-1J-2w0"/>
                             <constraint firstItem="oBs-aM-D0C" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="280" id="TZf-px-vhZ"/>
                             <constraint firstItem="T4H-SN-gK4" firstAttribute="top" secondItem="G3e-sY-QQS" secondAttribute="bottom" constant="16" id="V8i-ZV-pQ5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SpY-NG-y5d" secondAttribute="trailing" constant="16" id="YvA-zv-y6p"/>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="leading" secondItem="0GL-9Q-kXf" secondAttribute="leading" id="adZ-SR-X8G"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="SpY-NG-y5d" secondAttribute="bottom" constant="730" id="bvk-Js-nrP"/>
                             <constraint firstItem="1MM-MX-iq6" firstAttribute="top" secondItem="iYL-2W-94S" secondAttribute="bottom" constant="15" id="drG-NG-6tx"/>
                             <constraint firstItem="Y9a-GD-2Ui" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="55" id="ePT-HU-fsm"/>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="centerY" secondItem="TL3-Lz-yb1" secondAttribute="centerY" id="fRC-7f-bIj"/>
                             <constraint firstItem="Y9a-GD-2Ui" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="29" id="lZY-7m-TbG"/>
                             <constraint firstItem="HwE-ve-A5n" firstAttribute="centerY" secondItem="0GL-9Q-kXf" secondAttribute="centerY" id="nmL-ay-WdY"/>
                             <constraint firstItem="iYL-2W-94S" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="29" id="r0L-c0-j10"/>
-                            <constraint firstItem="SpY-NG-y5d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="311" id="ra7-jC-GVf"/>
                             <constraint firstItem="G3e-sY-QQS" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="sAw-iL-Ch8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="G3e-sY-QQS" id="HdD-NV-Cnr"/>
+                        <outlet property="passwordTextField" destination="0GL-9Q-kXf" id="Zru-Nc-t7R"/>
+                        <outlet property="userNameTextField" destination="oBs-aM-D0C" id="m6v-87-QVJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="54.198473282442748" y="-34.507042253521128"/>
+        </scene>
+        <!--LoginPage-->
+        <scene sceneID="6a0-B9-gVI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginPage" id="8wN-30-JWh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9oL-AQ-g6g"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NiN-gJ-umH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="-35"/>
+        </scene>
+        <!--TabBar-->
+        <scene sceneID="9wP-Ys-jZQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TabBar" id="Ab0-ps-zWz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fA5-xy-QFT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MvS-oy-FIN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="753" y="-81"/>
         </scene>
     </scenes>
     <resources>

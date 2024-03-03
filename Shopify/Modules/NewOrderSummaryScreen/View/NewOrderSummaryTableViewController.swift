@@ -98,8 +98,6 @@ class NewOrderSummaryTableViewController: UITableViewController {
                     CustomAlert.showAlertView(view: self, title: "Failure", message: "Couldn't place the order")
                     return
                 }
-                self.showAnimation()
-                
             }
         }
     }
@@ -115,7 +113,7 @@ class NewOrderSummaryTableViewController: UITableViewController {
     
     func showAnimation(){
         
-        let animationView : LottieAnimationView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        let animationView : LottieAnimationView = LottieAnimationView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
         animationView.center = self.view.center
@@ -138,9 +136,10 @@ class NewOrderSummaryTableViewController: UITableViewController {
     
         }
  
-        DispatchQueue.main.asyncAfter(deadline: .now()+5){
+        DispatchQueue.main.asyncAfter(deadline: .now()+3.5){
             animationView.stop()
             animationView.removeFromSuperview()
+            self.performSegue(withIdentifier: "home", sender: self)
 //            let homeVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
 //            self.navigationController?.pushViewController(homeVC, animated: true)
 
@@ -178,6 +177,7 @@ extension NewOrderSummaryTableViewController : PKPaymentAuthorizationViewControl
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
 
         controller.dismiss(animated: true, completion: nil)
+        self.showAnimation()
     }
 
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {

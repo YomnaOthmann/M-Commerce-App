@@ -16,6 +16,7 @@
 		044631CA2B8A309D001F9371 /* LoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044631C92B8A309D001F9371 /* LoginPage.storyboard */; };
 		044631CC2B8A4300001F9371 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044631CB2B8A4300001F9371 /* LoginViewController.swift */; };
 		044631CE2B8ABC05001F9371 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044631CD2B8ABC05001F9371 /* LoginViewModel.swift */; };
+		04810AD92B940FD100321195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04810AD82B940FD100321195 /* GoogleService-Info.plist */; };
 		048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */; };
 		048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */; };
 		048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */; };
@@ -25,6 +26,7 @@
 		048DC9CB2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */; };
 		048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */; };
 		048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */; };
+		0492CE012B9436940032111F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492CE002B9436940032111F /* SignUpViewModel.swift */; };
 		0493F8782B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */; };
 		04956AAA2B927C1C005AE66E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */; };
 		04956AAE2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */; };
@@ -146,6 +148,7 @@
 		044631C92B8A309D001F9371 /* LoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPage.storyboard; sourceTree = "<group>"; };
 		044631CB2B8A4300001F9371 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		044631CD2B8ABC05001F9371 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		04810AD82B940FD100321195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLoggedMeScreenViewController.swift; sourceTree = "<group>"; };
 		048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewModel.swift; sourceTree = "<group>"; };
 		048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelTests.swift; sourceTree = "<group>"; };
 		048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeScreen.storyboard; sourceTree = "<group>"; };
 		048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewController.swift; sourceTree = "<group>"; };
+		0492CE002B9436940032111F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreenViewModelTests.swift; sourceTree = "<group>"; };
 		04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -345,13 +349,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		044631C72B8A2911001F9371 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		044631C82B8A2919001F9371 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +515,7 @@
 		04A574092B84D669007BFC98 /* Shopify */ = {
 			isa = PBXGroup;
 			children = (
+				04810AD82B940FD100321195 /* GoogleService-Info.plist */,
 				DEEE04BE2B8DE1C7002D290C /* Shopify.entitlements */,
 				04A2A70D2B85195A00991FCC /* Modules */,
 				04A574422B84D6AE007BFC98 /* Utility */,
@@ -767,7 +765,6 @@
 			isa = PBXGroup;
 			children = (
 				044631C82B8A2919001F9371 /* ViewModel */,
-				044631C72B8A2911001F9371 /* Model */,
 				044631C62B8A290A001F9371 /* View */,
 			);
 			path = Login;
@@ -776,8 +773,7 @@
 		04EB474A2B8CC31A0056EA36 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				04EB474D2B8CC3410056EA36 /* ViewModel */,
-				04EB474C2B8CC3370056EA36 /* Model */,
+				04F8CD5E2B93F85D0003E8D4 /* ViewModel */,
 				04EB474B2B8CC32B0056EA36 /* View */,
 			);
 			path = SignUp;
@@ -790,20 +786,6 @@
 				04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		04EB474C2B8CC3370056EA36 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		04EB474D2B8CC3410056EA36 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04F133BB2B89639700F49963 /* HomeScreen */ = {
@@ -842,6 +824,14 @@
 				048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		04F8CD5E2B93F85D0003E8D4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0492CE002B9436940032111F /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3F097D484F90BBB69AAFF889 /* Frameworks */ = {
@@ -1130,6 +1120,7 @@
 				04956AAF2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib in Resources */,
 				04E385302B8BC9FF00DEADB3 /* congrats.json in Resources */,
 				04E385262B8BB12400DEADB3 /* ProductCollectionViewCell.xib in Resources */,
+				04810AD92B940FD100321195 /* GoogleService-Info.plist in Resources */,
 				04B04F612B85248A004C16D6 /* MontserratRegular.ttf in Resources */,
 				04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */,
 				049FF9E22B8E673400004CAB /* OrdersScreen.storyboard in Resources */,
@@ -1298,6 +1289,7 @@
 				04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */,
 				04B53F832B934C3F00F40A0A /* NewOrderSummaryViewModel.swift in Sources */,
 				049FF9E82B8E683E00004CAB /* OrdersScreenViewModel.swift in Sources */,
+				0492CE012B9436940032111F /* SignUpViewModel.swift in Sources */,
 				04DA8DA12B8C3FCD00295473 /* CategoryScreenViewModel.swift in Sources */,
 				043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */,
 				049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */,
