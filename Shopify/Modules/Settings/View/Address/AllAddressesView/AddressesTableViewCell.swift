@@ -36,6 +36,4 @@ class AddressesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-
 }

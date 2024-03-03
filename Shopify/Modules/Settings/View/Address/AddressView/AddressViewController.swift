@@ -19,6 +19,7 @@ class AddressViewController: UIViewController {
     var addressItemView:CustomAddressItemView!
     var phoneItemView:CustomAddressItemView!
     var postalCodeItemView:CustomAddressItemView!
+    var countryItemView:CustomAddressItemView!
     var saveCustomButton:AddressCustomButton!
 
     private let screenWidth = UIScreen.main.bounds.width
@@ -62,18 +63,20 @@ class AddressViewController: UIViewController {
         postalCodeItemView = CustomAddressItemView(frame: frame)
             .setAddressTextFieldTitle(title: "Postal code")
         
+        countryItemView = CustomAddressItemView(frame: frame)
+            .setAddressTextFieldTitle(title: "Country")
+        
+        
         if isEdit {
             
-            cityItemView            .setAddressTextFieldValue(text:addressViewModel!.getAddressCity())
-
+            cityItemView.setAddressTextFieldValue(text:addressViewModel!.getAddressCity())
             provinceItemView.setAddressTextFieldValue(text: addressViewModel!.getAddressProvince())
-
             addressItemView
                 .setAddressTextFieldValue(text: addressViewModel!.getAddress())
-
-            phoneItemView            .setAddressTextFieldValue(text:addressViewModel!.getAddressPhone())
-
+            phoneItemView.setAddressTextFieldValue(text:addressViewModel!.getAddressPhone())
             postalCodeItemView.setAddressTextFieldValue(text:addressViewModel!.getAddressPostalCode())
+            countryItemView.setAddressTextFieldValue(text: addressViewModel!.getAddressesCountry())
+            
             
         }else{
             
@@ -82,6 +85,8 @@ class AddressViewController: UIViewController {
             addressItemView.setAddressTextFieldPlaceHolder(placeHolder:"ITI 6- October city , Giza")
             phoneItemView.setAddressTextFieldPlaceHolder(placeHolder: "01234567891")
             postalCodeItemView.setAddressTextFieldPlaceHolder(placeHolder: "12345")
+            countryItemView.setAddressTextFieldPlaceHolder(placeHolder: "EGY")
+            
         }
     
         addressStackView.layoutMargins = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: 0)
@@ -94,6 +99,7 @@ class AddressViewController: UIViewController {
         
         saveCustomButton.addTarget(self, action:#selector(saveAddress), for: .touchUpInside)
         
+        addressStackView.addArrangedSubview(countryItemView)
         addressStackView.addArrangedSubview(cityItemView)
         addressStackView.addArrangedSubview(provinceItemView)
         addressStackView.addArrangedSubview(addressItemView)
@@ -111,24 +117,25 @@ class AddressViewController: UIViewController {
         let  address = addressItemView.getAddressTextFieldValue()
         let  phone = phoneItemView.getAddressTextFieldValue()
         let  postalCode = postalCodeItemView.getAddressTextFieldValue()
-        
+        let  country = countryItemView.getAddressTextFieldValue()
+
         if self.validatAddressTextFieldValue(){
             
-            let doneSetValues:AddressViewModel = addressViewModel!.setAddressCity(city: city)
+            let doneSetValues:AddressViewModel = addressViewModel!.setAddressCountry(country: country)
+                   .setAddressCity(city: city)
                    .setAddressProvince(province: province)
                    .setAddress(address: address)
                    .setAddressPhone(phone: phone)
                    .setAddressPostalCode(postalCode:postalCode)
-            
+        
             if isEdit{
                 
-                doneSetValues.edit { message, error in
+                doneSetValues.edit(isEditNotSetDefault:true){ message, error in
                     
                     if error == nil{
                         
                         CustomAlert.showAlertView(view: self, title: "Success", message:message)
                     }else{
-                        
                         CustomAlert.showAlertView(view: self, title: "Failed", message:message)
                     }
                 }
@@ -152,7 +159,13 @@ class AddressViewController: UIViewController {
     
     func validatAddressTextFieldValue()->Bool{
         
-        if cityItemView.getAddressTextFieldValue().isEmpty {
+        
+        if countryItemView.getAddressTextFieldValue().isEmpty{
+            
+            CustomAlert.showAlertView(view: self, title: "validator", message:"country field can't be empty ")
+            return false
+            
+        }else if cityItemView.getAddressTextFieldValue().isEmpty {
          
             CustomAlert.showAlertView(view: self, title: "validator", message:"city field can't be empty ")
             

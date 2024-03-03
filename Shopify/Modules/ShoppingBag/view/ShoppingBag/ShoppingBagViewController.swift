@@ -39,7 +39,42 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
             
             self?.productsTableView.reloadData()
         }
+        
+        shoppingBagViewModel?.quantityExceedLimitObserver = {message in
+            
+            CustomAlert.showAlertView(view: self, title: "Limit Exceeded", message: message)
+            
+        }
+        
+        shoppingBagViewModel?.lowestQuantityDecrementObserver = {message,index in
+            
+            self.deleteProductAtIndexAlert(message: message, index: index)
+            
+        }
+        
         shoppingBagViewModel?.fetchData()
+    }
+    
+    func deleteProductAtIndexAlert(message:String,index:Int){
+        
+        let alertController = UIAlertController(title: "Delete Product", message: message, preferredStyle: .alert)
+
+        // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            
+            self.shoppingBagViewModel?.deleteLineItem(atIndex: index)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+            UIAlertAction in
+            
+        }
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
     }
     
     func addCheckButtonToView(){
@@ -57,15 +92,24 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     @objc func navigateToCheckout(){
         
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
-        
-        let checkoutViewModel = CheckoutViewModel()
-        checkoutViewModel.lineItems = shoppingBagViewModel?.getLineItems() ?? []
-        checkoutViewModel.lineItemsTotalPrice = shoppingBagViewModel?.getLineItemsTotalPrice()
-        
-        viewController.checkoutViewModel = checkoutViewModel
-        
-        self.present(viewController, animated: true, completion: nil)
+        if shoppingBagViewModel?.getLineItmesCount() == 0 {
+            CustomAlert.showAlertView(view: self, title: "To Checkout Status", message: "Can't Continue to Checkout the Shopping Bag is empty")
+        }else{
+            
+            let viewController = self.storyboard?.instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+            
+            let checkoutViewModel = CheckoutViewModel()
+            let addressViewModel = AddressViewModel()
+            
+            checkoutViewModel.lineItems = shoppingBagViewModel?.getLineItems() ?? []
+            checkoutViewModel.lineItemsTotalPrice = shoppingBagViewModel?.getLineItemsTotalPrice()
+            
+            viewController.checkoutViewModel = checkoutViewModel
+            viewController.addressViewModel = addressViewModel
+            
+            self.present(viewController, animated: true, completion: nil)
+
+        }
 
     }
     
@@ -94,10 +138,16 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
         cell.productAmount.text = shoppingBagViewModel?.getLineItemQuantity(atIndex: indexPath.row)
     
         cell.inStockQuantity.text = shoppingBagViewModel?.getLineItemInStockQuantity(atIndex: indexPath.row)
-        
-        cell.deliverDate.text = shoppingBagViewModel?.getLineItemDeliverBy(atIndex: indexPath.row)
-        
+                
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            self.deleteProductAtIndexAlert(message: "do you want to delete this product", index: indexPath.row)
+        }
     }
     
     @objc func inCreaseQuantity(sender:CustomCellButton){
@@ -115,5 +165,7 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
         print(sender.getIndex())
         shoppingBagViewModel?.decreaseLineItemQuantity(atIndex: sender.getIndex())
     }
+    
+    
     
 }

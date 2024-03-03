@@ -18,6 +18,6 @@ class CustomCellButton : UIButton {
     }
     
     func getIndex()->Int{
-        return cellIndex ?? 0
+        return self.cellIndex ?? 0
     }
 }

@@ -13,21 +13,22 @@ class CheckoutViewModel {
     var lineItems:[LineItem]?
     var deliveryFee:String = "free"
     var discountValue:Int=0
+    
     func getlineItemsTotalPrice()->String{
         
         return self.lineItemsTotalPrice ?? "0"
     }
     
-    func getLineDeliveryFee()->String{
+    func getDiscount()->String{
         
         if(deliveryFee == "free"){
             return "free"
         }
-        
         return "10"
     }
     
     func checkCouponCode(couponCode:String,completion:(_ valid:Bool)->Void){
+        
         
     }
     
