@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import FirebaseAuth
+class LoginViewModel{
+    func loginUsingFirebase(email:String, password:String){
+         
+       
+    }
+}

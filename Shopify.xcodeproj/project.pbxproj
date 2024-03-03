@@ -87,6 +87,7 @@
 		04F6616A2B8D81CA00F26224 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04F661692B8D81CA00F26224 /* FirebaseAnalytics */; };
 		04F6616C2B8D81CA00F26224 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */; };
 		04F6616E2B8D81CA00F26224 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6616D2B8D81CA00F26224 /* FirebaseAuth */; };
+		04F8CD5B2B93D89A0003E8D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F8CD5A2B93D89A0003E8D4 /* GoogleService-Info.plist */; };
 		4E7EFC779A263136C40B3548 /* Pods_ShopifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0FA4B994C7C0EA923F6CF3 /* Pods_ShopifyTests.framework */; };
 		754B9BF1A72B10895F3FFDE1 /* Pods_Shopify_ShopifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550154E7C3054FB1DFD428 /* Pods_Shopify_ShopifyUITests.framework */; };
 		DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5F6EA694ECBFA2B240E273 /* Pods_Shopify.framework */; };
@@ -216,6 +217,7 @@
 		04F133C02B8963E300F49963 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		04F133C92B89643000F49963 /* AdsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsCollectionViewCell.xib; sourceTree = "<group>"; };
 		04F133CC2B89698700F49963 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		04F8CD5A2B93D89A0003E8D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		17550154E7C3054FB1DFD428 /* Pods_Shopify_ShopifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ShopifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA4EEF87A19F18450ECD80F /* Pods-Shopify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify.debug.xcconfig"; path = "Target Support Files/Pods-Shopify/Pods-Shopify.debug.xcconfig"; sourceTree = "<group>"; };
 		4325952B90A5AD074F89678C /* Pods-ShopifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopifyTests.release.xcconfig"; path = "Target Support Files/Pods-ShopifyTests/Pods-ShopifyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 		04A574092B84D669007BFC98 /* Shopify */ = {
 			isa = PBXGroup;
 			children = (
+				04F8CD5A2B93D89A0003E8D4 /* GoogleService-Info.plist */,
 				DEEE04BE2B8DE1C7002D290C /* Shopify.entitlements */,
 				04A2A70D2B85195A00991FCC /* Modules */,
 				04A574422B84D6AE007BFC98 /* Utility */,
@@ -767,7 +770,7 @@
 		04EB474A2B8CC31A0056EA36 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				04EB474D2B8CC3410056EA36 /* ViewModel */,
+				04F8CD5E2B93F85D0003E8D4 /* ViewModel */,
 				04EB474C2B8CC3370056EA36 /* Model */,
 				04EB474B2B8CC32B0056EA36 /* View */,
 			);
@@ -788,13 +791,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		04EB474D2B8CC3410056EA36 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04F133BB2B89639700F49963 /* HomeScreen */ = {
@@ -833,6 +829,13 @@
 				048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		04F8CD5E2B93F85D0003E8D4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3F097D484F90BBB69AAFF889 /* Frameworks */ = {
@@ -1121,6 +1124,7 @@
 				04956AAF2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib in Resources */,
 				04E385302B8BC9FF00DEADB3 /* congrats.json in Resources */,
 				04E385262B8BB12400DEADB3 /* ProductCollectionViewCell.xib in Resources */,
+				04F8CD5B2B93D89A0003E8D4 /* GoogleService-Info.plist in Resources */,
 				04B04F612B85248A004C16D6 /* MontserratRegular.ttf in Resources */,
 				04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */,
 				049FF9E22B8E673400004CAB /* OrdersScreen.storyboard in Resources */,
