@@ -74,7 +74,13 @@ class CheckoutViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        print("addressViewModel?.isDefaultAddressCashed()")
+        
+        print(addressViewModel?.isDefaultAddressCashed())
+        
+        
         if addressViewModel?.isDefaultAddressCashed() ?? false {
+            
             
             addressSelected = true
             addressViewModel?.setDeafultAddress()
@@ -140,19 +146,6 @@ class CheckoutViewController: UIViewController {
         self.present(orderSummaryVC, animated: true)
     }
     
-    func setupAddressView(){
-        
-        let frame = CGRect(x:0, y: 0, width: viewWidth, height: 50)
-        let addDefaultAddressButton = CheckoutCustomButton(frame: frame).setTitleForButton(title: "Add Default Address")
-        
-        addressBackground.isHidden = true
-        addressParentView.addSubview(addDefaultAddressButton)
-
-        addDefaultAddressButton.center = CGPointMake(addressParentView.frame.size.width  / 2,
-                                                     addressParentView.frame.size.height / 2);
-
-        addDefaultAddressButton.addTarget(self, action: #selector(navigateToAddDefaultAddress), for: .touchUpInside)
-    }
     
     @objc func navigateToAddDefaultAddress(){
         
@@ -248,30 +241,30 @@ class CheckoutViewController: UIViewController {
     }
     
     
-    @IBAction func addCoupon(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Coupon Code", message: "Please enter coupon code", preferredStyle: .alert)
-
-        alert.addTextField(configurationHandler: { (textField) -> Void in
-            textField.placeholder = "ex: NEWRIDER50"
-        })
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (action) -> Void in
-            let textField = (alert?.textFields![0] ?? UITextField()) as UITextField
-            
-            
-            if textField.text == nil || textField.text == "" {
-                
-                CustomAlert.showAlertView(view: self, title: "validator", message: "please enter your code , field can't be empty")
-                
-            }else{
-                self.couponCode = textField.text
-            }
-            
-            print(self.couponCode ?? "nil")
-        }))
-         self.present(alert, animated: true)
-    }
+//    @IBAction func addCoupon(_ sender: Any) {
+//        
+//        let alert = UIAlertController(title: "Coupon Code", message: "Please enter coupon code", preferredStyle: .alert)
+//
+//        alert.addTextField(configurationHandler: { (textField) -> Void in
+//            textField.placeholder = "ex: NEWRIDER50"
+//        })
+//
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (action) -> Void in
+//            let textField = (alert?.textFields![0] ?? UITextField()) as UITextField
+//            
+//            
+//            if textField.text == nil || textField.text == "" {
+//                
+//                CustomAlert.showAlertView(view: self, title: "validator", message: "please enter your code , field can't be empty")
+//                
+//            }else{
+//                self.couponCode = textField.text
+//            }
+//            
+//            print(self.couponCode ?? "nil")
+//        }))
+//         self.present(alert, animated: true)
+//    }
     
 }
 

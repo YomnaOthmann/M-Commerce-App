@@ -126,6 +126,22 @@ class ShoppingBagViewModel {
         return String(totalPrice) + " " + getCurrency()
     }
     
+    func getLineItemsTotalPriceWithoutCurrency()->String {
+        
+        var totalPrice:Float = 0.0
+        
+        for item in lineItems{
+            
+            let price = Float(item.price) ?? 0
+            let quantity = Float(item.quantity)
+            
+            totalPrice = totalPrice + (price  * quantity)
+        }
+        
+        return String(totalPrice)
+    }
+    
+    
     func deleteLineItem(atIndex index:Int){
         lineItems.remove(at: index)
         dataObserver()
