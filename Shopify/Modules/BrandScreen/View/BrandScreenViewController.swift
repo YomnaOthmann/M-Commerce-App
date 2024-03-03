@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class BrandScreenViewController: UIViewController {
+class BrandScreenViewController: UIViewController , UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var brandProductsCollectionView: UICollectionView!
@@ -17,6 +17,11 @@ class BrandScreenViewController: UIViewController {
     var allProducts : [Product]?
     let viewModel = BrandScreenViewModel(network: NetworkManager())
     
+    var searchWords : String = ""
+    var searching : Bool = false
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigationItem.setHidesBackButton(true, animated: true)
@@ -24,6 +29,7 @@ class BrandScreenViewController: UIViewController {
         setUpCollectionView()
         brandProductsCollectionView.reloadData()
         setUpSearchBar()
+        searchBar.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         if viewModel.checkReachability(){
@@ -89,7 +95,7 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
         cell.productPrice.text = (allProducts?[indexPath.row].variants[0].price ?? "" ) + " EGP"
         return cell
     }
-        
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -100,4 +106,45 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: Navigate to product details
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWords = searchBar.text ?? ""
+        searchingResult()
+    }
+    
+    func searchingResult() {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+
+            var filteredCollections: [Product]
+
+            if self.searching {
+                if self.searchWords.isEmpty {
+                    filteredCollections = self.viewModel.brandProducts ?? []
+                } else {
+                    filteredCollections = self.viewModel.brandProducts?.filter {
+                        $0.title.lowercased().contains(self.searchWords.lowercased())
+                    } ?? []
+                }
+            } else {
+                
+                self.viewModel.fetchProducts(brandName: self.brand)
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.allProducts = filteredCollections
+                self.brandProductsCollectionView.reloadData()
+            }
+        }
+    }
+
 }

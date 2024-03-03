@@ -8,7 +8,7 @@
 import Foundation
 
 struct SmartCollections : Codable{
-    let smartCollections : [SmartCollection]
+    var smartCollections : [SmartCollection]
     enum CodingKeys : String, CodingKey{
         case smartCollections = "smart_collections"
     }
