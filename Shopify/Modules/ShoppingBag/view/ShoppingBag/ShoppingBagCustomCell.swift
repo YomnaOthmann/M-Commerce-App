@@ -20,9 +20,7 @@ class ShoppingBagCustomCell: UITableViewCell {
     @IBOutlet weak var productAmount: UILabel!
     
     @IBOutlet weak var inStockQuantity: UILabel!
-    
-    @IBOutlet weak var deliverDate: UILabel!
-    
+        
     @IBOutlet weak var increaseButton: CustomCellButton!
     
     @IBOutlet weak var decreaseButton: CustomCellButton!

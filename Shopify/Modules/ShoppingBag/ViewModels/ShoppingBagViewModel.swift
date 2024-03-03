@@ -12,6 +12,11 @@ class ShoppingBagViewModel {
     
     var dataObserver:()->Void = {}
     
+    var quantityExceedLimitObserver:(_ message:String)->Void = {message in }
+    var lowestQuantityDecrementObserver:(_ message:String,_ index:Int)->Void = {message,index in }
+    
+    
+    
     private var lineItems:[LineItem] = []{
         
         didSet{
@@ -46,7 +51,11 @@ class ShoppingBagViewModel {
         
         let totalPrice = (Float(lineItems[index].price) ?? 0) * Float(lineItems[index].quantity)
         
-        return String(totalPrice)
+        return String(totalPrice) + " " + getCurrency()
+    }
+    
+    func getCurrency()->String{
+        return "EGP"
     }
     
     func getLineItemQuantity(atIndex index:Int)->String{
@@ -69,11 +78,16 @@ class ShoppingBagViewModel {
         var quantity = lineItems[index].quantity
         guard let currentQuantity = lineItems[index].currentQuantity else { return }
         
-        guard quantity < currentQuantity else{return}
+        guard quantity < currentQuantity/2 else{
+            
+            quantityExceedLimitObserver("you exceeded the buy limit of a single product")
+            
+            return
+        }
         
         quantity += 1
         lineItems[index].quantity = quantity
-        
+            
         dataObserver()
     }
     
@@ -81,10 +95,18 @@ class ShoppingBagViewModel {
         
         var quantity = lineItems[index].quantity
         
-        guard quantity > 0 else{return}
+        guard let currentQuantity = lineItems[index].currentQuantity else { return }
+
+        
+        guard quantity > 1 else{
+        
+            lowestQuantityDecrementObserver("do you want to delete this product",index)
+            
+            return }
         
         quantity -= 1
         lineItems[index].quantity = quantity
+        
 
         dataObserver()
     }
@@ -101,7 +123,12 @@ class ShoppingBagViewModel {
             totalPrice = totalPrice + (price  * quantity)
         }
         
-        return String(totalPrice)
+        return String(totalPrice) + " " + getCurrency()
+    }
+    
+    func deleteLineItem(atIndex index:Int){
+        lineItems.remove(at: index)
+        dataObserver()
     }
     
 }
