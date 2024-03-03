@@ -13,6 +13,7 @@ class SignUpPageViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
     let indicator = UIActivityIndicatorView(style: .medium)
+    let viewModel = SignUpViewModel(network: NetworkManager())
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class SignUpPageViewController: UIViewController {
     }
     
     @IBAction func skip(_ sender: Any) {
+        defaults.set(false, forKey: "isLogged")
         let tabBar = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
         tabBar.modalPresentationStyle = .fullScreen
         self.present(tabBar, animated: true)
@@ -93,30 +95,20 @@ class SignUpPageViewController: UIViewController {
             indicator.stopAnimating()
             return
         }
-        guard validatePassword(password) else{
-            CustomAlert.showAlertView(view: self, title: "Unable to resgister", message: """
-    Invalid password format
-    Your password must contain:
-    - At least one uppercase letter
-    - At least one lowercase letter
-    - At least one digit
-    - At least 8 characters long
-""")
-            indicator.stopAnimating()
-            return
-        }
+
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) {[weak self] result, error in
             guard let self = self else{
                 return
             }
             guard error == nil else{
-                indicator.stopAnimating()
-                CustomAlert.showAlertView(view: self, title: "Failed", message: error?.localizedDescription ?? "")
+                self.defaults.set(true, forKey: "isLogged")
+                self.indicator.stopAnimating()
+                self.performSegue(withIdentifier: "home", sender: self)
                 return
             }
             indicator.stopAnimating()
-            defaults.set(true, forKey: "isLogged")
-            performSegue(withIdentifier: "home", sender: self)
+            CustomAlert.showAlertView(view: self, title: "Failed", message: error?.localizedDescription ?? "")
+            
         }
         
         
@@ -129,7 +121,7 @@ class SignUpPageViewController: UIViewController {
     }
     
     func validatePassword(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
@@ -142,4 +134,6 @@ class SignUpPageViewController: UIViewController {
         performSegue(withIdentifier: "login", sender: self)
 
     }
+    
+
 }

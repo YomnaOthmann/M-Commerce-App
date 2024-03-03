@@ -26,6 +26,7 @@
 		048DC9CB2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */; };
 		048DC9D62B8D14E8006623C9 /* MeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */; };
 		048DC9D82B8D153E006623C9 /* MeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */; };
+		0492CE012B9436940032111F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492CE002B9436940032111F /* SignUpViewModel.swift */; };
 		0493F8782B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */; };
 		04956AAA2B927C1C005AE66E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */; };
 		04956AAE2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */; };
@@ -154,6 +155,7 @@
 		048DC9CA2B8CEC8B006623C9 /* HomeScreenViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelTests.swift; sourceTree = "<group>"; };
 		048DC9D52B8D14E8006623C9 /* MeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeScreen.storyboard; sourceTree = "<group>"; };
 		048DC9D72B8D153E006623C9 /* MeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewController.swift; sourceTree = "<group>"; };
+		0492CE002B9436940032111F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0493F8772B8C666B00D3A4F1 /* CategoryScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreenViewModelTests.swift; sourceTree = "<group>"; };
 		04956AA92B927C1C005AE66E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		04956AAC2B92A422005AE66E /* OrderSummaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -339,13 +341,6 @@
 				044631C92B8A309D001F9371 /* LoginPage.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		044631C72B8A2911001F9371 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		044631C82B8A2919001F9371 /* ViewModel */ = {
@@ -761,7 +756,6 @@
 			isa = PBXGroup;
 			children = (
 				044631C82B8A2919001F9371 /* ViewModel */,
-				044631C72B8A2911001F9371 /* Model */,
 				044631C62B8A290A001F9371 /* View */,
 			);
 			path = Login;
@@ -771,7 +765,6 @@
 			isa = PBXGroup;
 			children = (
 				04F8CD5E2B93F85D0003E8D4 /* ViewModel */,
-				04EB474C2B8CC3370056EA36 /* Model */,
 				04EB474B2B8CC32B0056EA36 /* View */,
 			);
 			path = SignUp;
@@ -784,13 +777,6 @@
 				04EB474E2B8CC3610056EA36 /* SignUpPage.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		04EB474C2B8CC3370056EA36 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		04F133BB2B89639700F49963 /* HomeScreen */ = {
@@ -834,6 +820,7 @@
 		04F8CD5E2B93F85D0003E8D4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0492CE002B9436940032111F /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1293,6 +1280,7 @@
 				04A5740B2B84D669007BFC98 /* AppDelegate.swift in Sources */,
 				04B53F832B934C3F00F40A0A /* NewOrderSummaryViewModel.swift in Sources */,
 				049FF9E82B8E683E00004CAB /* OrdersScreenViewModel.swift in Sources */,
+				0492CE012B9436940032111F /* SignUpViewModel.swift in Sources */,
 				04DA8DA12B8C3FCD00295473 /* CategoryScreenViewModel.swift in Sources */,
 				043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */,
 				049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */,

@@ -344,7 +344,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4WY-fY-rqv" customClass="CustomButton" customModule="Shopify" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4WY-fY-rqv" customClass="CustomButton" customModule="Shopify" customModuleProvider="target">
                                                     <rect key="frame" x="52" y="12" width="289" height="52"/>
                                                     <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Button"/>
@@ -382,11 +382,22 @@
                         <outlet property="orderTax" destination="2WB-Pq-diB" id="m4P-Hz-yvX"/>
                         <outlet property="orderTotalPrice" destination="udY-2s-K9U" id="bgx-pa-vTP"/>
                         <outlet property="paymentMethodButton" destination="Yan-dc-GUB" id="Tcl-Ik-5hp"/>
+                        <segue destination="s9g-ZJ-uBT" kind="show" identifier="home" id="o9y-mf-J72"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh4-Za-Xb2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-29.770992366412212" y="12.67605633802817"/>
+        </scene>
+        <!--TabBar-->
+        <scene sceneID="xCo-ir-c8Y">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TabBar" id="s9g-ZJ-uBT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="JN4-UQ-CsS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yGG-bj-nWm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="13"/>
         </scene>
     </scenes>
     <resources>
