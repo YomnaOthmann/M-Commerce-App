@@ -273,9 +273,10 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
         }
         if collectionView == adsCollectionView{
             UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
-            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You copied the discount code")
+            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "Offer Discount Activated")
             showAnimation()
-            viewModel.savePriceRule(priceRule: self.priceRules)
+            
+            viewModel.savePriceRule(priceRules: self.priceRules,discountCode:discounts?.discountCodes?[indexPath.row])
         }
     }
     

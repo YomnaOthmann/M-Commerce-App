@@ -102,7 +102,7 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
             let addressViewModel = AddressViewModel()
             
             checkoutViewModel.lineItems = shoppingBagViewModel?.getLineItems() ?? []
-            checkoutViewModel.lineItemsTotalPrice = shoppingBagViewModel?.getLineItemsTotalPrice()
+            checkoutViewModel.lineItemsTotalPrice = shoppingBagViewModel?.getLineItemsTotalPriceWithoutCurrency()
             
             viewController.checkoutViewModel = checkoutViewModel
             viewController.addressViewModel = addressViewModel
