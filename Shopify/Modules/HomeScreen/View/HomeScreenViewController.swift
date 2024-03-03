@@ -39,7 +39,9 @@ class HomeScreenViewController: UIViewController {
         setUpIndicators()
         setUpSearchBar()
         viewModel.delegate = self
-        
+        if defaults.bool(forKey: "isLogged"){
+            viewModel.fetchCustomer(mail: defaults.string(forKey: "customerMail") ?? "")
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         if viewModel.checkReachability(){
@@ -50,7 +52,6 @@ class HomeScreenViewController: UIViewController {
             brandHeaderLabel.isHidden = true
             ConnectionAlert().showAlert(view: self)
         }
-        
         
     }
     
@@ -115,7 +116,7 @@ class HomeScreenViewController: UIViewController {
         }
     }
     
-    @IBAction func gotoSettings(_ sender: Any) {
+    @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
             let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
             settingsVC.modalPresentationStyle = .fullScreen
@@ -229,10 +230,15 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             self.navigationController?.pushViewController(brandVC, animated: true)
         }
         if collectionView == adsCollectionView{
-            UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
-            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You copied the discount code")
-            showAnimation()
-            viewModel.savePriceRule(priceRule: self.priceRules)
+            if defaults.bool(forKey: "isLogged"){
+                UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
+                CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You copied the discount code")
+                showAnimation()
+                viewModel.savePriceRule(priceRule: self.priceRules)
+            }else{
+                CustomAlert.showAlertView(view: self, title: "Login Needed!", message: "you must have an account to get the discount")
+            }
+
         }
     }
     

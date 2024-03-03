@@ -7,9 +7,49 @@
 
 import Foundation
 import FirebaseAuth
+
+protocol LoginViewModelDelegate{
+    func didLogin()
+    func failedToLogin()
+    func didRetrieveCustomer()
+}
 class LoginViewModel{
+    
+    let network : NetworkManagerProtocol?
+    let defaults = UserDefaults.standard
+    var delegate : LoginViewModelDelegate?
+    init(network: NetworkManagerProtocol?) {
+        self.network = network
+    }
     func loginUsingFirebase(email:String, password:String){
-         
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] result, error in
+            guard let self = self else{
+                return
+            }
+            guard error == nil else{
+                delegate?.failedToLogin()
+                return
+            }
+            delegate?.didLogin()
+        }
        
+    }
+    
+    func fetchCustomer(mail:String){
+        let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
+        network?.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
+            
+            guard let customers = result else{
+                return
+            }
+            let customer = customers.customers?.filter({
+                $0.email == mail
+            }).first
+            if customer != nil{
+                self?.delegate?.didRetrieveCustomer()
+                self?.defaults.set(customer?.id, forKey: "customerId")
+
+            }
+        })
     }
 }

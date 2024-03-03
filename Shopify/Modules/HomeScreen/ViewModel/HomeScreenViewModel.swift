@@ -15,6 +15,7 @@ protocol HomeScreenViewModelDelegate : AnyObject{
 protocol HomeScreenViewModelProtocol {
     func fetchAds()
     func fetchBrands()
+    func fetchCustomer(mail:String)
 }
 
 class HomeScreenViewModel : HomeScreenViewModelProtocol{
@@ -91,7 +92,23 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
         }
         
     }
+    func fetchCustomer(mail:String){
+        let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
+        network.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
+            
+            guard let customers = result else{
+                return
+            }
+            let customer = customers.customers?.filter({
+                $0.email == mail
+            }).first
+            self?.defaults.set(customer?.id, forKey: "customerId")
+        })
+    }
     
+    func getCustomerEmailFromDefaults()->String{
+        return defaults.string(forKey: "customerMail") ?? ""
+    }
     func checkReachability()->Bool{
         return reachability.networkStatus
     }
