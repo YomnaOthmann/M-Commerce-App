@@ -81,8 +81,8 @@ extension OrderSummaryScreenViewController : UICollectionViewDelegate, UICollect
         let cell = draftOrderCollectionView.dequeueReusableCell(withReuseIdentifier: OrderSummaryCollectionViewCell.id, for: indexPath) as! OrderSummaryCollectionViewCell
         
         cell.cellTitle.text = order?.lineItems[indexPath.row].title
-        if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
-            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
+        if order?.lineItems[indexPath.row].properties.count ?? -1 > 0{
+            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties[indexPath.row].name ?? ""))
         }
         cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
         cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"

@@ -115,7 +115,7 @@
                     <navigationItem key="navigationItem" id="cLW-3r-oed">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="4ue-Kx-Yiv">
-                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
@@ -123,7 +123,7 @@
                                     </hierarchicalColors>
                                 </imageReference>
                                 <connections>
-                                    <action selector="gotoSettings:" destination="Y6W-OH-hqX" id="xo8-7y-gSu"/>
+                                    <action selector="gotoWishlist:" destination="Y6W-OH-hqX" id="xo8-7y-gSu"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem id="Rsy-dm-ga6">
@@ -219,7 +219,7 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="rPE-wK-mkc">
-                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
@@ -275,7 +275,7 @@
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">

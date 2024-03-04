@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="159" width="393" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="H8O-wT-Gov"/>
-                                    <barButtonItem title="All" id="yu0-gr-7GT">
+                                    <barButtonItem title="All" changesSelectionAsPrimaryAction="YES" id="yu0-gr-7GT">
                                         <connections>
                                             <action selector="getAllItems:" destination="Y6W-OH-hqX" id="UrK-9J-Nmu"/>
                                         </connections>
@@ -126,7 +126,7 @@
                     <navigationItem key="navigationItem" title="ShopLink" id="c6P-7l-MSS">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="wxU-FK-IgQ">
-                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
@@ -185,18 +185,18 @@
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="circle.grid.2x2" catalog="system" width="128" height="111"/>
         <image name="circle.grid.2x2.fill" catalog="system" width="128" height="111"/>
-        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
