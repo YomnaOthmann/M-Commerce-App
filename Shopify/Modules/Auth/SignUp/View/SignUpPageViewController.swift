@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+
 class SignUpPageViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!

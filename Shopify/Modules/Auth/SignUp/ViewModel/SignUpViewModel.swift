@@ -46,14 +46,15 @@ class SignUpViewModel{
             }
         })
     }
-    
-    func registerUsingFirebase(email: String, password: String){
+    func registerUsingFirebase(email: String, password: String,completionHandler:((Error?)->Void)? = nil){
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) {[weak self] result, error in
             guard let result = result, error == nil else{
                 self?.delegate?.didFailToRegister(error: error)
+                completionHandler?(error)
                 return
             }
             self?.delegate?.didRegistered(mail:email)
+            completionHandler?(nil)
         }
     }
     

@@ -13,6 +13,7 @@ protocol LoginViewModelDelegate{
     func failedToLogin()
     func didRetrieveCustomer()
 }
+
 class LoginViewModel{
     
     let network : NetworkManagerProtocol?
@@ -20,19 +21,6 @@ class LoginViewModel{
     var delegate : LoginViewModelDelegate?
     init(network: NetworkManagerProtocol?) {
         self.network = network
-    }
-    func loginUsingFirebase(email:String, password:String){
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] result, error in
-            guard let self = self else{
-                return
-            }
-            guard error == nil else{
-                delegate?.failedToLogin()
-                return
-            }
-            delegate?.didLogin()
-        }
-       
     }
     
     func fetchCustomer(mail:String){
@@ -48,8 +36,23 @@ class LoginViewModel{
             if customer != nil{
                 self?.delegate?.didRetrieveCustomer()
                 self?.defaults.set(customer?.id, forKey: "customerId")
-
+                
             }
         })
+    }
+    
+    func loginUsingFirebase(email:String, password:String, completionHandler:((AuthDataResult?,Error?)->Void)? = nil){
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] result, error in
+            guard let self = self else{
+                return
+            }
+            guard error == nil else{
+                delegate?.failedToLogin()
+                completionHandler?(nil,error)
+                return
+            }
+            delegate?.didLogin()
+            completionHandler?(result, nil)
+        }
     }
 }
