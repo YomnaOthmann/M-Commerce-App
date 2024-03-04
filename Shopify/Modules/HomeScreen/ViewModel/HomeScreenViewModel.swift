@@ -67,6 +67,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             self?.delegate?.didLoadBrands(brands: brands)
         }
     }
+    
     func fetchDiscountCodes(priceRuleId:Int){
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.priceRule.rawValue + "/\(self.ads?.priceRules?[0].id ?? 0)" + APIHandler.APIEndPoints.discountCode.rawValue + APIHandler.APICompletions.json.rawValue
         print(url)
@@ -78,15 +79,31 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
         }
     }
     
-    func savePriceRule(priceRule:PriceRules?){
-        guard let priceRule = priceRule else{
+    func savePriceRule(priceRules:PriceRules?,discountCode:DiscountCode?){
+        guard let priceRules = priceRules else{
             return
         }
+        
         do{
-            let priceRuleData = try JSONEncoder().encode(priceRule)
-            defaults.set(priceRuleData, forKey: "priceRuleKey")
+        
+            for priceRule in priceRules.priceRules ?? [] {
+                
+                if priceRule.id == discountCode?.priceRuleID {
+                    
+                    print("priceRule in savePriceRule priceRuleKey value:\(priceRule.value ?? "no value")")
+                    
+                    let discountCodeData = try JSONEncoder().encode(discountCode)
+                    defaults.set(discountCodeData, forKey: "discountCodeKey")
 
+                    let priceRuleData = try JSONEncoder().encode(priceRule)
+                    defaults.set(priceRuleData, forKey: "priceRuleKey")
+                    
+                    break
+                }
+            }
+            
         }
+        
         catch let error{
             print(error.localizedDescription)
         }

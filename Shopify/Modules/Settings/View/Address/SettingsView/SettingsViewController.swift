@@ -22,14 +22,11 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         addressSettingsTableView.delegate=self
         addressSettingsTableView.dataSource=self
         addressSettingsTableView.separatorStyle = .none
         addCheckButtonToView()
-        
-        
-        
         
     }
     
@@ -68,7 +65,8 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "addressesVC") as! AddressesViewController
                 
-        viewController.addressViewModel = self.addressViewModel        
+        viewController.addressViewModel = self.addressViewModel 
+        viewController.isFromSettings = true
         self.present(viewController, animated: true, completion: nil)
 
     }
@@ -78,7 +76,14 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        if addressViewModel.getAddressesCount() == 0 {
+            return 0
+        } else if addressViewModel.getAddressesCount() == 1 {
+            return 1
+        } else{
+            return 2
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,14 +100,39 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
         if(!addressViewModel.getDefaultValue()){
             
+            cell.setDefaultButton.isEnabled = true
+            cell.setDefaultButton.setTitle("Set Default",for: .normal)
+            cell.setDefaultButton.configuration?.baseForegroundColor = UIColor.customBlue
             cell.setDefaultButton.cellIndex = indexPath.row
             cell.setDefaultButton.addTarget(self, action:#selector(setDefaultAddress), for: .touchUpInside)
+
         }else{
             cell.setDefaultButton.configuration?.baseForegroundColor = UIColor.black
             cell.setDefaultButton.setTitle("Default", for: .normal)
+            cell.setDefaultButton.isEnabled = false
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+            addressViewModel.setCurrentAddressAtIndex(index: indexPath.row)
+            addressViewModel.deleteAddress(completion: { message, error in
+                
+                if error == nil {
+                    
+                    CustomAlert.showAlertView(view: self, title: "Delete Successfully", message: message)
+
+                }else{
+                    
+                    CustomAlert.showAlertView(view: self, title: "Delete Failed", message: message)
+
+                }
+            })
+        }
     }
     
     @objc func navigateToEditAddress(sender:CustomCellButton){
@@ -120,23 +150,49 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     @objc func setDefaultAddress(sender:CustomCellButton){
         
         print("set deafult address")
-        addressViewModel.setCurrentAddressAtIndex(index: sender.cellIndex!)
-        addressViewModel.setDefaultValue(defaultAddress: true)
-            .edit { message, error in
+        
+        if addressViewModel.isDefaultAddressCashed() {
             
-            if error == nil{
-                
-                addressSettingsTableView.reloadData()
-                CustomAlert.showAlertView(view: self, title: "Success", message:message)
-                
-            }else{
-                
-                CustomAlert.showAlertView(view: self, title: "Failed", message:message)
-                
-            }
+            changeCurrentDefaultAddressValue(sender:sender)
+            
+        }else{
+            
+            setNewAddressAsDefault(index:sender.getIndex())
         }
        
         
+    }
+    
+    func changeCurrentDefaultAddressValue(sender:CustomCellButton){
+        
+        addressViewModel.setDeafultAddress()
+        addressViewModel.setDefaultValue(defaultAddress:false)
+            .edit(isEditNotSetDefault:false) { message, error in
+                
+                if error == nil {
+                    self.setNewAddressAsDefault(index: sender.getIndex())
+                }else{
+                    CustomAlert.showAlertView(view: self, title: "Failed", message:message)
+                }
+        }
+
+    }
+    
+    func setNewAddressAsDefault(index:Int){
+        
+        addressViewModel.setCurrentAddressAtIndex(index: index)
+        addressViewModel.setDefaultValue(defaultAddress: true)
+        .edit(isEditNotSetDefault:false){ message, error in
+            
+            if error == nil{
+                
+                self.addressSettingsTableView.reloadData()
+                CustomAlert.showAlertView(view: self, title: "Success", message:message)
+                
+            }else{
+                CustomAlert.showAlertView(view: self, title: "Failed", message:message)
+            }
+        }
     }
     
 }

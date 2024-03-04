@@ -12,14 +12,24 @@ import Foundation
 struct AddressPostModel:Codable {
     
     let address:Address?
+    
     enum CodingKeys: String, CodingKey {
-        case address = "customer_address"
+        case address = "address"
     }
     
     init(address: Address?) {
         self.address = address
     }
     
+}
+
+
+struct Addresses : Codable {
+    
+    var addresses:[Address]?
+    enum CodingKeys: String, CodingKey {
+        case addresses = "addresses"
+    }
 }
 
 struct Address: Codable {

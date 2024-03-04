@@ -24,22 +24,28 @@ class BrandScreenViewModel : BrandScreenViewModelProtocol{
         self.network = network
     }
     
-    func fetchProducts(brandName:String?) {
+    func fetchProducts(brandName: String?) {
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.products.rawValue + APIHandler.APICompletions.json.rawValue
-           
         
         network?.fetch(url: url, type: Products.self, completionHandler: { [weak self] result in
-            guard let products = result else{
+            guard let products = result else {
                 return
             }
-            self?.brandProducts = products.products.filter({
-                $0.vendor == brandName
-            })
             
+            var filteredProducts: [Product]
+            
+            if let brandName = brandName, !brandName.isEmpty {
+                filteredProducts = products.products.filter {
+                    $0.vendor == brandName
+                }
+            } else {
+                filteredProducts = products.products
+            }
+            
+            self?.brandProducts = filteredProducts
         })
-        
-        
     }
+
     
     func checkReachability()->Bool{
         return reachability.networkStatus

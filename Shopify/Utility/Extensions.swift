@@ -23,6 +23,12 @@ extension UISearchBar {
     }
 }
 
+enum PaymentMethodSelector : String {
+    case none = "none"
+    case applePay = "applePay"
+    case cash = "cash"
+}
+
 extension UICollectionView {
     
     func setEmptyMessage(_ message: String) {

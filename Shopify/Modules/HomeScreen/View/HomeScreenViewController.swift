@@ -20,12 +20,19 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var homeSearchBar: UISearchBar!
     let defaults = UserDefaults.standard
+    
+    
+    var searchWords : String = ""
+    var searching : Bool = false
+    
+    
+    
     private var viewModel = HomeScreenViewModel(network: NetworkManager())
     let adsIndicator = UIActivityIndicatorView(style: .medium)
     let brandsIndicator = UIActivityIndicatorView(style: .medium)
     private var priceRules : PriceRules?
     private var discounts : DiscountCodes?
-    private var smartCollections : SmartCollections?
+    var smartCollections : SmartCollections?
     private let alert = ConnectionAlert()
     
     override func viewDidLoad() {
@@ -38,6 +45,9 @@ class HomeScreenViewController: UIViewController {
         
         setUpIndicators()
         setUpSearchBar()
+        
+        homeSearchBar.delegate = self
+        
         viewModel.delegate = self
         if defaults.bool(forKey: "isLogged"){
             viewModel.fetchCustomer(mail: defaults.string(forKey: "customerMail") ?? "")
@@ -129,17 +139,50 @@ class HomeScreenViewController: UIViewController {
 
 extension HomeScreenViewController : UISearchBarDelegate{
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        true
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-        // TODO: - to be edited
-        
-        
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWords = searchBar.text ?? ""
+        searchingResult()
+    }
+    
+    func searchingResult() {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+
+            var filteredCollections: [SmartCollection]
+
+            if self.searching {
+                if self.searchWords.isEmpty {
+                    self.viewModel.fetchBrands()
+                    return
+                } else {
+                    filteredCollections = self.smartCollections?.smartCollections.filter {
+                        $0.title.lowercased().contains(self.searchWords.lowercased())
+                    } ?? []
+                }
+            } else {
+                
+                self.viewModel.fetchBrands()
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.smartCollections?.smartCollections = filteredCollections
+                self.brandsCollectionView.reloadData()
+            }
+        }
+    }
+
 }
+    
+
 extension HomeScreenViewController : HomeScreenViewModelDelegate{
     
     func didLoadAds(ads: PriceRules) {
@@ -238,7 +281,6 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             }else{
                 CustomAlert.showAlertView(view: self, title: "Login Needed!", message: "you must have an account to get the discount")
             }
-
         }
     }
     

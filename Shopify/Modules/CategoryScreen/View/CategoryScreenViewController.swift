@@ -27,10 +27,18 @@ class CategoryScreenViewController: UIViewController {
     var alertIsPresenting = false
     let defaults = UserDefaults.standard
 
+    
+    var searchWords : String = ""
+    var searching : Bool = false
+    
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     
+    
+    
+//    self.allProducts = self.viewModel.allProducts?.products
+//    self.filteredProducts = self.allProducts
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpIndicator()
@@ -40,13 +48,16 @@ class CategoryScreenViewController: UIViewController {
         viewModel.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         startTimer()
         viewModel.fetchProducts()
         viewModel.bindResult = {
             self.allProducts = self.viewModel.allProducts?.products
             self.filteredProducts = self.allProducts
-            self.categoryCollectionView.reloadData()
-            self.indicator.stopAnimating()
+            DispatchQueue.main.async {
+                self.categoryCollectionView.reloadData()
+                self.indicator.stopAnimating()
+            }
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -166,17 +177,60 @@ class CategoryScreenViewController: UIViewController {
 }
 extension CategoryScreenViewController : UISearchBarDelegate{
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        true
-    }
+    
+    
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-        // TODO: Add Navigation code here
+        searching = true
     }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWords = searchBar.text ?? ""
+        searchingResult()
+    }
+    
+    func searchingResult() {
+           DispatchQueue.global().async { [weak self] in
+               guard let self = self else { return }
+
+               var filteredProducts: [Product]
+
+               if self.searching {
+                   if self.searchWords.isEmpty {
+                       // If the search query is empty, show all products
+                       filteredProducts = self.allProducts ?? []
+                   } else {
+                       // Filter products based on the search query
+                       filteredProducts = self.allProducts?.filter {
+                           $0.title.lowercased().contains(self.searchWords.lowercased())
+                       } ?? []
+                   }
+               } else {
+                   // If not searching, show all products
+                   filteredProducts = self.allProducts ?? []
+               }
+
+               DispatchQueue.main.async {
+                   self.filteredProducts = filteredProducts
+                   self.categoryCollectionView.reloadData()
+               }
+           }
+       }
+
+
 }
-extension CategoryScreenViewController : CategoryScreenViewModelDelegate{
+extension CategoryScreenViewController: CategoryScreenViewModelDelegate {
     func setFilteredProducts() {
-        filteredProducts = allProducts
+        
+    }
+    
+    func setFilteredProducts(filteredProducts: [Product]) {
+        self.filteredProducts = filteredProducts
+        self.categoryCollectionView.reloadData()
     }
 }
 
