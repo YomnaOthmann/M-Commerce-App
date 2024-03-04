@@ -9,36 +9,49 @@ import Foundation
 
 // MARK: - DraftOrders
 struct DraftOrders: Codable {
-    let draftOrders: [DraftOrder]
+    
+    let draftOrders: [DraftOrder]?
 
     enum CodingKeys: String, CodingKey {
         case draftOrders = "draft_orders"
     }
 }
 
+class PostDraftOrder : Codable{
+    
+    let draftOrder : DraftOrder?
+    
+    enum CodingKeys: String, CodingKey {
+        case draftOrder = "draft_order"
+    }
+
+    init(draftOrder: DraftOrder?) {
+        self.draftOrder = draftOrder
+    }
+}
 // MARK: - DraftOrder
 struct DraftOrder: Codable {
     
-    let id: Int
-    let note, email: String
-    let taxesIncluded: Bool
-    let currency: String
+    let id: Int?
+    let note, email: String?
+    let taxesIncluded: Bool?
+    let currency: String?
     let invoiceSentAt: String?
-    let createdAt, updatedAt: String
-    let taxExempt: Bool
+    let createdAt, updatedAt: String?
+    let taxExempt: Bool?
     let completedAt: String?
-    let name, status: String
-    let lineItems: [LineItem]
+    let name, status: String?
+    var lineItems: [LineItem]?
     let shippingAddress, billingAddress: Address?
-    let invoiceURL: String
+    let invoiceURL: String?
     let orderID: Int?
     let shippingLine: ShippingLine?
-    let tags: String
-    let totalPrice, subtotalPrice, totalTax: String
-    let presentmentCurrency: String
-    let adminGraphqlAPIID: String
+    let tags: String?
+    let totalPrice, subtotalPrice, totalTax: String?
+    let presentmentCurrency: String?
+    let adminGraphqlAPIID: String?
     let customer: Customer?
-    let appliedDiscount : AppliedDiscount
+    let appliedDiscount : AppliedDiscount?
 
     enum CodingKeys: String, CodingKey {
         case id, note, email
@@ -67,19 +80,20 @@ struct DraftOrder: Codable {
     }
 }
 
-
 // MARK: - ShippingLine
 struct ShippingLine: Codable {
-    let title: String
-    let custom: Bool
+    let title: String?
+    let custom: Bool?
     let handle: String?
-    let price: String
+    let price: String?
 }
 struct AppliedDiscount:Codable{
-    let title : String
-    let description : String
-    let value : String
-    let valueType : String
-    let amount : String
+    let title : String?
+    let description : String?
+    let value : String?
+    let valueType : String?
+    let amount : String?
+    
 }
+
 

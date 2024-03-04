@@ -41,8 +41,8 @@ class OrderSummaryScreenViewController: UIViewController {
 
     func setUpOrderData(){
         orderPrice.text = (order?.subtotalPrice ?? "") +  " " + (order?.currency ?? "")
-        if order?.lineItems[0].taxLines.count ?? -1 > 0{
-            orderTax.text = ((order?.lineItems[0].taxLines[0].price ?? "") + " " + (order?.currency ?? ""))
+        if order?.lineItems[0].taxLines?.count ?? -1 > 0{
+            orderTax.text = ((order?.lineItems[0].taxLines?[0].price ?? "") + " " + (order?.currency ?? ""))
         }else{
             orderTax.text = "0.0" + (order?.currency ?? "")
         }

@@ -142,7 +142,7 @@ class AddressViewController: UIViewController {
                                 
             }else{
                 
-                doneSetValues.save { message, error in
+                doneSetValues.setDefaultValue(defaultAddress: false).save { message, error in
                     
                     if error == nil{
                         

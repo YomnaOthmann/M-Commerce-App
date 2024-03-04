@@ -12,10 +12,39 @@ class CheckoutViewModel {
     var lineItemsTotalPrice:String? = "0"
     var lineItems:[LineItem]?
     var discountValue:Int=0
+    var order:Order?
+    
+    func getOrderBuilder()-> OrderBuilder {
+        
+        let orderBuilder = OrderBuilder()
+        
+        orderBuilder.setLineItems(lineItems: getLineItems())
+        
+        orderBuilder.setSubTotalPrice(subTotalPrice: getlineItemsTotalPriceWithoutCurrency())
+        
+        orderBuilder.setCurrentTotalDiscounts(
+            currentTotalDiscounts:getDiscountWithoutCurrency())
+        
+        orderBuilder.setCurrency(currency: getCurrency())
+        
+        orderBuilder.setCurrentTotalPrice(currentTotalPrice: getOrderTotalPriceWithoutCurrency())
+        
+        return orderBuilder
+    }
+    
+    
+    func getLineItems()->[LineItem]{
+        return self.lineItems ?? []
+    }
     
     func getlineItemsTotalPrice()-> String {
         
-        return self.lineItemsTotalPrice ?? "0"
+        return (self.lineItemsTotalPrice ?? "0") + " " + getCurrency()
+    }
+    
+    func getlineItemsTotalPriceWithoutCurrency()-> String {
+        
+        return  self.lineItemsTotalPrice ?? "0" 
     }
             
 //    func checkCouponCode(couponCode:String,completion:(_ valid:Bool)->Void){
@@ -50,7 +79,28 @@ class CheckoutViewModel {
             return  (priceRule.value ?? "0") + getCurrency()
         }else{
             
-            return (priceRule.value ?? "0" ) + " %"
+            let lineItemsPriceInFloat = Float(self.lineItemsTotalPrice ?? "0")
+            let discountValueInPercentage = Float(priceRule.value ?? "0")
+            let discountValue = lineItemsPriceInFloat! * (discountValueInPercentage!/100)
+            
+            return String(format : "%.2f ", discountValue) + getCurrency()
+        }
+    }
+    
+    func getDiscountWithoutCurrency()-> String {
+        
+        guard let priceRule = getSavedPriceRule() else {return "0"}
+        
+        if priceRule.valueType == "fixed_amount"{
+            
+            return  (priceRule.value ?? "0")
+        }else{
+            
+            let lineItemsPriceInFloat = Float(self.lineItemsTotalPrice ?? "0")
+            let discountValueInPercentage = Float(priceRule.value ?? "0")
+            let discountValue = lineItemsPriceInFloat! * (discountValueInPercentage!/100)
+            
+            return String(format : "%.2f ", discountValue)
         }
     }
     
@@ -72,14 +122,18 @@ class CheckoutViewModel {
             orderTotalPrice = String(format : "%.2f ",lineItemsPriceInFloat! + discountValue!)
                         
         }else{
+            
             print("priceRule.valueType == prcentege")
             print(priceRule.value)
             
-            print(lineItemsPriceInFloat!)
+            print(lineItemsPriceInFloat ?? "0")
             
             let discountValue = Float(priceRule.value ?? "0")
             
-            orderTotalPrice = String(format : "%.2f ", -1 * ((lineItemsPriceInFloat ?? 0) * (discountValue!/100.0)))
+            let orderTotalPriceInDouble = (lineItemsPriceInFloat ?? 0.00) + ((lineItemsPriceInFloat ?? 0) * (discountValue!/100.0))
+            
+            orderTotalPrice =
+            String(format : "%.2f ", orderTotalPriceInDouble)
         }
         
         return orderTotalPrice
@@ -88,4 +142,57 @@ class CheckoutViewModel {
     func getOrderTotalPrice()->String{
         return self.getOrderTotalPriceWithoutCurrency() + " " + self.getCurrency()
     }
+}
+
+class OrderBuilder{
+    
+    private var lineItems:[LineItem]?
+    private var subTotalPrice:String?
+    private var currency:String?
+    private var currentTotalDiscounts:String?
+    private var currentTotalPrice:String?
+    private var shippingAddress:Address?
+    private var customerID:Int?
+    
+    func setLineItems(lineItems:[LineItem]){
+        self.lineItems = lineItems
+    }
+    
+    func setCustomerID(id:Int){
+        self.customerID = id
+
+    }
+    
+    func setSubTotalPrice(subTotalPrice:String){
+        self.subTotalPrice = subTotalPrice
+    }
+    func setCurrency(currency:String){
+        self.currency = currency
+    }
+    func setCurrentTotalDiscounts(currentTotalDiscounts:String){
+        self.currentTotalDiscounts = currentTotalDiscounts
+    }
+    func setCurrentTotalPrice(currentTotalPrice:String){
+        self.currentTotalPrice = currentTotalPrice
+    }
+    
+    func setShippingAddress(shippingAddress:Address){
+        self.shippingAddress = shippingAddress
+    }
+    
+    func build()->Order{
+        
+        var order = Order(financialStatus: nil, lineItems: lineItems ?? [])
+        
+        order.subtotalPrice = subTotalPrice
+        order.currency = currency
+        order.currentTotalDiscounts = currentTotalDiscounts
+        order.currentTotalPrice = currentTotalPrice
+        order.shippingAddress = shippingAddress
+        order.customer = Customer(email: nil, firstName: nil, lastName: nil)
+        order.customer?.id = customerID
+        
+        return order
+    }
+    
 }

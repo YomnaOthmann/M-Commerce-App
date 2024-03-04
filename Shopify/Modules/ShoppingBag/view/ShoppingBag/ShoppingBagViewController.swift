@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -88,7 +89,10 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true)
+        
+        self.shoppingBagViewModel?.saveCurrentDraftOrderChanges(completion: {
+            self.dismiss(animated: true)
+        })
     }
     @objc func navigateToCheckout(){
         
@@ -104,10 +108,16 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
             checkoutViewModel.lineItems = shoppingBagViewModel?.getLineItems() ?? []
             checkoutViewModel.lineItemsTotalPrice = shoppingBagViewModel?.getLineItemsTotalPriceWithoutCurrency()
             
+            
             viewController.checkoutViewModel = checkoutViewModel
             viewController.addressViewModel = addressViewModel
+            viewController.shoppingBagViewModel = self.shoppingBagViewModel
             
-            self.present(viewController, animated: true, completion: nil)
+            self.shoppingBagViewModel?.saveCurrentDraftOrderChanges(completion: {
+                
+                self.present(viewController, animated: true, completion: nil)
+            })
+            
 
         }
 
@@ -138,6 +148,15 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
         cell.productAmount.text = shoppingBagViewModel?.getLineItemQuantity(atIndex: indexPath.row)
     
         cell.inStockQuantity.text = shoppingBagViewModel?.getLineItemInStockQuantity(atIndex: indexPath.row)
+        
+        if shoppingBagViewModel?.getImageUrl(atIndex: indexPath.row) == "shoppingCartProduct" {
+            cell.productImage.image = UIImage(named: "shoppingCartProduct")
+            
+        }else{
+            let url = URL(string:shoppingBagViewModel?.getImageUrl(atIndex: indexPath.row) ?? "/")
+            cell.productImage.kf.setImage(with: url)
+        }
+        
                 
         return cell
     }

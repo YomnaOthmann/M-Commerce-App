@@ -86,7 +86,7 @@ extension OrdersScreenViewController : UITableViewDelegate, UITableViewDataSourc
         cell.orderNumber.text = "\(orders?[indexPath.row].orderNumber ?? 0)"
         cell.orderPrice.text  =  "\(orders?[indexPath.row].currentTotalPrice ?? "") \(orders?[indexPath.row].currency ?? "")"
         cell.orderItemsQuantity.text =  "\(orders?[indexPath.row].lineItems.count ?? 0)"
-        cell.orderFinancialState.text = orders?[indexPath.row].financialStatus.rawValue
+        cell.orderFinancialState.text = orders?[indexPath.row].financialStatus?.rawValue
         cell.orderDate.text = orders?[indexPath.row].createdAt?.components(separatedBy: "T").first
         return cell
     }
