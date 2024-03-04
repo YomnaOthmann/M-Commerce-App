@@ -35,7 +35,7 @@ class AddressViewModel{
     
     func fetchData(){
       
-       let apiURL = apiHandler.getCustomerAddressURL(customerID: getCurrentUserID())
+       let apiURL = apiHandler.getCustomerAddressURL(customerID: getCurrentCustomerID())
         networkManager?.fetch(url: apiURL, type: Addresses.self, completionHandler: {[weak self] addresses in
         
             if let addresses = addresses {
@@ -82,6 +82,13 @@ class AddressViewModel{
         }
     }
     
+    func getOrderAddress()->Address{
+        
+        let orderAddress = Address(id: addressID, customerID: customerID, address1: address, address2: nil, city: city, province: province, country: country, zip: postalCode, phone: phone, name: nil, provinceCode: nil, countryCode: nil, countryName: nil, addressDefault: defaultAddress)
+        
+        return orderAddress
+    }
+    
     func setDeafultAddress(){
         
         if let savedAddressData = UserDefaults.standard.data(forKey: chacedDefaultAddressKey) {
@@ -109,7 +116,7 @@ class AddressViewModel{
         
     }
 
-    func getCurrentUserID()->Int{
+    func getCurrentCustomerID()->Int{
         return 7484106080498
     }
 
@@ -127,7 +134,6 @@ class AddressViewModel{
      
  }
     
-
     func getAddressesCountry()->String{
         
         return self.country
@@ -235,7 +241,7 @@ class AddressViewModel{
 
         
         let addressPostModel = AddressPostModel(address: savedAddress)
-        let apiURL = apiHandler.getNewAddressForCustomerURL(customerID: getCurrentUserID())
+        let apiURL = apiHandler.getNewAddressForCustomerURL(customerID: getCurrentCustomerID())
         
         print(apiURL)
         
@@ -316,11 +322,12 @@ class AddressViewModel{
                 if(self.defaultAddress){
                     
                     UserDefaults.standard.removeObject(forKey:self.chacedDefaultAddressKey)
-                    
-                    self.fetchData()
-                    self.dataObserver()
+    
                 }
                 
+                self.fetchData()
+                self.dataObserver()
+
                 completion("address deleted successfully",nil)
             }else{
                 completion("failed to delete address ",NSError())

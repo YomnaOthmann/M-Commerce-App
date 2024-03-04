@@ -21,7 +21,7 @@ struct Customers: Codable {
 // MARK: - Customer
 struct Customer: Codable {
     
-    let id: Int?
+    var id: Int?
     let email: String?
     let createdAt, updatedAt: String?
     let firstName, lastName: String?
@@ -100,7 +100,7 @@ struct MarketingConsent: Codable {
 }
 
 struct NewCustomer : Codable {
-    let customer : Customer
+    let customer : Customer?
 }
 
 

@@ -58,7 +58,16 @@ extension APIHandler{
         
         return "https://\(apiKey):\(adminSecretKey)@\(storeName)/admin/api/2024-01/customers/\(customerID)/addresses/\(addressID).json"
     }
-
+    
+    func getDraftOrdersURL()->String{
+        
+        return "https://\(apiKey):\(adminSecretKey)@\(storeName)/admin/api/2024-01/draft_orders.json"
+    }
+    
+    func getCurrentDraftOrderURL(id:Int)->String{
+        
+        return "https://\(apiKey):\(adminSecretKey)@\(storeName)/admin/api/2024-01/draft_orders/\(id).json"
+    }
 
 }
 

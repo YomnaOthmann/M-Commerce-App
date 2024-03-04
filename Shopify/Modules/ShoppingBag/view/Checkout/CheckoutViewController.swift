@@ -23,17 +23,19 @@ class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var productsTotalPrice: UILabel!
     @IBOutlet weak var discount: UILabel!
-    @IBOutlet weak var orderTotalPrice: UILabel!
     
+    @IBOutlet weak var applyDiscardCoupon: UIButton!
+    
+    @IBOutlet weak var orderTotalPrice: UILabel!
     @IBOutlet weak var continueButtonView: UIView!
     
     var checkoutViewModel:CheckoutViewModel?
     var addressViewModel:AddressViewModel?
+    var shoppingBagViewModel:ShoppingBagViewModel?
     
     private var selectedPaymentMethod:PaymentMethodSelector = .none
     private var addressSelected =  false
-    
-    var couponCode:String?
+    var applyCoupon:Bool = false
     
     
 //    private var paymentRequest:PKPaymentRequest = {
@@ -67,20 +69,24 @@ class CheckoutViewController: UIViewController {
         addContinueButtonToView()
         
         productsTotalPrice.text = checkoutViewModel?.getlineItemsTotalPrice()
-        discount.text = checkoutViewModel?.getDiscount()
-        orderTotalPrice.text = checkoutViewModel?.getOrderTotalPrice()
+        
+        if(applyCoupon){
+            discount.text = checkoutViewModel?.getDiscount()
+            orderTotalPrice.text = checkoutViewModel?.getOrderTotalPrice()
+        }else{
+            discount.text = "0"
+            orderTotalPrice.text = checkoutViewModel?.getlineItemsTotalPrice()
+        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         print("addressViewModel?.isDefaultAddressCashed()")
-        
         print(addressViewModel?.isDefaultAddressCashed())
         
         
         if addressViewModel?.isDefaultAddressCashed() ?? false {
-            
             
             addressSelected = true
             addressViewModel?.setDeafultAddress()
@@ -141,9 +147,41 @@ class CheckoutViewController: UIViewController {
     }
   
     @objc func navigateToOrderSummary(){
-        let orderSummaryVC = UIStoryboard(name: "PlacingOrder", bundle: nil).instantiateViewController(withIdentifier: "placeOrder")
         
-        self.present(orderSummaryVC, animated: true)
+        if selectedPaymentMethod == .none {
+            
+            CustomAlert.showAlertView(view: self, title: "Payment Method", message: "Please select Payment Method to continue")
+            
+        }else if addressSelected == false{
+            
+            CustomAlert.showAlertView(view: self, title: "Default Address", message: "Please select Default Address to continue")
+        }else{
+            
+            let orderBuilder = checkoutViewModel?.getOrderBuilder()
+            
+            if applyCoupon == false {
+                
+                orderBuilder?.setCurrentTotalDiscounts(currentTotalDiscounts: "0")
+                
+                orderBuilder?.setCurrentTotalPrice(currentTotalPrice: checkoutViewModel!.getlineItemsTotalPriceWithoutCurrency())
+            }
+            
+            orderBuilder?.setShippingAddress(shippingAddress: addressViewModel!.getOrderAddress())
+            
+            orderBuilder?.setCustomerID(id: addressViewModel!.getCustomerID())
+            
+            let orderSummaryVC = UIStoryboard(name: "PlacingOrder", bundle: nil).instantiateViewController(withIdentifier: "placeOrder")
+            as! NewOrderSummaryTableViewController
+            
+            orderSummaryVC.order = orderBuilder?.build()
+            
+            print(orderSummaryVC.order!)
+            
+            orderSummaryVC.paymentMethod = selectedPaymentMethod
+            self.present(orderSummaryVC, animated: true)
+            
+        }
+        
     }
     
     
@@ -219,7 +257,6 @@ class CheckoutViewController: UIViewController {
     }
     
     
-    
     @IBAction func selectCashOnDelivery(_ sender: Any) {
         
         if(selectedPaymentMethod == .none || selectedPaymentMethod == .applePay ){
@@ -231,6 +268,23 @@ class CheckoutViewController: UIViewController {
             cashBackground.layer.borderColor = UIColor.customBlue.cgColor
             
         }else{return}
+        
+    }
+    
+    
+    @IBAction func ApplyDiscardDiscount(_ sender: Any) {
+        
+        applyCoupon = !applyCoupon
+        
+        if(applyCoupon){
+            discount.text = checkoutViewModel?.getDiscount()
+            orderTotalPrice.text = checkoutViewModel?.getOrderTotalPrice()
+            applyDiscardCoupon.setTitle("Discard", for: .normal)
+        }else{
+            discount.text = "0"
+            orderTotalPrice.text = checkoutViewModel?.getlineItemsTotalPrice()
+            applyDiscardCoupon.setTitle("Apply Coupon", for: .normal)
+        }
         
     }
     

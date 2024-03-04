@@ -19,23 +19,25 @@ struct Order: Codable {
     let id: Int?
     let confirmed: Bool?
     let createdAt: String?
-    let currency: String?
-    let currentTotalDiscounts: String?
-    let currentTotalPrice: String?
-    let financialStatus: FinancialStatus
+    var currency: String?
+    var currentTotalDiscounts: String?
+    var currentTotalPrice: String?
+    var financialStatus: FinancialStatus?
     let name: String?
     let number, orderNumber: Int?
     let processedAt: String?
-    let subtotalPrice: String?
+    var subtotalPrice: String?
     let token, totalDiscounts: String?
     let totalLineItemsPrice: String?
     let totalPrice: String?
-    let customer: Customer?
-    let lineItems: [LineItem]
-    let shippingAddress: Address?
+    var customer: Customer?
+    var lineItems: [LineItem]
+    var shippingAddress: Address?
     let taxLines : [TaxLine]?
-
-    init(id: Int? = nil, confirmed: Bool? = nil, createdAt: String? = nil, currency: String? = nil, currentTotalDiscounts: String? = nil, currentTotalPrice: String? = nil, financialStatus: FinancialStatus, name: String? = nil, number: Int? = nil, orderNumber: Int? = nil, processedAt: String? = nil, subtotalPrice: String? = nil, token: String? = nil, totalDiscounts: String? = nil, totalLineItemsPrice: String? = nil, totalPrice: String? = nil, customer: Customer? = nil, lineItems: [LineItem], shippingAddress: Address? = nil, taxLines: [TaxLine]? = nil) {
+//     var shippingAddress: Address
+//     let taxLines : [TaxLine]
+  
+    init(id: Int? = nil, confirmed: Bool? = nil, createdAt: String? = nil, currency: String? = nil, currentTotalDiscounts: String? = nil, currentTotalPrice: String? = nil, financialStatus: FinancialStatus?, name: String? = nil, number: Int? = nil, orderNumber: Int? = nil, processedAt: String? = nil, subtotalPrice: String? = nil, token: String? = nil, totalDiscounts: String? = nil, totalLineItemsPrice: String? = nil, totalPrice: String? = nil, customer: Customer? = nil, lineItems: [LineItem], shippingAddress: Address? = nil, taxLines: [TaxLine]? = nil) {
         self.id = id
         self.confirmed = confirmed
         self.createdAt = createdAt
@@ -96,18 +98,16 @@ struct LineItem: Codable {
     let adminGraphqlAPIID: String?
     let currentQuantity: Int?
     let giftCard: Bool?
-    let name, price: String
-    let productExists: Bool
+    let name, price: String?
+    let productExists: Bool?
     let productID: Int?
-    var quantity: Int
+    var quantity: Int?
     let sku: String?
-    let title, totalDiscount: String
+    let title, totalDiscount: String?
     let variantID: Int?
     let variantTitle, vendor: String?
-    let taxLines : [TaxLine]
-    var properties : [OrderProperty]
-
-
+    let taxLines : [TaxLine]?
+    var properties : [OrderProperty]?
 
     init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int? = nil, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine],propertis:[OrderProperty]) {
         self.id = id
@@ -169,15 +169,16 @@ struct Money: Codable {
 }
 
 struct TaxLine : Codable{
-    let price : String
+    let price : String?
     let rate : Double?
-    let title : String
+    let title : String?
     let priceSet : PriceSet?
     enum CodingKeys : String, CodingKey{
         case price, rate, title
         case priceSet = "price_set"
     }
     init(price: String, rate: Double? = 0.06, title: String, priceSet: PriceSet? = nil) {
+        
         self.price = price
         self.rate = rate
         self.title = title
@@ -187,6 +188,10 @@ struct TaxLine : Codable{
 }
 
 struct OrderProperty : Codable{
-    var name : String
-    var value : String = ""
+  
+    var name : String?
+    var value : String?
+  
+//     var name : String
+//     var value : String = ""
 }
