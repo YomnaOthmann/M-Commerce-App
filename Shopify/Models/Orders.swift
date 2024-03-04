@@ -105,11 +105,11 @@ struct LineItem: Codable {
     let variantID: Int?
     let variantTitle, vendor: String?
     let taxLines : [TaxLine]
-    var properties : [OrderProperty]?
+    var properties : [OrderProperty]
 
 
 
-    init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int? = nil, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine]) {
+    init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int? = nil, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine],propertis:[OrderProperty]) {
         self.id = id
         self.adminGraphqlAPIID = adminGraphqlAPIID
         self.currentQuantity = currentQuantity
@@ -126,6 +126,7 @@ struct LineItem: Codable {
         self.variantTitle = variantTitle
         self.vendor = vendor
         self.taxLines = taxLines
+        self.properties = propertis
     }
     enum CodingKeys: String, CodingKey {
         case id
@@ -187,5 +188,5 @@ struct TaxLine : Codable{
 
 struct OrderProperty : Codable{
     var name : String
-    var value : String
+    var value : String = ""
 }

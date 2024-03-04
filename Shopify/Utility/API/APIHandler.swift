@@ -1,9 +1,4 @@
-//
-//  APIHandler.swift
-//  Shopify
-//
-//  Created by Mac on 21/02/2024.
-//
+
 
 import Foundation
 
@@ -28,4 +23,10 @@ class APIHandler{
     enum APICompletions :String{
         case json = ".json"
     }
+}
+
+enum APIResponseCodes:Int{
+    case userExist = 422
+    case createdUser = 201
+    case badRequest = 400
 }

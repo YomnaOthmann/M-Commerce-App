@@ -40,8 +40,8 @@ class NetworkManager : NetworkManagerProtocol{
             }
             
         }
-        
     }
+    
     func post(url: String, parameters:Codable, completionHandler: @escaping(Int)->Void){
         let header : HTTPHeaders = [
             "Cookie" :  ""
@@ -53,22 +53,19 @@ class NetworkManager : NetworkManagerProtocol{
             switch response.result {
             case .success(_):
                 guard let data = response.data else{
-                    print("failed to post data")
                     completionHandler(statusCode)
                     return
                 }
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                    print(json)
+                    let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as! Dictionary<String, Any?>
+                    print("json \(json)")
+                    completionHandler(statusCode)
                 }
                 catch let error{
                     print(error.localizedDescription)
                 }
-                print("Success")
-                completionHandler(statusCode)
             case .failure(_):
-                print("failed to post data")
-                completionHandler(0)
+                completionHandler(statusCode)
             }
         }
     }
