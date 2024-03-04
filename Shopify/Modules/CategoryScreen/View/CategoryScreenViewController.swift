@@ -20,6 +20,12 @@ class CategoryScreenViewController: UIViewController {
         UIImage(named: "tShirt"),
         UIImage(named: "handbags")
     ]
+    let subCategoriesFilter:[Product.ProductType] = [
+        .all,
+        .shoes,
+        .tShirts,
+        .accessories
+    ]
     var mainCategory = "all"
     var subCategory : Product.ProductType = .all
     let viewModel = CategoryScreenViewModel(network: NetworkManager())
@@ -31,14 +37,16 @@ class CategoryScreenViewController: UIViewController {
     var searchWords : String = ""
     var searching : Bool = false
     
+    var selectedCellIndex : Int = 0
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     
+    @IBOutlet weak var allButton: UIBarButtonItem!
+    @IBOutlet weak var menButton: UIBarButtonItem!
+    @IBOutlet weak var womenButton: UIBarButtonItem!
+    @IBOutlet weak var kidsButton: UIBarButtonItem!
     
-    
-//    self.allProducts = self.viewModel.allProducts?.products
-//    self.filteredProducts = self.allProducts
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpIndicator()
@@ -50,10 +58,14 @@ class CategoryScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startTimer()
+        if mainCategory == "all"{
+            allButton.tintColor = .customBlue
+        }
+        subCategory = subCategoriesFilter[selectedCellIndex]
         viewModel.fetchProducts()
         viewModel.bindResult = {
             self.allProducts = self.viewModel.allProducts?.products
-            self.filteredProducts = self.allProducts
+            self.filteredProducts = self.viewModel.filterProducts(products: self.allProducts ?? [], mainCategory: self.mainCategory, subCategory: self.subCategory)
             DispatchQueue.main.async {
                 self.categoryCollectionView.reloadData()
                 self.indicator.stopAnimating()
@@ -113,6 +125,9 @@ class CategoryScreenViewController: UIViewController {
                 connectionAlert.dismissAlert()
                 alertIsPresenting = false
             }
+            if allProducts == nil{
+                viewModel.fetchProducts()
+            }
             
         }else{
             if !alertIsPresenting{
@@ -122,15 +137,24 @@ class CategoryScreenViewController: UIViewController {
         }
     }
     
-    @IBAction func getAllItems(_ sender: Any) {
+    @IBAction func getAllItems(_ sender: UIButton) {
+        allButton.tintColor = .customBlue
+        womenButton.tintColor = .black
+        menButton.tintColor = .black
+        kidsButton.tintColor = .black
         guard let products = allProducts else{
             return
         }
         mainCategory = "all"
+        sender.tintColor = .customBlue
         filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
         categoryCollectionView.reloadData()
     }
     @IBAction func getWomenItems(_ sender: Any) {
+        allButton.tintColor = .black
+        womenButton.tintColor = .customBlue
+        menButton.tintColor = .black
+        kidsButton.tintColor = .black
         guard let products = allProducts else{
             return
         }
@@ -139,6 +163,10 @@ class CategoryScreenViewController: UIViewController {
         categoryCollectionView.reloadData()
     }
     @IBAction func getMenItems(_ sender: Any) {
+        allButton.tintColor = .black
+        womenButton.tintColor = .black
+        menButton.tintColor = .customBlue
+        kidsButton.tintColor = .black
         guard let products = allProducts else{
             return
         }
@@ -147,6 +175,10 @@ class CategoryScreenViewController: UIViewController {
         categoryCollectionView.reloadData()
     }
     @IBAction func getKidsItems(_ sender: Any) {
+        allButton.tintColor = .black
+        womenButton.tintColor = .black
+        menButton.tintColor = .black
+        kidsButton.tintColor = .customBlue
         guard let products = allProducts else{
             return
         }
@@ -165,7 +197,7 @@ class CategoryScreenViewController: UIViewController {
         }
 
     }
-    @IBAction func gotoSettings(_ sender: Any) {
+    @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
             let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
             settingsVC.modalPresentationStyle = .fullScreen
@@ -176,9 +208,6 @@ class CategoryScreenViewController: UIViewController {
     }
 }
 extension CategoryScreenViewController : UISearchBarDelegate{
-    
-    
-    
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searching = true
@@ -220,8 +249,7 @@ extension CategoryScreenViewController : UISearchBarDelegate{
                }
            }
        }
-
-
+    
 }
 extension CategoryScreenViewController: CategoryScreenViewModelDelegate {
     func setFilteredProducts() {
@@ -253,7 +281,6 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if collectionView == filterCollectionView{
             let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.id, for: indexPath) as! FilterCollectionViewCell
             cell.filterImage.image = subCategories[indexPath.row]
@@ -290,16 +317,20 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
         if collectionView == filterCollectionView{
             switch indexPath.row{
             case 0:
+                selectedCellIndex = 0
                 subCategory = Product.ProductType.all
                 filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             case 1:
+                selectedCellIndex = 1
                 subCategory = Product.ProductType.shoes
                 filteredProducts = viewModel.filterProducts(products: products,  mainCategory: mainCategory,subCategory: subCategory)
             case 2:
+                selectedCellIndex = 2
                 subCategory = Product.ProductType.tShirts
                 filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             default:
-                subCategory = Product.ProductType.accessories
+                selectedCellIndex = 3
+               subCategory = Product.ProductType.accessories
                 filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             }
             categoryCollectionView.reloadData()
@@ -308,5 +339,11 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             // TODO: Navigate to product details here
         }
         
+
+        
     }
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        true
+    }
+
 }

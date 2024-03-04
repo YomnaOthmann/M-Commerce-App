@@ -16,7 +16,7 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var brandHeader: UILabel!
     @IBOutlet weak var brandsCollectionView: UICollectionView!
-
+    
     
     @IBOutlet weak var homeSearchBar: UISearchBar!
     let defaults = UserDefaults.standard
@@ -33,7 +33,9 @@ class HomeScreenViewController: UIViewController {
     private var priceRules : PriceRules?
     private var discounts : DiscountCodes?
     var smartCollections : SmartCollections?
-    private let alert = ConnectionAlert()
+    let connectionAlert = ConnectionAlert()
+    var alertIsPresenting = false
+    var timer : Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,21 +51,49 @@ class HomeScreenViewController: UIViewController {
         homeSearchBar.delegate = self
         
         viewModel.delegate = self
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        if viewModel.checkReachability(){
-            brandHeaderLabel.isHidden = false
-            viewModel.fetchAds()
-            viewModel.fetchBrands()
-        }else{
-            brandHeaderLabel.isHidden = true
-            ConnectionAlert().showAlert(view: self)
+        if defaults.bool(forKey: "isLogged"){
+            viewModel.fetchCustomer(mail: defaults.string(forKey: "customerMail") ?? "")
         }
-        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        startTimer()
+        brandHeaderLabel.isHidden = false
+        viewModel.fetchAds()
+        viewModel.fetchBrands()
         
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopTimer()
+    }
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkReachability), userInfo: nil, repeats: true)
+    }
+    func stopTimer(){
+        timer?.invalidate()
+        timer = nil
+    }
+    @objc func checkReachability(){
+        if viewModel.checkReachability(){
+            if alertIsPresenting{
+                connectionAlert.dismissAlert()
+                alertIsPresenting = false
+            }
+            if smartCollections == nil{
+                viewModel.fetchAds()
+                viewModel.fetchBrands()
+            }
+            
+        }else{
+            if !alertIsPresenting{
+                connectionAlert.showAlert(view: self)
+                alertIsPresenting = true
+            }
+        }
+    }
     fileprivate func setUpSearchBar() {
         homeSearchBar.tintColor = .white
         homeSearchBar.barTintColor = .white
@@ -125,7 +155,7 @@ class HomeScreenViewController: UIViewController {
         }
     }
     
-    @IBAction func gotoSettings(_ sender: Any) {
+    @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
             let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
             settingsVC.modalPresentationStyle = .fullScreen
@@ -198,7 +228,7 @@ extension HomeScreenViewController : HomeScreenViewModelDelegate{
             }
         }
         
-
+        
     }
     func didLoadBrands(brands: SmartCollections) {
         smartCollections = brands
@@ -219,10 +249,10 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
         switch collectionView{
         case adsCollectionView:
             if self.discounts?.discountCodes?.count == 0 {
-                             self.adsCollectionView.setEmptyMessage("No Discount Codes to show :(")
-                         } else {
-                             self.adsCollectionView.restore()
-                         }
+                self.adsCollectionView.setEmptyMessage("No Discount Codes to show :(")
+            } else {
+                self.adsCollectionView.restore()
+            }
             return discounts?.discountCodes?.count ?? 0
         default:
             return smartCollections?.smartCollections.count ?? 0
@@ -266,17 +296,20 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsCollectionView{
-             // TODO: Add navigatoin code
+            // TODO: Add navigatoin code
             let brandVC = self.storyboard?.instantiateViewController(identifier: "brand") as! BrandScreenViewController
             brandVC.brand = smartCollections?.smartCollections[indexPath.row].title
             self.navigationController?.pushViewController(brandVC, animated: true)
         }
         if collectionView == adsCollectionView{
-            UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
-            CustomAlert.showAlertView(view:self,title: "Congratulations", message: "Offer Discount Activated")
-            showAnimation()
-            
-            viewModel.savePriceRule(priceRules: self.priceRules,discountCode:discounts?.discountCodes?[indexPath.row])
+            if defaults.bool(forKey: "isLogged"){
+                UIPasteboard.general.string = discounts?.discountCodes?[indexPath.row].code ?? ""
+                CustomAlert.showAlertView(view:self,title: "Congratulations", message: "You copied the discount code")
+                showAnimation()
+                viewModel.savePriceRule(priceRules: self.priceRules, discountCode: discounts?.discountCodes?[indexPath.row])
+            }else{
+                CustomAlert.showAlertView(view: self, title: "Login Needed!", message: "you must have an account to get the discount")
+            }
         }
     }
     
@@ -300,10 +333,10 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             animationView.animationSpeed = 1.0
             
             animationView.play()
-           
+            
             
         }
- 
+        
         DispatchQueue.main.asyncAfter(deadline: .now()+1.5){
             animationView.stop()
             animationView.removeFromSuperview()

@@ -32,7 +32,11 @@ class OrdersScreenViewModel : OrdersScreenViewModelProtocol{
             guard let orders = result else{
                 return
             }
-            self?.orders = orders.orders
+            let customerId = UserDefaults.standard.integer(forKey: "customerId")
+            print("id = \(customerId)")
+            self?.orders = orders.orders.filter({
+                $0.customer?.id == customerId
+            })
             print(orders.orders[0].lineItems.count)
         })
     }

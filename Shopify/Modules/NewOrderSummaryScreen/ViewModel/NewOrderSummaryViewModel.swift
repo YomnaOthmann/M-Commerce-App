@@ -21,9 +21,12 @@ class NewOrderSummaryViewModel {
         //TODO: - recieve real order from checkout
         
         let taxLine = [TaxLine(price: "20.0", title: "Shipping tax" )]
+       
+        let properties = [OrderProperty(name: "https://www.vhv.rs/dpng/d/490-4909527_sneakers-download-png-image-pink-sneakers-png-transparent.png")]
+    
         let lineItems = [
-            LineItem(name: "ADIDAS PINK SHOES FOR WOMEN", price: "200.0", productExists: true, quantity: 3, title: "ADIDAS PINK SHOES FOR WOMEN", totalDiscount: "40.0",vendor: "ADIDAS", taxLines: taxLine),
-            LineItem(name: "ADIDAS PINK SHOES FOR WOMEN", price: "200.0", productExists: true, quantity: 3, title: "ADIDAS PINK SHOES FOR WOMEN", totalDiscount: "40.0",vendor: "ADIDAS", taxLines: taxLine)
+            LineItem(name: "ADIDAS PINK SHOES FOR WOMEN", price: "200.0", productExists: true, quantity: 3, title: "ADIDAS PINK SHOES FOR WOMEN", totalDiscount: "40.0",vendor: "ADIDAS", taxLines: taxLine,propertis: properties),
+            LineItem(name: "ADIDAS PINK SHOES FOR WOMEN", price: "200.0", productExists: true, quantity: 3, title: "ADIDAS PINK SHOES FOR WOMEN", totalDiscount: "40.0",vendor: "ADIDAS", taxLines: taxLine,propertis: properties)
         ]
         let order = Order(financialStatus: .pending, lineItems: lineItems)
         let newOrder = NewOrder(order: order)

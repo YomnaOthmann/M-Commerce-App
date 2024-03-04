@@ -19,6 +19,11 @@ class OrderSummaryScreenViewController: UIViewController {
     
     @IBOutlet weak var draftOrderCollectionView: UICollectionView!
     
+    let viewModel = OrderSummaryScreenViewModel(network: NetworkManager())
+    let connectionAlert = ConnectionAlert()
+    var alertIsPresenting = false
+    var timer : Timer?
+    
     var order:Order?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +42,12 @@ class OrderSummaryScreenViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         
         draftOrderCollectionView.setCollectionViewLayout(layout, animated: true)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        startTimer()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        stopTimer()
     }
 
     func setUpOrderData(){
@@ -59,7 +70,29 @@ class OrderSummaryScreenViewController: UIViewController {
         orderAddress.text = "\(address.address1 ?? "")\(address.city ?? "")\(address.country ?? "") \nContact: \(address.phone ?? "") "
         
     }
-    
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkReachability), userInfo: nil, repeats: true)
+    }
+    func stopTimer(){
+        timer?.invalidate()
+        timer = nil
+    }
+    @objc func checkReachability(){
+        if viewModel.checkReachability(){
+            if alertIsPresenting{
+                connectionAlert.dismissAlert()
+                alertIsPresenting = false
+            }
+            
+        }else{
+            if !alertIsPresenting{
+                connectionAlert.showAlert(view: self)
+                alertIsPresenting = true
+            }
+
+        }
+    }
+
 
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -81,8 +114,8 @@ extension OrderSummaryScreenViewController : UICollectionViewDelegate, UICollect
         let cell = draftOrderCollectionView.dequeueReusableCell(withReuseIdentifier: OrderSummaryCollectionViewCell.id, for: indexPath) as! OrderSummaryCollectionViewCell
         
         cell.cellTitle.text = order?.lineItems[indexPath.row].title
-        if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
-            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
+        if order?.lineItems[indexPath.row].properties.count ?? -1 > 0{
+            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties[indexPath.row].name ?? ""))
         }
         cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
         cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"
