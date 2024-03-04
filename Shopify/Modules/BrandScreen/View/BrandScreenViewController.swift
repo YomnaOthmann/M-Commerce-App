@@ -21,8 +21,10 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
     var searchWords : String = ""
     var searching : Bool = false
     
-    
-    
+    let connectionAlert = ConnectionAlert()
+    var alertIsPresenting = false
+    var timer : Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigationItem.setHidesBackButton(true, animated: true)
@@ -33,19 +35,17 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
         searchBar.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        if viewModel.checkReachability(){
-            ConnectionAlert().dismissAlert()
-            viewModel.fetchProducts(brandName: brand)
+        startTimer()
+        viewModel.fetchProducts(brandName: brand)
             viewModel.bindResult = {
                 self.allProducts = self.viewModel.brandProducts
                 self.brandProductsCollectionView.reloadData()
             }
-        }else{
-            ConnectionAlert().showAlert(view: self)
-        }
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopTimer()
+    }
     fileprivate func setUpSearchBar() {
         searchBar.tintColor = .white
         searchBar.barTintColor = .white
@@ -64,7 +64,30 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
         
         brandProductsCollectionView.setCollectionViewLayout(brandLayout, animated: true)
     }
-    
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkReachability), userInfo: nil, repeats: true)
+    }
+    func stopTimer(){
+        timer?.invalidate()
+        timer = nil
+    }
+    @objc func checkReachability(){
+        if viewModel.checkReachability(){
+            if alertIsPresenting{
+                connectionAlert.dismissAlert()
+                alertIsPresenting = false
+            }
+            if allProducts == nil{
+                viewModel.fetchProducts(brandName: brand)
+            }
+            
+        }else{
+            if !alertIsPresenting{
+                connectionAlert.showAlert(view: self)
+                alertIsPresenting = true
+            }
+        }
+    }
     @IBAction func gotoCart(_ sender: Any) {
         
         if defaults.bool(forKey: "isLogged"){

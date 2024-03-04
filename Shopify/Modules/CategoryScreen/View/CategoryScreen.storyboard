@@ -134,7 +134,7 @@
                                     </hierarchicalColors>
                                 </imageReference>
                                 <connections>
-                                    <action selector="gotoSettings:" destination="Y6W-OH-hqX" id="bQP-KK-zBb"/>
+                                    <action selector="gotoWishlist:" destination="Y6W-OH-hqX" id="bQP-KK-zBb"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" id="jGn-0L-gwg">
@@ -153,9 +153,13 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="allButton" destination="yu0-gr-7GT" id="6fL-xu-x7b"/>
                         <outlet property="categoryCollectionView" destination="VSS-ma-WAN" id="n78-uL-dm3"/>
                         <outlet property="filterCollectionView" destination="SNA-N6-K5x" id="N4I-8x-uVF"/>
+                        <outlet property="kidsButton" destination="28j-l1-UKX" id="fKx-Mh-OL7"/>
+                        <outlet property="menButton" destination="rRn-k3-fOX" id="1Cn-yB-1CA"/>
                         <outlet property="searchBar" destination="hwF-Kc-MJL" id="nB8-mM-kya"/>
+                        <outlet property="womenButton" destination="nH1-EC-KEF" id="O1Z-7t-Dal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

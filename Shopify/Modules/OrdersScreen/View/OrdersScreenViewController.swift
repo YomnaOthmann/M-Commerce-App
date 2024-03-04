@@ -27,7 +27,7 @@ class OrdersScreenViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         startTimer()
-            viewModel.fetchOrders()
+        viewModel.fetchOrders()
         viewModel.bindOrders = {
             self.orders = self.viewModel.orders
             self.ordersTable.reloadData()
@@ -51,6 +51,7 @@ class OrdersScreenViewController: UIViewController {
         timer?.invalidate()
         timer = nil
     }
+    
     @objc func checkReachability(){
         if viewModel.checkReachability(){
             if alertIsPresenting{
@@ -75,6 +76,9 @@ class OrdersScreenViewController: UIViewController {
 
 extension OrdersScreenViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if orders?.count == 0{
+            ordersTable.setEmptyMessage("You don't have orders yet")
+        }
         return orders?.count ?? 0
     }
     func numberOfSections(in tableView: UITableView) -> Int {
