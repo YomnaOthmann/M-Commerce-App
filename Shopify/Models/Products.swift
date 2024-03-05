@@ -12,6 +12,10 @@ struct Products: Codable {
     let products: [Product]
 }
 
+struct ProductContainer: Codable {
+    let product: Product
+}
+
 // MARK: - Product
 
 struct Product: Codable {
