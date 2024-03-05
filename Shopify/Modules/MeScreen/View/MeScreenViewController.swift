@@ -116,14 +116,14 @@ class MeScreenViewController: UITableViewController {
         secondOrderNumber.text = "\(orders?[0].orderNumber ?? 0)"
         secondOrderPrice.text  =  "\(orders?[0].currentTotalPrice ?? "") \(orders?[0].currency ?? "")"
         secondOrderQuantity.text =  "\(orders?[0].lineItems.count ?? 0)"
-        secondOrderStatus.text = orders?[0].financialStatus.rawValue
+        secondOrderStatus.text = orders?[0].financialStatus?.rawValue
         secondOrderDate.text = orders?[0].createdAt?.components(separatedBy: "T").first
         
         
         firstOrderNumber.text = "\(orders?[1].orderNumber ?? 0)"
         firstOrderPrice.text  =  "\(orders?[1].currentTotalPrice ?? "") \(orders?[1].currency ?? "")"
         firstOrderQuantity.text =  "\(orders?[1].lineItems.count ?? 0)"
-        firstOrderStatus.text = orders?[1].financialStatus.rawValue
+        firstOrderStatus.text = orders?[1].financialStatus?.rawValue
         firstOrderDate.text = orders?[1].createdAt?.components(separatedBy: "T").first
     }
 

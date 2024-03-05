@@ -9,20 +9,26 @@ import Foundation
 
 // MARK: - DraftOrders
 struct DraftOrders: Codable {
-    let draftOrders: [DraftOrder]
+    
+    let draftOrders: [DraftOrder]?
 
     enum CodingKeys: String, CodingKey {
         case draftOrders = "draft_orders"
     }
 }
 
-struct NewDraftOrder: Codable{
-    let draftOrder : DraftOrder
+class PostDraftOrder : Codable{
+    
+    let draftOrder : DraftOrder?
+    
     enum CodingKeys: String, CodingKey {
         case draftOrder = "draft_order"
     }
-}
 
+    init(draftOrder: DraftOrder?) {
+        self.draftOrder = draftOrder
+    }
+}
 // MARK: - DraftOrder
 struct DraftOrder: Codable {
     
@@ -35,7 +41,7 @@ struct DraftOrder: Codable {
     let taxExempt: Bool?
     let completedAt: String?
     let name, status: String?
-    let lineItems: [LineItem]?
+    var lineItems: [LineItem]?
     let shippingAddress, billingAddress: Address?
     let invoiceURL: String?
     let orderID: Int?
@@ -74,19 +80,20 @@ struct DraftOrder: Codable {
     }
 }
 
-
 // MARK: - ShippingLine
 struct ShippingLine: Codable {
-    let title: String
-    let custom: Bool
+    let title: String?
+    let custom: Bool?
     let handle: String?
-    let price: String
+    let price: String?
 }
 struct AppliedDiscount:Codable{
-    let title : String
-    let description : String
-    let value : String
-    let valueType : String
-    let amount : String
+    let title : String?
+    let description : String?
+    let value : String?
+    let valueType : String?
+    let amount : String?
+    
 }
+
 
