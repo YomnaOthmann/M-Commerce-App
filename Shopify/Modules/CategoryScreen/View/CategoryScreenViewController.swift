@@ -337,6 +337,10 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             
         }else{
             // TODO: Navigate to product details here
+            
+            let productInfoVC = UIStoryboard(name: "ProductDetails", bundle: nil).instantiateViewController(withIdentifier: "ProductDetails")
+                    productInfoVC.modalPresentationStyle = .fullScreen
+                    self.present(productInfoVC, animated: true)
         }
         
 
@@ -345,5 +349,30 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         true
     }
+    
+    
+}
 
+
+extension UIView {
+    
+    //MARK: - Setup Design of Category Cell Not Selected
+    func configureDesignOfCellNotSelected(label:UILabel){
+        
+        label.textColor = UIColor(red: 0.58, green: 0.58, blue: 0.58, alpha: 1)
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor(red: 0.58, green: 0.58, blue: 0.58, alpha: 1).cgColor
+        self.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+
+    }
+    
+    
+    //MARK: - Setup Design of Category Cell Not Selected
+    func configureDesignOfcellSelected(label:UILabel ){
+        label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        self.layer.backgroundColor = UIColor(red: 0.062, green: 0.062, blue: 0.062, alpha: 1).cgColor
+
+    }
+    
 }

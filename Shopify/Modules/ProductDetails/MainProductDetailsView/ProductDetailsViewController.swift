@@ -1,0 +1,286 @@
+//
+//  ProductDetailsViewController.swift
+//  Shopify
+//
+//  Created by Mac on 05/03/2024.
+//
+
+import UIKit
+import Cosmos
+import Lottie
+
+class ProductDetailsViewController: UIViewController {
+    
+    
+    
+    static let storyBoardName = "ProductDetails"
+    static let identifier = "ProductDetails"
+    
+    @IBOutlet weak var showFavoriteOrNot: UIButton!
+    
+    @IBOutlet weak var numberOfItems: UILabel!
+    
+    @IBOutlet weak var itemPrice: UILabel!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var stepperView: UIView!
+    @IBOutlet weak var reviewCollectionView: UICollectionView!
+    @IBOutlet weak var productImageCollection: UICollectionView!
+    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var rating: CosmosView!
+    @IBOutlet weak var productBrand: UILabel!
+    @IBOutlet weak var descriptionOfProduct: UILabel!
+    @IBOutlet weak var colorCollectionView: UICollectionView!
+    @IBOutlet weak var sizeCollectionView: UICollectionView!
+    @IBOutlet weak var imageIndicator: UIPageControl!
+    @IBOutlet weak var avalibleQuantity: UILabel!
+    
+    let myView : LottieAnimationView = .init()
+    let productRatting:Double = 5
+    let customerID = K.customerID
+    var productSizeDelegation:ProductSizeDelegation?
+    var productColorDelegation:ProductColorDelegation?
+    var productImageDelegation: ProdutImageDelegation?
+    let productReviewDelegation = ProductReviewDelegation(numberOfReviews: 2)
+    var productDetailsViewModel:ProductDetailsViewModel?
+    
+    //MARK: - Conigure ViewWill Appear
+    override func viewDidAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+        self.addLogoToNavigationBarItem(logoImage: K.darkModeLogo)
+        
+    }
+    
+    //MARK: - View Will Desappear
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    //MARK: - ViewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if customerID == -1{
+            showFavoriteOrNot.isHidden = true
+        }
+//        productDetailsViewModel?.priceOfSingleProduct()
+        bindProductDetailsViewModule()
+        productImageCollection.contentInsetAdjustmentBehavior = .never
+        
+        
+        
+        
+    }
+  
+    
+  //MARK: - Bind View Module in the Controller
+    private func bindProductDetailsViewModule(){
+        
+        productDetailsViewModel?.reload = {[weak self] in
+            
+            self?.productSizeDelegation = ProductSizeDelegation(viewModel: (self?.productDetailsViewModel)!)
+            self?.productColorDelegation = ProductColorDelegation(viewModel: (self?.productDetailsViewModel)!)
+            self?.productImageDelegation = ProdutImageDelegation(collectionView: (self?.productImageCollection)!, with: self!.imageIndicator,itemDetails: (self?.productDetailsViewModel?.productItemDetails)!)
+            self?.productImageDelegation?.layoutSetup()
+            self?.configureDetailsOfProduct()
+            self?.avalibleQuantity.text = self?.productDetailsViewModel?.numeberOfAvalibleQuantity
+            self?.setRattingToProduct()
+            self?.configureDataSourceofImageCollection()
+          
+            DispatchQueue.main.async {
+               
+                self?.productImageCollection.reloadData()
+                self?.sizeCollectionView.reloadData()
+                self?.colorCollectionView.reloadData()
+                self?.reviewCollectionView.reloadData()
+                
+                let indexPath = IndexPath(item: 0, section: 0)
+                self?.sizeCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                let indexPath2 = IndexPath(item: 0, section: 0)
+                self?.colorCollectionView.selectItem(at: indexPath2, animated: false, scrollPosition: [])
+                
+            }
+            
+           
+            
+        }
+        
+        
+        
+        productDetailsViewModel?.isLoadingAnimation = { [weak self] loading in
+            DispatchQueue.main.async {
+                self?.view.isUserInteractionEnabled = !loading
+                self?.isLoadingIndicatorAnimating = loading
+            }
+        }
+        
+        
+        
+        productDetailsViewModel?.errorOccurs = { [weak self] error in
+            guard let self = self else{return}
+            self.isLoadingIndicatorAnimating = false
+            Alert.show(on: self, title: "error", message: error)
+        }
+        
+        
+        productDetailsViewModel?.alertNotification = { [weak self] (titleAlert , messageAlert) in
+            guard let self = self else{return}
+            Alert.show(on: self, title: titleAlert , message: messageAlert)
+           
+            
+        }
+        
+        productDetailsViewModel?.notifyAddedToCart = { [weak self]  in
+            self?.luanchSavingAnimation()
+
+            
+        }
+        
+        
+        productDetailsViewModel?.setProductAsFavorites = { [weak self] in
+            DispatchQueue.main.async {
+                self?.showFavoriteOrNot.setImage(UIImage(systemName: K.favoriteIconSave,withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+                }
+            }
+        
+        
+        
+        
+        productDetailsViewModel?.updateQuatitySelect = { [weak self] in
+            
+            DispatchQueue.main.async {
+                if let stockAvalibity = self?.productDetailsViewModel?.numberOfItemsUpdates {
+                    self?.numberOfItems.text = "\(stockAvalibity)"
+//
+                    self?.avalibleQuantity.text = "\((self?.productDetailsViewModel?.availableQuatitySizeAndColor ?? 0)  - (self?.productDetailsViewModel?.numberOfItemsUpdates ?? 0) ) item"
+                    
+                    
+                    
+                }
+            }
+        }
+        
+        
+        
+    }
+    
+    
+    //MARK: - Increase Quatity of Item
+    @IBAction func addItem(_ sender: Any) {
+        productDetailsViewModel?.addNewItemToCart(availableQuantity: avalibleQuantity.text)
+    }
+    
+    
+    
+    //MARK: - Decrease Quatity of Item
+    @IBAction func removeItem(_ sender: UIButton) {
+        productDetailsViewModel?.removeOneItemFromCart()
+        
+    }
+    
+    
+    
+    //MARK: - Set Item IS in Favorite Or Not
+
+    @IBAction func setOrRemoveFavorite(_ sender: UIButton) {
+        
+        productDetailsViewModel?.setOrRemoveFavoriteProduct(sender:sender)
+    }
+    
+    
+   
+    
+    
+   
+    
+    //MARK: - Test Add Promo Code To Product
+    @IBAction func AddToCartButton(_ sender: UIButton) {
+        if customerID == -1 {
+            Alert.loginAlert(on: self)
+        }else{
+            if productDetailsViewModel?.numberOfItemsUpdates != 0 {
+                
+               
+                productDetailsViewModel?.addProductToCart()
+            }else{
+                
+                Alert.show(on: self, title: "No Quantity", message: "Please Select Qunatity From The Available Stock.")
+            }
+            
+        }
+    }
+    
+}
+
+
+
+
+//MARK: - Adding Cosmatics to UIView
+extension ProductDetailsViewController{
+    
+    func configureDataSourceofImageCollection(){
+        productImageCollection.dataSource = productImageDelegation
+        productImageCollection.delegate = productImageDelegation
+        sizeCollectionView.dataSource = productSizeDelegation
+        sizeCollectionView.delegate = productSizeDelegation
+        colorCollectionView.dataSource = productColorDelegation
+        colorCollectionView.delegate =  productColorDelegation
+        reviewCollectionView.dataSource = productReviewDelegation
+        reviewCollectionView.delegate = productReviewDelegation
+        self.productImageCollection.register(ProductImageCell.nib(), forCellWithReuseIdentifier: ProductImageCell.identifier)
+        self.sizeCollectionView.register(SizeColorCell.nib(), forCellWithReuseIdentifier: SizeColorCell.identifier)
+        self.colorCollectionView.register(ColorCell.nib(), forCellWithReuseIdentifier: ColorCell.identifier)
+        self.reviewCollectionView.register(ReviewProductCell.nib(), forCellWithReuseIdentifier: ReviewProductCell.identifier)
+      
+
+        
+    }
+    
+    
+    
+    //MARK: - Configure Details of Product
+    func configureDetailsOfProduct(){
+
+        productName.text = productDetailsViewModel?.nameOfProduct
+        productBrand.text = productDetailsViewModel?.nameProductBrand
+        descriptionOfProduct.text = productDetailsViewModel?.descriptionOfProduct
+
+        
+    }
+    
+
+    //MARK: - Set Rating for Product
+    func setRattingToProduct(){
+        rating.rating = productRatting.randomValue
+    }
+    
+    
+    
+  
+
+    
+    
+}
+
+
+
+
+//MARK: - Animation
+extension ProductDetailsViewController{
+    func luanchSavingAnimation(){
+        myView.animation = .named("ConformAddtoCart")
+        myView.loopMode = .loop
+        myView.frame = CGRect(x: 0, y: 0, width: 600, height: 250)
+        myView.center = CGPointMake(myView.frame.maxX/1.25, myView.frame.height/0.16)
+        myView.center = view.center
+        view.addSubview(myView)
+        myView.contentMode = .scaleAspectFill
+        myView.backgroundColor = .clear
+        myView.play()
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setSavingAnimation), userInfo: nil, repeats: false)
+    }
+    
+    
+    @objc func setSavingAnimation(){
+        myView.removeFromSuperview()
+    }
+}
