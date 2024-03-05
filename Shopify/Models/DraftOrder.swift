@@ -16,29 +16,36 @@ struct DraftOrders: Codable {
     }
 }
 
+struct NewDraftOrder: Codable{
+    let draftOrder : DraftOrder
+    enum CodingKeys: String, CodingKey {
+        case draftOrder = "draft_order"
+    }
+}
+
 // MARK: - DraftOrder
 struct DraftOrder: Codable {
     
-    let id: Int
-    let note, email: String
-    let taxesIncluded: Bool
-    let currency: String
+    let id: Int?
+    let note, email: String?
+    let taxesIncluded: Bool?
+    let currency: String?
     let invoiceSentAt: String?
-    let createdAt, updatedAt: String
-    let taxExempt: Bool
+    let createdAt, updatedAt: String?
+    let taxExempt: Bool?
     let completedAt: String?
-    let name, status: String
-    let lineItems: [LineItem]
+    let name, status: String?
+    let lineItems: [LineItem]?
     let shippingAddress, billingAddress: Address?
-    let invoiceURL: String
+    let invoiceURL: String?
     let orderID: Int?
     let shippingLine: ShippingLine?
-    let tags: String
-    let totalPrice, subtotalPrice, totalTax: String
-    let presentmentCurrency: String
-    let adminGraphqlAPIID: String
+    let tags: String?
+    let totalPrice, subtotalPrice, totalTax: String?
+    let presentmentCurrency: String?
+    let adminGraphqlAPIID: String?
     let customer: Customer?
-    let appliedDiscount : AppliedDiscount
+    let appliedDiscount : AppliedDiscount?
 
     enum CodingKeys: String, CodingKey {
         case id, note, email

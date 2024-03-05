@@ -41,6 +41,12 @@ class MeScreenViewController: UITableViewController {
     var user:Customer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !UserDefaults.standard.bool(forKey: "isLogged"){
+            self.tableView.isHidden = true
+            self.navigationController?.navigationBar.isHidden = true
+            let notLoggedVC = UIStoryboard(name: "MeScreen", bundle: nil).instantiateViewController(withIdentifier: "notLogged")
+            self.navigationController?.setViewControllers([notLoggedVC], animated: true)
+        }
         userView.layer.cornerRadius = 20
         userName.text = "Yomna Othman"
         userMail.text = "yomnaothmann@gmail.com"

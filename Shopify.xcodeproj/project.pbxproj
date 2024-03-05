@@ -19,6 +19,8 @@
 		04810AD92B940FD100321195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04810AD82B940FD100321195 /* GoogleService-Info.plist */; };
 		048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */; };
 		048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */; };
+		048CBA592B961AED0061662D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		048CBA5B2B961B170061662D /* (null) in Resources */ = {isa = PBXBuildFile; };
 		048DC9C32B8CEC17006623C9 /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C22B8CEC17006623C9 /* AdsCollectionViewCell.swift */; };
 		048DC9C62B8CEC2B006623C9 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC9C42B8CEC2A006623C9 /* BrandCollectionViewCell.swift */; };
 		048DC9C72B8CEC2B006623C9 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DC9C52B8CEC2B006623C9 /* BrandCollectionViewCell.xib */; };
@@ -87,9 +89,6 @@
 		04F133C12B8963E300F49963 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F133C02B8963E300F49963 /* HomeScreenViewController.swift */; };
 		04F133CB2B89643000F49963 /* AdsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F133C92B89643000F49963 /* AdsCollectionViewCell.xib */; };
 		04F133CD2B89698700F49963 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F133CC2B89698700F49963 /* HomeScreenViewModel.swift */; };
-		04F6616A2B8D81CA00F26224 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04F661692B8D81CA00F26224 /* FirebaseAnalytics */; };
-		04F6616C2B8D81CA00F26224 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */; };
-		04F6616E2B8D81CA00F26224 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6616D2B8D81CA00F26224 /* FirebaseAuth */; };
 		4E7EFC779A263136C40B3548 /* Pods_ShopifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0FA4B994C7C0EA923F6CF3 /* Pods_ShopifyTests.framework */; };
 		754B9BF1A72B10895F3FFDE1 /* Pods_Shopify_ShopifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17550154E7C3054FB1DFD428 /* Pods_Shopify_ShopifyUITests.framework */; };
 		DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5F6EA694ECBFA2B240E273 /* Pods_Shopify.framework */; };
@@ -282,10 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F6616C2B8D81CA00F26224 /* FirebaseAnalyticsSwift in Frameworks */,
-				04F6616A2B8D81CA00F26224 /* FirebaseAnalytics in Frameworks */,
 				DB86D0BA5115A0312D1408F5 /* Pods_Shopify.framework in Frameworks */,
-				04F6616E2B8D81CA00F26224 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,9 +1008,6 @@
 			);
 			name = Shopify;
 			packageProductDependencies = (
-				04F661692B8D81CA00F26224 /* FirebaseAnalytics */,
-				04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */,
-				04F6616D2B8D81CA00F26224 /* FirebaseAuth */,
 			);
 			productName = Shopify;
 			productReference = 04A574072B84D669007BFC98 /* Shopify.app */;
@@ -1092,7 +1085,6 @@
 			);
 			mainGroup = 04A573FE2B84D669007BFC98;
 			packageReferences = (
-				04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 04A574082B84D669007BFC98 /* Products */;
 			projectDirPath = "";
@@ -1118,6 +1110,7 @@
 				04F133CB2B89643000F49963 /* AdsCollectionViewCell.xib in Resources */,
 				04A5741A2B84D66C007BFC98 /* LaunchScreen.storyboard in Resources */,
 				04A574172B84D66C007BFC98 /* Assets.xcassets in Resources */,
+				048CBA5B2B961B170061662D /* (null) in Resources */,
 				DEDD83492B8CA75800516BB4 /* ShoppingBag.storyboard in Resources */,
 				04E3852B2B8BC9EB00DEADB3 /* fav.json in Resources */,
 				04956AAF2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib in Resources */,
@@ -1278,6 +1271,7 @@
 				048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */,
 				04E385252B8BB12400DEADB3 /* ProductCollectionViewCell.swift in Sources */,
 				04180AC62B869BBE007CA253 /* APIHandler.swift in Sources */,
+				048CBA592B961AED0061662D /* (null) in Sources */,
 				043E549C2B8797F300F8CDA7 /* Alert.swift in Sources */,
 				04A574492B84D6FE007BFC98 /* NetworkReachability.swift in Sources */,
 				044631CC2B8A4300001F9371 /* LoginViewController.swift in Sources */,
@@ -1693,35 +1687,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.21.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		04F661692B8D81CA00F26224 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		04F6616B2B8D81CA00F26224 /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		04F6616D2B8D81CA00F26224 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04F661682B8D81CA00F26224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		04A574132B84D669007BFC98 /* Shopify.xcdatamodeld */ = {

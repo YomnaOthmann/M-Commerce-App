@@ -53,6 +53,8 @@ class HomeScreenViewController: UIViewController {
         viewModel.delegate = self
         if defaults.bool(forKey: "isLogged"){
             viewModel.fetchCustomer(mail: defaults.string(forKey: "customerMail") ?? "")
+            print(defaults.string(forKey: "customerMail"))
+            print(defaults.integer(forKey: "customerId"))
         }
     }
     
@@ -157,11 +159,11 @@ class HomeScreenViewController: UIViewController {
     
     @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
-            let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+            let settingsVC = UIStoryboard(name: "WishlistScreen", bundle: nil).instantiateViewController(withIdentifier: "wish")
             settingsVC.modalPresentationStyle = .fullScreen
             self.present(settingsVC, animated: true)
         }else{
-            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the Settings")
+            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the wishlist")
         }
     }
 }
@@ -240,6 +242,13 @@ extension HomeScreenViewController : HomeScreenViewModelDelegate{
             self.brandsCollectionView.alpha = 1
         }
     }
+    func didLoadCustomer(customer: Customer) {
+        print("from home view")
+        let customerData = try? JSONEncoder().encode(customer)
+        defaults.set(customerData, forKey: "customer")
+        print(customer.id)
+        self.defaults.set(customer.id!, forKey: "customerId")
+    }
     
 }
 
@@ -267,7 +276,8 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdsCollectionViewCell.id, for: indexPath) as? AdsCollectionViewCell else{
                 return AdsCollectionViewCell()
             }
-            cell.layer.cornerRadius = 12
+
+            cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
             cell.adTitle.isHidden = true
             return cell
@@ -276,7 +286,6 @@ extension HomeScreenViewController : UICollectionViewDelegate, UICollectionViewD
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.id, for: indexPath) as? BrandCollectionViewCell else{
                 return BrandCollectionViewCell()
             }
-            // cell.brandName.text = smartCollections?.smartCollections[indexPath.row].title
             cell.brandImage.kf.setImage(with: URL(string: smartCollections?.smartCollections[indexPath.row].image.src ?? ""))
             return cell
         }

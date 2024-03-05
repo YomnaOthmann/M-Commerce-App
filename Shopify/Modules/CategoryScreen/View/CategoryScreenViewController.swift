@@ -199,11 +199,11 @@ class CategoryScreenViewController: UIViewController {
     }
     @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
-            let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+            let settingsVC = UIStoryboard(name: "WishlistScreen", bundle: nil).instantiateViewController(withIdentifier: "wish")
             settingsVC.modalPresentationStyle = .fullScreen
             self.present(settingsVC, animated: true)
         }else{
-            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the setttings")
+            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the wishlist")
         }
     }
 }

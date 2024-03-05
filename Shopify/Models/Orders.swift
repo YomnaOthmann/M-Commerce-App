@@ -35,28 +35,6 @@ struct Order: Codable {
     let shippingAddress: Address?
     let taxLines : [TaxLine]?
 
-    init(id: Int? = nil, confirmed: Bool? = nil, createdAt: String? = nil, currency: String? = nil, currentTotalDiscounts: String? = nil, currentTotalPrice: String? = nil, financialStatus: FinancialStatus, name: String? = nil, number: Int? = nil, orderNumber: Int? = nil, processedAt: String? = nil, subtotalPrice: String? = nil, token: String? = nil, totalDiscounts: String? = nil, totalLineItemsPrice: String? = nil, totalPrice: String? = nil, customer: Customer? = nil, lineItems: [LineItem], shippingAddress: Address? = nil, taxLines: [TaxLine]? = nil) {
-        self.id = id
-        self.confirmed = confirmed
-        self.createdAt = createdAt
-        self.currency = currency
-        self.currentTotalDiscounts = currentTotalDiscounts
-        self.currentTotalPrice = currentTotalPrice
-        self.financialStatus = financialStatus
-        self.name = name
-        self.number = number
-        self.orderNumber = orderNumber
-        self.processedAt = processedAt
-        self.subtotalPrice = subtotalPrice
-        self.token = token
-        self.totalDiscounts = totalDiscounts
-        self.totalLineItemsPrice = totalLineItemsPrice
-        self.totalPrice = totalPrice
-        self.customer = customer
-        self.lineItems = lineItems
-        self.shippingAddress = shippingAddress
-        self.taxLines = taxLines
-    }
     
     enum CodingKeys: String, CodingKey {
         case id

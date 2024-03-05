@@ -17,7 +17,7 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
     var allProducts : [Product]?
     let viewModel = BrandScreenViewModel(network: NetworkManager())
     let defaults = UserDefaults.standard
-    
+    let indicator = UIActivityIndicatorView(style: .medium)
     var searchWords : String = ""
     var searching : Bool = false
     
@@ -32,6 +32,7 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
         setUpCollectionView()
         brandProductsCollectionView.reloadData()
         setUpSearchBar()
+        setUpIndicator()
         searchBar.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -39,12 +40,20 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
         viewModel.fetchProducts(brandName: brand)
             viewModel.bindResult = {
                 self.allProducts = self.viewModel.brandProducts
+                self.indicator.stopAnimating()
                 self.brandProductsCollectionView.reloadData()
             }
         
     }
     override func viewWillDisappear(_ animated: Bool) {
         stopTimer()
+    }
+    func setUpIndicator(){
+        indicator.center = view.center
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        indicator.startAnimating()
+        view.addSubview(indicator)
     }
     fileprivate func setUpSearchBar() {
         searchBar.tintColor = .white
@@ -102,13 +111,13 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func gotoSettings(_ sender: Any) {
+    @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
-            let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+            let settingsVC = UIStoryboard(name: "WishlistScreen", bundle: nil).instantiateViewController(withIdentifier: "wish")
             settingsVC.modalPresentationStyle = .fullScreen
             self.present(settingsVC, animated: true)
         }else{
-            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the setttings")
+            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the wishlist")
         }
     
     }

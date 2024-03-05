@@ -6,12 +6,10 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 protocol LoginViewModelDelegate{
-    func didLogin()
     func failedToLogin()
-    func didRetrieveCustomer()
+    func didRetrieveCustomer(customer:Customer)
 }
 
 class LoginViewModel{
@@ -23,36 +21,24 @@ class LoginViewModel{
         self.network = network
     }
     
-    func fetchCustomer(mail:String){
+    func fetchCustomer(mail:String, password:String){
         let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
         network?.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
             
             guard let customers = result else{
+                self?.delegate?.failedToLogin()
                 return
             }
-            let customer = customers.customers?.filter({
-                $0.email == mail
-            }).first
-            if customer != nil{
-                self?.delegate?.didRetrieveCustomer()
-                self?.defaults.set(customer?.id, forKey: "customerId")
-                
+            guard let customer = customers.customers?.filter({
+                $0.email == mail && $0.tags == password
+            }).first else{
+                self?.delegate?.failedToLogin()
+                return
             }
+            let customerData = try? JSONEncoder().encode(customer)
+            self?.defaults.set(customerData, forKey: "customer")
+                self?.delegate?.didRetrieveCustomer(customer: customer)
         })
     }
     
-    func loginUsingFirebase(email:String, password:String, completionHandler:((AuthDataResult?,Error?)->Void)? = nil){
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] result, error in
-            guard let self = self else{
-                return
-            }
-            guard error == nil else{
-                delegate?.failedToLogin()
-                completionHandler?(nil,error)
-                return
-            }
-            delegate?.didLogin()
-            completionHandler?(result, nil)
-        }
-    }
 }

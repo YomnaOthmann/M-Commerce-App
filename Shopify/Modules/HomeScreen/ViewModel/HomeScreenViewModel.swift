@@ -10,6 +10,7 @@ import Foundation
 protocol HomeScreenViewModelDelegate : AnyObject{
     func didLoadAds(ads:PriceRules)
     func didLoadBrands(brands:SmartCollections)
+    func didLoadCustomer(customer:Customer)
 }
 
 protocol HomeScreenViewModelProtocol {
@@ -85,7 +86,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
         }
         
         do{
-        
+            
             for priceRule in priceRules.priceRules ?? [] {
                 
                 if priceRule.id == discountCode?.priceRuleID {
@@ -94,7 +95,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
                     
                     let discountCodeData = try JSONEncoder().encode(discountCode)
                     defaults.set(discountCodeData, forKey: "discountCodeKey")
-
+                    
                     let priceRuleData = try JSONEncoder().encode(priceRule)
                     defaults.set(priceRuleData, forKey: "priceRuleKey")
                     
@@ -109,6 +110,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
         }
         
     }
+    
     func fetchCustomer(mail:String){
         let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
         network.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
@@ -119,14 +121,30 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             let customer = customers.customers?.filter({
                 $0.email == mail
             }).first
-            self?.defaults.set(customer?.id, forKey: "customerId")
+            print("from home model")
+            guard let customer = customer else{
+                return
+            }
+            print(customer.id)
+            print(customer.tags)
+            self?.defaults.set(customer.id,forKey: "customerId")
+            
+            self?.delegate?.didLoadCustomer(customer: customer)
+            
         })
+        
     }
     
     func getCustomerEmailFromDefaults()->String{
         return defaults.string(forKey: "customerMail") ?? ""
     }
+    
     func checkReachability()->Bool{
         return reachability.networkStatus
     }
+    
+    
+
+    
+    
 }

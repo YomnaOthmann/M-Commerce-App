@@ -23,12 +23,17 @@ class MeScreenViewModel{
     
     func fetchOrders() {
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.orders.rawValue + APIHandler.APICompletions.json.rawValue
-    
+
         network?.fetch(url: url, type: Orders.self, completionHandler: {[weak self] result in
             guard let orders = result else{
                 return
             }
-            self?.orders = orders.orders
+            let customerId = UserDefaults.standard.integer(forKey: "customerId")
+            print("id = \(customerId)")
+            self?.orders = orders.orders.filter({
+                $0.customer?.id == customerId
+            })
+            print(orders.orders[0].lineItems.count)
         })
     }
     func checkReachability() -> Bool {
