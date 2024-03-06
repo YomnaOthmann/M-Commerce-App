@@ -196,12 +196,12 @@ class OrderBuilder{
             if let loadedCustomer = try? decoder.decode(Customer.self, from: customer){
                 order.customer = loadedCustomer
             }else{
-                      order.customer = Customer(email: nil, firstName: nil, lastName: nil)
-                      order.customer?.id = customerID
+                      order.customer = Customer(email: "", createdAt: "", updatedAt: "", firstName: "", lastName: "", ordersCount: 0, state: "", totalSpent: "", lastOrderID: 0, verifiedEmail: false, tags: "", lastOrderName: "", currency: "", phone: "", addresses: [], emailMarketingConsent: nil, smsMarketingConsent: nil, adminGraphqlAPIID: "", defaultAddress: nil)
+                order.customer?.id = customerID
 
                   }
         }else{
-                       order.customer = Customer(email: nil, firstName: nil, lastName: nil)
+                       order.customer = Customer(email: "", createdAt: "", updatedAt: "", firstName: "", lastName: "", ordersCount: 0, state: "", totalSpent: "", lastOrderID: 0, verifiedEmail: false, tags: "", lastOrderName: "", currency: "", phone: "", addresses: [], emailMarketingConsent: nil, smsMarketingConsent: nil, adminGraphqlAPIID: "", defaultAddress: nil)
                       order.customer?.id = customerID
 
         }

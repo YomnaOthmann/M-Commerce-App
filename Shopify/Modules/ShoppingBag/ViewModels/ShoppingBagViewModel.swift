@@ -105,7 +105,7 @@ class ShoppingBagViewModel {
     }
     
     func getImageUrl(atIndex index:Int)->String{
-        return lineItems[index].properties?[0].name ?? "shoppingCartProduct"
+        return lineItems[index].properties?.count == 0 ? "shoppingCartProduct" : lineItems[index].properties?[0].name ?? "shoppingCartProduct"
     }
     
     func getLineItemQuantity(atIndex index:Int)->String{
