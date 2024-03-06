@@ -1,9 +1,4 @@
-//
-//  APIHandler.swift
-//  Shopify
-//
-//  Created by Mac on 21/02/2024.
-//
+
 
 import Foundation
 
@@ -74,4 +69,10 @@ extension APIHandler{
         return "https://\(apiKey):\(adminSecretKey)@\(storeName)/admin/api/2024-01/draft_orders/\(id).json"
     }
 
+}
+
+enum APIResponseCodes:Int{
+    case userExist = 422
+    case createdUser = 201
+    case badRequest = 400
 }

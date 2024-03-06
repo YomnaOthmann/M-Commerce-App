@@ -1,65 +1,30 @@
 //
-//  MeScreenViewModel.swift
+//  WishlistScreenViewModel.swift
 //  Shopify
 //
-//  Created by Mac on 27/02/2024.
+//  Created by Mac on 05/03/2024.
 //
 
 import Foundation
+import UIKit
 
-class MeScreenViewModel{
-    
-    let reachability = NetworkReachability.networkReachability
-    let network : NetworkManagerProtocol?
-    init(network: NetworkManagerProtocol?) {
-        self.network = network
-    }
-    var bindOrders : ()->() = {}
-    var orders : [Order]?{
-        didSet{
-            bindOrders()
-        }
-    }
+class WishlistScreenViewModel{
+    let network : NetworkManagerProtocol
     var wishlist : DraftOrder?{
         didSet{
             bindResult()
         }
     }
     var bindResult : ()->() = {}
-    func fetchOrders() {
-        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.orders.rawValue + APIHandler.APICompletions.json.rawValue
-
-        network?.fetch(url: url, type: Orders.self, completionHandler: {[weak self] result in
-            guard let orders = result else{
-                return
-            }
-            let customerId = UserDefaults.standard.integer(forKey: "customerId")
-            print("id = \(customerId)")
-            self?.orders = orders.orders.filter({
-                $0.customer?.id == customerId
-            })
-            print(orders.orders[0].lineItems.count)
-        })
+    init(network: NetworkManagerProtocol) {
+        self.network = network
     }
-    func checkReachability() -> Bool {
-        return reachability.networkStatus
-    }
-    func getUser()->Customer?{
-        if let userData = UserDefaults.standard.object(forKey: "customer") as? Data {
-            let decoder = JSONDecoder()
-            if let customer = try? decoder.decode(Customer.self, from: userData) {
-                return customer
-            }
-        }
-        return nil
-    }
-    
     func fetchWishlist(){
         let wishId = UserDefaults.standard.integer(forKey: "wishId")
         print(wishId)
         let url = APIHandler.baseUrl + APIHandler.APIEndPoints.draftOrders.rawValue + "/\(wishId)" + APIHandler.APICompletions.json.rawValue
         print(url)
-        network?.fetch(url: url, type: PostDraftOrder.self) {[weak self] wishDraft in
+        network.fetch(url: url, type: PostDraftOrder.self) {[weak self] wishDraft in
             guard var wish = wishDraft?.draftOrder else{
                 return
             }
@@ -104,7 +69,7 @@ class MeScreenViewModel{
         }
 
         let newDraft = PostDraftOrder(draftOrder: draft)
-        network?.put(url: url, parameters: newDraft, completionHandler: {[weak self] code in
+        network.put(url: url, parameters: newDraft, completionHandler: {[weak self] code in
             switch code{
             case 200:
                 print("wishlist edited")
@@ -114,5 +79,7 @@ class MeScreenViewModel{
             }
         })
     }
+    
+
     
 }

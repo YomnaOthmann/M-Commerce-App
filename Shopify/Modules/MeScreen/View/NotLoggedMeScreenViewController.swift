@@ -16,7 +16,9 @@ class NotLoggedMeScreenViewController: UIViewController {
     }
     
     @IBAction func goToLogin(_ sender: Any) {
-        
+        let loginVC = UIStoryboard(name: "LoginPage", bundle: nil).instantiateViewController(withIdentifier: "login")
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC, animated: false)
     }
     
 }

@@ -20,7 +20,7 @@
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,7 @@ Back!</string>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="👤   UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Llb-iQ-31A">
                                 <rect key="frame" x="32" y="265" width="317" height="55"/>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="317" id="CfT-5W-baU"/>
                                     <constraint firstAttribute="height" constant="55" id="bPi-nV-pac"/>
@@ -50,6 +51,7 @@ Back!</string>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔒  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyb-EL-Hr2">
                                 <rect key="frame" x="32" y="352" width="317" height="55"/>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="317" id="Fvh-JW-cpz"/>
                                     <constraint firstAttribute="height" constant="55" id="NYT-ep-A4o"/>
@@ -83,37 +85,6 @@ Back!</string>
                                     <action selector="ShowandHidePass:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VUH-Eb-GHI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9i5-fA-7vq">
-                                <rect key="frame" x="154" y="602" width="85" height="74"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="google"/>
-                                <connections>
-                                    <action selector="googleLogin:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XOI-QA-fks"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- OR Continue With-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-sX-aJF">
-                                <rect key="frame" x="129" y="557" width="123" height="15"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MK-0w-NfM">
-                                <rect key="frame" x="253" y="684" width="84" height="39"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign Up">
-                                    <color key="baseForegroundColor" name="CustomBlue"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="gotoSignUp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="drx-vf-ceo"/>
-                                    <segue destination="bwb-rg-3gK" kind="show" identifier="signUp" id="2tl-Mt-GAo"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create An Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFh-rG-QB6">
-                                <rect key="frame" x="140" y="697" width="113" height="14"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfl-7D-eua">
                                 <rect key="frame" x="311" y="91" width="66" height="39"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,31 +96,45 @@ Back!</string>
                                     <segue destination="KtH-lv-WIh" kind="show" identifier="home" id="XJy-zX-QaZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create An Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFh-rG-QB6">
+                                <rect key="frame" x="140" y="558" width="113" height="14"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MK-0w-NfM">
+                                <rect key="frame" x="154" y="580" width="84" height="39"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Up">
+                                    <color key="baseForegroundColor" name="CustomBlue"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="gotoSignUp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="drx-vf-ceo"/>
+                                    <segue destination="bwb-rg-3gK" kind="show" identifier="signUp" id="2tl-Mt-GAo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ztN-Ts-Os1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="275" id="1zU-3d-fdK"/>
-                            <constraint firstItem="9i5-fA-7vq" firstAttribute="top" secondItem="T3P-sX-aJF" secondAttribute="bottom" constant="30" id="5fQ-i4-vxJ"/>
                             <constraint firstItem="fyb-EL-Hr2" firstAttribute="top" secondItem="Llb-iQ-31A" secondAttribute="bottom" constant="32" id="9NX-VE-ECe"/>
                             <constraint firstItem="Llb-iQ-31A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="9WZ-ll-tjQ"/>
                             <constraint firstItem="OIY-W7-BSK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="29" id="BWs-QH-k6h"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cFh-rG-QB6" secondAttribute="trailing" constant="140" id="JmT-nE-b8I"/>
                             <constraint firstItem="fyb-EL-Hr2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="K8R-gq-Xmr"/>
-                            <constraint firstItem="9i5-fA-7vq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="NG3-d4-zid"/>
-                            <constraint firstItem="cFh-rG-QB6" firstAttribute="top" secondItem="9i5-fA-7vq" secondAttribute="bottom" constant="21" id="NLU-pc-QwV"/>
-                            <constraint firstItem="8MK-0w-NfM" firstAttribute="leading" secondItem="cFh-rG-QB6" secondAttribute="trailing" id="QrN-MD-j0A"/>
                             <constraint firstItem="Xfl-7D-eua" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="TJ6-8X-OhY"/>
                             <constraint firstItem="Llb-iQ-31A" firstAttribute="top" secondItem="cxi-i6-scm" secondAttribute="bottom" constant="60" id="UK7-Qh-pQg"/>
-                            <constraint firstItem="9i5-fA-7vq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="154" id="Vs0-xd-Ohs"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8MK-0w-NfM" secondAttribute="trailing" constant="155" id="VMP-md-oyn"/>
+                            <constraint firstItem="8MK-0w-NfM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="154" id="YBD-as-zWn"/>
+                            <constraint firstItem="8MK-0w-NfM" firstAttribute="top" secondItem="cFh-rG-QB6" secondAttribute="bottom" constant="8" symbolic="YES" id="YvH-b4-vvM"/>
                             <constraint firstItem="ztN-Ts-Os1" firstAttribute="centerY" secondItem="fyb-EL-Hr2" secondAttribute="centerY" id="afn-xs-clA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Xfl-7D-eua" secondAttribute="trailing" constant="16" id="bid-o3-9QK"/>
                             <constraint firstItem="OIY-W7-BSK" firstAttribute="top" secondItem="fyb-EL-Hr2" secondAttribute="bottom" constant="64" id="c17-qt-fIb"/>
                             <constraint firstItem="cxi-i6-scm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="63" id="cMP-jZ-GhD"/>
-                            <constraint firstItem="cFh-rG-QB6" firstAttribute="centerX" secondItem="9i5-fA-7vq" secondAttribute="centerX" id="lUq-9F-dSs"/>
+                            <constraint firstItem="cFh-rG-QB6" firstAttribute="top" secondItem="OIY-W7-BSK" secondAttribute="bottom" constant="32" id="kRA-z2-A9X"/>
                             <constraint firstItem="Xfl-7D-eua" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="311" id="oRk-Wo-xQj"/>
-                            <constraint firstItem="T3P-sX-aJF" firstAttribute="top" secondItem="OIY-W7-BSK" secondAttribute="bottom" constant="31" id="prj-kN-UVA"/>
-                            <constraint firstItem="8MK-0w-NfM" firstAttribute="top" secondItem="9i5-fA-7vq" secondAttribute="bottom" constant="8" id="uyW-7Q-YGP"/>
-                            <constraint firstItem="T3P-sX-aJF" firstAttribute="centerX" secondItem="fyb-EL-Hr2" secondAttribute="centerX" id="vrN-9A-LLh"/>
+                            <constraint firstItem="cFh-rG-QB6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="xp9-mx-zGh"/>
                             <constraint firstItem="cxi-i6-scm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="ypG-ZE-XJ6"/>
                         </constraints>
                     </view>
@@ -185,7 +170,6 @@ Back!</string>
     </scenes>
     <resources>
         <image name="eye" catalog="system" width="128" height="79"/>
-        <image name="google" width="60" height="60"/>
         <namedColor name="CustomBlue">
             <color red="0.2630000114440918" green="0.57300001382827759" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -6,18 +6,19 @@
 //
 
 import UIKit
-import FirebaseAuth
+
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     let indicator = UIActivityIndicatorView(style: .medium)
     let defaults = UserDefaults.standard
-    let viewModel = LoginViewModel()
+    let viewModel = LoginViewModel(network: NetworkManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpIndicator()
+        viewModel.delegate = self
     }
 
     func setUpIndicator(){
@@ -48,26 +49,10 @@ class LoginViewController: UIViewController {
             indicator.stopAnimating()
             return
         }
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] result, error in
-            guard let self = self else{
-                return
-            }
-            guard error == nil else{
-                indicator.stopAnimating()
-                CustomAlert.showAlertView(view: self, title: "Failed", message: "User Not Found")
-                return
-            }
-            indicator.stopAnimating()
-            defaults.set(true, forKey: "isLogged")
-            performSegue(withIdentifier: "home", sender: self)
-        }
-        
+        viewModel.fetchCustomer(mail: email, password: password)
     }
 
-    @IBAction func googleLogin(_ sender: Any) {
-        
-    }
-    
+
     @IBAction func gotoSignUp(_ sender: Any) {
         performSegue(withIdentifier: "signUp", sender: self)
     }
@@ -76,5 +61,22 @@ class LoginViewController: UIViewController {
         let tabBar = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
         tabBar.modalPresentationStyle = .fullScreen
         self.present(tabBar, animated: true)
+    }
+}
+
+extension LoginViewController : LoginViewModelDelegate{
+    func failedToLogin() {
+        indicator.stopAnimating()
+        CustomAlert.showAlertView(view: self, title: "Failed", message: "User Not Found")
+    }
+
+    func didRetrieveCustomer(customer:Customer) {
+        indicator.stopAnimating()
+        defaults.set(true, forKey: "isLogged")
+        defaults.set(customer.id, forKey: "customerId")
+        defaults.set(customer.email, forKey: "customerMail")
+        print("from login view")
+        print(defaults.integer(forKey: "customerId"))
+        performSegue(withIdentifier: "home", sender: self)
     }
 }

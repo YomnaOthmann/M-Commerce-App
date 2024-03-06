@@ -41,7 +41,7 @@ class ShoppingBagViewModel {
         let apiURL = apiHandler.getCurrentDraftOrderURL(id: getDraftOrderId())
         print(apiURL)
         
-        networkManager?.fetch(url: apiURL, type:PostDraftOrder.self, completionHandler: { postDraftOrder in
+        networkManager?.fetch(url: apiURL, type:PostDraftOrder.self, completionHandler: {[weak self] postDraftOrder in
             
             self.currentDraftOrder = postDraftOrder?.draftOrder
             
@@ -54,6 +54,7 @@ class ShoppingBagViewModel {
             
             self.lineItems = postDraftOrder?.draftOrder?.lineItems?.filter({ $0.title != "dummy"}) ?? []
             
+
             print(postDraftOrder?.draftOrder?.lineItems ?? "no draft order")
             
         })
@@ -119,7 +120,7 @@ class ShoppingBagViewModel {
     }
     
     func getImageUrl(atIndex index:Int)->String{
-        return lineItems[index].properties?[0].name ?? "shoppingCartProduct"
+        return lineItems[index].properties?.count == 0 ? "shoppingCartProduct" : lineItems[index].properties?[0].name ?? "shoppingCartProduct"
     }
     
     func getLineItemQuantity(atIndex index:Int)->String{
@@ -246,7 +247,8 @@ extension ShoppingBagViewModel {
     
     private func getDummyData()->[LineItem]{
         let taxLines = [TaxLine(price: "23.5", title: "Tax Fees")]
-        let appleItem = LineItem(id: 123, adminGraphqlAPIID: "no", currentQuantity: 8, giftCard:false, name: "Apple AirPods Pro 2nd generation", price: "249.0", productExists: true, productID: 12344, quantity: 1, sku: "fffg", title: "AirPods Pro", totalDiscount: "0", variantID: 1223, variantTitle: "title", vendor: "vendor",taxLines: taxLines)
+        let properties = [OrderProperty(name: "https://image.pngaaa.com/595/489595-middle.png")]
+        let appleItem = LineItem(id: 123, adminGraphqlAPIID: "no", currentQuantity: 8, giftCard:false, name: "Apple AirPods Pro 2nd generation", price: "249.0", productExists: true, productID: 12344, quantity: 1, sku: "fffg", title: "AirPods Pro", totalDiscount: "0", variantID: 1223, variantTitle: "title", vendor: "vendor",taxLines: taxLines,propertis: properties)
         
         return [appleItem,appleItem,appleItem]
     }

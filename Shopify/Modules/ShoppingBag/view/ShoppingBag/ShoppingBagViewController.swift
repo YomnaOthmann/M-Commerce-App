@@ -113,6 +113,7 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
             })
         }
         
+
     }
     @objc func navigateToCheckout(){
         
@@ -144,11 +145,10 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
             viewController.checkoutViewModel = checkoutViewModel
             viewController.addressViewModel = addressViewModel
             viewController.shoppingBagViewModel = self.shoppingBagViewModel
-            
-            
+            self.present(viewController, animated: true, completion: nil)
+
             self.shoppingBagViewModel?.saveCurrentDraftOrderChanges(completion: {
                 
-                self.present(viewController, animated: true, completion: nil)
             })
             
 

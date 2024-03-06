@@ -1,0 +1,88 @@
+{
+    "draft_order" : {
+        "id": 1161401073906,
+        "note": null,
+        "email": "lotfy@gmail.com",
+        "taxes_included": false,
+        "currency": "EGP",
+        "invoice_sent_at": null,
+        "created_at": "2024-03-05T13:23:16-05:00",
+        "updated_at": "2024-03-06T06:31:48-05:00",
+        "tax_exempt": true,
+        "completed_at": null,
+        "name": "#D3",
+        "status": "open",
+        "line_items": [
+            {
+                "id": 58480814522610,
+                "variant_id": null,
+                "product_id": null,
+                "title": "dummy",
+                "variant_title": null,
+                "sku": null,
+                "vendor": null,
+                "quantity": 1,
+                "requires_shipping": false,
+                "taxable": true,
+                "gift_card": false,
+                "fulfillment_service": "manual",
+                "grams": 0,
+                "tax_lines": [],
+                "applied_discount": null,
+                "name": "dummy",
+                "properties": [
+                    {
+                        "name": "https://cdn.shopify.com/s/files/1/0687/9772/6962/products/23550440c4ccab05e4fc1ebd85e742cc.jpg?v=1709295163",
+                        "value": ""
+                    }
+                ],
+                "custom": true,
+                "price": "140.00",
+                "admin_graphql_api_id": "gid://shopify/DraftOrderLineItem/58480814522610"
+            }
+        ],
+        "shipping_address": null,
+        "billing_address": null,
+        "invoice_url": "https://q2-24-team1.myshopify.com/68797726962/invoices/62964bfb7d0d6c74308b1137be9e7ba1",
+        "applied_discount": null,
+        "order_id": null,
+        "shipping_line": null,
+        "tax_lines": [],
+        "tags": "wish",
+        "note_attributes": [],
+        "total_price": "140.00",
+        "subtotal_price": "140.00",
+        "total_tax": "0.00",
+        "payment_terms": null,
+        "admin_graphql_api_id": "gid://shopify/DraftOrder/1161401073906",
+        "customer": {
+            "id": 7491339550962,
+            "email": "lotfy@gmail.com",
+            "created_at": "2024-03-05T13:22:01-05:00",
+            "updated_at": "2024-03-05T19:10:46-05:00",
+            "first_name": "Lotfy",
+            "last_name": "",
+            "orders_count": 4,
+            "state": "disabled",
+            "total_spent": "10088.00",
+            "last_order_id": 5535628525810,
+            "note": null,
+            "verified_email": true,
+            "multipass_identifier": null,
+            "tax_exempt": false,
+            "tags": "lotfy1234",
+            "last_order_name": "#1041",
+            "currency": "EGP",
+            "phone": null,
+            "tax_exemptions": [],
+            "email_marketing_consent": {
+                "state": "not_subscribed",
+                "opt_in_level": "single_opt_in",
+                "consent_updated_at": null
+            },
+            "sms_marketing_consent": null,
+            "admin_graphql_api_id": "gid://shopify/Customer/7491339550962"
+        }
+    }
+
+}

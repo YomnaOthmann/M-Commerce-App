@@ -190,6 +190,7 @@ class CheckoutViewController: UIViewController {
             print(orderSummaryVC.order!)
             
             orderSummaryVC.paymentMethod = selectedPaymentMethod
+            orderSummaryVC.modalPresentationStyle = .fullScreen
             self.present(orderSummaryVC, animated: true)
             
         }
