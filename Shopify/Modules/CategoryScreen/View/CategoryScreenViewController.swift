@@ -12,6 +12,7 @@ class CategoryScreenViewController: UIViewController {
     var allProducts : [Product]?
     var filteredProducts : [Product]?
     var customCollection : [CustomCollection]?
+    var wishlist : DraftOrder?
     var timer : Timer?
     let indicator = UIActivityIndicatorView(style: .medium)
     let subCategories = [
@@ -46,7 +47,7 @@ class CategoryScreenViewController: UIViewController {
     @IBOutlet weak var menButton: UIBarButtonItem!
     @IBOutlet weak var womenButton: UIBarButtonItem!
     @IBOutlet weak var kidsButton: UIBarButtonItem!
-    
+    var customer : Customer?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpIndicator()
@@ -54,6 +55,8 @@ class CategoryScreenViewController: UIViewController {
         setUpCategoryCollectionView()
         setUpSearchBar()
         viewModel.delegate = self
+        customer = viewModel.getUser()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,9 +71,18 @@ class CategoryScreenViewController: UIViewController {
             self.filteredProducts = self.viewModel.filterProducts(products: self.allProducts ?? [], mainCategory: self.mainCategory, subCategory: self.subCategory)
             DispatchQueue.main.async {
                 self.categoryCollectionView.reloadData()
+               // self.indicator.stopAnimating()
+            }
+        }
+        viewModel.fetchWishlist()
+        viewModel.bindWishlist = {
+            if let wishlist = self.viewModel.wishlist{
+                self.wishlist = wishlist
+                self.categoryCollectionView.reloadData()
                 self.indicator.stopAnimating()
             }
         }
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         stopTimer()
@@ -199,11 +211,11 @@ class CategoryScreenViewController: UIViewController {
     }
     @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
-            let settingsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+            let settingsVC = UIStoryboard(name: "WishlistScreen", bundle: nil).instantiateViewController(withIdentifier: "wish")
             settingsVC.modalPresentationStyle = .fullScreen
             self.present(settingsVC, animated: true)
         }else{
-            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the setttings")
+            CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the wishlist")
         }
     }
 }
@@ -291,8 +303,36 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             if filteredProducts?[indexPath.row].images.count ?? -1 > 0{
                 cell.productImage.kf.setImage(with: URL(string: filteredProducts?[indexPath.row].images[0].src ?? ""))
             }
+            if let lineItems = wishlist?.lineItems{
+                for item in lineItems{
+                    if filteredProducts?[indexPath.row].title == item.title{
+                        self.filteredProducts?[indexPath.row].isFav = true
+                        break
+                    }else{
+                        self.filteredProducts?[indexPath.row].isFav = false
+                    }
+                }
+            }
             cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
-            cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " EGP"
+            cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " \(customer?.currency ?? "")"
+            cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.filteredProducts?[indexPath.row].isFav)
+            cell.favButton.setImage(viewModel.getButtonImage(isFav: self.filteredProducts?[indexPath.row].isFav), for: .normal) 
+            cell.favAction = {
+                self.filteredProducts?[indexPath.row].isFav.toggle()
+                print(self.filteredProducts?[indexPath.row].isFav)
+                if ((self.filteredProducts?[indexPath.row].isFav) == true) {
+                    print("fav")
+                    self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
+                    cell.favButton.tintColor = .red
+                    cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                }else{
+                    self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
+                    cell.favButton.tintColor = .black
+                    cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                }
+
+            }
+            
             return cell
         }
         

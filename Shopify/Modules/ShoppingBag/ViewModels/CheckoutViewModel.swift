@@ -189,8 +189,13 @@ class OrderBuilder{
         order.currentTotalDiscounts = currentTotalDiscounts
         order.currentTotalPrice = currentTotalPrice
         order.shippingAddress = shippingAddress
-        order.customer = Customer(email: nil, firstName: nil, lastName: nil)
-        order.customer?.id = customerID
+        if let customer = UserDefaults.standard.object(forKey: "customer") as? Data{
+            let decoder = JSONDecoder()
+            if let loadedCustomer = try? decoder.decode(Customer.self, from: customer){
+                order.customer = loadedCustomer
+            }
+        }
+        //order.customer?.id = customerID
         
         return order
     }

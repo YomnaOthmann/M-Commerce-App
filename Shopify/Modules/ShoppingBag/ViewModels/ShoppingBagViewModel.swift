@@ -39,10 +39,10 @@ class ShoppingBagViewModel {
         let apiURL = apiHandler.getCurrentDraftOrderURL(id: getDraftOrderId())
         print(apiURL)
         
-        networkManager?.fetch(url: apiURL, type:PostDraftOrder.self, completionHandler: { postDraftOrder in
+        networkManager?.fetch(url: apiURL, type:PostDraftOrder.self, completionHandler: {[weak self] postDraftOrder in
             
-            self.currentDraftOrder = postDraftOrder?.draftOrder
-            self.lineItems = postDraftOrder?.draftOrder?.lineItems ?? []
+            self?.currentDraftOrder = postDraftOrder?.draftOrder
+            self?.lineItems = postDraftOrder?.draftOrder?.lineItems ?? []
             print(postDraftOrder?.draftOrder?.lineItems ?? "no draft order")
             
         })

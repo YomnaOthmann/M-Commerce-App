@@ -100,16 +100,12 @@ class SignUpPageViewController: UIViewController {
         }
         
         // post new customer to API
-        viewModel.postCustomer(mail: email) {[weak self] registerd, message in
-            if registerd{
-                // register user to firebase
-                self?.viewModel.registerUsingFirebase(email: email, password: password)
-                
-            }else{
+        viewModel.postCustomer(mail: email, password: password, completionHandler: {[weak self] registered, message in
+            if !registered{
                 self?.indicator.stopAnimating()
-                CustomAlert.showAlertView(view: self!, title: "Failed!!", message: message)
+                CustomAlert.showAlertView(view: self!, title: "Failed!!",message: "couldn't register")
             }
-        }
+        })
         
     }
     
@@ -122,16 +118,23 @@ class SignUpPageViewController: UIViewController {
     
 }
 extension SignUpPageViewController : SignUpDelegate{
-    func didFailToRegister(error: Error?) {
+    
+    func didFailToRegister(code:Int) {
         indicator.stopAnimating()
         self.defaults.set(false, forKey: "isLogged")
-        CustomAlert.showAlertView(view: self, title: "Failed", message: "\(error?.localizedDescription ?? "")")
+        var message = ""
+        switch code{
+        case 422:
+            message = "This account already exists"
+        default:
+            message = "An Error Occured"
+        }
+        CustomAlert.showAlertView(view: self, title: "Failed", message: message)
     }
     
     func didRegistered(mail:String) {
         self.indicator.stopAnimating()
         self.defaults.set(true, forKey: "isLogged")
-        self.defaults.set(mail, forKey: "customerMail")
         let tabBar = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
         tabBar.modalPresentationStyle = .fullScreen
         self.present(tabBar, animated: false)

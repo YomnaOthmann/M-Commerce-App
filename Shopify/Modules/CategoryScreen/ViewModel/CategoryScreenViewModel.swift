@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CategoryScreenViewModelProtocol{
     func checkReachability()->Bool
@@ -24,6 +25,12 @@ class CategoryScreenViewModel:CategoryScreenViewModelProtocol{
     var allProducts : Products?{
         didSet{
             bindResult()
+        }
+    }
+    var bindWishlist : ()->() = {}
+    var wishlist : DraftOrder?{
+        didSet{
+            bindWishlist()
         }
     }
     init(network: NetworkManagerProtocol?) {
@@ -98,7 +105,74 @@ class CategoryScreenViewModel:CategoryScreenViewModelProtocol{
         return products
     }
     
+    func getUser()->Customer?{
+        if let userData = UserDefaults.standard.object(forKey: "customer") as? Data {
+            let decoder = JSONDecoder()
+            if let customer = try? decoder.decode(Customer.self, from: userData) {
+                return customer
+            }
+        }
+        return nil
+    }
     
+
+    func editWishlist(draft:DraftOrder?, product:Product?){
+        var flag = false
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.draftOrders.rawValue + "/\(draft?.id ?? 0)" + APIHandler.APICompletions.json.rawValue
+        var draft = draft
+        guard let lineItems = draft?.lineItems else{
+            return
+        }
+        for (index,item) in lineItems.enumerated(){
+            if flag == true{
+                break
+            }
+            if product?.title == item.title{
+                flag = true
+                draft?.lineItems?.remove(at: index)
+            }else{
+                flag = false
+            }
+        }
+        if flag == false{
+            let taxLine = [TaxLine(price: "0.0", title: "")]
+            let lineItem = LineItem(name: product?.title ?? "", price: product?.variants[0].price ?? "", productExists: true, productID: product?.id, quantity: 1, title: product?.title ?? "", totalDiscount: "0.0", taxLines: taxLine, propertis: [OrderProperty(name: product?.images[0].src, value: "")])
+                    draft?.lineItems?.append(lineItem)
+
+            }
     
+        let newDraft = PostDraftOrder(draftOrder: draft)
+        network?.put(url: url, parameters: newDraft, completionHandler: {[weak self] code in
+            switch code{
+            case 200:
+                print("wishlist edited")
+                self?.fetchWishlist()
+            default:
+                print("failed to edit wishlist")
+            }
+        })
+    }
+    func fetchWishlist(){
+        let wishId = UserDefaults.standard.integer(forKey: "wishId")
+        print(wishId)
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.draftOrders.rawValue + "/\(wishId)" + APIHandler.APICompletions.json.rawValue
+        print(url)
+        network?.fetch(url: url, type: PostDraftOrder.self) {[weak self] wishDraft in
+            guard var wish = wishDraft?.draftOrder else{
+                return
+            }
+            self?.wishlist = wish
+        }
+    }
+    
+    func getIsFav(product:Product?)->Bool{
+        return product?.templateSuffix == nil ? false : true
+    }
+    func getButtonColor(isFav:Bool?)->UIColor{
+        return isFav ?? false ? UIColor.red : UIColor.black
+    }
+    func getButtonImage(isFav:Bool?)->UIImage?{
+        return isFav ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+    }
     
 }

@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     private var viewWidth:CGFloat{
         return screenWidth * 0.6
     }
-
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -54,9 +54,22 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     
     @objc func logoutCustomer(){
         print("Logout")
+        showAlert()
         
     }
-    
+    func showAlert(){
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        let logout = UIAlertAction(title: "logout", style: .destructive) { action in
+            let home = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
+            home.modalPresentationStyle = .fullScreen
+            self.present(home, animated: false)
+            self.defaults.set(false, forKey: "isLogged")
+        }
+        let cancel = UIAlertAction(title: "cancel", style: .default)
+        alert.addAction(logout)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
+    }
     @IBAction func back(_ sender: Any) {
         self.dismiss(animated: true)
     }

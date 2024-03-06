@@ -43,7 +43,7 @@
                         <sections>
                             <tableViewSection headerTitle="" id="X6q-Qs-nvN">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="210" id="i7M-HO-bdw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="210" id="i7M-HO-bdw">
                                         <rect key="frame" x="0.0" y="50" width="393" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i7M-HO-bdw" id="Gxy-Jf-a7i">
@@ -105,7 +105,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="WkK-Vx-Xs6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="WkK-Vx-Xs6">
                                         <rect key="frame" x="0.0" y="287" width="393" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WkK-Vx-Xs6" id="Elz-zQ-5ql">
@@ -144,13 +144,13 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="34.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order#  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vk-sS-zNm">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="34.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="34.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1w-SC-cbj">
-                                                                    <rect key="frame" x="85" y="0.0" width="268" height="34.666666666666664"/>
+                                                                    <rect key="frame" x="73.333333333333343" y="0.0" width="279.66666666666663" height="34.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -161,13 +161,13 @@
                                                             <rect key="frame" x="0.0" y="34.666666666666664" width="353" height="34.999999999999993"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ab-R9-PQE">
-                                                                    <rect key="frame" x="0.0" y="7.6666666666666732" width="97" height="19.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="7.6666666666666732" width="88.333333333333329" height="19.666666666666671"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXG-xi-npP">
-                                                                    <rect key="frame" x="97" y="0.0" width="256" height="35"/>
+                                                                    <rect key="frame" x="88.333333333333343" y="0.0" width="264.66666666666663" height="35"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -201,13 +201,13 @@
                                                             <rect key="frame" x="0.0" y="90" width="353" height="35"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created At :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiL-Ft-nsv">
-                                                                    <rect key="frame" x="0.0" y="7.6666666666666732" width="94.666666666666671" height="19.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="7.6666666666666732" width="85.666666666666671" height="19.666666666666671"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF9-YY-Rni">
-                                                                    <rect key="frame" x="94.666666666666657" y="0.0" width="258.33333333333337" height="35"/>
+                                                                    <rect key="frame" x="85.666666666666657" y="0.0" width="267.33333333333337" height="35"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -239,13 +239,13 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="40.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order#  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDj-2Q-UC6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="40.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="40.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3C-pT-gNA">
-                                                                    <rect key="frame" x="85" y="0.0" width="268" height="40.666666666666664"/>
+                                                                    <rect key="frame" x="73.333333333333343" y="0.0" width="279.66666666666663" height="40.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -256,13 +256,13 @@
                                                             <rect key="frame" x="0.0" y="40.666666666666657" width="353" height="40.333333333333343"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o6-ms-cmn">
-                                                                    <rect key="frame" x="0.0" y="10.333333333333337" width="97" height="19.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="10.333333333333337" width="88.333333333333329" height="19.666666666666671"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFU-3s-2Lh">
-                                                                    <rect key="frame" x="97" y="0.0" width="256" height="40.333333333333336"/>
+                                                                    <rect key="frame" x="88.333333333333343" y="0.0" width="264.66666666666663" height="40.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -296,13 +296,13 @@
                                                             <rect key="frame" x="0.0" y="105" width="353" height="40.666666666666657"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created At: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-fa-LG8">
-                                                                    <rect key="frame" x="0.0" y="10.33333333333333" width="94.666666666666671" height="19.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="10.33333333333333" width="85.666666666666671" height="19.666666666666671"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXf-w0-9CZ">
-                                                                    <rect key="frame" x="94.666666666666657" y="0.0" width="258.33333333333337" height="40.666666666666664"/>
+                                                                    <rect key="frame" x="85.666666666666657" y="0.0" width="267.33333333333337" height="40.666666666666664"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -320,7 +320,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="67" id="bn4-PN-zbW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="67" id="bn4-PN-zbW">
                                         <rect key="frame" x="0.0" y="703" width="393" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bn4-PN-zbW" id="fls-oE-Etk">
@@ -342,15 +342,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="200" id="Uv9-N7-jdK">
-                                        <rect key="frame" x="0.0" y="770" width="393" height="200"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="300" id="Uv9-N7-jdK">
+                                        <rect key="frame" x="0.0" y="770" width="393" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uv9-N7-jdK" id="5Yx-mD-nyk">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="csB-jc-SNY">
-                                                    <rect key="frame" x="20" y="12" width="353" height="176"/>
+                                                    <rect key="frame" x="20" y="12" width="353" height="276"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j0a-QK-hHI">
                                                         <size key="itemSize" width="128" height="128"/>
@@ -358,6 +358,10 @@
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
+                                                    <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="2hE-ue-uWW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="276"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </activityIndicatorView>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCell" id="D23-Xm-dXx" customClass="ProductCollectionViewCell" customModule="Shopify" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -417,12 +421,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="favCollectionView" destination="csB-jc-SNY" id="9Gp-vH-wDG"/>
+                        <outlet property="favIndicator" destination="2hE-ue-uWW" id="Kf7-Fs-TaZ"/>
                         <outlet property="firstOrderDate" destination="yF9-YY-Rni" id="vhC-XG-oGq"/>
                         <outlet property="firstOrderNumber" destination="U1w-SC-cbj" id="zCl-Kz-Ge6"/>
                         <outlet property="firstOrderPrice" destination="nXG-xi-npP" id="fGU-wv-NGQ"/>
                         <outlet property="firstOrderQuantity" destination="iyQ-CM-mVs" id="Fhv-Lm-Ype"/>
                         <outlet property="firstOrderStack" destination="i7V-RU-I9h" id="5go-QT-7TR"/>
                         <outlet property="firstOrderStatus" destination="IBo-Jq-aoL" id="IgX-R1-GBY"/>
+                        <outlet property="orderCell" destination="Kcm-Ul-vzr" id="Qql-8f-GHY"/>
                         <outlet property="secondOrderDate" destination="GXf-w0-9CZ" id="hKj-Xm-An4"/>
                         <outlet property="secondOrderNumber" destination="u3C-pT-gNA" id="wh8-T8-CGp"/>
                         <outlet property="secondOrderPrice" destination="MFU-3s-2Lh" id="Gak-vc-dOX"/>
@@ -510,7 +516,7 @@
         <!--Me-->
         <scene sceneID="ReA-BJ-15C">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6ET-oe-b0F" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6ET-oe-b0F" customClass="MeNavigationController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Me" image="person" catalog="system" id="I4Q-eK-tDY">
                         <imageReference key="selectedImage" image="person.fill" catalog="system" renderingMode="original"/>
                     </tabBarItem>
@@ -545,13 +551,13 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

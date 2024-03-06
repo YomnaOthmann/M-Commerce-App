@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
             indicator.stopAnimating()
             return
         }
-        viewModel.fetchCustomer(mail: email)
+        viewModel.fetchCustomer(mail: email, password: password)
     }
 
 
@@ -69,12 +69,14 @@ extension LoginViewController : LoginViewModelDelegate{
         indicator.stopAnimating()
         CustomAlert.showAlertView(view: self, title: "Failed", message: "User Not Found")
     }
-    func didLogin() {
+
+    func didRetrieveCustomer(customer:Customer) {
         indicator.stopAnimating()
         defaults.set(true, forKey: "isLogged")
+        defaults.set(customer.id, forKey: "customerId")
+        defaults.set(customer.email, forKey: "customerMail")
+        print("from login view")
+        print(defaults.integer(forKey: "customerId"))
         performSegue(withIdentifier: "home", sender: self)
-    }
-    func didRetrieveCustomer() {
-        viewModel.loginUsingFirebase(email: userNameTextField.text ?? "", password: passwordTextField.text ?? "")
     }
 }
