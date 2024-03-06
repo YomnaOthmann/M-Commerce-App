@@ -34,7 +34,9 @@ struct Order: Codable {
     var lineItems: [LineItem]
     var shippingAddress: Address?
     let taxLines : [TaxLine]?
-
+//     var shippingAddress: Address
+//     let taxLines : [TaxLine]
+  
     init(id: Int? = nil, confirmed: Bool? = nil, createdAt: String? = nil, currency: String? = nil, currentTotalDiscounts: String? = nil, currentTotalPrice: String? = nil, financialStatus: FinancialStatus?, name: String? = nil, number: Int? = nil, orderNumber: Int? = nil, processedAt: String? = nil, subtotalPrice: String? = nil, token: String? = nil, totalDiscounts: String? = nil, totalLineItemsPrice: String? = nil, totalPrice: String? = nil, customer: Customer? = nil, lineItems: [LineItem], shippingAddress: Address? = nil, taxLines: [TaxLine]? = nil) {
         self.id = id
         self.confirmed = confirmed
@@ -107,9 +109,7 @@ struct LineItem: Codable {
     let taxLines : [TaxLine]?
     var properties : [OrderProperty]?
 
-
-
-    init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int? = nil, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine]) {
+    init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int?, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine],propertis:[OrderProperty]) {
         self.id = id
         self.adminGraphqlAPIID = adminGraphqlAPIID
         self.currentQuantity = currentQuantity
@@ -126,6 +126,7 @@ struct LineItem: Codable {
         self.variantTitle = variantTitle
         self.vendor = vendor
         self.taxLines = taxLines
+        self.properties = propertis
     }
     enum CodingKeys: String, CodingKey {
         case id
@@ -187,6 +188,10 @@ struct TaxLine : Codable{
 }
 
 struct OrderProperty : Codable{
+  
     var name : String?
     var value : String?
+  
+//     var name : String
+//     var value : String = ""
 }

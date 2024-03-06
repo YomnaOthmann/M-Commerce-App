@@ -13,7 +13,6 @@ class NewOrderSummaryTableViewController: UITableViewController {
     @IBOutlet weak var paymentMethodButton: UIButton!
     @IBOutlet weak var orderSubtotal: UILabel!
     @IBOutlet weak var orderDiscount: UILabel!
-    @IBOutlet weak var orderTax: UILabel!
     @IBOutlet weak var orderTotalPrice: UILabel!
     
     
@@ -22,7 +21,7 @@ class NewOrderSummaryTableViewController: UITableViewController {
     
     @IBOutlet weak var orderItemsCollectionView: UICollectionView!
     var order : Order?
-    var paymentMethod : PaymentMethodSelector? = .applePay
+    var paymentMethod : PaymentMethodSelector?
     let viewModel = NewOrderSummaryViewModel(network: NetworkManager())
     private var paymentRequest:PKPaymentRequest = {
 
@@ -44,9 +43,20 @@ class NewOrderSummaryTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpPaymentButton()
         setUpCollectionView()
-        
+        orderSubtotal.text = "\(order?.subtotalPrice ?? "") \(order?.currency ?? "")"
+        orderDiscount.text = "\(order?.currentTotalDiscounts ?? "") \(order?.currency ?? "")"
+        orderTotalPrice.text = "\(order?.currentTotalPrice ?? "") \(order?.currency ?? "")"
+        orderAddress.text = order?.shippingAddress?.address1
+        orderContact.text = order?.shippingAddress?.phone
     }
     fileprivate func setUpPaymentButton() {
+        if paymentMethod == .applePay{
+            order?.financialStatus = .paid
+            paymentMethodButton.setTitle("Apple Pay", for: .normal)
+        }else if paymentMethod == .cash{
+            order?.financialStatus = .pending
+            paymentMethodButton.setTitle("Cash on Delivery", for: .normal)
+        }
         paymentMethodButton.clipsToBounds = true
         paymentMethodButton.layer.cornerRadius = 15
         paymentMethodButton.layer.borderColor = UIColor.systemBlue.cgColor
@@ -61,7 +71,7 @@ class NewOrderSummaryTableViewController: UITableViewController {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         orderItemsCollectionView.setCollectionViewLayout(layout, animated: true)
         
@@ -136,12 +146,10 @@ class NewOrderSummaryTableViewController: UITableViewController {
     
         }
  
-        DispatchQueue.main.asyncAfter(deadline: .now()+3.5){
+        DispatchQueue.main.asyncAfter(deadline: .now()+2.5){
             animationView.stop()
             animationView.removeFromSuperview()
             self.performSegue(withIdentifier: "home", sender: self)
-//            let homeVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(withIdentifier: "tab")
-//            self.navigationController?.pushViewController(homeVC, animated: true)
 
         }
     }
@@ -160,14 +168,17 @@ extension NewOrderSummaryTableViewController : UICollectionViewDelegate, UIColle
         
         let cell = orderItemsCollectionView.dequeueReusableCell(withReuseIdentifier: OrderSummaryCollectionViewCell.id, for: indexPath) as! OrderSummaryCollectionViewCell
         
-        cell.cellTitle.text = order?.lineItems[indexPath.row].title
+        cell.cellTitle.text = order?.lineItems[indexPath.row].title?.capitalized
         if order?.lineItems[indexPath.row].properties?.count ?? -1 > 0{
-            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[indexPath.row].name ?? ""))
+            cell.cellImage.kf.setImage(with: URL(string: order?.lineItems[indexPath.row].properties?[0].name ?? ""))
         }
         cell.cellPrice.text = "\(order?.lineItems[indexPath.row].price ?? "") \(order?.currency ?? "")"
         cell.cellQuantity.text = " \(order?.lineItems[indexPath.row].quantity ?? 0)"
         return cell
         
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: orderItemsCollectionView.frame.width * 0.5, height: 150)
     }
     
 }

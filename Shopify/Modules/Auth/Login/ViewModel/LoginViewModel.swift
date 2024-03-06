@@ -6,10 +6,39 @@
 //
 
 import Foundation
-import FirebaseAuth
+
+protocol LoginViewModelDelegate{
+    func failedToLogin()
+    func didRetrieveCustomer(customer:Customer)
+}
+
 class LoginViewModel{
-    func loginUsingFirebase(email:String, password:String){
-         
-       
+    
+    let network : NetworkManagerProtocol?
+    let defaults = UserDefaults.standard
+    var delegate : LoginViewModelDelegate?
+    init(network: NetworkManagerProtocol?) {
+        self.network = network
     }
+    
+    func fetchCustomer(mail:String, password:String){
+        let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
+        network?.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
+            
+            guard let customers = result else{
+                self?.delegate?.failedToLogin()
+                return
+            }
+            guard let customer = customers.customers?.filter({
+                $0.email == mail && $0.tags == password
+            }).first else{
+                self?.delegate?.failedToLogin()
+                return
+            }
+            let customerData = try? JSONEncoder().encode(customer)
+            self?.defaults.set(customerData, forKey: "customer")
+                self?.delegate?.didRetrieveCustomer(customer: customer)
+        })
+    }
+    
 }

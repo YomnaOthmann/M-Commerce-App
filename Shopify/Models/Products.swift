@@ -12,6 +12,10 @@ struct Products: Codable {
     let products: [Product]
 }
 
+struct NewProduct : Codable{
+    let product : Product?
+}
+
 // MARK: - Product
 
 struct Product: Codable {
@@ -27,6 +31,8 @@ struct Product: Codable {
     let options: [ProductOption]
     let images: [ProductImage]
     let count : Int = 0
+    var templateSuffix : String?
+    var isFav : Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id, title
@@ -38,6 +44,7 @@ struct Product: Codable {
         case updatedAt = "updated_at"
         case publishedAt = "published_at"
         case variants, options, images
+        case templateSuffix = "template_suffix"
     }
     // MARK: - Product Type
     enum ProductType: String, Codable {

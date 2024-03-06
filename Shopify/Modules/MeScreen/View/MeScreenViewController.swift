@@ -31,23 +31,33 @@ class MeScreenViewController: UITableViewController {
     
     @IBOutlet weak var favCollectionView: UICollectionView!
     
+    @IBOutlet weak var orderCell: OrdersTableViewCell!
+    
     var orders : [Order]?
     let indicator = UIActivityIndicatorView(style: .medium)
     let viewModel = MeScreenViewModel(network: NetworkManager())
     let connectionAlert = ConnectionAlert()
     var alertIsPresenting = false
     var timer : Timer?
-    
+    var wishList : DraftOrder?
+    @IBOutlet weak var favIndicator: UIActivityIndicatorView!
     var user:Customer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !UserDefaults.standard.bool(forKey: "isLogged"){
+            self.tableView.isHidden = true
+            self.navigationController?.navigationBar.isHidden = true
+            let notLoggedVC = UIStoryboard(name: "MeScreen", bundle: nil).instantiateViewController(withIdentifier: "notLogged")
+            self.navigationController?.setViewControllers([notLoggedVC], animated: false)
+        }
+        user = viewModel.getUser()
         userView.layer.cornerRadius = 20
-        userName.text = "Yomna Othman"
-        userMail.text = "yomnaothmann@gmail.com"
-        self.firstOrderStack.isHidden = true
-        self.secondOrderStack.isHidden = true
+        userName.text = user?.firstName
+        userMail.text = user?.email
         setUpCollectionView()
         setUpIndicator()
+        firstOrderStack.isHidden = true
+        secondOrderStack.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
         startTimer()
@@ -60,6 +70,11 @@ class MeScreenViewController: UITableViewController {
             self.indicator.stopAnimating()
             self.tableView.reloadData()
         }
+        viewModel.fetchWishlist()
+        viewModel.bindResult = {
+            self.wishList = self.viewModel.wishlist
+            self.favCollectionView.reloadData()
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         stopTimer()
@@ -70,6 +85,11 @@ class MeScreenViewController: UITableViewController {
         indicator.hidesWhenStopped = true
         indicator.startAnimating()
         view.addSubview(indicator)
+        favIndicator.center = view.center
+        favIndicator.color = .gray
+        favIndicator.hidesWhenStopped = true
+        favIndicator.startAnimating()
+        view.addSubview(favIndicator)
     }
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkReachability), userInfo: nil, repeats: true)
@@ -107,18 +127,27 @@ class MeScreenViewController: UITableViewController {
         favCollectionView.setCollectionViewLayout(layout, animated: true)
     }
     func setUpOrdersItems(){
-        secondOrderNumber.text = "\(orders?[0].orderNumber ?? 0)"
-        secondOrderPrice.text  =  "\(orders?[0].currentTotalPrice ?? "") \(orders?[0].currency ?? "")"
-        secondOrderQuantity.text =  "\(orders?[0].lineItems.count ?? 0)"
-        secondOrderStatus.text = orders?[0].financialStatus?.rawValue
-        secondOrderDate.text = orders?[0].createdAt?.components(separatedBy: "T").first
-        
-        
-        firstOrderNumber.text = "\(orders?[1].orderNumber ?? 0)"
-        firstOrderPrice.text  =  "\(orders?[1].currentTotalPrice ?? "") \(orders?[1].currency ?? "")"
-        firstOrderQuantity.text =  "\(orders?[1].lineItems.count ?? 0)"
-        firstOrderStatus.text = orders?[1].financialStatus?.rawValue
-        firstOrderDate.text = orders?[1].createdAt?.components(separatedBy: "T").first
+        if orders?.count != 0{
+            firstOrderNumber.text = "\(orders?[0].orderNumber ?? 0)"
+            firstOrderPrice.text  =  "\(orders?[0].currentTotalPrice ?? "") \(orders?[0].currency ?? "")"
+            firstOrderQuantity.text =  "\(orders?[0].lineItems.count ?? 0)"
+            firstOrderStatus.text = orders?[0].financialStatus?.rawValue
+            firstOrderDate.text = orders?[0].createdAt?.components(separatedBy: "T").first
+            firstOrderStack.isHidden = false
+            if orders?.count ?? 0 > 1{
+                secondOrderNumber.text = "\(orders?[1].orderNumber ?? 0)"
+                secondOrderPrice.text  =  "\(orders?[1].currentTotalPrice ?? "") \(orders?[1].currency ?? "")"
+                secondOrderQuantity.text =  "\(orders?[1].lineItems.count ?? 0)"
+                secondOrderStatus.text = orders?[1].financialStatus?.rawValue
+                secondOrderDate.text = orders?[1].createdAt?.components(separatedBy: "T").first
+                secondOrderStack.isHidden = false
+            }
+
+        }else{
+            firstOrderStack.isHidden = true
+            secondOrderStack.isHidden = true
+        }
+
     }
 
     @IBAction func gotoSettings(_ sender: Any) {
@@ -148,30 +177,66 @@ extension MeScreenViewController {
             ordersVC.modalPresentationStyle = .fullScreen
             self.present(ordersVC, animated: true)
             
+        case 5:
+            if UserDefaults.standard.bool(forKey: "isLogged"){
+                let settingsVC = UIStoryboard(name: "WishlistScreen", bundle: nil).instantiateViewController(withIdentifier: "wish")
+                settingsVC.modalPresentationStyle = .fullScreen
+                self.present(settingsVC, animated: true)
+            }else{
+                CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the wishlist")
+            }
+            break
         default:
-            // TODO: Navigate to wishlist Screen
             break
         }
     }
-    
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 3 {
+            if orders?.count == 0{
+                return 0
+            }else {
+                return 160
+            }
+        }
+        if indexPath.row == 4{
+            if orders?.count == 0 || orders?.count == 1{
+                return 0
+            }else{
+                return 160
+            }
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
 }
 extension MeScreenViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: favCollectionView.frame.width * 0.4, height: favCollectionView.frame.height - 10)
+        return CGSize(width: favCollectionView.frame.width * 0.5, height: favCollectionView.frame.height - 10)
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        favCollectionView.setEmptyMessage("Empty Wishlist!!")
-        return 0
+        if wishList?.lineItems?.count == 0{
+            favCollectionView.setEmptyMessage("Empty Wishlist!!")
+        }
+        return wishList?.lineItems?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
                 let cell = favCollectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.id, for: indexPath) as!ProductCollectionViewCell
-       
-        
+        cell.favButton.tintColor = .red
+        cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+        cell.favAction = {
+            self.viewModel.editWishlist(draft: self.wishList, lineitem: self.wishList?.lineItems?[indexPath.row])
+            self.wishList?.lineItems?.remove(at: indexPath.row)
+            collectionView.reloadData()
+        }
+        let url = URL(string: wishList?.lineItems?[indexPath.row].properties?[0].name ?? "")
+        cell.productImage.kf.setImage(with: url!)
+        cell.productPrice.text = "\(wishList?.lineItems?[indexPath.row].price ?? "") \(wishList?.currency ?? "")"
+        cell.productTitle.text = wishList?.lineItems?[indexPath.row].title
+
         return cell
     }
 }

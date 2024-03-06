@@ -13,7 +13,6 @@ class ConnectionAlert{
     let ok = UIAlertAction(title: "OK", style: .default)
     
     func showAlert(view:UIViewController){
-        alert.addAction(ok)
         view.present(alert, animated: true)
     }
     func dismissAlert(){

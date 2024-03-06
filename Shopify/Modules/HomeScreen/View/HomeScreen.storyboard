@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WPC-tX-9TM">
-                                <rect key="frame" x="0.0" y="159" width="393" height="158.66666666666663"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d6b-dr-NOl">
                                     <size key="itemSize" width="128" height="128"/>
@@ -43,8 +43,29 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" text="" placeholder="Search any product" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYo-hb-r1a">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="IhX-G4-RC1"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlZ-I1-XXT">
+                                <rect key="frame" x="8" y="347" width="377" height="29.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29.333333333333314" id="xhO-Mj-Vvi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vBv-f7-v7C">
-                                <rect key="frame" x="0.0" y="379" width="393" height="390"/>
+                                <rect key="frame" x="0.0" y="384" width="393" height="390"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="390" id="Oj0-py-Ufd"/>
@@ -66,46 +87,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" text="" placeholder="Search any product" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYo-hb-r1a">
-                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="IhX-G4-RC1"/>
-                                </connections>
-                            </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlZ-I1-XXT">
-                                <rect key="frame" x="16" y="325.66666666666669" width="377" height="29.333333333333314"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29.333333333333314" id="xhO-Mj-Vvi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AYo-hb-r1a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DWP-qB-gAv"/>
-                            <constraint firstItem="RlZ-I1-XXT" firstAttribute="top" secondItem="WPC-tX-9TM" secondAttribute="bottom" constant="8" symbolic="YES" id="EeG-HR-sng"/>
+                            <constraint firstItem="RlZ-I1-XXT" firstAttribute="top" secondItem="WPC-tX-9TM" secondAttribute="bottom" constant="8" id="EeG-HR-sng"/>
                             <constraint firstItem="AYo-hb-r1a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Hqk-nt-7gY"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RlZ-I1-XXT" secondAttribute="trailing" id="RgC-lN-HaR"/>
-                            <constraint firstItem="vBv-f7-v7C" firstAttribute="top" secondItem="RlZ-I1-XXT" secondAttribute="bottom" constant="23.999999999999943" id="RzU-jz-vpN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RlZ-I1-XXT" secondAttribute="trailing" constant="8" id="RgC-lN-HaR"/>
+                            <constraint firstItem="vBv-f7-v7C" firstAttribute="top" secondItem="RlZ-I1-XXT" secondAttribute="bottom" constant="7.6666666666666856" id="RzU-jz-vpN"/>
                             <constraint firstItem="WPC-tX-9TM" firstAttribute="top" secondItem="AYo-hb-r1a" secondAttribute="bottom" id="Seq-W8-Ryp"/>
-                            <constraint firstItem="WPC-tX-9TM" firstAttribute="trailing" secondItem="RlZ-I1-XXT" secondAttribute="trailing" id="XpX-ij-bPp"/>
+                            <constraint firstItem="WPC-tX-9TM" firstAttribute="trailing" secondItem="RlZ-I1-XXT" secondAttribute="trailing" constant="8" id="XpX-ij-bPp"/>
                             <constraint firstItem="AYo-hb-r1a" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eBj-6W-oyu"/>
                             <constraint firstItem="AYo-hb-r1a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hog-fl-HST"/>
                             <constraint firstItem="WPC-tX-9TM" firstAttribute="leading" secondItem="AYo-hb-r1a" secondAttribute="leading" id="ncE-gc-LIl"/>
                             <constraint firstItem="AYo-hb-r1a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="s4D-KA-aak"/>
                             <constraint firstItem="AYo-hb-r1a" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="tRA-fZ-aJn"/>
-                            <constraint firstItem="RlZ-I1-XXT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="uv0-En-ECb"/>
-                            <constraint firstItem="vBv-f7-v7C" firstAttribute="trailing" secondItem="RlZ-I1-XXT" secondAttribute="trailing" id="w2f-f0-YYk"/>
-                            <constraint firstItem="vBv-f7-v7C" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="xZT-VD-33S"/>
+                            <constraint firstItem="RlZ-I1-XXT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="uv0-En-ECb"/>
+                            <constraint firstItem="vBv-f7-v7C" firstAttribute="trailing" secondItem="RlZ-I1-XXT" secondAttribute="trailing" constant="8" id="w2f-f0-YYk"/>
+                            <constraint firstItem="vBv-f7-v7C" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="5" id="xZT-VD-33S"/>
                             <constraint firstItem="vBv-f7-v7C" firstAttribute="leading" secondItem="WPC-tX-9TM" secondAttribute="leading" id="zfj-oS-0y6"/>
                         </constraints>
                     </view>
@@ -115,7 +115,7 @@
                     <navigationItem key="navigationItem" id="cLW-3r-oed">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="4ue-Kx-Yiv">
-                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
@@ -123,7 +123,7 @@
                                     </hierarchicalColors>
                                 </imageReference>
                                 <connections>
-                                    <action selector="gotoSettings:" destination="Y6W-OH-hqX" id="xo8-7y-gSu"/>
+                                    <action selector="gotoWishlist:" destination="Y6W-OH-hqX" id="xo8-7y-gSu"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem id="Rsy-dm-ga6">
@@ -219,7 +219,7 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="rPE-wK-mkc">
-                                <imageReference key="image" image="gearshape" catalog="system" renderingMode="hierarchical">
+                                <imageReference key="image" image="heart" catalog="system" renderingMode="hierarchical">
                                     <hierarchicalColors>
                                         <color systemColor="labelColor"/>
                                         <color systemColor="secondaryLabelColor"/>
@@ -227,7 +227,7 @@
                                     </hierarchicalColors>
                                 </imageReference>
                                 <connections>
-                                    <action selector="gotoSettings:" destination="4Re-oB-Tyy" id="Y2V-t4-axW"/>
+                                    <action selector="gotoWishlist:" destination="4Re-oB-Tyy" id="Y2V-t4-axW"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" id="LWb-23-g2t">
@@ -275,7 +275,7 @@
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
