@@ -36,6 +36,7 @@ class AddressViewModel{
     func fetchData(){
       
        let apiURL = apiHandler.getCustomerAddressURL(customerID: getCurrentCustomerID())
+        
         networkManager?.fetch(url: apiURL, type: Addresses.self, completionHandler: {[weak self] addresses in
         
             if let addresses = addresses {
@@ -82,6 +83,10 @@ class AddressViewModel{
         }
     }
     
+    func getAllAddress()->[Address]{
+        return addresses
+    }
+    
     func getOrderAddress()->Address{
         
         let orderAddress = Address(id: addressID, customerID: customerID, address1: address, address2: nil, city: city, province: province, country: country, zip: postalCode, phone: phone, name: nil, provinceCode: nil, countryCode: nil, countryName: nil, addressDefault: defaultAddress)
@@ -117,11 +122,25 @@ class AddressViewModel{
     }
 
     func getCurrentCustomerID()->Int{
-        return 7484106080498
+        
+        var CustomerID = 7484106080498
+        
+        if let savedCustomer = UserDefaults.standard.object(forKey: "customer") as? Data {
+                let decoder = JSONDecoder()
+                if let loadedCustomer = try? decoder.decode(Customer.self, from: savedCustomer) {
+                
+                    print("savedPriceRule exist")
+                    CustomerID = loadedCustomer.id ?? 7484106080498
+                }
+            }
+        
+        return CustomerID
     }
 
  func setCurrentAddressAtIndex(index:Int){
 
+     guard !addresses.isEmpty else{return}
+     
      country = addresses[index].country ?? "country"
      city = addresses[index].city ?? "city"
      province = addresses[index].province ?? "province"

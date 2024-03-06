@@ -22,9 +22,30 @@ final class CheckoutViewModelsTests: XCTestCase {
     
     func testGetCurrency(){
         
-        let value =  checkoutViewModel.getCurrency()
-        
+        let value = checkoutViewModel.getCurrency()
         XCTAssert(value == "EGP", "is not the egyptian Currency")
     }
+    
+    func testGetLineItemsTotalPrice(){
+        
+    
+        checkoutViewModel.lineItemsTotalPrice = "498.0"
+        let value = checkoutViewModel.getlineItemsTotalPrice()
+        
+        print(value)
+        XCTAssert(value == "498.0 EGP", "method not working")
+        
+    }
+    
+    func testGetLineItemsTotalPriceWithoutCurrency(){
+        
+        checkoutViewModel.lineItemsTotalPrice = "498.0"
+        let value = checkoutViewModel.getlineItemsTotalPriceWithoutCurrency()
+        
+        print(value)
+        XCTAssert(value == "498.0", "method not working")
+        
+    }
+    
     
 }

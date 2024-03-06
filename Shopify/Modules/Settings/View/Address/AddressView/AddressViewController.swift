@@ -111,6 +111,19 @@ class AddressViewController: UIViewController {
     }
     
     @objc func saveAddress(){
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
             
         let  city = cityItemView.getAddressTextFieldValue()
         let  province = provinceItemView.getAddressTextFieldValue()
