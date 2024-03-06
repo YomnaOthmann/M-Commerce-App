@@ -12,6 +12,7 @@ class CategoryScreenViewController: UIViewController {
     var allProducts : [Product]?
     var filteredProducts : [Product]?
     var customCollection : [CustomCollection]?
+    var wishlist : DraftOrder?
     var timer : Timer?
     let indicator = UIActivityIndicatorView(style: .medium)
     let subCategories = [
@@ -46,7 +47,7 @@ class CategoryScreenViewController: UIViewController {
     @IBOutlet weak var menButton: UIBarButtonItem!
     @IBOutlet weak var womenButton: UIBarButtonItem!
     @IBOutlet weak var kidsButton: UIBarButtonItem!
-    
+    var customer : Customer?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpIndicator()
@@ -54,6 +55,8 @@ class CategoryScreenViewController: UIViewController {
         setUpCategoryCollectionView()
         setUpSearchBar()
         viewModel.delegate = self
+        customer = viewModel.getUser()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,6 +74,14 @@ class CategoryScreenViewController: UIViewController {
                 self.indicator.stopAnimating()
             }
         }
+        viewModel.fetchWishlist()
+        viewModel.bindWishlist = {
+            if let wishlist = self.viewModel.wishlist{
+                self.wishlist = wishlist
+                self.categoryCollectionView.reloadData()
+            }
+        }
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         stopTimer()
@@ -292,7 +303,31 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
                 cell.productImage.kf.setImage(with: URL(string: filteredProducts?[indexPath.row].images[0].src ?? ""))
             }
             cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
-            cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " EGP"
+            cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " \(customer?.currency ?? "")"
+//            cell.favButton.tintColor = viewModel.getButtonColor(isFav: cell.isFave)
+//            cell.favButton.imageView?.image = viewModel.getButtonImage(isFav: cell.isFave)
+            cell.favAction = {
+                self.filteredProducts?[indexPath.row].isFav.toggle()
+                print(self.filteredProducts?[indexPath.row].isFav)
+                if ((self.filteredProducts?[indexPath.row].isFav) == true) {
+                    print("fav")
+                    self.filteredProducts?[indexPath.row].templateSuffix = "fav"
+                    self.viewModel.editProduct(product: self.filteredProducts?[indexPath.row], isFav: self.filteredProducts?[indexPath.row].isFav) { product in
+                        self.viewModel.editWishlist(draft: self.wishlist, product: product)
+
+                    }
+                    cell.favButton.tintColor = .red
+                    cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                }else{
+                    self.filteredProducts?[indexPath.row].templateSuffix = nil
+                    self.viewModel.editProduct(product: self.filteredProducts?[indexPath.row], isFav: self.filteredProducts?[indexPath.row].isFav) { product in
+                        self.viewModel.editWishlist(draft: self.wishlist, product: product)
+                    }
+                    cell.favButton.tintColor = .black
+                    cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                }
+
+            }
             return cell
         }
         

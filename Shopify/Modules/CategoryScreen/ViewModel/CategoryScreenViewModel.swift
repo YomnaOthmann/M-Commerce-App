@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CategoryScreenViewModelProtocol{
     func checkReachability()->Bool
@@ -26,6 +27,13 @@ class CategoryScreenViewModel:CategoryScreenViewModelProtocol{
             bindResult()
         }
     }
+    var bindWishlist : ()->() = {}
+    var wishlist : DraftOrder?{
+        didSet{
+            bindWishlist()
+        }
+    }
+    var bindEditedProduct : ()->() = {}
     init(network: NetworkManagerProtocol?) {
         self.network = network
     }
@@ -98,7 +106,83 @@ class CategoryScreenViewModel:CategoryScreenViewModelProtocol{
         return products
     }
     
+    func getUser()->Customer?{
+        if let userData = UserDefaults.standard.object(forKey: "customer") as? Data {
+            let decoder = JSONDecoder()
+            if let customer = try? decoder.decode(Customer.self, from: userData) {
+                return customer
+            }
+        }
+        return nil
+    }
     
+    func editProduct(product:Product?, isFav:Bool?,completionHandler:@escaping(Product?)->()){
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.products.rawValue + "/\(product?.id ?? 0)" + APIHandler.APICompletions.json.rawValue
+        var product = product
+        product?.templateSuffix = isFav ?? true ? "fav" : nil
+        let newProduct = NewProduct(product: product)
+        network?.put(url: url, parameters: newProduct, completionHandler: {[weak self] code in
+            switch code{
+            case 200:
+                print("product edited")
+                completionHandler(product)
+                self?.fetchProducts()
+            default:
+                completionHandler(nil)
+                print("failed to edit product")
+            }
+        })
+    }
+    func editWishlist(draft:DraftOrder?, product:Product?){
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.draftOrders.rawValue + "/\(draft?.id ?? 0)" + APIHandler.APICompletions.json.rawValue
+        var draft = draft
+        if product?.templateSuffix == nil{
+            print("line items count  = \(draft?.lineItems?.count)")
+            for index in 0..<(draft?.lineItems?.count ?? 0){
+                if draft?.lineItems?[index].productID == product?.id{
+                    draft?.lineItems?.remove(at: index)
+                }
+            }
+            print("line items count  = \(draft?.lineItems?.count)")
+        }else if product?.templateSuffix == "fav"{
+            
+            let newItem = LineItem(name: product?.title ?? "", price: product?.variants[0].price ?? "", productExists: true, productID: product?.id, quantity: 1, title: product?.title ?? "", totalDiscount: "0.0", taxLines: [], propertis: [OrderProperty(name: product?.images[0].src)])
+            print("line items count  = \(draft?.lineItems?.count)")
+            print("new item \(newItem)")
+            draft?.lineItems?.append(newItem)
+        }
+        let newDraft = PostDraftOrder(draftOrder: draft)
+        network?.put(url: url, parameters: newDraft, completionHandler: {[weak self] code in
+            switch code{
+            case 200:
+                print("wishlist edited")
+                self?.fetchWishlist()
+            default:
+                print("failed to edit wishlist")
+            }
+        })
+    }
+    func fetchWishlist(){
+        let wishId = UserDefaults.standard.integer(forKey: "wishId")
+        print(wishId)
+        let url = APIHandler.baseUrl + APIHandler.APIEndPoints.draftOrders.rawValue + "/\(wishId)" + APIHandler.APICompletions.json.rawValue
+        print(url)
+        network?.fetch(url: url, type: PostDraftOrder.self) {[weak self] wishDraft in
+            guard var wish = wishDraft?.draftOrder else{
+                return
+            }
+            self?.wishlist = wish
+        }
+    }
     
+    func getIsFav(product:Product?)->Bool{
+        return product?.templateSuffix == nil ? false : true
+    }
+    func getButtonColor(isFav:Bool)->UIColor{
+        return isFav ? UIColor.red : UIColor.black
+    }
+    func getButtonImage(isFav:Bool)->UIImage?{
+        return isFav ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+    }
     
 }

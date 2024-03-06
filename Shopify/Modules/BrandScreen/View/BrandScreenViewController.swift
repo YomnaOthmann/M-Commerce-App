@@ -136,6 +136,19 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
         
         cell.productTitle.text = allProducts?[indexPath.row].title.components(separatedBy: "|  ").last?.capitalized
         cell.productPrice.text = (allProducts?[indexPath.row].variants[0].price ?? "" ) + " EGP"
+        cell.favAction = {
+            print(cell.isFave)
+            cell.isFave.toggle()
+            print(cell.isFave)
+            if cell.isFave{
+                cell.favButton.tintColor = .red
+                cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            }else{
+                cell.favButton.tintColor = .black
+                cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+
+        }
         return cell
     }
     

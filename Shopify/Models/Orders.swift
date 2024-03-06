@@ -109,7 +109,7 @@ struct LineItem: Codable {
     let taxLines : [TaxLine]?
     var properties : [OrderProperty]?
 
-    init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int? = nil, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine],propertis:[OrderProperty]) {
+    init(id: Int? = nil, adminGraphqlAPIID: String? = nil, currentQuantity: Int? = nil, giftCard: Bool? = nil, name: String, price: String, productExists: Bool, productID: Int?, quantity: Int, sku: String? = nil, title: String, totalDiscount: String, variantID: Int? = nil, variantTitle: String? = nil, vendor: String? = nil, taxLines: [TaxLine],propertis:[OrderProperty]) {
         self.id = id
         self.adminGraphqlAPIID = adminGraphqlAPIID
         self.currentQuantity = currentQuantity

@@ -46,7 +46,9 @@ class BrandScreenViewModel : BrandScreenViewModelProtocol{
         })
     }
 
-    
+    func editProduct(product:Product){
+        
+    }
     func checkReachability()->Bool{
         return reachability.networkStatus
     }

@@ -31,6 +31,8 @@ class MeScreenViewController: UITableViewController {
     
     @IBOutlet weak var favCollectionView: UICollectionView!
     
+    @IBOutlet weak var orderCell: OrdersTableViewCell!
+    
     var orders : [Order]?
     let indicator = UIActivityIndicatorView(style: .medium)
     let viewModel = MeScreenViewModel(network: NetworkManager())
@@ -45,15 +47,16 @@ class MeScreenViewController: UITableViewController {
             self.tableView.isHidden = true
             self.navigationController?.navigationBar.isHidden = true
             let notLoggedVC = UIStoryboard(name: "MeScreen", bundle: nil).instantiateViewController(withIdentifier: "notLogged")
-            self.navigationController?.setViewControllers([notLoggedVC], animated: true)
+            self.navigationController?.setViewControllers([notLoggedVC], animated: false)
         }
+        user = viewModel.getUser()
         userView.layer.cornerRadius = 20
-        userName.text = "Yomna Othman"
-        userMail.text = "yomnaothmann@gmail.com"
-        self.firstOrderStack.isHidden = true
-        self.secondOrderStack.isHidden = true
+        userName.text = user?.firstName
+        userMail.text = user?.email
         setUpCollectionView()
         setUpIndicator()
+        firstOrderStack.isHidden = true
+        secondOrderStack.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
         startTimer()
@@ -113,18 +116,27 @@ class MeScreenViewController: UITableViewController {
         favCollectionView.setCollectionViewLayout(layout, animated: true)
     }
     func setUpOrdersItems(){
-        secondOrderNumber.text = "\(orders?[0].orderNumber ?? 0)"
-        secondOrderPrice.text  =  "\(orders?[0].currentTotalPrice ?? "") \(orders?[0].currency ?? "")"
-        secondOrderQuantity.text =  "\(orders?[0].lineItems.count ?? 0)"
-        secondOrderStatus.text = orders?[0].financialStatus?.rawValue
-        secondOrderDate.text = orders?[0].createdAt?.components(separatedBy: "T").first
-        
-        
-        firstOrderNumber.text = "\(orders?[1].orderNumber ?? 0)"
-        firstOrderPrice.text  =  "\(orders?[1].currentTotalPrice ?? "") \(orders?[1].currency ?? "")"
-        firstOrderQuantity.text =  "\(orders?[1].lineItems.count ?? 0)"
-        firstOrderStatus.text = orders?[1].financialStatus?.rawValue
-        firstOrderDate.text = orders?[1].createdAt?.components(separatedBy: "T").first
+        if orders?.count != 0{
+            firstOrderNumber.text = "\(orders?[0].orderNumber ?? 0)"
+            firstOrderPrice.text  =  "\(orders?[0].currentTotalPrice ?? "") \(orders?[0].currency ?? "")"
+            firstOrderQuantity.text =  "\(orders?[0].lineItems.count ?? 0)"
+            firstOrderStatus.text = orders?[0].financialStatus?.rawValue
+            firstOrderDate.text = orders?[0].createdAt?.components(separatedBy: "T").first
+            firstOrderStack.isHidden = false
+            if orders?.count ?? 0 > 1{
+                secondOrderNumber.text = "\(orders?[1].orderNumber ?? 0)"
+                secondOrderPrice.text  =  "\(orders?[1].currentTotalPrice ?? "") \(orders?[1].currency ?? "")"
+                secondOrderQuantity.text =  "\(orders?[1].lineItems.count ?? 0)"
+                secondOrderStatus.text = orders?[1].financialStatus?.rawValue
+                secondOrderDate.text = orders?[1].createdAt?.components(separatedBy: "T").first
+                secondOrderStack.isHidden = false
+            }
+
+        }else{
+            firstOrderStack.isHidden = true
+            secondOrderStack.isHidden = true
+        }
+
     }
 
     @IBAction func gotoSettings(_ sender: Any) {
@@ -154,13 +166,36 @@ extension MeScreenViewController {
             ordersVC.modalPresentationStyle = .fullScreen
             self.present(ordersVC, animated: true)
             
+        case 5:
+            if UserDefaults.standard.bool(forKey: "isLogged"){
+                let settingsVC = UIStoryboard(name: "WishlistScreen", bundle: nil).instantiateViewController(withIdentifier: "wish")
+                settingsVC.modalPresentationStyle = .fullScreen
+                self.present(settingsVC, animated: true)
+            }else{
+                CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the wishlist")
+            }
+            break
         default:
-            // TODO: Navigate to wishlist Screen
             break
         }
     }
-    
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 3 {
+            if orders?.count == 0{
+                return 0
+            }else {
+                return 160
+            }
+        }
+        if indexPath.row == 4{
+            if orders?.count == 0 || orders?.count == 1{
+                return 0
+            }else{
+                return 160
+            }
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
 }
 extension MeScreenViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

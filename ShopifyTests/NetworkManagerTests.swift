@@ -93,7 +93,7 @@ final class NetworkManagerTests: XCTestCase {
         network = NetworkManager()
         let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
         
-        let newCustomer = Customer(email: "iyomnaothmann@yahoo.com", firstName: "Yomna", lastName: "Othman")
+        let newCustomer = Customer(email: "hala@gmail.com", createdAt: nil, updatedAt: nil, firstName: "yomna", lastName: "othman", ordersCount: nil, state: nil, totalSpent: nil, lastOrderID: nil, verifiedEmail: nil, tags: nil, lastOrderName: nil, currency: nil, phone: nil, addresses: [], emailMarketingConsent: nil, smsMarketingConsent: nil, adminGraphqlAPIID: nil, defaultAddress: nil)
         network?.post(url: url, parameters: newCustomer, completionHandler: { statusCode in
             expectation.fulfill()
             XCTAssertEqual(statusCode, APIResponseCodes.badRequest.rawValue)

@@ -35,22 +35,9 @@ final class SignUpViewModelTests: XCTestCase {
     func testPostingNewCustomer(){
         let expectation = expectation(description: "post new customer")
         let email = String().randomEmail()
-        viewModel.postCustomer(mail: email) { registered, message in
+        viewModel.postCustomer(mail: email, password: "123454tr") { registered, message in
             expectation.fulfill()
             XCTAssertTrue(registered, "failed to register")
-        }
-        waitForExpectations(timeout: 5)
-    }
-    func testRegisterUsingFirebase(){
-        let expectation = expectation(description: "create new customer")
-        viewModel.registerUsingFirebase(email: String().randomEmail(), password: "12345678") { error in
-            guard let error = error else{
-                expectation.fulfill()
-                XCTAssertNil(error)
-                return
-            }
-            expectation.fulfill()
-            XCTAssertNotNil(error)
         }
         waitForExpectations(timeout: 5)
     }

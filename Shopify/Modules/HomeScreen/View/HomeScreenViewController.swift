@@ -53,6 +53,10 @@ class HomeScreenViewController: UIViewController {
         viewModel.delegate = self
         if defaults.bool(forKey: "isLogged"){
             viewModel.fetchCustomer(mail: defaults.string(forKey: "customerMail") ?? "")
+            viewModel.fetchWishlistAndCart {[weak self] wish, cart in
+                self?.defaults.set(wish?.id, forKey: "wishId")
+                self?.defaults.set(cart?.id, forKey: "cartId")
+            }
             print(defaults.string(forKey: "customerMail"))
             print(defaults.integer(forKey: "customerId"))
         }

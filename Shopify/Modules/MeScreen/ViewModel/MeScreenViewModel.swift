@@ -39,4 +39,13 @@ class MeScreenViewModel{
     func checkReachability() -> Bool {
         return reachability.networkStatus
     }
+    func getUser()->Customer?{
+        if let userData = UserDefaults.standard.object(forKey: "customer") as? Data {
+            let decoder = JSONDecoder()
+            if let customer = try? decoder.decode(Customer.self, from: userData) {
+                return customer
+            }
+        }
+        return nil
+    }
 }

@@ -45,10 +45,20 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsI-Gw-wxs">
+                        <rect key="frame" x="200.33333333333334" y="242.33333333333334" width="50.666666666666657" height="34.333333333333343"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                        <connections>
+                            <action selector="addOrRemoveFromWishlist:" destination="gTV-IL-0wX" eventType="touchUpInside" id="e5E-Mt-Djz"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="zsI-Gw-wxs" secondAttribute="trailing" constant="14" id="BrX-uZ-b9i"/>
                 <constraint firstAttribute="trailing" secondItem="I00-de-RwX" secondAttribute="trailing" constant="8" id="FIM-g0-KpW"/>
                 <constraint firstAttribute="trailing" secondItem="kaM-51-h3S" secondAttribute="trailing" constant="16" id="H44-sK-vfQ"/>
                 <constraint firstItem="I00-de-RwX" firstAttribute="leading" secondItem="kaM-51-h3S" secondAttribute="leading" id="ICI-bX-v5t"/>
@@ -57,11 +67,14 @@
                 <constraint firstItem="I00-de-RwX" firstAttribute="top" secondItem="D7b-8s-oWk" secondAttribute="bottom" constant="8" symbolic="YES" id="ZlP-uR-mne"/>
                 <constraint firstAttribute="bottom" secondItem="kaM-51-h3S" secondAttribute="bottom" constant="8" id="eaD-XH-uNn"/>
                 <constraint firstItem="D7b-8s-oWk" firstAttribute="centerX" secondItem="kaM-51-h3S" secondAttribute="centerX" id="gqz-dR-XFp"/>
+                <constraint firstItem="zsI-Gw-wxs" firstAttribute="centerY" secondItem="kaM-51-h3S" secondAttribute="centerY" id="lRn-09-adu"/>
                 <constraint firstItem="kaM-51-h3S" firstAttribute="top" secondItem="I00-de-RwX" secondAttribute="bottom" id="vXf-ib-4dT"/>
+                <constraint firstAttribute="bottom" secondItem="zsI-Gw-wxs" secondAttribute="bottom" constant="3.3300000000000001" id="vt5-m7-PLc"/>
                 <constraint firstItem="D7b-8s-oWk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xTz-7m-Tjr"/>
             </constraints>
             <size key="customSize" width="265" height="280"/>
             <connections>
+                <outlet property="favButton" destination="zsI-Gw-wxs" id="Ad9-jl-TxT"/>
                 <outlet property="productImage" destination="D7b-8s-oWk" id="oFZ-fT-JVc"/>
                 <outlet property="productPrice" destination="kaM-51-h3S" id="ZT9-8t-s5S"/>
                 <outlet property="productTitle" destination="I00-de-RwX" id="ldg-vb-VgS"/>
@@ -70,6 +83,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="placeholder" width="626" height="626"/>
     </resources>
 </document>
