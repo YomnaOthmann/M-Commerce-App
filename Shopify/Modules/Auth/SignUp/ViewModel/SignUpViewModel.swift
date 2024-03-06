@@ -48,7 +48,7 @@ class SignUpViewModel{
                         return
                     }
                 }
-                self?.delegate?.didRegistered(mail: mail)
+                //self?.delegate?.didRegistered(mail: mail)
                 completionHandler(true,"Account Created Successfully")
             case 422:
                 self?.delegate?.didFailToRegister(code: statusCode)
@@ -93,6 +93,7 @@ class SignUpViewModel{
                         if wishCreated{
                             print("wish creaaated")
                             completionHandler(customer)
+                            self?.delegate?.didRegistered(mail: customer.email ?? "")
                         }
                     })
                 }else{

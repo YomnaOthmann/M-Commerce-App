@@ -155,19 +155,23 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
         cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.allProducts?[indexPath.row].isFav)
         cell.favButton.setImage(viewModel.getButtonImage(isFav: self.allProducts?[indexPath.row].isFav), for: .normal)
         cell.favAction = {
-            self.allProducts?[indexPath.row].isFav.toggle()
-            print(self.allProducts?[indexPath.row].isFav)
-            if ((self.allProducts?[indexPath.row].isFav) == true) {
-                print("fav")
-                self.viewModel.editWishlist(draft: self.wishlist, product: self.allProducts?[indexPath.row])
-                cell.favButton.tintColor = .red
-                cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            if self.defaults.bool(forKey: "isLogged"){
+                self.allProducts?[indexPath.row].isFav.toggle()
+                print(self.allProducts?[indexPath.row].isFav)
+                if ((self.allProducts?[indexPath.row].isFav) == true) {
+                    print("fav")
+                    self.viewModel.editWishlist(draft: self.wishlist, product: self.allProducts?[indexPath.row])
+                    cell.favButton.tintColor = .red
+                    cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                }else{
+                    self.viewModel.editWishlist(draft: self.wishlist, product: self.allProducts?[indexPath.row])
+                    cell.favButton.tintColor = .black
+                    cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                }
             }else{
-                self.viewModel.editWishlist(draft: self.wishlist, product: self.allProducts?[indexPath.row])
-                cell.favButton.tintColor = .black
-                cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to add item to the wishlist")
+                
             }
-
         }
         return cell
     }

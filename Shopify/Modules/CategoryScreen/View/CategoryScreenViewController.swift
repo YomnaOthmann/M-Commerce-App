@@ -33,7 +33,7 @@ class CategoryScreenViewController: UIViewController {
     let connectionAlert = ConnectionAlert()
     var alertIsPresenting = false
     let defaults = UserDefaults.standard
-
+    
     
     var searchWords : String = ""
     var searching : Bool = false
@@ -56,7 +56,7 @@ class CategoryScreenViewController: UIViewController {
         setUpSearchBar()
         viewModel.delegate = self
         customer = viewModel.getUser()
-
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,7 +71,7 @@ class CategoryScreenViewController: UIViewController {
             self.filteredProducts = self.viewModel.filterProducts(products: self.allProducts ?? [], mainCategory: self.mainCategory, subCategory: self.subCategory)
             DispatchQueue.main.async {
                 self.categoryCollectionView.reloadData()
-               // self.indicator.stopAnimating()
+                // self.indicator.stopAnimating()
             }
         }
         viewModel.fetchWishlist()
@@ -207,7 +207,7 @@ class CategoryScreenViewController: UIViewController {
         }else{
             CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to enter the cart")
         }
-
+        
     }
     @IBAction func gotoWishlist(_ sender: Any) {
         if defaults.bool(forKey: "isLogged"){
@@ -235,32 +235,32 @@ extension CategoryScreenViewController : UISearchBarDelegate{
     }
     
     func searchingResult() {
-           DispatchQueue.global().async { [weak self] in
-               guard let self = self else { return }
-
-               var filteredProducts: [Product]
-
-               if self.searching {
-                   if self.searchWords.isEmpty {
-                       // If the search query is empty, show all products
-                       filteredProducts = self.allProducts ?? []
-                   } else {
-                       // Filter products based on the search query
-                       filteredProducts = self.allProducts?.filter {
-                           $0.title.lowercased().contains(self.searchWords.lowercased())
-                       } ?? []
-                   }
-               } else {
-                   // If not searching, show all products
-                   filteredProducts = self.allProducts ?? []
-               }
-
-               DispatchQueue.main.async {
-                   self.filteredProducts = filteredProducts
-                   self.categoryCollectionView.reloadData()
-               }
-           }
-       }
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            
+            var filteredProducts: [Product]
+            
+            if self.searching {
+                if self.searchWords.isEmpty {
+                    // If the search query is empty, show all products
+                    filteredProducts = self.allProducts ?? []
+                } else {
+                    // Filter products based on the search query
+                    filteredProducts = self.allProducts?.filter {
+                        $0.title.lowercased().contains(self.searchWords.lowercased())
+                    } ?? []
+                }
+            } else {
+                // If not searching, show all products
+                filteredProducts = self.allProducts ?? []
+            }
+            
+            DispatchQueue.main.async {
+                self.filteredProducts = filteredProducts
+                self.categoryCollectionView.reloadData()
+            }
+        }
+    }
     
 }
 extension CategoryScreenViewController: CategoryScreenViewModelDelegate {
@@ -316,21 +316,26 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
             cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " \(customer?.currency ?? "")"
             cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.filteredProducts?[indexPath.row].isFav)
-            cell.favButton.setImage(viewModel.getButtonImage(isFav: self.filteredProducts?[indexPath.row].isFav), for: .normal) 
+            cell.favButton.setImage(viewModel.getButtonImage(isFav: self.filteredProducts?[indexPath.row].isFav), for: .normal)
             cell.favAction = {
-                self.filteredProducts?[indexPath.row].isFav.toggle()
-                print(self.filteredProducts?[indexPath.row].isFav)
-                if ((self.filteredProducts?[indexPath.row].isFav) == true) {
-                    print("fav")
-                    self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
-                    cell.favButton.tintColor = .red
-                    cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                if self.defaults.bool(forKey: "isLogged"){
+                    self.filteredProducts?[indexPath.row].isFav.toggle()
+                    print(self.filteredProducts?[indexPath.row].isFav)
+                    if ((self.filteredProducts?[indexPath.row].isFav) == true) {
+                        print("fav")
+                        self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
+                        cell.favButton.tintColor = .red
+                        cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    }else{
+                        self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
+                        cell.favButton.tintColor = .black
+                        cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    }
                 }else{
-                    self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
-                    cell.favButton.tintColor = .black
-                    cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    CustomAlert.showAlertView(view: self, title: "Need to Login", message: "log in to your account to add item to the wishlist")
                 }
-
+                
+                
             }
             
             return cell
@@ -370,7 +375,7 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
                 filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             default:
                 selectedCellIndex = 3
-               subCategory = Product.ProductType.accessories
+                subCategory = Product.ProductType.accessories
                 filteredProducts = viewModel.filterProducts(products: products, mainCategory: mainCategory,subCategory: subCategory)
             }
             categoryCollectionView.reloadData()
@@ -379,11 +384,11 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             // TODO: Navigate to product details here
         }
         
-
+        
         
     }
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         true
     }
-
+    
 }
