@@ -99,6 +99,7 @@
 		DE14CF5C2B8918D600FC1C8D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5B2B8918D600FC1C8D /* Address.swift */; };
 		DE14CF5E2B89197900FC1C8D /* PriceRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5D2B89197900FC1C8D /* PriceRule.swift */; };
 		DE14CF602B8919A900FC1C8D /* DiscountCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14CF5F2B8919A900FC1C8D /* DiscountCode.swift */; };
+		DE8707FA2B98A2FE0058ADB8 /* CheckConnectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8707F92B98A2FE0058ADB8 /* CheckConnectionScreen.swift */; };
 		DEC9F21C2B91214400392B33 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9F21B2B91214400392B33 /* AddressViewModel.swift */; };
 		DEC9F2242B92243E00392B33 /* CustomCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC9F2232B92243E00392B33 /* CustomCellButton.swift */; };
 		DECF4B8D2B8FA28F00155830 /* ShoppingBagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF4B8C2B8FA28F00155830 /* ShoppingBagViewModel.swift */; };
@@ -249,6 +250,7 @@
 		DE778F982B8A99C800F3798A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		DE778F9E2B8A9A5700F3798A /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
 		DE778FA02B8A9A9000F3798A /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
+		DE8707F92B98A2FE0058ADB8 /* CheckConnectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnectionScreen.swift; sourceTree = "<group>"; };
 		DEA454DF2B8B58E20017A7F3 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		DEA454E62B8B64870017A7F3 /* CustomAddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddressItemView.swift; sourceTree = "<group>"; };
 		DEA454E82B8B7CD30017A7F3 /* AddressCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCustomButton.swift; sourceTree = "<group>"; };
@@ -971,6 +973,7 @@
 				DEDD83342B8CA75800516BB4 /* AddressSettingCustomCell.swift */,
 				DEDD83352B8CA75800516BB4 /* SettingsViewController.swift */,
 				DEEE04C12B8E7EC7002D290C /* LogoutCustomButton.swift */,
+				DE8707F92B98A2FE0058ADB8 /* CheckConnectionScreen.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -1321,6 +1324,7 @@
 				04B53F832B934C3F00F40A0A /* NewOrderSummaryViewModel.swift in Sources */,
 				049FF9E82B8E683E00004CAB /* OrdersScreenViewModel.swift in Sources */,
 				0492CE012B9436940032111F /* SignUpViewModel.swift in Sources */,
+				DE8707FA2B98A2FE0058ADB8 /* CheckConnectionScreen.swift in Sources */,
 				04DA8DA12B8C3FCD00295473 /* CategoryScreenViewModel.swift in Sources */,
 				043E54A22B87FB0600F8CDA7 /* Orders.swift in Sources */,
 				049FF9DB2B8E4F1500004CAB /* DraftOrder.swift in Sources */,

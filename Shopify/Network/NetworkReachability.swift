@@ -25,6 +25,8 @@ class NetworkReachability{
             self?.networkStatus = (path.status == .satisfied)
             
         }
+        
+        
   
     }
 }
