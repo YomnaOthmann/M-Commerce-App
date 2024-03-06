@@ -16,7 +16,7 @@ protocol HomeScreenViewModelDelegate : AnyObject{
 protocol HomeScreenViewModelProtocol {
     func fetchAds()
     func fetchBrands()
-    func fetchCustomer(mail:String)
+    func fetchCustomer(mail:String, completionHandler:((Customer?)->())?)
 }
 
 class HomeScreenViewModel : HomeScreenViewModelProtocol{
@@ -111,7 +111,7 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
         
     }
     
-    func fetchCustomer(mail:String){
+    func fetchCustomer(mail:String, completionHandler:((Customer?)->())? = nil){
         let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
         network.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
             
@@ -123,8 +123,10 @@ class HomeScreenViewModel : HomeScreenViewModelProtocol{
             }).first
             print("from home model")
             guard let customer = customer else{
+                completionHandler?(nil)
                 return
             }
+            completionHandler?(customer)
             print(customer.id)
             print(customer.tags)
             self?.defaults.set(customer.id,forKey: "customerId")

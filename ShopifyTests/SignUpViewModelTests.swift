@@ -41,5 +41,27 @@ final class SignUpViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
     }
+    
+    func testFetchingCustomer(){
+        let expectation = expectation(description: "fetch customer")
+        viewModel.fetchCustomer(mail: "lotfy@gmail.com") { result in
+            guard let customer = result else{
+                return
+            }
+            expectation.fulfill()
+            XCTAssert(customer.email == "lotfy@gmail.com")
+        }
+        waitForExpectations(timeout: 5)
+    }
+    func testCreateDraftOrder(){
+        let expectation = expectation(description: "create draft")
+        let customer = Customer(email: "yomna@example.com", createdAt: "", updatedAt: "", firstName: "Yomna", lastName: "Othman", ordersCount: 0, state: "", totalSpent: "", lastOrderID: 0, verifiedEmail: false, tags: "", lastOrderName: "", currency: "", phone: "", addresses: [], emailMarketingConsent: nil, smsMarketingConsent: nil, adminGraphqlAPIID: "", defaultAddress: nil)
+        
+        viewModel.createCartDraftOrder(customer: customer) { created in
+            expectation.fulfill()
+            XCTAssertTrue(created)
+        }
+        waitForExpectations(timeout: 5)
+    }
 
 }

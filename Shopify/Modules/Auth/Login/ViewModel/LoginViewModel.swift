@@ -21,7 +21,7 @@ class LoginViewModel{
         self.network = network
     }
     
-    func fetchCustomer(mail:String, password:String){
+    func fetchCustomer(mail:String, password:String, completionHandler:((Customer?)->Void)? = nil){
         let url  = APIHandler.baseUrl + APIHandler.APIEndPoints.customers.rawValue + APIHandler.APICompletions.json.rawValue
         network?.fetch(url: url, type: Customers.self, completionHandler: { [weak self] result in
             
@@ -32,9 +32,11 @@ class LoginViewModel{
             guard let customer = customers.customers?.filter({
                 $0.email == mail && $0.tags == password
             }).first else{
+                completionHandler?(nil)
                 self?.delegate?.failedToLogin()
                 return
             }
+            completionHandler?(customer)
             let customerData = try? JSONEncoder().encode(customer)
             self?.defaults.set(customerData, forKey: "customer")
                 self?.delegate?.didRetrieveCustomer(customer: customer)

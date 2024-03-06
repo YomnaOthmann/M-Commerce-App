@@ -54,5 +54,54 @@ final class HomeScreenViewModelTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
     }
+    func testFetchingCustomer(){
+        let expectation = expectation(description: "fetch customer")
+        homeScreenViewModel.fetchCustomer(mail: "lotfy@gmail.com") { result in
+            guard let customer = result else{
+                return
+            }
+            expectation.fulfill()
+            XCTAssertNotNil(customer,"customer equal nil")
+        }
+        waitForExpectations(timeout: 5)
+    }
+    func testFetchingCustomerEqualNil(){
+        let expectation = expectation(description: "fetching customer")
+        homeScreenViewModel.fetchCustomer(mail: "lotf@gmail.com") { result in
+            guard let customer = result else{
+                expectation.fulfill()
+                XCTAssertNil(result,"customer is not equal nil")
+                return
+            }
+        }
+        waitForExpectations(timeout: 5)
+    }
+    
+    func testCheckReachability(){
+        XCTAssertTrue(homeScreenViewModel.checkReachability(), "not reachable")
+    }
+    func testFetchingDraftOrder(){
+        let expectation = expectation(description: "fetching customer")
+
+        homeScreenViewModel.fetchWishlistAndCart { wish, cart in
+            var drafts : [DraftOrder] = []
+            guard let cart = cart else{
+                expectation.fulfill()
+                XCTAssertNil(cart, "cart is not nil")
+                return
+            }
+            drafts.append(cart)
+            guard let wish = wish else{
+                expectation.fulfill()
+                XCTAssertNil(wish, "wish is not nil")
+                return
+            }
+            drafts.append(wish)
+            expectation.fulfill()
+            XCTAssert(drafts.count == 2, "drafts count are not equal 2")
+            
+        }
+        waitForExpectations(timeout: 5)
+    }
 
 }
