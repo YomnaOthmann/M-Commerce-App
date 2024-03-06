@@ -90,12 +90,44 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
     
     @IBAction func back(_ sender: Any) {
         
-        self.shoppingBagViewModel?.saveCurrentDraftOrderChanges(completion: {
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
+        if shoppingBagViewModel?.getLineItmesCount() == 0{
+            
             self.dismiss(animated: true)
-        })
+
+        }else{
+            
+            self.shoppingBagViewModel?.saveCurrentDraftOrderChanges(completion: {
+                self.dismiss(animated: true)
+            })
+        }
+        
     }
     @objc func navigateToCheckout(){
         
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+                
         if shoppingBagViewModel?.getLineItmesCount() == 0 {
             CustomAlert.showAlertView(view: self, title: "To Checkout Status", message: "Can't Continue to Checkout the Shopping Bag is empty")
         }else{
@@ -112,6 +144,7 @@ class ShoppingBagViewController: UIViewController,UITableViewDelegate,UITableVie
             viewController.checkoutViewModel = checkoutViewModel
             viewController.addressViewModel = addressViewModel
             viewController.shoppingBagViewModel = self.shoppingBagViewModel
+            
             
             self.shoppingBagViewModel?.saveCurrentDraftOrderChanges(completion: {
                 

@@ -20,7 +20,7 @@ class ShoppingBagViewModel {
     private var draftOrderID:Int?
     private var currentDraftOrder:DraftOrder?
     
-    private var lineItems:[LineItem] = []{
+    var lineItems:[LineItem] = []{
         
         didSet{
             dataObserver()
@@ -72,7 +72,6 @@ class ShoppingBagViewModel {
             
             completion()
         })
-        
     }
     
     func getLineItmesCount()->Int{
@@ -116,7 +115,7 @@ class ShoppingBagViewModel {
     
     func getDraftOrderId()->Int{
         
-        if let savedDraftOrderID = UserDefaults.standard.object(forKey: "DraftOrderKey") as? Int {
+        if let savedDraftOrderID = UserDefaults.standard.object(forKey: "cartId") as? Int {
                 return savedDraftOrderID
             }
 
@@ -124,13 +123,21 @@ class ShoppingBagViewModel {
     }
     
     func getCurrentCustomerID()->Int{
-        return 7484106080498
+        
+        var CustomerID = 7484106080498
+        
+        if let savedCustomer = UserDefaults.standard.object(forKey: "customer") as? Data {
+                let decoder = JSONDecoder()
+                if let loadedCustomer = try? decoder.decode(Customer.self, from: savedCustomer) {
+                
+                    print("savedPriceRule exist")
+                    CustomerID = loadedCustomer.id ?? 7484106080498
+                }
+            }
+        
+        return CustomerID
     }
 
-    func getCurrentDraftOrderID()->Int{
-        return 0
-    }
-    
     func getLineItemInStockQuantity(atIndex index:Int)->String{
         
         let orderProperty = (lineItems[index].properties?.filter({ $0.name == "in_stock"}))
@@ -232,17 +239,17 @@ extension ShoppingBagViewModel {
     }
 }
 
-extension Date{
-   
-    func deliverByFormToday(addedDays days:Int,dateFormat format:String)->String{
-        
-        let modifiedDate = Calendar.current.date(byAdding: .day, value: days, to: self)!
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: modifiedDate)
-    }
-    
-}
+//extension Date{
+//   
+//    func deliverByFormToday(addedDays days:Int,dateFormat format:String)->String{
+//        
+//        let modifiedDate = Calendar.current.date(byAdding: .day, value: days, to: self)!
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = format
+//        return dateFormatter.string(from: modifiedDate)
+//    }
+//    
+//}
 
     

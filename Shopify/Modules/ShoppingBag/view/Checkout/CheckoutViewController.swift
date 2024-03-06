@@ -148,6 +148,18 @@ class CheckoutViewController: UIViewController {
   
     @objc func navigateToOrderSummary(){
         
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+        
         if selectedPaymentMethod == .none {
             
             CustomAlert.showAlertView(view: self, title: "Payment Method", message: "Please select Payment Method to continue")
@@ -186,6 +198,19 @@ class CheckoutViewController: UIViewController {
     
     
     @objc func navigateToAddDefaultAddress(){
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         
         let viewController = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(identifier: "addressesVC") as! AddressesViewController
         
@@ -228,6 +253,19 @@ class CheckoutViewController: UIViewController {
     }
     
     @IBAction func changeAddress(_ sender: Any) {
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         
         let viewController = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(identifier: "addressesVC") as! AddressesViewController
         
@@ -289,6 +327,19 @@ class CheckoutViewController: UIViewController {
     }
     
     @IBAction func backToPreviousViewController(_ sender: Any) {
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         
         dismiss(animated: true, completion: nil)
 

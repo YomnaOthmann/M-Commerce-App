@@ -79,9 +79,9 @@ class CheckoutViewModel {
             return  (priceRule.value ?? "0") + getCurrency()
         }else{
             
-            let lineItemsPriceInFloat = Float(self.lineItemsTotalPrice ?? "0")
-            let discountValueInPercentage = Float(priceRule.value ?? "0")
-            let discountValue = lineItemsPriceInFloat! * (discountValueInPercentage!/100)
+            let lineItemsPriceInFloat:Float = Float(self.lineItemsTotalPrice ?? "0") ?? 0
+            let discountValueInPercentage:Float = Float(priceRule.value ?? "0") ?? 0
+            let discountValue:Float = lineItemsPriceInFloat * (discountValueInPercentage/100)
             
             return String(format : "%.2f ", discountValue) + getCurrency()
         }
@@ -160,7 +160,6 @@ class OrderBuilder{
     
     func setCustomerID(id:Int){
         self.customerID = id
-
     }
     
     func setSubTotalPrice(subTotalPrice:String){
@@ -172,6 +171,7 @@ class OrderBuilder{
     func setCurrentTotalDiscounts(currentTotalDiscounts:String){
         self.currentTotalDiscounts = currentTotalDiscounts
     }
+    
     func setCurrentTotalPrice(currentTotalPrice:String){
         self.currentTotalPrice = currentTotalPrice
     }
@@ -183,7 +183,6 @@ class OrderBuilder{
     func build()->Order{
         
         var order = Order(financialStatus: nil, lineItems: lineItems ?? [])
-        
         order.subtotalPrice = subTotalPrice
         order.currency = currency
         order.currentTotalDiscounts = currentTotalDiscounts
@@ -191,7 +190,6 @@ class OrderBuilder{
         order.shippingAddress = shippingAddress
         order.customer = Customer(email: nil, firstName: nil, lastName: nil)
         order.customer?.id = customerID
-        
         return order
     }
     

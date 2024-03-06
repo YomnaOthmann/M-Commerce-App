@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         addressViewModel.dataObserver = {[weak self] in
             self?.addressSettingsTableView.reloadData()
         }
+        
         addressViewModel.fetchData()
         
     }
@@ -51,17 +52,42 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
     }
     
-    
     @objc func logoutCustomer(){
         print("Logout")
         
     }
     
     @IBAction func back(_ sender: Any) {
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         self.dismiss(animated: true)
     }
     
     @IBAction func seeAllAddresses(_ sender: Any) {
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "addressesVC") as! AddressesViewController
                 
@@ -119,6 +145,19 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
         if editingStyle == .delete{
             
+            guard NetworkReachability.networkReachability.networkStatus == true else{
+                
+                let settings = UIStoryboard(name: "Settings", bundle: nil)
+                
+                let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+                
+                checkConnectVC.modalPresentationStyle = .fullScreen
+                self.present(checkConnectVC, animated: true)
+                
+                return
+            }
+
+            
             addressViewModel.setCurrentAddressAtIndex(index: indexPath.row)
             addressViewModel.deleteAddress(completion: { message, error in
                 
@@ -137,6 +176,19 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     
     @objc func navigateToEditAddress(sender:CustomCellButton){
         
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
+        
         addressViewModel.setCurrentAddressAtIndex(index: sender.cellIndex!)
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "addressVC") as! AddressViewController
                 
@@ -148,6 +200,19 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     }
     
     @objc func setDefaultAddress(sender:CustomCellButton){
+        
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         
         print("set deafult address")
         
@@ -165,6 +230,18 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     
     func changeCurrentDefaultAddressValue(sender:CustomCellButton){
         
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         addressViewModel.setDeafultAddress()
         addressViewModel.setDefaultValue(defaultAddress:false)
             .edit(isEditNotSetDefault:false) { message, error in
@@ -180,6 +257,18 @@ class SettingsViewController: UIViewController ,UITableViewDelegate,UITableViewD
     
     func setNewAddressAsDefault(index:Int){
         
+        guard NetworkReachability.networkReachability.networkStatus == true else{
+            
+            let settings = UIStoryboard(name: "Settings", bundle: nil)
+            
+            let checkConnectVC = settings.instantiateViewController(withIdentifier: "checkConnectVC") as! CheckConnectionScreen
+            
+            checkConnectVC.modalPresentationStyle = .fullScreen
+            self.present(checkConnectVC, animated: true)
+            
+            return
+        }
+
         addressViewModel.setCurrentAddressAtIndex(index: index)
         addressViewModel.setDefaultValue(defaultAddress: true)
         .edit(isEditNotSetDefault:false){ message, error in
