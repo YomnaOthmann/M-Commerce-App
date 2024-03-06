@@ -17,6 +17,8 @@ class ShoppingBagViewModel {
     var quantityExceedLimitObserver:(_ message:String)->Void = {message in }
     var lowestQuantityDecrementObserver:(_ message:String,_ index:Int)->Void = {message,index in }
     
+    var dummyLineItem:LineItem?
+    
     private var draftOrderID:Int?
     private var currentDraftOrder:DraftOrder?
     
@@ -41,8 +43,18 @@ class ShoppingBagViewModel {
         
         networkManager?.fetch(url: apiURL, type:PostDraftOrder.self, completionHandler: {[weak self] postDraftOrder in
             
-            self?.currentDraftOrder = postDraftOrder?.draftOrder
-            self?.lineItems = postDraftOrder?.draftOrder?.lineItems ?? []
+            self.currentDraftOrder = postDraftOrder?.draftOrder
+            
+            for item in postDraftOrder?.draftOrder?.lineItems ?? [] {
+                
+                if item.title == "dummy" {
+                    self.dummyLineItem = item
+                }
+            }
+            
+            self.lineItems = postDraftOrder?.draftOrder?.lineItems?.filter({ $0.title != "dummy"}) ?? []
+            
+
             print(postDraftOrder?.draftOrder?.lineItems ?? "no draft order")
             
         })
@@ -52,6 +64,9 @@ class ShoppingBagViewModel {
         
         currentDraftOrder?.lineItems = self.lineItems
         
+        if let dummyItem = dummyLineItem {
+            currentDraftOrder?.lineItems?.append(dummyItem)
+        }
 //        currentDraftOrder?.lineItems?[0].properties?.append(OrderProperty(name:"in_stock" ,value: "8"))
 //        currentDraftOrder?.lineItems?[0].quantity = 2
 //        
@@ -221,9 +236,8 @@ class ShoppingBagViewModel {
         return String(totalPrice)
     }
     
-    
     func deleteLineItem(atIndex index:Int){
-        lineItems.remove(at: index)
+        lineItems.remove(at:index)
         dataObserver()
     }
     
