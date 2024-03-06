@@ -38,7 +38,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NYh-l3-eec">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="8" y="111" width="377" height="699"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Z4-jq-0Wu">
                                     <size key="itemSize" width="128" height="128"/>
@@ -48,10 +48,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCell" id="u3u-hd-Uby" customClass="ProductCollectionViewCell" customModule="Shopify" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Ok-HI-lpI">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
@@ -62,10 +62,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="egZ-KS-93E" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ATy-WW-ps9"/>
-                            <constraint firstItem="NYh-l3-eec" firstAttribute="top" secondItem="egZ-KS-93E" secondAttribute="bottom" id="XbB-em-q8a"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="NYh-l3-eec" secondAttribute="bottom" id="bEX-l8-yWj"/>
-                            <constraint firstItem="NYh-l3-eec" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gau-nh-DN7"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NYh-l3-eec" secondAttribute="trailing" id="jhz-Qe-swa"/>
+                            <constraint firstItem="NYh-l3-eec" firstAttribute="top" secondItem="egZ-KS-93E" secondAttribute="bottom" constant="8" id="XbB-em-q8a"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="NYh-l3-eec" secondAttribute="bottom" constant="8" id="bEX-l8-yWj"/>
+                            <constraint firstItem="NYh-l3-eec" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="gau-nh-DN7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NYh-l3-eec" secondAttribute="trailing" constant="8" id="jhz-Qe-swa"/>
                             <constraint firstItem="egZ-KS-93E" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="oFj-i3-8UA"/>
                             <constraint firstItem="egZ-KS-93E" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="rIw-9A-2dQ"/>
                         </constraints>

@@ -71,7 +71,7 @@ class CategoryScreenViewController: UIViewController {
             self.filteredProducts = self.viewModel.filterProducts(products: self.allProducts ?? [], mainCategory: self.mainCategory, subCategory: self.subCategory)
             DispatchQueue.main.async {
                 self.categoryCollectionView.reloadData()
-                self.indicator.stopAnimating()
+               // self.indicator.stopAnimating()
             }
         }
         viewModel.fetchWishlist()
@@ -79,6 +79,7 @@ class CategoryScreenViewController: UIViewController {
             if let wishlist = self.viewModel.wishlist{
                 self.wishlist = wishlist
                 self.categoryCollectionView.reloadData()
+                self.indicator.stopAnimating()
             }
         }
         
@@ -302,32 +303,36 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             if filteredProducts?[indexPath.row].images.count ?? -1 > 0{
                 cell.productImage.kf.setImage(with: URL(string: filteredProducts?[indexPath.row].images[0].src ?? ""))
             }
+            if let lineItems = wishlist?.lineItems{
+                for item in lineItems{
+                    if filteredProducts?[indexPath.row].title == item.title{
+                        self.filteredProducts?[indexPath.row].isFav = true
+                        break
+                    }else{
+                        self.filteredProducts?[indexPath.row].isFav = false
+                    }
+                }
+            }
             cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
             cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " \(customer?.currency ?? "")"
-//            cell.favButton.tintColor = viewModel.getButtonColor(isFav: cell.isFave)
-//            cell.favButton.imageView?.image = viewModel.getButtonImage(isFav: cell.isFave)
+            cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.filteredProducts?[indexPath.row].isFav)
+            cell.favButton.setImage(viewModel.getButtonImage(isFav: self.filteredProducts?[indexPath.row].isFav), for: .normal) 
             cell.favAction = {
                 self.filteredProducts?[indexPath.row].isFav.toggle()
                 print(self.filteredProducts?[indexPath.row].isFav)
                 if ((self.filteredProducts?[indexPath.row].isFav) == true) {
                     print("fav")
-                    self.filteredProducts?[indexPath.row].templateSuffix = "fav"
-                    self.viewModel.editProduct(product: self.filteredProducts?[indexPath.row], isFav: self.filteredProducts?[indexPath.row].isFav) { product in
-                        self.viewModel.editWishlist(draft: self.wishlist, product: product)
-
-                    }
+                    self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
                     cell.favButton.tintColor = .red
                     cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 }else{
-                    self.filteredProducts?[indexPath.row].templateSuffix = nil
-                    self.viewModel.editProduct(product: self.filteredProducts?[indexPath.row], isFav: self.filteredProducts?[indexPath.row].isFav) { product in
-                        self.viewModel.editWishlist(draft: self.wishlist, product: product)
-                    }
+                    self.viewModel.editWishlist(draft: self.wishlist, product: self.filteredProducts?[indexPath.row])
                     cell.favButton.tintColor = .black
                     cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
                 }
 
             }
+            
             return cell
         }
         

@@ -20,7 +20,7 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
     let indicator = UIActivityIndicatorView(style: .medium)
     var searchWords : String = ""
     var searching : Bool = false
-    
+    var wishlist : DraftOrder?
     let connectionAlert = ConnectionAlert()
     var alertIsPresenting = false
     var timer : Timer?
@@ -40,9 +40,16 @@ class BrandScreenViewController: UIViewController , UISearchBarDelegate {
         viewModel.fetchProducts(brandName: brand)
             viewModel.bindResult = {
                 self.allProducts = self.viewModel.brandProducts
-                self.indicator.stopAnimating()
                 self.brandProductsCollectionView.reloadData()
             }
+        viewModel.fetchWishlist()
+        viewModel.bindWishlist = {
+            if let wishlist = self.viewModel.wishlist{
+                self.wishlist = wishlist
+                self.brandProductsCollectionView.reloadData()
+                self.indicator.stopAnimating()
+            }
+        }
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -130,20 +137,33 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.id, for: indexPath) as! ProductCollectionViewCell
+        if let lineItems = wishlist?.lineItems{
+            for item in lineItems{
+                if allProducts?[indexPath.row].title == item.title{
+                    self.allProducts?[indexPath.row].isFav = true
+                    break
+                }else{
+                    self.allProducts?[indexPath.row].isFav = false
+                }
+            }
+        }
         if allProducts?[indexPath.row].images.count ?? -1 > 0{
             cell.productImage.kf.setImage(with: URL(string:allProducts?[indexPath.row].images[0].src ?? ""))
         }
-        
         cell.productTitle.text = allProducts?[indexPath.row].title.components(separatedBy: "|  ").last?.capitalized
         cell.productPrice.text = (allProducts?[indexPath.row].variants[0].price ?? "" ) + " EGP"
+        cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.allProducts?[indexPath.row].isFav)
+        cell.favButton.setImage(viewModel.getButtonImage(isFav: self.allProducts?[indexPath.row].isFav), for: .normal)
         cell.favAction = {
-            print(cell.isFave)
-            cell.isFave.toggle()
-            print(cell.isFave)
-            if cell.isFave{
+            self.allProducts?[indexPath.row].isFav.toggle()
+            print(self.allProducts?[indexPath.row].isFav)
+            if ((self.allProducts?[indexPath.row].isFav) == true) {
+                print("fav")
+                self.viewModel.editWishlist(draft: self.wishlist, product: self.allProducts?[indexPath.row])
                 cell.favButton.tintColor = .red
                 cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             }else{
+                self.viewModel.editWishlist(draft: self.wishlist, product: self.allProducts?[indexPath.row])
                 cell.favButton.tintColor = .black
                 cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
             }

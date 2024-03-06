@@ -67,8 +67,16 @@ extension WishlistViewController : UICollectionViewDelegate, UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.id, for: indexPath) as! ProductCollectionViewCell
-        //let url = URL(string: wishList?.lineItems?[indexPath.row].properties?[0].name ?? "")
-        //cell.productImage.kf.setImage(with: url!)
+        cell.favButton.tintColor = .red
+        cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+        cell.favAction = {
+            self.viewModel.editWishlist(draft: self.wishList, lineitem: self.wishList?.lineItems?[indexPath.row])
+            self.wishList?.lineItems?.remove(at: indexPath.row)
+            collectionView.reloadData()
+        }
+        let url = URL(string: wishList?.lineItems?[indexPath.row].properties?[0].name ?? "")
+        cell.productImage.kf.setImage(with: url!)
         cell.productPrice.text = "\(wishList?.lineItems?[indexPath.row].price ?? "") \(wishList?.currency ?? "")"
         cell.productTitle.text = wishList?.lineItems?[indexPath.row].title
         return cell

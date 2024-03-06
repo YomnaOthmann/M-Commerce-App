@@ -39,7 +39,8 @@ class MeScreenViewController: UITableViewController {
     let connectionAlert = ConnectionAlert()
     var alertIsPresenting = false
     var timer : Timer?
-    
+    var wishList : DraftOrder?
+    @IBOutlet weak var favIndicator: UIActivityIndicatorView!
     var user:Customer?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,11 @@ class MeScreenViewController: UITableViewController {
             self.indicator.stopAnimating()
             self.tableView.reloadData()
         }
+        viewModel.fetchWishlist()
+        viewModel.bindResult = {
+            self.wishList = self.viewModel.wishlist
+            self.favCollectionView.reloadData()
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         stopTimer()
@@ -79,6 +85,11 @@ class MeScreenViewController: UITableViewController {
         indicator.hidesWhenStopped = true
         indicator.startAnimating()
         view.addSubview(indicator)
+        favIndicator.center = view.center
+        favIndicator.color = .gray
+        favIndicator.hidesWhenStopped = true
+        favIndicator.startAnimating()
+        view.addSubview(favIndicator)
     }
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkReachability), userInfo: nil, repeats: true)
@@ -199,20 +210,33 @@ extension MeScreenViewController {
 }
 extension MeScreenViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: favCollectionView.frame.width * 0.4, height: favCollectionView.frame.height - 10)
+        return CGSize(width: favCollectionView.frame.width * 0.5, height: favCollectionView.frame.height - 10)
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        favCollectionView.setEmptyMessage("Empty Wishlist!!")
-        return 0
+        if wishList?.lineItems?.count == 0{
+            favCollectionView.setEmptyMessage("Empty Wishlist!!")
+        }
+        return wishList?.lineItems?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
                 let cell = favCollectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.id, for: indexPath) as!ProductCollectionViewCell
-       
-        
+        cell.favButton.tintColor = .red
+        cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+        cell.favAction = {
+            self.viewModel.editWishlist(draft: self.wishList, lineitem: self.wishList?.lineItems?[indexPath.row])
+            self.wishList?.lineItems?.remove(at: indexPath.row)
+            collectionView.reloadData()
+        }
+        let url = URL(string: wishList?.lineItems?[indexPath.row].properties?[0].name ?? "")
+        cell.productImage.kf.setImage(with: url!)
+        cell.productPrice.text = "\(wishList?.lineItems?[indexPath.row].price ?? "") \(wishList?.currency ?? "")"
+        cell.productTitle.text = wishList?.lineItems?[indexPath.row].title
+
         return cell
     }
 }
