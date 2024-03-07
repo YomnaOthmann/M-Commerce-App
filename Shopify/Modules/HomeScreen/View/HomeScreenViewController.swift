@@ -222,7 +222,7 @@ extension HomeScreenViewController : HomeScreenViewModelDelegate{
     
     func didLoadAds(ads: PriceRules) {
         priceRules = ads
-        print("price \(priceRules?.priceRules?[0].id ?? 0)")
+       // print("price \(priceRules?.priceRules?[0].id ?? 0)")
         viewModel.fetchDiscountCodes(priceRuleId: priceRules?.priceRules?[0].id ?? 0)
         viewModel.bindResult = {
             self.adsIndicator.stopAnimating()

@@ -216,10 +216,12 @@ extension MeScreenViewController : UICollectionViewDelegate, UICollectionViewDat
         1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if wishList?.lineItems?.count == 0{
-            favCollectionView.setEmptyMessage("Empty Wishlist!!")
+        if wishList?.lineItems?.count != 0{
+            return wishList?.lineItems?.count ?? 0
+
         }
-        return wishList?.lineItems?.count ?? 0
+        collectionView.setEmptyMessage("Empty!")
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

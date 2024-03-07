@@ -17,7 +17,6 @@
 		044631CC2B8A4300001F9371 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044631CB2B8A4300001F9371 /* LoginViewController.swift */; };
 		044631CE2B8ABC05001F9371 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044631CD2B8ABC05001F9371 /* LoginViewModel.swift */; };
 		046149C72B98C5F5001B4680 /* DraftOrderMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 046149C62B98C5F5001B4680 /* DraftOrderMockData.json */; };
-		04810AD92B940FD100321195 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04810AD82B940FD100321195 /* GoogleService-Info.plist */; };
 		0487EF892B9897E20080504B /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487EF882B9897E20080504B /* LoginViewModelTests.swift */; };
 		048A7EA12B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */; };
 		048A7EA32B8D4F4F002A4C51 /* MeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */; };
@@ -156,7 +155,6 @@
 		044631CD2B8ABC05001F9371 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		046149C62B98C5F5001B4680 /* DraftOrderMockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DraftOrderMockData.json; sourceTree = "<group>"; };
 		046149C82B98C7A4001B4680 /* ProductsMockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductsMockData.json; sourceTree = "<group>"; };
-		04810AD82B940FD100321195 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0487EF882B9897E20080504B /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		048A7EA02B8D234A002A4C51 /* NotLoggedMeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLoggedMeScreenViewController.swift; sourceTree = "<group>"; };
 		048A7EA22B8D4F4F002A4C51 /* MeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeScreenViewModel.swift; sourceTree = "<group>"; };
@@ -562,7 +560,6 @@
 		04A574092B84D669007BFC98 /* Shopify */ = {
 			isa = PBXGroup;
 			children = (
-				04810AD82B940FD100321195 /* GoogleService-Info.plist */,
 				DEEE04BE2B8DE1C7002D290C /* Shopify.entitlements */,
 				04A2A70D2B85195A00991FCC /* Modules */,
 				04A574422B84D6AE007BFC98 /* Utility */,
@@ -1168,7 +1165,6 @@
 				04956AAF2B92A422005AE66E /* OrderSummaryCollectionViewCell.xib in Resources */,
 				04E385302B8BC9FF00DEADB3 /* congrats.json in Resources */,
 				04E385262B8BB12400DEADB3 /* ProductCollectionViewCell.xib in Resources */,
-				04810AD92B940FD100321195 /* GoogleService-Info.plist in Resources */,
 				048EAF582B97551A008FB61C /* WishlistScreen.storyboard in Resources */,
 				04B04F612B85248A004C16D6 /* MontserratRegular.ttf in Resources */,
 				04CF296C2B8B536600454075 /* TabBar.storyboard in Resources */,
