@@ -42,6 +42,7 @@ class SignUpViewModel{
         network?.post(url: url, parameters: newCustomer, completionHandler: {[weak self] statusCode in
             switch statusCode{
             case 201:
+                Thread.sleep(forTimeInterval: 7)
                 self?.fetchCustomer(mail: mail) {[weak self] customer in
                     guard let customer = customer else{
                         self?.delegate?.didFailToRegister(code: 0)

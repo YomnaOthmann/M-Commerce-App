@@ -3,4 +3,69 @@
    uuid = "46F0C304-1300-40F1-B714-0C436412E77C"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2EA3D37B-7B71-43D0-B3DF-B65BF046637A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shopify/Modules/Auth/SignUp/ViewModel/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "postCustomer(mail:password:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2EA3D37B-7B71-43D0-B3DF-B65BF046637A - 25d4f3b590d6ee5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in Shopify.SignUpViewModel.postCustomer(mail: Swift.String, password: Swift.String, completionHandler: (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "Shopify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/M-Commerce-App/Shopify/Modules/Auth/SignUp/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  uuid = "2EA3D37B-7B71-43D0-B3DF-B65BF046637A - b0889ed557fa90a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Shopify.Customer&gt;) -&gt; () in closure #1 (Swift.Int) -&gt; () in Shopify.SignUpViewModel.postCustomer(mail: Swift.String, password: Swift.String, completionHandler: (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "Shopify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/M-Commerce-App/Shopify/Modules/Auth/SignUp/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  uuid = "2EA3D37B-7B71-43D0-B3DF-B65BF046637A - 25d4f3b590d6ee5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in Shopify.SignUpViewModel.postCustomer(mail: Swift.String, password: Swift.String, completionHandler: (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "Shopify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/M-Commerce-App/Shopify/Modules/Auth/SignUp/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "253">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

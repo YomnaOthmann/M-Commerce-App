@@ -33,8 +33,7 @@ class CategoryScreenViewController: UIViewController {
     let connectionAlert = ConnectionAlert()
     var alertIsPresenting = false
     let defaults = UserDefaults.standard
-    
-    
+
     var searchWords : String = ""
     var searching : Bool = false
     
@@ -315,8 +314,10 @@ extension CategoryScreenViewController : UICollectionViewDelegate, UICollectionV
             }
             cell.productTitle.text = filteredProducts?[indexPath.row].title.components(separatedBy: "    ").last?.capitalized
             cell.productPrice.text = (filteredProducts?[indexPath.row].variants[0].price ?? "") + " \(customer?.currency ?? "")"
-            cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.filteredProducts?[indexPath.row].isFav)
-            cell.favButton.setImage(viewModel.getButtonImage(isFav: self.filteredProducts?[indexPath.row].isFav), for: .normal)
+            if defaults.bool(forKey: "isLogged"){
+                cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.filteredProducts?[indexPath.row].isFav)
+                cell.favButton.setImage(viewModel.getButtonImage(isFav: self.filteredProducts?[indexPath.row].isFav), for: .normal)
+            }
             cell.favAction = {
                 if self.defaults.bool(forKey: "isLogged"){
                     self.filteredProducts?[indexPath.row].isFav.toggle()

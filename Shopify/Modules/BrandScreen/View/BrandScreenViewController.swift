@@ -152,8 +152,10 @@ extension BrandScreenViewController : UICollectionViewDelegate, UICollectionView
         }
         cell.productTitle.text = allProducts?[indexPath.row].title.components(separatedBy: "|  ").last?.capitalized
         cell.productPrice.text = (allProducts?[indexPath.row].variants[0].price ?? "" ) + " EGP"
-        cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.allProducts?[indexPath.row].isFav)
-        cell.favButton.setImage(viewModel.getButtonImage(isFav: self.allProducts?[indexPath.row].isFav), for: .normal)
+        if defaults.bool(forKey: "isLogged"){
+            cell.favButton.tintColor = viewModel.getButtonColor(isFav: self.allProducts?[indexPath.row].isFav)
+            cell.favButton.setImage(viewModel.getButtonImage(isFav: self.allProducts?[indexPath.row].isFav), for: .normal)
+        }
         cell.favAction = {
             if self.defaults.bool(forKey: "isLogged"){
                 self.allProducts?[indexPath.row].isFav.toggle()

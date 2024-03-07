@@ -43,16 +43,16 @@ class ShoppingBagViewModel {
         
         networkManager?.fetch(url: apiURL, type:PostDraftOrder.self, completionHandler: {[weak self] postDraftOrder in
             
-            self.currentDraftOrder = postDraftOrder?.draftOrder
+            self?.currentDraftOrder = postDraftOrder?.draftOrder
             
             for item in postDraftOrder?.draftOrder?.lineItems ?? [] {
                 
                 if item.title == "dummy" {
-                    self.dummyLineItem = item
+                    self?.dummyLineItem = item
                 }
             }
             
-            self.lineItems = postDraftOrder?.draftOrder?.lineItems?.filter({ $0.title != "dummy"}) ?? []
+            self?.lineItems = postDraftOrder?.draftOrder?.lineItems?.filter({ $0.title != "dummy"}) ?? []
             
 
             print(postDraftOrder?.draftOrder?.lineItems ?? "no draft order")
